@@ -9,14 +9,14 @@
 }
 @font-face {
   font-family: 'ReadexPro-Medium';
-  src: url('../fonts/Roboto-Italic.ttf');
+  src: url('../fonts/ReadexPro-Medium.ttf');
 }
 @font-face {
   font-family: 'ReadexPro-Regular';
   src: url('../fonts/ReadexPro-Regular.ttf');
 }
 body {
-  background-color: #EFF6FF;
+  background-color: #eff6ff;
 }
 h1 {
   font: 20px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
