@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: 'ReadexPro-Bold';
+  src: url('../fonts/ReadexPro-Bold.ttf');
+}
+@font-face {
+  font-family: 'ReadexPro-Medium';
+  src: url('../fonts/Roboto-Italic.ttf');
+}
+@font-face {
+  font-family: 'ReadexPro-Regular';
+  src: url('../fonts/ReadexPro-Regular.ttf');
+}
+body {
+  background-color: #EFF6FF;
+}
+h1 {
+  font: 20px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+}
+p {
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+span {
+  font: 12px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
