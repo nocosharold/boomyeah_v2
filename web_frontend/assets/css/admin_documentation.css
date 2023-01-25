@@ -25,48 +25,75 @@ body {
   padding: 32px 24px;
   width: 1024px;
 }
-.container #doc_form div {
+.container #doc_form {
+  align-items: center;
+  display: flex;
+}
+.container #doc_form .group_add_documentation {
   background-color: #EFF6FF;
   border-radius: 8px;
-  padding-bottom: 8px;
+  height: 56px;
+  position: relative;
   width: 316px;
 }
-.container #doc_form span {
+.container #doc_form .group_add_documentation::after {
+  background-color: #EFF6FF;
+  content: '';
+  display: inline-block;
+  height: 2px;
+  position: absolute;
+  top: 52px;
+  width: 100%;
+}
+.container #doc_form .group_add_documentation input {
+  padding-left: 11px;
+}
+.container #doc_form .group_add_documentation label {
+  padding-left: 12px;
+}
+.container #doc_form .group_add_documentation label {
+  color: #78716C;
+  font: 16px/35px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+.container #doc_form .group_add_documentation input {
+  border-radius: 4px;
+  bottom: 0;
+  color: #0F172A;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  height: 43px;
+  position: absolute;
+  width: 100%;
+}
+.container #doc_form .group_add_documentation input:-internal-autofill-selected {
+  background-color: #EFF6FF;
+}
+.container #doc_form .group_add_documentation input.valid,
+.container #doc_form .group_add_documentation input.validate {
+  background-color: #EFF6FF;
+  border-bottom: 2px solid #2563EB;
+  box-shadow: 0 1px 0 0 #2563EB;
+}
+.container #doc_form .group_add_documentation label.active {
+  color: #2563EB;
+  line-height: 16px;
+  transform: translateY(6px) scale(0.8);
+}
+.container #doc_form #input_add_documentation {
+  margin-bottom: 0;
+  width: 304px;
+}
+.container #doc_form #save_status {
   color: #B5C4E4;
   font: 14px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
   margin-left: 21px;
   vertical-align: super;
 }
-.container #doc_form #input_add_documentation {
-  border-bottom: 0px solid #DBEAFE;
-  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
-  padding: 4px 12px;
-}
-.container #doc_form #label_add_documentation {
-  border-bottom: 1px solid #DBEAFE;
-  border-radius: 8px;
-  font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
-  padding: 0 12px;
-}
-.container #doc_form #label_add_documentation::after {
-  bottom: 0;
-  padding: 0 12px;
-}
-.container #doc_form .is-focused #label_add_documentation,
-.container #doc_form .is-dirty #label_add_documentation {
-  color: #2563EB;
-  font: 12px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
-}
-.container #doc_form .is-focused #label_add_documentation::after,
-.container #doc_form .is-dirty #label_add_documentation::after {
-  background-color: #2563EB;
-}
-.container #doc_form .is-focused #label_add_documentation {
-  border-bottom: 1px solid transparent;
-  border-radius: 4px;
-}
 .container #doc_view_form {
   margin: 47px 0 24px;
+}
+.container #documentations {
+  display: flex;
+  gap: 14px;
 }
 .container #documentations .document_block {
   align-items: center;
@@ -97,37 +124,112 @@ body {
   width: 49px;
 }
 .container #documentations .document_block .document_details .invite_collaborators_btn::before {
-  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_page_sprite.svg') no-repeat -32px -13px;
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat -32px -13px;
   content: '';
   display: inline-block;
   height: 8.67px;
   width: 16px;
 }
 .container #documentations .document_block .document_controls {
+  align-items: center;
+  display: flex;
   font-size: 0;
 }
 .container #documentations .document_block .document_controls .access_btn {
-  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_page_sprite.svg') no-repeat -50px -5px;
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat -50px -5px;
   border: 0;
   content: '';
   cursor: pointer;
   display: inline-block;
   height: 18px;
   margin-right: 18px;
-  transform: translateY(4px);
   width: 14px;
 }
 .container #documentations .document_block .document_controls .more_action_btn {
-  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_page_sprite.svg') no-repeat -65px -9px;
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat -65px -9px;
   border: 0;
   color: transparent;
   content: '';
   cursor: pointer;
   display: inline-block;
   height: 14px;
-  padding: 0 2px;
+  padding: 2px;
   width: 4px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public,
+.container #documentations .document_block .document_controls #more_action_list_private {
+  border-radius: 4px;
+  width: 192px !important;
+}
+.container #documentations .document_block .document_controls #more_action_list_public .divider,
+.container #documentations .document_block .document_controls #more_action_list_private .divider {
+  background-color: #EFF6FF;
+}
+.container #documentations .document_block .document_controls #more_action_list_public li:hover,
+.container #documentations .document_block .document_controls #more_action_list_private li:hover {
+  background-color: #BDDAFF;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a,
+.container #documentations .document_block .document_controls #more_action_list_private a {
+  color: #94A3B8;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a::before,
+.container #documentations .document_block .document_controls #more_action_list_private a::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat;
+  content: "";
+  display: inline-block;
+  height: 18px;
+  margin-right: 16px;
+  position: relative;
+  vertical-align: text-bottom;
+  width: 18px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.edit_title_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.edit_title_icon::before {
+  background-position: -70px -4px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.duplicate_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.duplicate_icon::before {
+  background-position: -90px 0;
+  height: 22px;
+  width: 19px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.archive_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.archive_icon::before {
+  background-position: -111px -4px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.invite_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.invite_icon::before {
+  background-position: -131px -7px;
+  height: 15px;
+  width: 18px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.set_to_private_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.set_to_private_icon::before {
+  background-position: -151px -3px;
+  height: 19px;
+  width: 16px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.set_to_public_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.set_to_public_icon::before {
+  background-position: -185px -2px;
+  height: 20px;
+  width: 20px;
+}
+.container #documentations .document_block .document_controls #more_action_list_public a.remove_icon::before,
+.container #documentations .document_block .document_controls #more_action_list_private a.remove_icon::before {
+  background-position: -169px -4px;
+  height: 18px;
+  width: 14px;
 }
 .container #documentations .document_block:hover {
   border: 1px solid #2563EB;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px #EFF6FF inset !important;
+  -webkit-text-fill-color: #0F172A !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
