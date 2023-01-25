@@ -1,0 +1,48 @@
+// out: "../css/admin_edit_section.css", compress: true, sourceMap: false
+
+@import url(./global.less);
+
+#edit_section_content{
+    margin: 0 auto;
+    width: 1024px;
+    #section_summary{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
+    #clone_section_page{
+        display: none !important;
+    }
+    .section_page_content{
+        .section_page_tabs{
+            & > li{
+                display: inline-block;
+                margin-right: 2px;
+            }
+            .page_tab_item{
+                &.active{
+                    a{
+                        font-weight: bold;
+                    }
+                }
+            }
+            .add_page_tab{}
+        }
+        .section_page_tab{
+            display: none;
+            flex-direction: column;
+            margin-bottom: 24px;
+            &.show{
+                display: flex;
+            }
+            .tab_title{}
+            .tab_content{}
+            .tab_footer{
+                display: flex;
+                .row_placeholder{
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+}
