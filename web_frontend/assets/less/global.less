@@ -28,6 +28,16 @@
 @by_primary: #2563EB;
 @by_tooltip_bg: #1E293B;
 @by_white: #FFFFFF;
+@by_border: #BBCCF3;
+@by_hover: #E8F2FF;
+@by_nav_text: #B4C5FF;
+@by_mobile_nav: #FCFCFF;
+@by_mobilebg: #001D32;
+@by_dropdown: #E2E2EC;
+@by_option: #757680;
+@by_login: #8FBAFF;
+@by_text: #6C7177;
+
 
 @readex_regular: 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 @readex_medium: 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
@@ -58,9 +68,9 @@ body{
             display: flex;
             justify-content: space-between;
             a{
-                background: #FFFFFF;
+                background: @by_white;
                 border-radius: 40px;
-                border: 1px solid #BBCCF3;
+                border: 1px solid @by_border;
                 font: 14px/20px @readex_medium;
                 margin: 0 16px;
                 padding: 10px 54px 10px 24px;
@@ -83,9 +93,9 @@ body{
                 button{
                     background: url("../images/header_sprite.svg") no-repeat;
                     background-position: -40px 0px;
-                    width: 28px;
-                    height: 28px;
                     border: none;
+                    height: 28px;
+                    width: 28px;
                 }
             }
         }
@@ -133,12 +143,12 @@ body{
             li{
                 font: 16px/20px @readex_regular;
                 &:hover{
-                    background: #E8F2FF;
+                    background: @by_hover;
                     border-radius: 0px 20px 20px 0px;
                     max-width: 260px;
                 }
                 a{
-                    color: #B4C5FF;
+                    color: @by_nav_text;
                     transform: translateX(26px);
                     &:hover{
                         background: url('../images/nav_sprite.svg') no-repeat;
@@ -156,7 +166,7 @@ body{
 }
 
 #mobile_container{
-    background: #FCFCFF;
+    background: @by_mobile_nav;
     border-radius: 12px 12px 0px 0px;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.168);
     padding: 0 19px;
@@ -173,14 +183,14 @@ body{
             width: 28px;
         }
         #mobile_nav{
-            background: #001D32 !important;
+            background: @by_mobilebg !important;
             li{
                 margin: 0 16px;
                 a{
-                    color: #B4C5FF;
+                    color: @by_nav_text;
                     padding: 0 0;
                     &:hover{   
-                        background: #E8F2FF;
+                        background: @by_hover;
                         border-radius: 0px 40px 40px 0px;
                         color: @by_primary;
                         margin-left: -31px;
@@ -213,7 +223,7 @@ body{
                 font: 14px/18px @readex_medium;
             }
             ul{
-                background: #FCFCFF;
+                background: @by_mobile_nav;
                 border-radius: 0px 0px 12px 12px;
                 box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.168);
                 left: 0 !important;
@@ -222,13 +232,13 @@ body{
                 top: 57px !important;
                 width: 100% !important;
                 li{
-                    border-bottom: 1px solid #E2E2EC;
+                    border-bottom: 1px solid @by_dropdown;
                     span{
-                        color: #757680 !important;
+                        color: @by_option !important;
                         font: 14px/18px @readex_regular;
                         &:hover{
                             background: transparent !important;
-                            color: #001D32 !important;
+                            color: @by_mobilebg !important;
                         }
                     }
                     &:hover{

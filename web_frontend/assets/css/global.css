@@ -41,9 +41,9 @@ body {
   justify-content: space-between;
 }
 #header_container .header .user_profile a {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 40px;
-  border: 1px solid #BBCCF3;
+  border: 1px solid #bbccf3;
   font: 14px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
   margin: 0 16px;
   padding: 10px 54px 10px 24px;
@@ -64,9 +64,9 @@ body {
 #header_container .header .user_profile .user_settings button {
   background: url("../images/header_sprite.svg") no-repeat;
   background-position: -40px 0px;
-  width: 28px;
-  height: 28px;
   border: none;
+  height: 28px;
+  width: 28px;
 }
 #header_container #nav_documentation {
   z-index: 999;
@@ -114,12 +114,12 @@ body {
   font: 16px/20px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
 #header_container #nav_documentation #slide-out li:hover {
-  background: #E8F2FF;
+  background: #e8f2ff;
   border-radius: 0px 20px 20px 0px;
   max-width: 260px;
 }
 #header_container #nav_documentation #slide-out li a {
-  color: #B4C5FF;
+  color: #b4c5ff;
   transform: translateX(26px);
 }
 #header_container #nav_documentation #slide-out li a:hover {
@@ -134,7 +134,7 @@ body {
   }
 }
 #mobile_container {
-  background: #FCFCFF;
+  background: #fcfcff;
   border-radius: 12px 12px 0px 0px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.168);
   padding: 0 19px;
@@ -153,17 +153,17 @@ body {
   width: 28px;
 }
 #mobile_container .header_mobile #mobile_nav {
-  background: #001D32 !important;
+  background: #001d32 !important;
 }
 #mobile_container .header_mobile #mobile_nav li {
   margin: 0 16px;
 }
 #mobile_container .header_mobile #mobile_nav li a {
-  color: #B4C5FF;
+  color: #b4c5ff;
   padding: 0 0;
 }
 #mobile_container .header_mobile #mobile_nav li a:hover {
-  background: #E8F2FF;
+  background: #e8f2ff;
   border-radius: 0px 40px 40px 0px;
   color: #2563eb;
   margin-left: -31px;
@@ -191,7 +191,7 @@ body {
   font: 14px/18px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 #mobile_container .header_mobile form ul {
-  background: #FCFCFF;
+  background: #fcfcff;
   border-radius: 0px 0px 12px 12px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.168);
   left: 0 !important;
@@ -201,7 +201,7 @@ body {
   width: 100% !important;
 }
 #mobile_container .header_mobile form ul li {
-  border-bottom: 1px solid #E2E2EC;
+  border-bottom: 1px solid #e2e2ec;
 }
 #mobile_container .header_mobile form ul li span {
   color: #757680 !important;
@@ -209,7 +209,7 @@ body {
 }
 #mobile_container .header_mobile form ul li span:hover {
   background: transparent !important;
-  color: #001D32 !important;
+  color: #001d32 !important;
 }
 #mobile_container .header_mobile form ul li:hover {
   background: transparent !important;
