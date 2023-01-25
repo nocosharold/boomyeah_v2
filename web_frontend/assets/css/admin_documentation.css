@@ -21,20 +21,33 @@ body {
 .container {
   background-color: #FFFFFF;
   border-radius: 12px;
-  margin: 24px auto 0;
-  padding: 32px 24px;
+  margin: 24px auto 0 !important;
+  padding: 64px 24px 32px;
   width: 1024px;
 }
 .container #doc_form {
   align-items: center;
   display: flex;
+  margin-bottom: 48px;
 }
 .container #doc_form .group_add_documentation {
   background-color: #EFF6FF;
   border-radius: 8px;
   height: 56px;
+  margin: 0;
   position: relative;
   width: 316px;
+}
+.container #doc_form .group_add_documentation::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat -12px -4px;
+  content: "";
+  display: inline-block;
+  height: 18px;
+  position: absolute;
+  right: 12px;
+  top: 22px;
+  width: 18px;
+  z-index: 1;
 }
 .container #doc_form .group_add_documentation::after {
   background-color: #EFF6FF;
@@ -45,17 +58,13 @@ body {
   top: 52px;
   width: 100%;
 }
-.container #doc_form .group_add_documentation input {
-  padding-left: 11px;
-}
-.container #doc_form .group_add_documentation label {
-  padding-left: 12px;
-}
 .container #doc_form .group_add_documentation label {
   color: #78716C;
   font: 16px/35px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  padding-left: 12px;
 }
 .container #doc_form .group_add_documentation input {
+  padding-left: 11px;
   border-radius: 4px;
   bottom: 0;
   color: #0F172A;
@@ -88,8 +97,35 @@ body {
   margin-left: 21px;
   vertical-align: super;
 }
-.container #doc_view_form {
-  margin: 47px 0 24px;
+.container #docs_view_btn {
+  background-color: transparent;
+  border: none;
+  color: #0F172A;
+  font: 20px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  margin-bottom: 26px;
+}
+.container #docs_view_btn::after {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat 0 -15px;
+  content: '';
+  display: inline-block;
+  height: 7px;
+  margin-left: 13px;
+  vertical-align: middle;
+  width: 10px;
+}
+.container #docs_view_list {
+  border-radius: 4px;
+  width: 209px;
+}
+.container #docs_view_list .divider {
+  background-color: #EFF6FF;
+}
+.container #docs_view_list li:hover {
+  background-color: #BDDAFF;
+}
+.container #docs_view_list a {
+  color: #0F172A;
+  font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 .container #documentations {
   display: flex;
