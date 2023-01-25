@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
 
     let elems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(elems);
+    M.Dropdown.init(elems, {
+        alignment: 'left',
+        coverTrigger: false
+    });
 });
 
 function submitDocForm(event){
