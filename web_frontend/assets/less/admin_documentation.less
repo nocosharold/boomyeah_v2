@@ -3,18 +3,31 @@
 .container{
     background-color: @by_white;
     border-radius: 12px;
-    margin: 24px auto 0;
-    padding: 32px 24px;
+    margin: 24px auto 0 !important;
+    padding: 64px 24px 32px;
     width: 1024px;
     #doc_form{
         align-items: center;
         display: flex;
+        margin-bottom: 48px;
         .group_add_documentation{
             background-color: @by_bg;
             border-radius: 8px;
             height: 56px;
+            margin: 0;
             position: relative;
             width: 316px;
+            &::before{
+                background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat -12px -4px;
+                content: "";
+                display: inline-block;
+                height: 18px;
+                position: absolute;
+                right: 12px;
+                top: 22px;
+                width: 18px;
+                z-index: 1;
+            }
             &::after {
                 background-color: @by_bg;
                 content: '';
@@ -24,19 +37,14 @@
                 top: 52px;
                 width: 100%;
             }
-            input {
-                padding-left: 11px;
-
-            }
-            label{
-                padding-left: 12px;
-            }
             label{
                 color: @by_gray;
                 font: 16px/35px @readex_regular;
+                padding-left: 12px;
                 
             }
             input {
+                padding-left: 11px;
                 border-radius: 4px;
                 bottom: 0;
                 color: @by_black;
@@ -74,8 +82,35 @@
             
         }
     }
-    #doc_view_form{
-        margin: 47px 0 24px;
+    #docs_view_btn {
+        background-color: transparent;
+        border: none;
+        color: @by_black;
+        font: 20px/24px @readex_regular;
+        margin-bottom: 26px;
+        &::after{
+            background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_sprite.svg') no-repeat 0 -15px;
+            content: '';
+            display: inline-block;
+            height: 7px;
+            margin-left: 13px;
+            vertical-align: middle;
+            width: 10px;
+        }
+    }
+    #docs_view_list{
+        border-radius: 4px;
+        width: 209px;
+        .divider {
+            background-color: @by_bg;
+        }
+        li:hover {
+            background-color: @by_hovered_btn;
+        }
+        a {
+            color: @by_black;
+            font: 16px/24px @readex_medium;
+        }
     }
     #documentations{
         display: flex;
