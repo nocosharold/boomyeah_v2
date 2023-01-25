@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Company - Employee Handbook | BoomYEAH</title>
     <link rel="stylesheet" href="../assets/css/admin_edit_section.css">
+    <link rel="stylesheet" href="../assets/css/vendor/redactorx.min.css">
     <script src="../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../assets/js/vendor/ux.lib.js"></script>
 </head>
@@ -52,7 +53,7 @@
                         </ul>
                         <div class="section_page_tab show">
                             <input type="text" class="tab_title" value="Our Mission &amp; Vision">
-                            <textarea class="tab_content">This is a description</textarea>
+                            <textarea id="tab_content_1" class="tab_content">This is a description</textarea>
                             <div class="tab_footer">
                                 <label for="allow_comments_">
                                     <input type="checkbox" name="allow_comments" id="allow_comments">
@@ -92,7 +93,7 @@
                     </div>
                 </div>
             </form>
-            <button id="add_page_button" type="button">+ Add New</button>
+            <button id="add_page_tabs_btn" type="button">+ Add New</button>
             <div id="clone_section_page">
                 <div class="section_page_content">
                     <ul class="section_page_tabs">
@@ -118,6 +119,7 @@
             </div>
         </div>
     </div>
+    <script src="../assets/js/vendor/redactorx.min.js"></script>
     <script src="../assets/js/custom/admin_edit_section_fe.js"></script>
 </body>
 </html>
