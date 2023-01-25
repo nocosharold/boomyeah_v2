@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="UX Team 2">
+    <meta name="description" content="A great way to describe your documentation tool">
+    <title>Boom Yeah | Admin Documentation Page</title>
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/admin_documentation.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="module" src="../assets/js/default_dataset.json"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="#" id="doc_form" method="post">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="input_add_documentation" autofocus>
+                <label class="mdl-textfield__label" for="input_add_documentation" id="label_add_documentation">Add Documentation</label>
+            </div>
+            <span>Saving...</span>
+        </form>
+        <form action="#" id="doc_view_form">
+            <select name="select_doc_view" id="select_doc_view">
+                <option value="documentations">Documentations</option>
+                <option value="archived">Archived</option>
+            </select>
+        </form>
+        <div id="documentations">
+            <div class="document_block">
+                <div class="document_details">
+                    <h2>Employee Handbook</h2>
+                    <button class="invite_collaborators_btn">15</button>
+                </div>
+                <div class="document_controls">
+                    <button class="access_btn"></button>
+                    <button class="more_action_btn">⁝</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/admin_documentation.js"></script>
+</body>
+
+</html>
