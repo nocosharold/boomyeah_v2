@@ -27,12 +27,12 @@
             </div>
             <span id="save_status">Saving...</span>
         </form>
-        <form action="#" id="doc_view_form">
-            <select name="select_doc_view" id="select_doc_view">
-                <option value="documentations">Documentations</option>
-                <option value="archived">Archived</option>
-            </select>
-        </form>
+        <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
+        <ul id='docs_view_list' class='dropdown-content'>
+            <li><a href="#!">Documentations</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#!">Archived</a></li>
+        </ul>
         <div id="documentations">
             <div class="document_block">
                 <div class="document_details">
