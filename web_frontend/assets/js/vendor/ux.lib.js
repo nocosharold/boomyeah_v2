@@ -32,5 +32,12 @@ function ux(selector){
         findAll: (child_selector) => {
             return self.querySelectorAll(child_selector);
         },
+        text: (text_value) => {
+            if(text_value){
+                self.innerText = text_value;
+            }
+
+            return self.innerText;
+        }
     }
 }
