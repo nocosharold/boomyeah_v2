@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: 'ReadexPro-Bold';
+  src: url('../fonts/ReadexPro-Bold.ttf');
+}
+@font-face {
+  font-family: 'ReadexPro-Medium';
+  src: url('../fonts/ReadexPro-Medium.ttf');
+}
+@font-face {
+  font-family: 'ReadexPro-Regular';
+  src: url('../fonts/ReadexPro-Regular.ttf');
+}
+body {
+  background-color: #EFF6FF;
+}
+.container {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  margin: 24px auto 0;
+  padding: 32px 24px;
+  width: 1024px;
+}
+.container #doc_form div {
+  background-color: #EFF6FF;
+  border-radius: 8px;
+  padding-bottom: 8px;
+  width: 316px;
+}
+.container #doc_form span {
+  color: #B5C4E4;
+  font: 14px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin-left: 21px;
+  vertical-align: super;
+}
+.container #doc_form #input_add_documentation {
+  border-bottom: 0px solid #DBEAFE;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  padding: 4px 12px;
+}
+.container #doc_form #label_add_documentation {
+  border-bottom: 1px solid #DBEAFE;
+  border-radius: 8px;
+  font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  padding: 0 12px;
+}
+.container #doc_form #label_add_documentation::after {
+  bottom: 0;
+  padding: 0 12px;
+}
+.container #doc_form .is-focused #label_add_documentation,
+.container #doc_form .is-dirty #label_add_documentation {
+  color: #2563EB;
+  font: 12px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+}
+.container #doc_form .is-focused #label_add_documentation::after,
+.container #doc_form .is-dirty #label_add_documentation::after {
+  background-color: #2563EB;
+}
+.container #doc_form .is-focused #label_add_documentation {
+  border-bottom: 1px solid transparent;
+  border-radius: 4px;
+}
+.container #doc_view_form {
+  margin: 47px 0 24px;
+}
+.container #documentations .document_block {
+  align-items: center;
+  background-color: #EFF6FF;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  height: 83px;
+  justify-content: space-between;
+  padding: 20px 23px 20px 16px;
+  transition: all 0.21s ease-in-out;
+  width: 316px;
+}
+.container #documentations .document_block .document_details h2 {
+  color: #0F172A;
+  font: 12px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  margin: 0;
+}
+.container #documentations .document_block .document_details .invite_collaborators_btn {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid #2563EB;
+  color: #2563EB;
+  cursor: pointer;
+  font: 12px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  height: 24px;
+  width: 49px;
+}
+.container #documentations .document_block .document_details .invite_collaborators_btn::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_page_sprite.svg') no-repeat -32px -13px;
+  content: '';
+  display: inline-block;
+  height: 8.67px;
+  width: 16px;
+}
+.container #documentations .document_block .document_controls {
+  font-size: 0;
+}
+.container #documentations .document_block .document_controls .access_btn {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_page_sprite.svg') no-repeat -50px -5px;
+  border: 0;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
+  height: 18px;
+  margin-right: 18px;
+  transform: translateY(4px);
+  width: 14px;
+}
+.container #documentations .document_block .document_controls .more_action_btn {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_docs_page_sprite.svg') no-repeat -65px -9px;
+  border: 0;
+  color: transparent;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
+  height: 14px;
+  padding: 0 2px;
+  width: 4px;
+}
+.container #documentations .document_block:hover {
+  border: 1px solid #2563EB;
+}
