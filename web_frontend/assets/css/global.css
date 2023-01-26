@@ -19,8 +19,8 @@ body {
   background-color: #eff6ff;
 }
 ::-webkit-scrollbar {
-  width: 4px;
   opacity: .5;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   border-radius: 100px;
