@@ -36,10 +36,14 @@
 @by_mobile_nav: #FCFCFF;
 @by_mobilebg: #001D32;
 @by_dropdown: #E2E2EC;
+@by_neutral_gray: #E2E2EC;
 @by_option: #757680;
+@by_content_color: #757680;
 @by_login: #8FBAFF;
 @by_text: #6C7177;
 @by_off_gray: #B5C4E4;
+@by_input_border: #D5E3FF;
+@by_toolbar: #ECF1FF;
 
 @readex_regular: 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 @readex_medium: 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
@@ -263,4 +267,16 @@ body{
 
 #wrapper{
     z-index: 1000;
+}
+
+body::-webkit-scrollbar {
+    background-color: @by_bg;
+    border-radius: 10px;
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: @by_lightgray;
+    border-radius: 10px;
+    width: 10px;
 }
