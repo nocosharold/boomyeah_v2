@@ -2,7 +2,7 @@ const initializeEditSectionEvents = (ux_target = null, callback = null) => {
     if(ux_target){
         ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
         bindOpenTabLink(ux_target);
-
+        
         ux_target.findAll((".tab_title")).forEach((tab_title, tab_index) => {
             ux(tab_title).on("keyup", (event) => {
                 onUpdateTabTitle(event, tab_index + 1);
