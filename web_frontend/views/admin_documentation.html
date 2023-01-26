@@ -22,7 +22,7 @@
     <div class="container">
         <form action="#" id="doc_form" method="post">
             <div class="group_add_documentation input-field">
-                <input id="input_add_documentation" type="text" class="validate">
+                <input id="input_add_documentation" type="text" class="validate" autofocus>
                 <label for="input_add_documentation">Add Documentation</label>
             </div>
             <span id="save_status">Saving...</span>
@@ -33,54 +33,7 @@
             <li class="divider" tabindex="-1"></li>
             <li><a href="#!">Archived</a></li>
         </ul>
-        <div id="documentations">
-            <div class="document_block">
-                <div class="document_details">
-                    <h2>Employee Handbook</h2>
-                    <button class="invite_collaborators_btn">15</button>
-                </div>
-                <div class="document_controls">
-                    <button class="access_btn"></button>
-                    <button class="more_action_btn dropdown-trigger" data-target="more_action_list_private">⁝</button>
-                    <!-- Dropdown Structure -->
-                    <ul id="more_action_list_private" class="dropdown-content">
-                        <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="archive_icon">Archive</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="invite_icon">Invite</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="set_to_private_icon">Set to Private</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="remove_icon">Remove</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="document_block">
-                <div class="document_details">
-                    <h2>Marketing</h2>
-                </div>
-                <div class="document_controls">
-                    <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
-                    <!-- Dropdown Structure -->
-                    <ul id="more_action_list_public" class="dropdown-content">
-                        <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="archive_icon">Archive</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="invite_icon">Invite</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="set_to_public_icon">Set to Public</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="remove_icon">Remove</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <div id="documentations"><!-- Documentations will be dynamically printed here --></div>
     </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

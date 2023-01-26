@@ -333,6 +333,7 @@ body {
 }
 .container #documentations {
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
 }
 .container #documentations .document_block {
