@@ -1,3 +1,5 @@
+// out: "../css/global.css", compress: true, sourceMap: false
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -116,11 +118,14 @@ body{
         }
     }
     #nav_documentation{
+        pointer-events: none;
         z-index: 999;
         .nav_holder{
             background: @by_tooltip_bg;
             height: 100vh;
             max-width: 80px;
+            pointer-events: all;
+
             a{
                 background: url("../images/nav_sprite.svg") no-repeat;
                 background-position: 1px 0px;
@@ -270,7 +275,6 @@ body{
         display: none;
     }
 }
-
 #invite_modal{
     .invite_wrapper{
         .modal{
@@ -539,4 +543,7 @@ body{
             }
         }
     }
+}
+#wrapper{
+    z-index: 1000;
 }

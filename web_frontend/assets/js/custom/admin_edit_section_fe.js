@@ -1,4 +1,10 @@
-const initializeEditSectionEvents = (ux_target = null, callback = null) => {
+document.addEventListener("DOMContentLoaded", ()=>{
+    ux("#add_page_tabs_btn").on("click", addNewSectionContent);
+    initializeEditSectionEvents();
+    RedactorX("#section_pages .tab_content", { focus: true });
+});
+
+function initializeEditSectionEvents(ux_target = null, callback = null){
     if(ux_target){
         ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
         bindOpenTabLink(ux_target);
@@ -22,13 +28,6 @@ const initializeEditSectionEvents = (ux_target = null, callback = null) => {
         callback();
     }
 }
-
-document.addEventListener("DOMContentLoaded", ()=>{
-    ux("#add_page_tabs_btn").on("click", addNewSectionContent);
-    initializeEditSectionEvents();
-    RedactorX("#section_pages .tab_content", { focus: true });
-
-});
 
 function onUpdateTabTitle(event, tab_index){
     let tab_title = event.target;
@@ -104,4 +103,13 @@ function addNewTab(event){
         /** Auto click new tab */            
         page_tab_item.html().dispatchEvent(new Event("click", { 'bubbles': true }));
     });
+}
+
+/** Make sure to make the method an async function */
+async function loadElement(){
+    let wrapper = ux("#wrapper");
+    /** Always await include_partial since the loading is asynchronous */
+    let sample_element = await include_partial("./global/sample_element.html");
+    
+    wrapper.html().append(sample_element);
 }
