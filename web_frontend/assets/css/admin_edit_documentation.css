@@ -19,7 +19,7 @@ body {
   background-color: #EFF6FF;
 }
 #header_container {
-  background: #eff6ff;
+  background: #EFF6FF;
   height: 64px;
   position: relative;
   width: 100%;
@@ -41,9 +41,9 @@ body {
   justify-content: space-between;
 }
 #header_container .header .user_profile a {
-  background: #ffffff;
+  background: #FFFFFF;
   border-radius: 40px;
-  border: 1px solid #bbccf3;
+  border: 1px solid #BBCCF3;
   font: 14px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
   margin: 0 16px;
   padding: 10px 54px 10px 24px;
@@ -72,7 +72,7 @@ body {
   z-index: 999;
 }
 #header_container #nav_documentation .nav_holder {
-  background: #1e293b;
+  background: #1E293B;
   height: 100vh;
   max-width: 80px;
 }
@@ -87,7 +87,7 @@ body {
   z-index: 999;
 }
 #header_container #nav_documentation #slide-out {
-  background: #1e293b;
+  background: #1E293B;
 }
 #header_container #nav_documentation #slide-out .nav {
   background: url("../images/nav_sprite.svg") no-repeat;
@@ -114,18 +114,18 @@ body {
   font: 16px/20px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
 #header_container #nav_documentation #slide-out li:hover {
-  background: #e8f2ff;
+  background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
   max-width: 260px;
 }
 #header_container #nav_documentation #slide-out li a {
-  color: #b4c5ff;
+  color: #B4C5FF;
   transform: translateX(26px);
 }
 #header_container #nav_documentation #slide-out li a:hover {
   background: url('../images/nav_sprite.svg') no-repeat;
   background-position: -95px 11px;
-  color: #2563eb;
+  color: #2563EB;
   display: block;
 }
 @media screen and (max-width: 622px) {
@@ -134,7 +134,7 @@ body {
   }
 }
 #mobile_container {
-  background: #fcfcff;
+  background: #FCFCFF;
   border-radius: 12px 12px 0px 0px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.168);
   padding: 0 19px;
@@ -153,19 +153,19 @@ body {
   width: 28px;
 }
 #mobile_container .header_mobile #mobile_nav {
-  background: #001d32 !important;
+  background: #001D32 !important;
 }
 #mobile_container .header_mobile #mobile_nav li {
   margin: 0 16px;
 }
 #mobile_container .header_mobile #mobile_nav li a {
-  color: #b4c5ff;
+  color: #B4C5FF;
   padding: 0 0;
 }
 #mobile_container .header_mobile #mobile_nav li a:hover {
-  background: #e8f2ff;
+  background: #E8F2FF;
   border-radius: 0px 40px 40px 0px;
-  color: #2563eb;
+  color: #2563EB;
   margin-left: -31px;
   padding-left: 30px;
   position: relative;
@@ -183,15 +183,15 @@ body {
   width: 28px;
 }
 #mobile_container .header_mobile #mobile_nav li span {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 #mobile_container .header_mobile form input {
   border-bottom: 0;
-  color: #2563eb;
+  color: #2563EB;
   font: 14px/18px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 #mobile_container .header_mobile form ul {
-  background: #fcfcff;
+  background: #FCFCFF;
   border-radius: 0px 0px 12px 12px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.168);
   left: 0 !important;
@@ -201,7 +201,7 @@ body {
   width: 100% !important;
 }
 #mobile_container .header_mobile form ul li {
-  border-bottom: 1px solid #e2e2ec;
+  border-bottom: 1px solid #E2E2EC;
 }
 #mobile_container .header_mobile form ul li span {
   color: #757680 !important;
@@ -209,7 +209,7 @@ body {
 }
 #mobile_container .header_mobile form ul li span:hover {
   background: transparent !important;
-  color: #001d32 !important;
+  color: #001D32 !important;
 }
 #mobile_container .header_mobile form ul li:hover {
   background: transparent !important;
@@ -221,4 +221,95 @@ body {
   #mobile_container {
     display: none;
   }
+}
+.container {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  margin: 24px auto 0 !important;
+  padding: 39px 24px 32px;
+  width: 1024px;
+}
+.container #breadcrumb_list {
+  display: flex;
+  position: relative;
+  margin-bottom: 33px;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+.container #breadcrumb_list .breadcrumb_item {
+  color: #2563EB;
+}
+.container #breadcrumb_list .breadcrumb_item::after {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat 0 -15px;
+  content: "";
+  display: inline-block;
+  height: 7px;
+  position: relative;
+  width: 5px;
+  margin: 0 7px;
+  transform: translateY(-2px);
+}
+.container #breadcrumb_list .breadcrumb_item.active {
+  color: #0F172A;
+}
+.container #breadcrumb_list .breadcrumb_item.active::after {
+  display: none;
+}
+.container .divider {
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #EFF6FF;
+  position: absolute;
+  left: 0;
+  margin-bottom: 33px;
+}
+.container #doc_title_access {
+  margin: 62px 0 34px;
+  display: flex;
+  align-items: center;
+}
+.container #doc_title_access #doc_title {
+  margin: 0;
+  font: 20px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+}
+.container #doc_title_access .switch {
+  margin-left: 24px;
+}
+.container #doc_title_access .switch label {
+  font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  color: #0F172A;
+}
+.container #doc_title_access .switch label input:checked + .lever {
+  background-color: #2563EB;
+}
+.container #doc_title_access .switch label input:checked + .lever:after {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/access_icons.svg') no-repeat -13px 3px;
+  background-color: #93C5FD;
+}
+.container #doc_title_access .switch label input:checked + .lever:before,
+.container #doc_title_access .switch label input:checked + .lever:after {
+  left: 24px;
+}
+.container #doc_title_access .switch label .lever {
+  background-color: #B5C4E4;
+  width: 52px;
+  height: 32px;
+  margin: 0 9px;
+}
+.container #doc_title_access .switch label .lever::before {
+  top: 3px;
+  left: 4px;
+}
+.container #doc_title_access .switch label .lever::after {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/access_icons.svg') no-repeat 6px 3px;
+  background-color: #CFDBE8;
+  width: 24px;
+  height: 24px;
+  top: 3px;
+  left: 4px;
+}
+.container .doc_text_content {
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  color: #6C7177;
+  width: 893px;
 }
