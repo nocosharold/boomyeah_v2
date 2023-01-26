@@ -1,15 +1,28 @@
 // out: "../css/admin_edit_section.css", compress: true, sourceMap: false
 
 @import url(./global.less);
+#wrapper{
+    padding-left: 80px;
+    width: 100% !important;
 
+    @media (max-width: 622px) {
+        padding-left: 0px;
+    }
+}
 #edit_section_content{
     margin: 0 auto;
     width: 1024px;
+    
+    @media (max-width: 1168px) {
+        padding: 0 32px;
+        width: 100% !important;
+    }
     #section_summary{
         display: flex;
         flex-direction: column;
         margin-bottom: 24px;
     }
+
     #clone_section_page{
         display: none !important;
     }
