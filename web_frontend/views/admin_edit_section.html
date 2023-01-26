@@ -15,8 +15,8 @@
     <script src="../assets/js/vendor/ux.lib.js"></script>
 </head>
 <body>
-    <div id="wrapper" class="">
-        <div id="main_navigation"></div>
+    <div id="main_navigation"></div>
+    <div id="wrapper" class="container">
         <div id="edit_section_content">
             <div class="breadcrumbs">
                 <ul id="breadcrumbs_list">
@@ -125,6 +125,16 @@
     </div>
 
     <script>
+
+async function loadElement(){
+    let wrapper = ux("#wrapper");
+    let sample_element = await include_partial("./global/sample_element.html");
+    console.log(sample_element)
+    // wrapper.html().append()
+    // setTimeout(() => {
+    //     loadElement();
+    // }, 1000);
+}
         include("#main_navigation", "./global/main_navigation.html", "../assets/js/main_navigation.js");
     </script>
     <script src="../assets/js/vendor/redactorx.min.js"></script>
