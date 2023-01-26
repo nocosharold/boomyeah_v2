@@ -14,3 +14,15 @@ function include(target_element, file_path, script_path = null){
             }
         });
 }
+
+function include_partial(file_path){
+    let partial_content = fetch(file_path)
+                            .then(response => response.text())
+                            .then(parsed_html => {
+                                    let content = document.createElement("div");
+                                    content.innerHTML = parsed_html;
+                                    content.replaceWith(...content.childNodes);
+                                    return content;
+                                });
+    return partial_content;
+}
