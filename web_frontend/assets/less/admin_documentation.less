@@ -3,7 +3,7 @@
 .container{
     background-color: @by_white;
     border-radius: 12px;
-    margin: 24px auto 0 !important;
+    margin: 24px auto !important;
     min-width: 1024px !important;
     padding: 64px 24px 32px;
     position: relative;
@@ -119,6 +119,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 14px;
+        flex-wrap: wrap;
         .document_block{
             align-items: center;
             background-color: @by_bg;
@@ -132,6 +133,10 @@
             padding: 20px 23px 20px 16px;
             transition: all 0.21s ease-in-out;
             width: 316px;
+            &.hidden,
+            &.hidden_private{
+                display: none;
+            }
             .document_details{
                 h2 {
                     color: @by_black;
@@ -240,6 +245,21 @@
             }
             &:hover{
                 border: 1px solid @by_primary;
+            }
+        }
+        .no_documents{
+            &.hidden{
+                display: none;
+            }
+            width: 100%;
+            text-align: center;
+            margin: 41px 0 410px;
+            img{
+                margin-bottom: 9px;
+            }
+            p{
+                font: 16px/24px @readex_regular;
+                color: @by_off_gray;
             }
         }
     }

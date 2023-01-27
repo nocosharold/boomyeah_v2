@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    ux(".toggle_switch").on("click", switchText)
+    ux(".toggle_switch").on("click", switchText);
     ux(".edit_section_title_icon").onEach("click", editSectionTitle);
     ux(".section_title").onEach("blur", disableEditSectionTitle);
     ux(".remove_icon").onEach("click", removeSectionBlock);
