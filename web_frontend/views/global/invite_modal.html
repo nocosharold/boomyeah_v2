@@ -1,155 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="UX Team 2">
-    <meta name="description" content="A great way to describe your documentation tool">
-    <title>Boom Yeah</title>
-    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="../../assets/css/global.css">
-    <script src="../../assets/js/modal.js"></script>
-</head>
-
-<body>
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-    <div id="invite_modal">
-        <div class="invite_wrapper">
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h2>Invite Collaborators</h2>
-                    <p>Collaborators will be able to access your private documentations.</p>
+<div id="invite_modal_container">
+    <div class="invite_wrapper">
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h2>Invite Collaborators</h2>
+                <p>Collaborators will be able to access your private documentations.</p>
+            </div>
+            <form action="#" method="POST" class="invite_collab">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <div class="chips">
+                            <input value="" id="email_address" type="email" class="validate">
+                        </div>
+                        <label class="active" for="email_address">Email Address</label>
+                        <a class='users' href='#' data-target='add_invite'></a>
+                        <ul id='add_invite' class='dropdown-content'>
+                            <li>
+                                <input class="choose_users" id="erick_caccam" type="checkbox" />
+                                <label for="erick_caccam">
+                                    <img src="../assets/images/mc.png" alt="user_profile">
+                                    <div class="user_information">
+                                        <h4>Erick Caccam</h4>
+                                        <p>ecaccam@village88.com</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input class="choose_users" id="harold_nocos" type="checkbox" />
+                                <label for="harold_nocos">
+                                    <img src="../assets/images/mc.png" alt="user_profile">
+                                    <div class="user_information">
+                                        <h4>Harold Nocos</h4>
+                                        <p>hnocos@village88.com</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input class="choose_users" id="jadee_ganggangan" type="checkbox" />
+                                <label for="jadee_ganggangan">
+                                    <img src="../assets/images/mc.png" alt="user_profile">
+                                    <div class="user_information">
+                                        <h4>Jadee Ganggangan</h4>
+                                        <p>jganggangan@village88.com</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input class="choose_users" id="jovic_abengona" type="checkbox" />
+                                <label for="jovic_abengona">
+                                    <img src="../assets/images/mc.png" alt="user_profile">
+                                    <div class="user_information">
+                                        <h4>Jovic Abengona</h4>
+                                        <p>jabengona@village88.com</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input class="choose_users" id="kei_kishimoto" type="checkbox" />
+                                <label for="kei_kishimoto">
+                                    <img src="../assets/images/kb.png" alt="user_profile">
+                                    <div class="user_information">
+                                        <h4>Kei Kishimoto</h4>
+                                        <p>kkishimoto@village88.com</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input class="choose_users" id="rogelio_esperanzate" type="checkbox" />
+                                <label for="rogelio_esperanzate">
+                                    <img src="../assets/images/mc.png" alt="user_profile">
+                                    <div class="user_information">
+                                        <h4>Rogelio Esperanzate</h4>
+                                        <p>resperanzate@village88.com</p>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <form action="#" method="POST" class="invite_collab">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <div class="chips">
-                                <input value="" id="email_address" type="email" class="validate">
+                <h2 class="access">People with access</h2>
+                <ul class="collaborators_wrapper">
+                    <li>
+                        <div class="user_list">
+                            <img src="../assets/images/kb.png" alt="kb">
+                            <div class="user_information">
+                                <h4>KB Tonel</h4>
+                                <p>kbtonel@village88.com</p>
                             </div>
-                            <label class="active" for="email_address">Email Address</label>
-                            <a class='users' href='#' data-target='add_invite'></a>
-                            <ul id='add_invite' class='dropdown-content'>
-                                <li>
-                                    <input class="choose_users" id="erick_caccam" type="checkbox" />
-                                    <label for="erick_caccam">
-                                        <img src="../../assets/images/mc.png" alt="user_profile">
-                                        <div class="user_information">
-                                            <h4>Erick Caccam</h4>
-                                            <p>ecaccam@village88.com</p>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input class="choose_users" id="harold_nocos" type="checkbox" />
-                                    <label for="harold_nocos">
-                                        <img src="../../assets/images/mc.png" alt="user_profile">
-                                        <div class="user_information">
-                                            <h4>Harold Nocos</h4>
-                                            <p>hnocos@village88.com</p>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input class="choose_users" id="jadee_ganggangan" type="checkbox" />
-                                    <label for="jadee_ganggangan">
-                                        <img src="../../assets/images/mc.png" alt="user_profile">
-                                        <div class="user_information">
-                                            <h4>Jadee Ganggangan</h4>
-                                            <p>jganggangan@village88.com</p>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input class="choose_users" id="jovic_abengona" type="checkbox" />
-                                    <label for="jovic_abengona">
-                                        <img src="../../assets/images/mc.png" alt="user_profile">
-                                        <div class="user_information">
-                                            <h4>Jovic Abengona</h4>
-                                            <p>jabengona@village88.com</p>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input class="choose_users" id="kei_kishimoto" type="checkbox" />
-                                    <label for="kei_kishimoto">
-                                        <img src="../../assets/images/kb.png" alt="user_profile">
-                                        <div class="user_information">
-                                            <h4>Kei Kishimoto</h4>
-                                            <p>kkishimoto@village88.com</p>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input class="choose_users" id="rogelio_esperanzate" type="checkbox" />
-                                    <label for="rogelio_esperanzate">
-                                        <img src="../../assets/images/mc.png" alt="user_profile">
-                                        <div class="user_information">
-                                            <h4>Rogelio Esperanzate</h4>
-                                            <p>resperanzate@village88.com</p>
-                                        </div>
-                                    </label>
-                                </li>
+                            <span>Owner</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="user_list">
+                            <img src="../assets/images/mc.png" alt="mc">
+                            <div class="user_information">
+                                <h4>Michael Choi</h4>
+                                <p>mchoi@village88.com</p>
+                            </div>
+                            <a class='dropdown-trigger role' href='#' data-target='choose_role'>Editor</a>
+                            <ul class='dropdown-content' id="choose_role">
+                                <li><a href="#!">Viewer</a></li>
+                                <li><a href="#!">Editor</a></li>
                             </ul>
                         </div>
-                    </div>
-                    <h2 class="access">People with access</h2>
-                    <ul class="collaborators_wrapper">
-                        <li>
-                            <div class="user_list">
-                                <img src="../../assets/images/kb.png" alt="kb">
-                                <div class="user_information">
-                                    <h4>KB Tonel</h4>
-                                    <p>kbtonel@village88.com</p>
-                                </div>
-                                <span>Owner</span>
+                    </li>
+                    <li>
+                        <div class="user_list">
+                            <img src="../assets/images/jhaver.png" alt="jhaver">
+                            <div class="user_information">
+                                <h4>Jhaver Gurtiza</h4>
+                                <p>jgurtiza@village88.com</p>
                             </div>
-                        </li>
-                        <li>
-                            <div class="user_list">
-                                <img src="../../assets/images/mc.png" alt="mc">
-                                <div class="user_information">
-                                    <h4>Michael Choi</h4>
-                                    <p>mchoi@village88.com</p>
-                                </div>
-                                <a class='dropdown-trigger role' href='#' data-target='choose_role'>Editor</a>
-                                <ul id='choose_role' class='dropdown-content'>
-                                    <li><a href="#!">Viewer</a></li>
-                                    <li><a href="#!">Editor</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="user_list">
-                                <img src="../../assets/images/jhaver.png" alt="jhaver">
-                                <div class="user_information">
-                                    <h4>Jhaver Gurtiza</h4>
-                                    <p>jgurtiza@village88.com</p>
-                                </div>
-                                <a class='dropdown-trigger role' href='#' data-target='choose_role'>Viewer</a>
-                                <ul id='choose_role' class='dropdown-content'>
-                                    <li><a href="#!">Viewer</a></li>
-                                    <li><a href="#!">Editor</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- For empty field
+                            <a class='dropdown-trigger role' href='#' data-target='choose_role'>Viewer</a>
+                            <ul id="choose_role" class='dropdown-content'>
+                                <li><a href="#!">Viewer</a></li>
+                                <li><a href="#!">Editor</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <!-- For empty field
                     <div class="empty_search_wrapper">
                         <div class="no_result">
                             <p>Oops! Looks like there are no members that match “Enteng Kabisote”.</p>
                             <img src="../../assets/images/empty.svg" alt="empty">
                         </div>
                     </div> -->
-                </form>
-                <div class="modal-footer cta_done">
-                    <a href="#!" class="modal-close waves-effect btn-flat">Done</a>
-                </div>
+            </form>
+            <div class="modal-footer cta_done">
+                <a href="#!" class="modal-close waves-effect btn-flat">Done</a>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
