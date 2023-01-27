@@ -46,15 +46,16 @@
     #doc_title_access{
         align-items: center;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         margin: 62px 0 34px;
-        width: 550px;
         #doc_title {
-            margin: 0;
             font: 20px/24px @readex_medium;
+            margin: 0;
+            max-width: 630px;
         }
         .switch{
             margin-left: 24px;
+            width: 130px;
             label {
                 font: 16px/24px @readex_medium;
                 color: @by_black;
@@ -255,6 +256,7 @@
                     min-height: 24px;
                     min-width: 345px;
                     overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
             .section_controls{
