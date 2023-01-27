@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let confirm = document.querySelectorAll('.modal');
     let instance = M.Modal.init(confirm);
 
+
+    const invite_form = document.querySelector("#invite_form");
+    invite_form.addEventListener("submit", submitInvite);    
+    
+
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
 
@@ -23,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ux(".no_documents").addClass("hidden");
     }
 });
+
+function submitInvite(event){
+    event.preventDefault();
+}
 
 function submitDocForm(event){
     event.preventDefault();
