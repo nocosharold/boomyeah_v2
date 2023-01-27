@@ -1,4 +1,4 @@
-// import docs_data from './default_dataset.json' assert {type: 'json'};
+// import data from "../json/large_dataset.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", () => {
     const doc_form = document.querySelector("#doc_form");
@@ -28,10 +28,11 @@ function submitDocForm(event){
 
 function displayDocumentations(documentations){
     const documentation_div = document.getElementById("documentations");
+    let document_block = "";
 
     /* Print all documentation */
     documentations.forEach((document, index) => {
-        documentation_div.innerHTML += `
+        document_block += `
             <div class="document_block">
                 <div class="document_details">
                     <h2>${document.title}</h2>
@@ -39,9 +40,9 @@ function displayDocumentations(documentations){
                 </div>
                 <div class="document_controls">
                     ${ document.is_private ? '<button class="access_btn"></button>' : '' }
-                    <button class="more_action_btn dropdown-trigger" data-target="more_action_list_private">⁝</button>
+                    <button class="more_action_btn dropdown-trigger" data-target="more_action_list_${ document.is_private ? 'private' : 'public' }">⁝</button>
                     <!-- Dropdown Structure -->
-                    <ul id="more_action_list_private" class="dropdown-content">
+                    <ul id="more_action_list_${ document.is_private ? 'private' : 'public' }" class="dropdown-content">
                         <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -58,4 +59,6 @@ function displayDocumentations(documentations){
                 </div>
             </div>`;
     });
+
+    console.log("document_block", document_block);
 }
