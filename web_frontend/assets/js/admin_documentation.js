@@ -20,13 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initializeMaterializeDropdown();
     ux("#doc_form").on("submit", submitDocForm);
-    console.log();
-    let documentations_count = ux("#documentations").html().children.length
-    if(documentations_count === 3){
-        ux(".no_documents").removeClass("hidden");
-    }else{
-        ux(".no_documents").addClass("hidden");
-    }
+    appearEmptyDocumentation();
+
+    ux(".document_block").onEach("dblclick", function(){
+        location.href = "/web_frontend/views/admin_edit_documentation.html";
+    });
 });
 
 function submitInvite(event){
@@ -48,6 +46,10 @@ function submitDocForm(event){
         document_block.html().setAttribute("class", "document_block");
         document_title.html().innerText = input_add_documentation.value;
         
+        document_block.on("click", function(){
+            location.href = "/web_frontend/views/admin_edit_documentation.html";
+        })
+
         documentations.appendChild(document_block.html());
         initializeMaterializeDropdown();
     }
@@ -96,4 +98,13 @@ function initializeMaterializeDropdown(){
         alignment: 'left',
         coverTrigger: false
     });
+}
+
+function appearEmptyDocumentation(){
+    let documentations_count = ux("#documentations").html().children.length;
+    if(documentations_count === 3){
+        ux(".no_documents").removeClass("hidden");
+    }else{
+        ux(".no_documents").addClass("hidden");
+    }
 }
