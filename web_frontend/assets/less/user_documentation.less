@@ -4,6 +4,7 @@
     background-color: @by_white;
     border-radius: 12px;
     margin: 24px auto 0 !important;
+    max-width: 1024px !important;
     padding: 32px 24px 32px;
     width: 1024px;
     position: relative;
@@ -242,6 +243,44 @@
     }
 }
 
+@media only screen and (max-width: 1215px){
+    .user{
+        padding:  0 30px 0 100px;
+        #user_doc{
+            max-width: 696px !important;
+            width: 100% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 823px){
+    .user{
+        #user_doc{
+            #documentations{
+                gap: 8px;
+                .document_block{
+                    max-width: 100% !important;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 623px){
+    .user{
+        padding: 0 10px;
+    }
+}
+@media only screen and (min-width: 993px){
+    #user_doc{
+        width: 100% !important;
+    }
+}
+@media only screen and (min-width: 601px){
+    #user_doc{
+        width: 100% !important;
+    }
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {

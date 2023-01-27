@@ -142,7 +142,7 @@ body {
   color: #2563eb;
   display: block;
 }
-@media screen and (max-width: 622px) {
+@media screen and (max-width: 632px) {
   #header_container {
     display: none;
   }
@@ -231,9 +231,14 @@ body {
 #mobile_container .header_mobile form ul li.selected {
   display: none !important;
 }
-@media screen and (min-width: 623px) {
+@media screen and (min-width: 633px) {
   #mobile_container {
     display: none;
+  }
+}
+@media screen and (max-width: 632px) {
+  #mobile_container {
+    display: block;
   }
 }
 #invite_modal_container .invite_wrapper .modal {
