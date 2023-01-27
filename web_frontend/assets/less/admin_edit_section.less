@@ -9,8 +9,17 @@
         padding-left: 0px;
     }
 }
+.edit_section_icon(@width, @height, @bg_position){
+    background: url("../images/admin_edit_section.svg") no-repeat;
+    background-position: @bg_position;
+    content:"";
+    display: inline-block;
+    height: @height;
+    vertical-align: middle;
+    width: @width;
+}
 #edit_section_content{
-    margin: 0 auto;
+    margin: 0 auto 40px;
     width: 1024px;
     
     @media (max-width: 1168px) {
@@ -27,10 +36,43 @@
 
         .breadcrumbs{
             border-bottom: 1px solid @by_input_border;
-            padding: 24px;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            *{
+                font: 14px/12px @readex_regular;
+            }
             #breadcrumbs_list{
                 li{
                     display: inline-block;
+                    
+                    &::before{
+                        .edit_section_icon(5px, 20px, 0px);
+                        margin: 0px 8px;
+                    }
+                    &:first-child{
+                        &::before{
+                            display: none;
+                        }
+                    }
+                    a, span{
+                        vertical-align: middle;
+                    }
+                }
+            }
+            #preview_section_btn{
+                .cta_btn();
+                border: none;
+                background: @by_hovered_btn;
+                font: 14px @readex_regular;
+                border-radius: 40px;
+                height: 40px;
+                line-height: 40px;
+                padding: 0px 16px;
+
+                &::after{
+                    .edit_section_icon(16px, 20px, -5px);
+                    margin-left: 8px;
                 }
             }
         }
@@ -55,19 +97,16 @@
         display: none !important;
     }
     #add_page_tabs_btn{
-        background: none;
-        border-radius: 20px;
-        border: 1px dashed @by_primary;
-        color: @by_primary;
-        cursor: pointer;
+        .cta_btn();
+        background: transparent;
+        border-style: dashed;
         font: 14px @readex_medium;
         height: 45px;
         line-height: 45px;
-        text-align: center;
         width: 100%;
 
         &:hover{
-            background: #BDDAFF;
+            background: @by_hovered_btn;
         }
     }
     .section_page_content{
@@ -88,6 +127,7 @@
                     border-top-right-radius: 10px;
                     color: @by_primary;
                     display: block;
+                    font-family: @readex_regular;
                     height: 48px;
                     line-height: 48px;
                     padding: 0px 42px 0px 24px;
@@ -149,6 +189,9 @@
                 margin-bottom: 16px;
                 padding: 0px 16px;
             }
+            .tab_content{
+                min-height: 360px;
+            }
             .rx-container{
                 border-radius: 8px;
                 border: 1px solid @by_input_border !important;
@@ -167,11 +210,46 @@
                 }
             }
             .tab_footer{
+                align-items: center;
                 display: flex;
-                .row_placeholder{
-                    flex-grow: 1;
+                height: 20px;
+                .saving_indicator{
+                    color: @by_primary;
+                    height: 20px;
+                    line-height: 20px;
+                    vertical-align: middle;
+                    opacity: 0;
+                    transition: opacity 0.13s;
+
+                    &.show{
+                        opacity: 1;
+                        display: block;
+                    }
+                    &::before{
+                        .edit_section_icon(16px, 20px, -45px);
+                        margin: -2px 9px 0px 0px;
+                    }
                 }
             }
+        }
+    }
+}
+
+#toast-container{
+    bottom: 40px !important;
+    right: 40px !important;
+    top: initial !important;
+    .toast{
+        background: @by_white;
+        border-radius: 12px;
+        box-sizing: border-box;
+        color: @by_primary;
+        font-family: @readex_medium;
+        line-height: 16px;
+        padding: 26px 24px;
+        &::before{
+            .edit_section_icon(24px, 16px, -21px);
+            margin-right: 8px;
         }
     }
 }
