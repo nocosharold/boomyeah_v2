@@ -86,8 +86,10 @@ body {
 #header_container #nav_documentation .nav_holder {
   background: #1E293B;
   min-height: calc(100vh);
-  max-width: 80px;
   pointer-events: all;
+  position: fixed;
+  width: 80px;
+  z-index: 1;
 }
 #header_container #nav_documentation .nav_holder a {
   background: url("../images/nav_sprite.svg") no-repeat;
@@ -265,11 +267,6 @@ body {
 #invite_modal_container .invite_wrapper .modal .invite_collab {
   padding: 24px;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .row {
-  background: #EFF6FF;
-  border-radius: 8px 8px 0px 0px;
-  height: 85px;
-}
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field {
   max-width: 417px;
   padding: 0px;
@@ -304,17 +301,34 @@ body {
   top: 4px;
   width: 28px;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input {
+#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input {
+  width: 100% !important;
+  z-index: 999;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input,
+#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.valid,
+#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.invalid {
   border-bottom: none !important;
+  box-shadow: none;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input::placeholder {
+  color: #2563EB;
+  font: 12px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips .chip {
   background: transparent;
   border: 1px solid #94A3B8;
   color: #0F172A;
 }
+#invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.input-field {
+  background: #EFF6FF;
+  border-radius: 8px 8px 5px 5px;
+  height: 55px;
+}
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label {
   color: #78716C;
-  font: 12px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  font: 16px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
+  margin: -9px auto;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label.active {
   color: #78716C;
@@ -577,6 +591,11 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
   width: 10px;
 }
+@media screen and (max-width: 622px) {
+  #wrapper {
+    padding: 16px;
+  }
+}
 .container {
   background-color: #FFFFFF;
   border-radius: 12px;
@@ -585,6 +604,15 @@ body::-webkit-scrollbar-thumb {
   padding: 64px 24px 32px;
   position: relative;
   width: 1024px !important;
+}
+@media screen and (max-width: 622px) {
+  .container {
+    margin: 16px;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    padding: 16px;
+    width: 100%;
+  }
 }
 .container #doc_form {
   align-items: center;
@@ -829,6 +857,11 @@ body::-webkit-scrollbar-thumb {
 }
 .container #documentations .document_block:hover {
   border: 1px solid #2563EB;
+}
+@media screen and (max-width: 622px) {
+  .container #documentations .document_block {
+    min-width: 100% !important;
+  }
 }
 .container #documentations .no_documents {
   width: 100%;
