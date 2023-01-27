@@ -42,6 +42,10 @@
 @by_login: #8FBAFF;
 @by_text: #6C7177;
 @by_off_gray: #B5C4E4;
+@by_light: #A1A1AA;
+@by_error: #DA4D4D;
+@by_invite: #7D949D;
+@by_select: #38BDF8;
 @by_input_border: #D5E3FF;
 @by_toolbar: #ECF1FF;
 
@@ -53,6 +57,17 @@
 body{
     background-color: @by_bg;
 }
+::-webkit-scrollbar {
+    opacity: .5;
+    width: 4px;
+  }
+::-webkit-scrollbar-track {
+    border-radius: 100px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: @by_light;
+    border-radius: 100px;
+  }
 
 #header_container{
     background: @by_bg;
@@ -264,7 +279,287 @@ body{
         display: none;
     }
 }
+#invite_modal{
+    .invite_wrapper{
+        .modal{
+            border-radius: 12px;
+            height: 652px;
+            max-width: 465px;
+            overflow: hidden;
+            .modal-content{
+                position: relative;
+                &::after{
+                    border: 1px solid @by_lightgray;
+                    content: '';
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    top: 106px;
+                    width: 465px;
+                }
+                h2{
+                    color: @by_black;
+                    font: 20px/28px @readex_regular;
+                    margin-bottom: 10px;
+                }
+                p{
+                    color: @by_light;
+                    font: 12px/11px @readex_regular;
+                }
+            }
+            .invite_collab{
+                padding: 24px;
+                .row{
+                    background: @by_bg;
+                    border-radius: 8px 8px 0px 0px;
+                    height: 85px;
+                    .input-field{
+                        max-width: 417px;
+                        padding: 0px;
+                        position: relative;
+                        width: 100%;
+                        .chips{
+                            border-bottom: 1px solid @by_primary;
+                            border-radius: 0px 0px 5px 5px;
+                            border-width: revert;
+                            padding-left: 10px;
+                            &.invalid{
+                                border-bottom: 1px solid @by_error !important;
+                            }
+                            &.valid{
+                                border-bottom: 1px solid @by_primary;
+                                box-shadow: 0 1px 0 0 @by_primary;
+                            }
+                            i{
+                                color: transparent;
+                                position: relative;
+                                &::after{
+                                    background: url("../../assets/images/modal_sprite.svg") no-repeat;
+                                    background-position: -70px 2px;
+                                    content: '';
+                                    display: block;
+                                    height: 28px;
+                                    position: absolute;
+                                    right: -12px;
+                                    top: 4px;
+                                    width: 28px;
+                                }
+                            }
+                            input{
+                                &.input{
+                                    border-bottom: none !important;
+                                }
+                            }
+                            .chip{
+                                background: transparent;
+                                border: 1px solid @by_icon;
+                                color: @by_black;
+                            }
+                        }
+                        label{
+                            color: @by_gray;
+                            font: 12px/16px @readex_medium;
+                            &.active{
+                                color: @by_gray;
+                                top: 10px;
+                            }
+                        }
+                        .users{
+                            background: url("../../assets/images/modal_sprite.svg") no-repeat;
+                            background-position: 1px 0px;
+                            border: none;
+                            cursor: pointer;
+                            display: block;
+                            height: 20px;
+                            position: absolute;
+                            right: 15px;
+                            top: 16px;
+                            width: 20px;
+                        }
+                        #add_invite{
+                            border-radius: 8px;
+                            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+                            height: 400px;
+                            left: 0 !important;
+                            top: 47px !important;
+                            width: 417px !important;
+                            li{
+                                margin: 16px auto;
+                                padding: 0 24px;
+                                &:hover{
+                                    background: transparent;
+                                }
+                                input[type="checkbox"].choose_users + label{
+                                    align-items: center;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    padding: 8px;
+                                    height: auto;
+                                    width: 369px;
+                                    img{
+                                        position: relative;
+                                    }
+                                    .user_information{
+                                        left: 88px;
+                                        position: absolute;
+                                        h4{
+                                            color: @by_black;
+                                            font: 16px/8px @readex_medium;
+                                        }
+                                        p{
+                                            color: @by_light;
+                                            font: 12px/6px @readex_regular;
+                                        }
+                                    }
+                                    &:hover{
+                                        background: @by_bg;
+                                        border-radius: 8px;
+                                    }
+                                }
+                                input[type="checkbox"].choose_users:checked + label {
+                                    background: @by_bg;
+                                    border-radius: 8px;
+                                    border: 2px solid @by_primary;
+                                    box-shadow: 0px 0px 0px 1px @by_select;
+                                    height: auto;
+                                    opacity: 1;
+                                    width: 369px;
+                                  }
+                            }
+                        }
+                    }
+                }
+                h2{
+                    color: @by_black;
+                    font: 20px/18px @readex_regular;
+                }
+                .collaborators_wrapper{
+                    li{
+                        margin: 15px auto;
+                        .user_list{
+                            align-items: center;
+                            display: flex;
+                            justify-content: space-between;
+                            input[type=checkbox]{
+                                display: none;
+                            }
+                            img{
+                                position: relative;
+                            }
+                            .user_information{
+                                left: 80px;
+                                position: absolute;
+                                h4{
+                                    color: @by_black;
+                                    font: 16px/11px @readex_medium;
+                                }
+                                p{
+                                    color: @by_light;
+                                    font: 12px/10px @readex_regular;
+                                }
+                            }
+                            span{
+                                color: @by_invite;
+                                font: 12px/24px @readex_regular;
+                            }
+                            .role{
+                                color: @by_invite;
+                                font: 12px/24px @readex_regular;
+                                position: relative;
+                                transform: translateX(-18px);
+                                &::after{
+                                    background: url("../../assets/images/modal_sprite.svg") no-repeat;
+                                    background-position: -26px -1px;
+                                    content: '';
+                                    display: block;
+                                    height: 28px;
+                                    position: absolute;
+                                    right: -24px;
+                                    top: 4px;
+                                    width: 28px;
+                                }
+                            }
+                            #choose_role{
+                                li{
+                                    a{
+                                        color: @by_invite;
+                                        font: 12px/24px @readex_regular;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .empty_search_wrapper{
+                    .no_result{
+                        position: relative;
+                        &::before{
+                            animation: gradient 2s ease infinite;
+                            background: linear-gradient(-45deg, #ffffff, #e5e5e5) no-repeat;
+                            background-size: 400% 400%;
+                            border-radius: 8px;
+                            content: '';
+                            display: block;
+                            height: 200px;
+                            position: absolute;
+                            top: 75px;
+                            width: 420px;
+                            @keyframes gradient {
+                                0% {
+                                    background-position: 0% 50%;
+                                }
+                                50% {
+                                    background-position: 100% 50%;
+                                }
+                                100% {
+                                    background-position: 0% 50%;
+                                }
+                            }
+                        }
+                        p{
+                            color: @by_gray;
+                            font: 16px/24px @readex_regular;
+                            position: absolute;
+                            text-align: center;
+                            z-index: 999;
+                        }
+                        img{
+                            margin: 69px auto;
+                            opacity: .5;
+                            position: inherit;
+                            z-index: 999;
+                        }
+                    }
+                }
 
+            }
+            .cta_done{
+                bottom: 13px;
+                position: absolute;
+                right: 18px;
+                a{
+                    border-radius: 20px;
+                    border: 1px solid @by_primary;
+                    color: @by_primary;
+                    padding: 8px 16px;
+                    font: 16px/19px @readex_regular;
+                }
+            }
+        }
+    }
+}
 #wrapper{
     z-index: 1000;
+}
+
+body::-webkit-scrollbar {
+    background-color: @by_bg;
+    border-radius: 10px;
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: @by_lightgray;
+    border-radius: 10px;
+    width: 10px;
 }
