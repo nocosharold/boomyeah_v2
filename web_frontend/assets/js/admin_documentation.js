@@ -1,4 +1,4 @@
-import data from "../json/default_dataset.json" assert { type: "json" };
+// import data from "../json/default_dataset.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", () => {
     const doc_form = document.querySelector("#doc_form");
