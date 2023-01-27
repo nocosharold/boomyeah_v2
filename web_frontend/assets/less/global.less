@@ -567,6 +567,13 @@ body{
 .row_placeholder{
     flex-grow: 1;
 }
+.cta_btn() {
+    border-radius: 20px;
+    border: 1px solid @by_primary;
+    color: @by_primary;
+    cursor: pointer;
+    text-align: center;
+}
 .checkbox_label{
     display: flex;
     *{
@@ -576,17 +583,31 @@ body{
     input[type="checkbox"]{
         display: none;
 
-        &[checked="checked"] + .checkbox_marker{
+        &:checked + .checkbox_marker{
             background: @by_primary;
+            text-align: center;
+            &::before{
+                line-height: 14px;
+                content: '\2713';
+                display: block !important;
+                color: @by_white;
+                font-size: 16px;
+                -ms-transform: rotate(9deg); /* IE 9 */
+                -webkit-transform: rotate(9deg); /* Chrome, Safari, Opera */
+                transform: rotate(9deg);
+            }
         }
     }
     .checkbox_marker{
+        display: block;
         border-radius: 2px;
         border: 1px solid @by_checkbox_border;
         height: 18px !important;
         margin-right: 10px;
         padding: 0px !important;
         width: 18px !important;
+        display: inline-block;
+        user-select: none;
         &::before, &::after{
             display: none !important;
         }
@@ -596,13 +617,6 @@ body{
         font: 16px/20px @readex_regular;
         color: @by_tooltip_bg;
     }
-}
-.cta_btn() {
-    border-radius: 20px;
-    border: 1px solid @by_primary;
-    color: @by_primary;
-    cursor: pointer;
-    text-align: center;
 }
 #confirmation_modal, #confirmation_modal_private{
     .modal{

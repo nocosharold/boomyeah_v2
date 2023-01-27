@@ -87,7 +87,7 @@
                 border: none;
                 color: @by_content_color;
                 font: 16px/20px @readex_regular;
-                min-height: 150px;
+                min-height: 60px;
                 outline: none;
             }
         }
@@ -237,8 +237,11 @@
 
 #toast-container{
     bottom: 40px !important;
+    left: initial !important;
+    pointer-events: none;
     right: 40px !important;
     top: initial !important;
+    width: initial !important;
     .toast{
         background: @by_white;
         border-radius: 12px;
