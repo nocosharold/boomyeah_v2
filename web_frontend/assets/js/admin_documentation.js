@@ -13,22 +13,34 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Print all documentation */
     displayDocumentations(data.documentations);
 
-    /* Initialize Materialize Dropdown */
-    let elems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(elems, {
-        alignment: 'left',
-        coverTrigger: false
-    });
+    initializeMaterializeDropdown();
+    ux("#doc_form").on("submit", submitDocForm);
+    console.log();
+    let documentations_count = ux("#documentations").html().children.length
+    if(documentations_count === 3){
+        ux(".no_documents").removeClass("hidden");
+    }else{
+        ux(".no_documents").addClass("hidden");
+    }
 });
 
 function submitDocForm(event){
     event.preventDefault();
-    const input_add_documentation = document.querySelector("#input_add_documentation");
+    
+    const input_add_documentation = ux("#input_add_documentation").html();
+    const document_block = ux(".document_block.hidden").clone();
+    const documentations = ux("#documentations").html();
+    const document_title =  ux(document_block.find(".document_details h2")).html();
+
 
     if(!input_add_documentation.value.trim().length){
         alert("text input empty");
     }else{
-
+        document_block.html().setAttribute("class", "document_block");
+        document_title.html().innerText = input_add_documentation.value;
+        
+        documentations.appendChild(document_block.html());
+        initializeMaterializeDropdown();
     }
 }
 
@@ -65,6 +77,12 @@ function displayDocumentations(documentations){
                 </div>
             </div>`;
     });
+}
 
-    console.log("document_block", document_block);
+function initializeMaterializeDropdown(){
+    let elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems, {
+        alignment: 'left',
+        coverTrigger: false
+    });
 }
