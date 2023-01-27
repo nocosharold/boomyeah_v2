@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=>{
     ux("#add_page_tabs_btn").on("click", addNewSectionContent);
     initializeEditSectionEvents();
-    RedactorX("#section_pages .tab_content", { focus: true });
+    initializeRedactor("#section_pages .tab_content");
 });
 
 function initializeEditSectionEvents(ux_target = null, callback = null){
@@ -29,12 +29,34 @@ function initializeEditSectionEvents(ux_target = null, callback = null){
         callback();
     }
 }
+let toast_timeout = null;
+let saving_timeout = null;
+function saveTabChanges(section_page_tab){
+    clearTimeout(saving_timeout);
+    M.Toast.dismissAll();
+    
+    saving_timeout = setTimeout(() => {        
+        clearTimeout(toast_timeout);
+        section_page_tab.find(".saving_indicator").addClass("show");
+    
+        toast_timeout = setTimeout(() => {
+            section_page_tab.find(".saving_indicator").removeClass("show");
+            M.toast({
+                html: "Changes Saved",
+                displayLength: 2800
+            });
+            
+        }, 800);
+    }, 480);
+}
 
 function onUpdateTabTitle(event, tab_index){
     let tab_title = event.target;
+    let section_page_tab = ux(tab_title.closest(".section_page_tab"));
     let section_page_content = ux(tab_title.closest(".section_page_content"));
     let section_page_tabs_list = section_page_content.find(".section_page_tabs");
     section_page_tabs_list.find(`.page_tab_item:nth-child(${tab_index}) a`).text(tab_title.value);
+    saveTabChanges(section_page_tab);
 }
 
 function bindOpenTabLink(ux_target = null){
@@ -84,8 +106,7 @@ function addNewSectionContent(event){
 
     /** Rebind Event Listeners */
     initializeEditSectionEvents(section_page_content);
-
-    RedactorX(`#${tab_id} .tab_content`, { focus: true });
+    initializeRedactor(`#${tab_id} .tab_content`);
 }
 
 function addNewTab(event){
@@ -113,7 +134,7 @@ function addNewTab(event){
     bindOpenTabLink(section_page_content);
     
     setTimeout(() => {
-        RedactorX(`#${tab_id} .tab_content`, { focus: true });
+        initializeRedactor(`#${tab_id} .tab_content`);
         
         /** Auto click new tab */            
         page_tab_item.html().click();
@@ -137,6 +158,14 @@ function removeSectionTab(event){
             section_page_content.remove();
         }else{
             ux(section_page_tabs).findAll(".page_tab_item")[0].click();
+        }
+    });
+}
+
+function initializeRedactor(selector){
+    RedactorX(selector, {
+        editor: {
+            minHeight: '360px'
         }
     });
 }
