@@ -16,15 +16,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
+    <script src="../../assets/js/vendor/ux.lib.js"></script>
 </head>
 
 <body>
     <!--- Add #main_navigation --->
     <div id="main_navigation"></div>
+    <!--- Add #invite_modal --->
+    <div id="invite_modal"></div>
     
     <div id="wrapper">
         <div class="container">
-            <form action="#" id="doc_form" method="post">
+            <form action="./admin_documentation.html" id="doc_form" method="post">
                 <div class="group_add_documentation input-field">
                     <input id="input_add_documentation" type="text" class="validate" autofocus>
                     <label for="input_add_documentation">Add Documentation</label>
@@ -38,7 +41,7 @@
                 <li><a href="#!">Archived</a></li>
             </ul>
             <div id="documentations">
-                <div class="document_block">
+                <div class="document_block hidden">
                     <div class="document_details">
                         <h2>Employee Handbook</h2>
                         <button class="invite_collaborators_btn"> 15</button>
@@ -63,7 +66,7 @@
                     </div>
                 </div>
                 <div class="document_block">
-                    <div class="document_details">
+                    <div class="document_details hidden_private">
                         <h2>Company Handout</h2>
                         <button class="invite_collaborators_btn"> 1</button>
                     </div>
@@ -2391,35 +2394,39 @@
                     </div>
                 </div>
             </div>
-            <div id="confirmation_modal">
-                <div id="confirm_to_public" class="modal">
-                    <div class="modal-content">
-                        <h4>Confirmation</h4>
-                        <p>Are you sure you want to change this documentation to Public?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
-                        <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div id="confirmation_modal">
+        <div id="confirm_to_public" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to change this documentation to Public?</p>
             </div>
-            <div id="confirmation_modal_private">
-                <div id="confirm_to_private" class="modal">
-                    <div class="modal-content">
-                        <h4>Confirmation</h4>
-                        <p>Are you sure you want to change this documentation to Private?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
-                        <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
-                    </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+            </div>
+        </div>
+    </div>
+    <div id="confirmation_modal_private">
+        <div id="confirm_to_private" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to change this documentation to Private?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+                <div class="no_documents hidden">
+                    <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png" alt="Empty Content Illustration">
+                    <p>You have no documentations yet</p>
                 </div>
             </div>
         </div>
     </div>
-    
     <script>
         include("#main_navigation", "../global/main_navigation.html", "../../assets/js/main_navigation.js");
+        include("#invite_modal", "../global/invite_modal.html", "../../assets/js/invite_modal.js");
     </script>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

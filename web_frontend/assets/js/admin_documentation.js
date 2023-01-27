@@ -51,6 +51,8 @@ function submitDocForm(event){
         documentations.appendChild(document_block.html());
         initializeMaterializeDropdown();
     }
+
+    doc_form.reset();
 }
 
 function displayDocumentations(documentations){
