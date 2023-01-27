@@ -5,13 +5,13 @@
                 <h2>Invite Collaborators</h2>
                 <p>Collaborators will be able to access your private documentations.</p>
             </div>
-            <form action="#" method="POST" class="invite_collab">
+            <form action="#" method="POST" class="invite_collab" id="invite_form">
                 <div class="row">
                     <div class="input-field col s6">
                         <div class="chips">
-                            <input value="" id="email_address" type="email" class="validate">
+                            <input id="email_address" type="text" class="validate"/>
+                            <label for="email_address">Email Address</label>
                         </div>
-                        <label class="active" for="email_address">Email Address</label>
                         <a class='users' href='#' data-target='add_invite'></a>
                         <ul id='add_invite' class='dropdown-content'>
                             <li>
