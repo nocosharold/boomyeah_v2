@@ -38,6 +38,7 @@
 @by_dropdown: #E2E2EC;
 @by_neutral_gray: #E2E2EC;
 @by_option: #757680;
+@by_checkbox_border: #757680;
 @by_content_color: #757680;
 @by_login: #8FBAFF;
 @by_text: #6C7177;
@@ -111,7 +112,7 @@ body{
         z-index: 999;
         .nav_holder{
             background: @by_tooltip_bg;
-            height: 100vh;
+            min-height: calc(100vh);
             max-width: 80px;
             pointer-events: all;
 
@@ -267,4 +268,45 @@ body{
 
 #wrapper{
     z-index: 1000;
+}
+
+.row_placeholder{
+    flex-grow: 1;
+}
+.checkbox_label{
+    display: flex;
+    *{
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    input[type="checkbox"]{
+        display: none;
+
+        &[checked="checked"] + .checkbox_marker{
+            background: @by_primary;
+        }
+    }
+    .checkbox_marker{
+        border-radius: 2px;
+        border: 1px solid @by_checkbox_border;
+        height: 18px !important;
+        margin-right: 10px;
+        padding: 0px !important;
+        width: 18px !important;
+        &::before, &::after{
+            display: none !important;
+        }
+    }
+    .checkbox_text{
+        flex-grow: 1;
+        font: 16px/20px @readex_regular;
+        color: @by_tooltip_bg;
+    }
+}
+.cta_btn() {
+    border-radius: 20px;
+    border: 1px solid @by_primary;
+    color: @by_primary;
+    cursor: pointer;
+    text-align: center;
 }
