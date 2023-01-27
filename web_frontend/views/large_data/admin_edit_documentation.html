@@ -9,14 +9,14 @@
     <meta name="author" content="UX Team 2">
     <meta name="description" content="A great way to describe your documentation tool">
     <title>Boom Yeah | Admin Edit Documentation Page</title>
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/global.css">
-    <link rel="stylesheet" href="../assets/css/admin_edit_documentation.css">
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/admin_edit_documentation.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="../assets/js/vendor/html_loader.lib.js"></script>
-    <script src="../assets/js/vendor/ux.lib.js"></script>
+    <script src="../../assets/js/vendor/html_loader.lib.js"></script>
+    <script src="../../assets/js/vendor/ux.lib.js"></script>
 </head>
 
 <body>
@@ -26,31 +26,22 @@
         <div class="container">
             <ul id="breadcrumb_list">
                 <li class="breadcrumb_item">Documentation</li>
-                <li class="breadcrumb_item active">Employee Handbook</li>
+                <li class="breadcrumb_item active">Village 88 Training Guide (2021 to Present)</li>
             </ul>
             <div class="divider"></div>
             <div id="doc_title_access">
-                <h1 id="doc_title">Employee Handbook</h1>
+                <h1 id="doc_title">Village 88 Training Guide (2021 to Present)</h1>
                 <!-- Switch -->
                 <div class="switch switch_btn">
                     <label>
-                        <span class="toggle_text">Public</span>
-                        <input class="toggle_switch" type="checkbox">
+                        <span class="toggle_text">Private</span>
+                        <input class="toggle_switch" type="checkbox" checked="checked">
                         <span class="lever"></span>
                     </label>
                 </div>
-                <a id="invite_collaborator_btn" class="waves-effect waves-light btn">13 Collaborators</a>
+                <a id="invite_collaborator_btn" class="waves-effect waves-light btn">108 Collaborators</a>
             </div>
-            <p class="doc_text_content">This handbook replaces and supersedes all prior employee
-            handbooks regarding employment or HR matters effective
-            January 01, 2021. The policies and practices included in this
-            handbook may be modified at any time.
-            Your department has additional specific procedures for many of the general
-            policies stated in the handbook. You are expected to learn your department's
-            procedures and comply with them. You are also expected to conform to the
-            professional standards of your occupation. Please direct any questions to
-            your supervisor, department head, or to the Human Resources Management
-            and Development Office.</p>
+            <p class="doc_text_content">Village 88 Training is designed to help you level up your coding skills in just 16 weeks and get hired faster by companies of your choice. The training program we are offering to the world through Coding Dojo is now offered exclusively to Filipinos for a reasonable price: YOUR COMMITMENT. Since offering the training in 2020, our alums now work in over 25 companies in the Philippines and internationally and get hired within two months after graduating. You are at the best place to learn the basics of advanced full-stack technologies. You will uncover your potential through our need-to-know lessons with hands-on assignments designed to help you apply the industry's best practices. Our platform facilitates a conducive environment for optimal learning. We encourage the practice of proper work ethics patterned after the real-world work setup. We are looking for Filipinos who are passionate about programming and committed to investing time and effort, especially CS/IT graduates. If you think you got what it takes to be a Village 88 Trainee.  he training program we are offering to the world through Coding Dojo is now offered exclusively to Filipinos for a reasonable price: YOUR COMMITMENT. Since offering the training in 2020, our alums now work in over 25 companies in the Philippines and internationally and get hired within two months after graduating. You are at the best place to learn the basics of advanced full-stack technologies. You will uncover your potential through our need-to-know lessons with hands-on assignments designed to help you apply the industry's best practices. </p>
             <form action="#" id="section_form" method="post">
                 <div class="group_add_section input-field">
                     <input id="input_add_section" type="text" class="validate" autofocus>
@@ -58,12 +49,14 @@
                 </div>
             </form>
             <h2>Sections</h2>
-            <div class="section_container">
+            <div class="section_container" id="section_container">
+
+            
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
-                        <!-- <h3 class="section_title">About Company</h3> -->
-                        <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly>
+                        <!-- <h3 class="section_title">About Village 88 Training</h3> -->
+                        <input type="text" name="section_title" value="About Village 88 Training" id="" class="section_title" readonly="">
                     </div>
                     <div class="section_controls">
                         <button class="edit_section_title_icon"></button>
@@ -74,8 +67,8 @@
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
-                        <!-- <h3 class="section_title">About Company</h3> -->
-                        <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly>
+                        <!-- <h3 class="section_title">Level up your skills</h3> -->
+                        <input type="text" name="section_title" value="Level up your skills" id="" class="section_title" readonly="">
                     </div>
                     <div class="section_controls">
                         <button class="edit_section_title_icon"></button>
@@ -86,8 +79,572 @@
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
-                        <!-- <h3 class="section_title">About Company</h3> -->
-                        <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly>
+                        <!-- <h3 class="section_title">Learn industry-relevant software development skills</h3> -->
+                        <input type="text" name="section_title" value="Learn industry-relevant software development skills" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Michael Choi</h3> -->
+                        <input type="text" name="section_title" value="Michael Choi" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Curriculum</h3> -->
+                        <input type="text" name="section_title" value="Curriculum" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Training Routine</h3> -->
+                        <input type="text" name="section_title" value="Training Routine" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Training Comparison</h3> -->
+                        <input type="text" name="section_title" value="Training Comparison" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Application Process</h3> -->
+                        <input type="text" name="section_title" value="Application Process" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Alumni Success Stories</h3> -->
+                        <input type="text" name="section_title" value="Alumni Success Stories" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">FAQ</h3> -->
+                        <input type="text" name="section_title" value="FAQ" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Week 1 - 2: Web Fundamentals</h3> -->
+                        <input type="text" name="section_title" value="Week 1 - 2: Web Fundamentals" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Week 3 - 7: PHP</h3> -->
+                        <input type="text" name="section_title" value="Week 3 - 7: PHP" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Week 8 - 11: JS</h3> -->
+                        <input type="text" name="section_title" value="Week 8 - 11: JS" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Week 12 - 15: Elective</h3> -->
+                        <input type="text" name="section_title" value="Week 12 - 15: Elective" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Week 16: Career Preparation and Graduation</h3> -->
+                        <input type="text" name="section_title" value="Week 16: Career Preparation and Graduation" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Final: Career Matching</h3> -->
+                        <input type="text" name="section_title" value="Final: Career Matching" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Zoom sessions</h3> -->
+                        <input type="text" name="section_title" value="Zoom sessions" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Self-paced learning in HackerHero</h3> -->
+                        <input type="text" name="section_title" value="Self-paced learning in HackerHero" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Team Collaboration in Discord (with Instructor Input and Guidance)</h3> -->
+                        <input type="text" name="section_title" value="Team Collaboration in Discord (with Instructor Input and Guidance)" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Solo daily assignments</h3> -->
+                        <input type="text" name="section_title" value="Solo daily assignments" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Solo exam per track</h3> -->
+                        <input type="text" name="section_title" value="Solo exam per track" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Solo capstone making</h3> -->
+                        <input type="text" name="section_title" value="Solo capstone making" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Choose your career path: Frontend, Backend, or Quality Assurance.</h3> -->
+                        <input type="text" name="section_title" value="Choose your career path: Frontend, Backend, or Quality Assurance." id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Batch 1</h3> -->
+                        <input type="text" name="section_title" value="Batch 1" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Registration</h3> -->
+                        <input type="text" name="section_title" value="Registration" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Pre-training Homework</h3> -->
+                        <input type="text" name="section_title" value="Pre-training Homework" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Start of the Training</h3> -->
+                        <input type="text" name="section_title" value="Start of the Training" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Batch 2 Testimonials</h3> -->
+                        <input type="text" name="section_title" value="Batch 2 Testimonials" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Batch 4 Stories</h3> -->
+                        <input type="text" name="section_title" value="Batch 4 Stories" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">UX 101 : Fundamentals I</h3> -->
+                        <input type="text" name="section_title" value="UX 101 : Fundamentals I" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Ready to take on the Training?</h3> -->
+                        <input type="text" name="section_title" value="Ready to take on the Training?" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Village 88 Training is offered free to Filipinos residing in the Philippines</h3> -->
+                        <input type="text" name="section_title" value="Village 88 Training is offered free to Filipinos residing in the Philippines" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Php 0.00 for Filipinos in the Philippines</h3> -->
+                        <input type="text" name="section_title" value="Php 0.00 for Filipinos in the Philippines" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Over 10 years with 10,000+ Alumns</h3> -->
+                        <input type="text" name="section_title" value="Over 10 years with 10,000+ Alumns" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">2 Full stack; 30+ up-to-date technologies</h3> -->
+                        <input type="text" name="section_title" value="2 Full stack; 30+ up-to-date technologies" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Follow us now: facebook.com/Village88</h3> -->
+                        <input type="text" name="section_title" value="Follow us now: facebook.com/Village88" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Prepare your peripherals (mic and camera)</h3> -->
+                        <input type="text" name="section_title" value="Prepare your peripherals (mic and camera)" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Our curriculum</h3> -->
+                        <input type="text" name="section_title" value="Our curriculum" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Great companies hire Village 88 alums</h3> -->
+                        <input type="text" name="section_title" value="Great companies hire Village 88 alums" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Front-end Track</h3> -->
+                        <input type="text" name="section_title" value="Front-end Track" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Village 88 Resume Workshop</h3> -->
+                        <input type="text" name="section_title" value="Village 88 Resume Workshop" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Advanced JavaScript Track</h3> -->
+                        <input type="text" name="section_title" value="Advanced JavaScript Track" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Can I still apply if I have a full time job?</h3> -->
+                        <input type="text" name="section_title" value="Can I still apply if I have a full time job?" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">40+ Technologies</h3> -->
+                        <input type="text" name="section_title" value="40+ Technologies" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Training Outputs</h3> -->
+                        <input type="text" name="section_title" value="Training Outputs" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Batch 5 Training Application (Part I)</h3> -->
+                        <input type="text" name="section_title" value="Batch 5 Training Application (Part I)" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">What are the requirements?</h3> -->
+                        <input type="text" name="section_title" value="What are the requirements?" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Our upcoming training will tentatively start by January 2024</h3> -->
+                        <input type="text" name="section_title" value="Our upcoming training will tentatively start by January 2024" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">70+ Graduates</h3> -->
+                        <input type="text" name="section_title" value="70+ Graduates" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Commit a minimum of 40-50 hours each week</h3> -->
+                        <input type="text" name="section_title" value="Commit a minimum of 40-50 hours each week" id="" class="section_title" readonly="">
                     </div>
                     <div class="section_controls">
                         <button class="edit_section_title_icon"></button>
@@ -100,9 +657,9 @@
     </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="module" src="../assets/js/admin_edit_documentation.js"></script>
+    <script type="module" src="../../assets/js/admin_edit_documentation.js"></script>
     <script>
-        include("#main_navigation", "./global/main_navigation.html", "../assets/js/main_navigation.js");
+        include("#main_navigation", "../global/main_navigation.html", "../../assets/js/main_navigation.js");
     </script>
 </body>
 
