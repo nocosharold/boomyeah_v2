@@ -585,7 +585,6 @@ body::-webkit-scrollbar-thumb {
   padding: 39px 24px 32px;
   position: relative;
   width: 1024px !important;
-  z-index: -1;
 }
 .container #breadcrumb_list {
   display: flex;
