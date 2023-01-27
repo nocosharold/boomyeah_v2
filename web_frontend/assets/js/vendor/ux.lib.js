@@ -38,6 +38,13 @@ function ux(selector){
             }
 
             return self.innerText;
+        },
+        attr: (attribute, attr_value = null) =>{
+            if(attr_value){
+                self.setAttribute(attribute, attr_value);
+            }
+
+            return self.getAttribute(attribute);
         }
     }
 }
