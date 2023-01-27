@@ -1,4 +1,4 @@
-// import data from "../json/large_dataset.json" assert { type: "json" };
+import data from "../json/large_dataset.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", () => {
     let confirm_public = document.querySelectorAll('.modal');
@@ -7,14 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let confirm = document.querySelectorAll('.modal');
     let instance = M.Modal.init(confirm);
 
-
-
-    
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
 
     /* Print all documentation */
-    // displayDocumentations(data.documentations);
+    displayDocumentations(data.documentations);
 
     /* Initialize Materialize Dropdown */
     let elems = document.querySelectorAll('.dropdown-trigger');
@@ -48,7 +45,7 @@ function displayDocumentations(documentations){
                     ${ document.is_private ? `<button class="invite_collaborators_btn"> ${document.collaborator_count}</button>` : ''}
                 </div>
                 <div class="document_controls">
-                    ${ document.is_private ? '<button class="access_btn"></button>' : '' }
+                    ${ document.is_private ? '<button class="access_btn modal-trigger" href="#confirm_to_public"></button>' : '' }
                     <button class="more_action_btn dropdown-trigger" data-target="more_action_list_${ document.is_private ? 'private' : 'public' }">⁝</button>
                     <!-- Dropdown Structure -->
                     <ul id="more_action_list_${ document.is_private ? 'private' : 'public' }" class="dropdown-content">
@@ -60,8 +57,8 @@ function displayDocumentations(documentations){
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="invite_icon">Invite</a></li>
                         <li class="divider" tabindex="-1"></li>
-                        ${ document.is_private ? '<li><a href="#!" class="set_to_public_icon">Set to Public</a></li>' : 
-                        '<li><a href="#!" class="set_to_private_icon">Set to Private</a></li>' }
+                        ${ document.is_private ? '<li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>' : 
+                        '<li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>' }
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="remove_icon">Remove</a></li>
                     </ul>
