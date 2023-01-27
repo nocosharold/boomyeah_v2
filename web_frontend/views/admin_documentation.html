@@ -41,10 +41,10 @@
                 <div class="document_block">
                     <div class="document_details">
                         <h2>Employee Handbook</h2>
-                        <button class="invite_collaborators_btn"> 15</button>
+                        <button class="invite_collaborators_btn modal-trigger" href="#open_invite">15</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn"></button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
                         <button class="more_action_btn dropdown-trigger" data-target="more_action_list_private">⁝</button>
                         <!-- Dropdown Structure -->
                         
@@ -284,7 +284,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="invite_icon">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="set_to_private_icon">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
@@ -488,7 +488,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="invite_icon">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="set_to_public_icon">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
@@ -521,9 +521,32 @@
             </div>
         </div>
     </div>
-    
+    <div id="confirmation_modal">
+        <div id="confirm_to_public" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to change this documentation to Public?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+            </div>
+        </div>
+    </div>
+    <div id="confirmation_modal_private">
+        <div id="confirm_to_private" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to change this documentation to Private?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+            </div>
+        </div>
+    </div>
     <script>
-        include("#main_navigation", "./global/main_navigation.html", "../assets/js/main_navigation.js");
+        include("#main_navigation" , "./global/main_navigation.html", "../assets/js/main_navigation.js");
     </script>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
