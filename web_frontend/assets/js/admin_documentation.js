@@ -1,11 +1,11 @@
-import data from "../json/large_dataset.json" assert { type: "json" };
+import data from "../json/default_dataset.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", () => {
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
 
     /* Print all documentation */
-    displayDocumentations(data.documentations);
+    // displayDocumentations(data.documentations);
 
     /* Initialize Materialize Dropdown */
     let elems = document.querySelectorAll('.dropdown-trigger');
