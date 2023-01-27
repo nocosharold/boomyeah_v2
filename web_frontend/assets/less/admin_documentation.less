@@ -1,5 +1,10 @@
 @import url(./global.less);
 
+@media screen and (max-width: 622px) {
+    #wrapper{
+        padding: 16px;
+    }
+}
 .container{
     background-color: @by_white;
     border-radius: 12px;
@@ -8,7 +13,13 @@
     padding: 64px 24px 32px;
     position: relative;
     width: 1024px !important;
-    z-index: -1;
+    @media screen and (max-width: 622px) {
+        margin: 16px;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        padding: 16px;
+        width: 100%;
+    }
     #doc_form{
         align-items: center;
         display: flex;
@@ -246,6 +257,9 @@
             }
             &:hover{
                 border: 1px solid @by_primary;
+            }
+            @media screen and (max-width: 622px) {
+                min-width: 100% !important;
             }
         }
         .no_documents{
