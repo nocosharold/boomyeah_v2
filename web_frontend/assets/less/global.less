@@ -279,7 +279,7 @@ body{
         display: none;
     }
 }
-#invite_modal{
+#invite_modal_container{
     .invite_wrapper{
         .modal{
             border-radius: 12px;
@@ -550,6 +550,44 @@ body{
 }
 #wrapper{
     z-index: 1000;
+}
+
+#confirmation_modal, #confirmation_modal_private{
+    .modal{
+        border-radius: 8px;
+        height: 194px;
+        max-width: 343px;
+        overflow: hidden;
+        width: 100%;
+        .modal-content{
+            padding: 14px 24px;
+            h4{
+                color: @by_black;
+                font: 20px/32px @readex_regular;
+            }
+            p{
+                color: @by_text;
+                font: 16px/24px @readex_regular;
+            }
+        }
+        .modal-footer{
+            padding: 15px 30px;
+            .no_btn{
+                color: @by_error;
+                font: 16px/24px @readex_regular;
+                text-transform: none !important;
+            }
+            .yes_btn{
+                border: 1px solid @by_primary;
+                border-radius: 20px;
+                color: @by_primary;
+                font: 16px/24px @readex_regular;
+                padding: 5px 16px;
+                text-transform: none !important;
+                transform: translateY(-6px);
+            }
+        }
+    }
 }
 
 body::-webkit-scrollbar {
