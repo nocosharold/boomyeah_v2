@@ -1,42 +1,171 @@
 // out: "../css/admin_edit_section.css", compress: true, sourceMap: false
 
 @import url(./global.less);
+#wrapper{
+    padding-left: 80px;
+    width: 100% !important;
 
+    @media (max-width: 622px) {
+        padding-left: 0px;
+    }
+}
 #edit_section_content{
     margin: 0 auto;
     width: 1024px;
+    
+    @media (max-width: 1168px) {
+        padding: 0 32px;
+        width: 100% !important;
+    }
     #section_summary{
+        background: @by_white;
+        border-radius: 10px;
+        box-shadow: 0px 2px 3px rgba(0,0,0,.25);
         display: flex;
         flex-direction: column;
         margin-bottom: 24px;
+
+        .breadcrumbs{
+            border-bottom: 1px solid @by_input_border;
+            padding: 24px;
+            #breadcrumbs_list{
+                li{
+                    display: inline-block;
+                }
+            }
+        }
+        .section_details{
+            padding: 24px;
+            #section_title{
+                font: 40px/50px @readex_regular;
+                margin: 0px 0px 16px;
+            }
+
+            #section_short_description{
+                border: none;
+                color: @by_content_color;
+                font: 16px/20px @readex_regular;
+                min-height: 150px;
+                outline: none;
+            }
+        }
     }
+
     #clone_section_page{
         display: none !important;
     }
+    #add_page_tabs_btn{
+        background: none;
+        border-radius: 20px;
+        border: 1px dashed @by_primary;
+        color: @by_primary;
+        cursor: pointer;
+        font: 14px @readex_medium;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        width: 100%;
+
+        &:hover{
+            background: #BDDAFF;
+        }
+    }
     .section_page_content{
         .section_page_tabs{
+            font-size: 0px;
             & > li{
                 display: inline-block;
+                font-size: 14px;
                 margin-right: 2px;
+                vertical-align: bottom;
             }
             .page_tab_item{
-                &.active{
+                position: relative;
+                display: inline-flex;
+                a{
+                    background: @by_toolbar;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    color: @by_primary;
+                    display: block;
+                    height: 48px;
+                    line-height: 48px;
+                    padding: 0px 42px 0px 24px;
+                }
+                .remove_tab_btn{
+                    background: transparent;
+                    border: none;
+                    color: @by_neutral_gray;
+                    cursor: pointer;
+                    font-size: 20px;
+                    height: 48px;
+                    margin-right: 16px;
+                    position: absolute;
+                    right: 0px;
+                }
+                &.active, &:hover{
                     a{
-                        font-weight: bold;
+                        background: @by_white;
+                        font-family: @readex_medium;
                     }
                 }
             }
-            .add_page_tab{}
+            .add_page_tab{
+                .add_page_btn{
+                    background: @by_toolbar;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border: none;
+                    color: @by_primary;
+                    cursor: pointer;
+                    display: block;
+                    font-size: 24px;
+                    height: 48px;
+                    line-height: 48px;
+                    padding: 0px 24px;
+                }
+            }
         }
         .section_page_tab{
+            background: @by_white;
+            border-radius: 10px;
+            border-top-left-radius: 0px;
+            box-shadow: 0px 2px 3px rgba(0,0,0,.25);
             display: none;
             flex-direction: column;
             margin-bottom: 24px;
+            padding: 24px;
             &.show{
                 display: flex;
             }
-            .tab_title{}
-            .tab_content{}
+            .tab_title{
+                background: transparent;
+                border-radius: 8px;
+                border: 1px solid @by_input_border !important;
+                box-sizing: border-box;
+                font-size: 16px;
+                height: 54px;
+                line-height: 52px;
+                margin-bottom: 16px;
+                padding: 0px 16px;
+            }
+            .rx-container{
+                border-radius: 8px;
+                border: 1px solid @by_input_border !important;
+                margin-bottom: 16px;
+                padding: 16px;
+
+                .rx-toolbar-container{
+                    background: @by_toolbar;
+                    border-radius: 8px;
+                    border: none;
+                }
+                .rx-editor-container{
+                    .rx-editor{
+                        padding: 16px 0px !important;
+                    }
+                }
+            }
             .tab_footer{
                 display: flex;
                 .row_placeholder{
