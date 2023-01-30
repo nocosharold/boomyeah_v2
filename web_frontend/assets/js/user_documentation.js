@@ -3,6 +3,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     /* Print all documentation */
     // displayDocumentations(data.documentations);
+
+    ux(".document_block").onEach("dblclick", function(){
+        location.href = "user_view_documentation.html";
+    });
 });
 
 function displayDocumentations(documentations){
