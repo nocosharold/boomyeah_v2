@@ -33,6 +33,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".document_block").onEach("dblclick", function(){
         location.href = "admin_edit_documentation.html";
     });
+    
+    ux(".edit_title_icon").onEach("click", editTitleDocumentation);
+
+    ux(".remove_icon").onEach("click", removeDocumentation);
+    ux(".duplicate_icon").onEach("click", duplicateDocumentation);
+    ux(".document_title").onEach("blur", disableEditTitleDocumentation);
 });
 
 function submitInvite(event){
@@ -110,9 +116,74 @@ function initializeMaterializeDropdown(){
 
 function appearEmptyDocumentation(){
     let documentations_count = ux("#documentations").html().children.length;
-    if(documentations_count === 3){
+    if(documentations_count <= 2){
         ux(".no_documents").removeClass("hidden");
     }else{
         ux(".no_documents").addClass("hidden");
     }
+}
+
+function editTitleDocumentation(event){
+    let edit_title_btn = event.target;
+    let document_block = ux(edit_title_btn.closest(".document_block"));
+    let document_title = ux(document_block.find(".document_details .document_title")).html();
+    let end = document_title.html().value.length;
+
+    document_title.html().removeAttribute("readonly");
+    document_title.html().setSelectionRange(end, end);
+    setTimeout(() => document_title.html().focus(), 0);
+}
+
+function disableEditTitleDocumentation(event){
+    let document_title = event.target;
+    
+    document_title.setAttribute("readonly", "");
+}
+
+function removeDocumentation(event){
+    event.target.closest(".document_block").remove();
+}
+
+function duplicateDocumentation(event){
+    let source = event.target.closest(".document_block");
+    let document_title = ux(source).find(".document_title").html();
+    let cloned = ux(source).clone();
+    let cloned_title = ux(cloned.find(".document_title")).html();
+    let cloned_target = ux(cloned.find(".more_action_btn")).html();
+    let cloned_list = ux(cloned.find(".dropdown-content")).html();
+    let copy_title = "copy_of_" + document_title.value.toLowerCase();
+
+
+    cloned_title.html().setAttribute("style", "");
+    cloned_title.html().setAttribute("value", "Copy of " + cloned_title.html().value);
+    cloned_target.html().setAttribute("data-target", copy_title);
+    cloned_list.html().setAttribute("id", copy_title);
+    cloned_list.html().setAttribute("style", "");
+
+    ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
+    ux(cloned.find(".remove_icon").on("click", removeDocumentation));
+    ux(cloned.find(".duplicate_icon").on("click", duplicateInnerElement));
+    
+    source.insertAdjacentElement("afterend", cloned.html());
+    initializeMaterializeDropdown();
+}
+
+function duplicateInnerElement(event){
+    let origin = event.target.closest(".document_block");
+    let document_title = ux(origin).find(".document_title").html();
+    let replica = ux(origin).clone();
+    let replica_title = ux(replica.find(".document_title")).html();
+    let replica_target = ux(replica.find(".more_action_btn")).html();
+    let replica_list = ux(replica.find(".dropdown-content")).html();
+    let copy_title = "copy_of_" + document_title.value.toLowerCase();
+    
+    replica_title.html().setAttribute("style", "");
+    replica_title.html().setAttribute("value", "Copy of " + replica_title.html().value);
+    replica_target.html().setAttribute("data-target", copy_title);
+    replica_target.html().setAttribute("data-target", "document_copy");
+    replica_list.html().setAttribute("id", "document_copy");
+    replica_list.html().setAttribute("style", "");
+
+    origin.insertAdjacentElement("afterend", replica.html());
+    initializeMaterializeDropdown();
 }
