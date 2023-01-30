@@ -46,6 +46,5 @@ function removeSectionBlock(event){
 function disableEditSectionTitle(event){
     let section_title = event.target;
     
-    section_title.removeAttribute("contenteditable");
     section_title.setAttribute("readonly", "");
 }
