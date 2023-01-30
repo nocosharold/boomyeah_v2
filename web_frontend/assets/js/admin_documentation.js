@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     appearEmptyDocumentation();
 
     ux(".document_block").onEach("dblclick", function(){
-        location.href = "/web_frontend/views/admin_edit_documentation.html";
+        location.href = "admin_edit_documentation.html";
     });
 });
 
@@ -46,13 +46,15 @@ function submitDocForm(event){
         document_block.html().setAttribute("class", "document_block");
         document_title.html().innerText = input_add_documentation.value;
         
-        document_block.on("click", function(){
-            location.href = "/web_frontend/views/admin_edit_documentation.html";
+        document_block.on("dblclick", function(){
+            location.href = "/views/admin_edit_documentation.html";
         })
 
         documentations.appendChild(document_block.html());
         initializeMaterializeDropdown();
     }
+
+    doc_form.reset();
 }
 
 function displayDocumentations(documentations){
