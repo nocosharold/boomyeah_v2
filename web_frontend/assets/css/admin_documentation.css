@@ -29,6 +29,9 @@ body {
   background: #A1A1AA;
   border-radius: 100px;
 }
+textarea {
+  resize: none !important;
+}
 #header_container {
   background: #EFF6FF;
   height: 64px;
@@ -630,15 +633,35 @@ body::-webkit-scrollbar-thumb {
   .container {
     margin: 16px;
     max-width: 100% !important;
-    min-width: 100% !important;
+    min-width: 260px !important;
     padding: 16px;
     width: 100%;
+  }
+  .container #doc_form {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .container #doc_form .group_add_documentation {
+    width: 100%;
+  }
+  .container #doc_form #input_add_documentation {
+    width: 97%;
   }
 }
 .container #doc_form {
   align-items: center;
   display: flex;
   margin-bottom: 48px;
+}
+@media screen and (max-width: 622px) {
+  .container #doc_form {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
 }
 .container #doc_form .group_add_documentation {
   background-color: #EFF6FF;
@@ -648,6 +671,12 @@ body::-webkit-scrollbar-thumb {
   min-width: 316px;
   position: relative;
   width: 316px;
+}
+@media screen and (max-width: 622px) {
+  .container #doc_form .group_add_documentation {
+    min-width: 226px;
+    width: 100%;
+  }
 }
 .container #doc_form .group_add_documentation::before {
   background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat -12px -4px;
@@ -702,11 +731,21 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 0;
   width: 304px;
 }
+@media screen and (max-width: 622px) {
+  .container #doc_form #input_add_documentation {
+    width: calc(100% - 12px);
+  }
+}
 .container #doc_form #save_status {
   color: #B5C4E4;
   font: 14px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
   margin-left: 21px;
   vertical-align: super;
+}
+@media screen and (max-width: 622px) {
+  .container #doc_form #save_status {
+    margin-top: 4px;
+  }
 }
 .container #docs_view_btn {
   background-color: transparent;
@@ -795,7 +834,6 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   user-select: none;
   width: 49px;
-  z-index: 1;
 }
 .container #documentations .document_block .document_details .invite_collaborators_btn::before {
   background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat -32px -13px;
