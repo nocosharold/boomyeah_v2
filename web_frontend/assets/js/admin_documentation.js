@@ -1,22 +1,30 @@
-import data from "../json/large_dataset.json" assert { type: "json" };
+// import data from "../json/large_dataset.json" assert { type: "json" };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    const current_location = window.location.pathname;
+    const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+
+    let global_path = (view_path === "/views")? "." : "..";
+    let assets_path = (view_path === "/views" )? ".." : "../..";
+
+    /* Render global view elements */
+    await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+    await include("#invite_modal", `${global_path}/global/invite_modal.html`, `${assets_path}/assets/js/invite_modal.js`);
+
     let confirm_public = document.querySelectorAll('.modal');
     let instances = M.Modal.init(confirm_public);
 
     let confirm = document.querySelectorAll('.modal');
     let instance = M.Modal.init(confirm);
 
-
     const invite_form = document.querySelector("#invite_form");
     invite_form.addEventListener("submit", submitInvite);    
-    
 
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
 
     /* Print all documentation */
-    displayDocumentations(data.documentations);
+    // displayDocumentations(data.documentations);
 
     initializeMaterializeDropdown();
     ux("#doc_form").on("submit", submitDocForm);
