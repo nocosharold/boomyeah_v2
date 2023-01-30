@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,13 +18,8 @@
     <script src="../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../assets/js/vendor/ux.lib.js"></script>
 </head>
-
 <body>
     <div id="main_navigation"></div>
-    <div class="user">
-        <div class="container" id="user_doc">
-            <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
-            <div id="documentations"></div>
     <div class="container">
         <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
         <div id="documentations">
@@ -107,10 +101,9 @@
     </div>
     <!--JavaScript at end of body for optimized loading-->
     <script>
-        include("#main_navigation", "./global/header_nav_documentation.html", "../assets/js/main_navigation.js");
+        include("#main_navigation", "./global/user_navigation.html", "../assets/js/main_navigation.js");
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="module" src="../assets/js/user_documentation.js"></script>
 </body>
-
 </html>
