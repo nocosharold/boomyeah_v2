@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,14 +17,16 @@
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
 </head>
-
 <body>
     <!--- Add #main_navigation --->
     <div id="main_navigation"></div>
+    <!--- Add #invite_modal --->
+    <div id="invite_modal"></div>
+
     <div id="wrapper">
         <div class="container">
             <ul id="breadcrumb_list">
-                <li class="breadcrumb_item">Documentation</li>
+                <li class="breadcrumb_item"><a href="admin_documentation.html">Documentation</a></li>
                 <li class="breadcrumb_item active">Village 88 Training Guide (2021 to Present)</li>
             </ul>
             <div class="divider"></div>
@@ -39,7 +40,7 @@
                         <span class="lever"></span>
                     </label>
                 </div>
-                <a id="invite_collaborator_btn" class="waves-effect waves-light btn">108 Collaborators</a>
+                <a id="invite_collaborator_btn" class="waves-effect waves-light btn modal-trigger" href="#modal1">108 Collaborators</a>
             </div>
             <p class="doc_text_content">Village 88 Training is designed to help you level up your coding skills in just 16 weeks and get hired faster by companies of your choice. The training program we are offering to the world through Coding Dojo is now offered exclusively to Filipinos for a reasonable price: YOUR COMMITMENT. Since offering the training in 2020, our alums now work in over 25 companies in the Philippines and internationally and get hired within two months after graduating. You are at the best place to learn the basics of advanced full-stack technologies. You will uncover your potential through our need-to-know lessons with hands-on assignments designed to help you apply the industry's best practices. Our platform facilitates a conducive environment for optimal learning. We encourage the practice of proper work ethics patterned after the real-world work setup. We are looking for Filipinos who are passionate about programming and committed to investing time and effort, especially CS/IT graduates. If you think you got what it takes to be a Village 88 Trainee.  he training program we are offering to the world through Coding Dojo is now offered exclusively to Filipinos for a reasonable price: YOUR COMMITMENT. Since offering the training in 2020, our alums now work in over 25 companies in the Philippines and internationally and get hired within two months after graduating. You are at the best place to learn the basics of advanced full-stack technologies. You will uncover your potential through our need-to-know lessons with hands-on assignments designed to help you apply the industry's best practices. </p>
             <form action="#" id="section_form" method="post">
@@ -50,8 +51,6 @@
             </form>
             <h2>Sections</h2>
             <div class="section_container" id="section_container">
-
-            
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
@@ -658,9 +657,5 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="module" src="../../assets/js/admin_edit_documentation.js"></script>
-    <script>
-        include("#main_navigation", "../global/main_navigation.html", "../../assets/js/main_navigation.js");
-    </script>
 </body>
-
 </html> 
