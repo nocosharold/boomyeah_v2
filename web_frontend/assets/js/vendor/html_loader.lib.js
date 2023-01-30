@@ -1,5 +1,5 @@
-function include(target_element, file_path, script_path = null){
-    fetch(file_path)
+async function include(target_element, file_path, script_path = null){
+    await fetch(file_path)
         .then(response=> response.text())
         .then(text => {
             let content = document.createElement("div");
