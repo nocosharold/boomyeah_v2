@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ux(".edit_section_title_icon").onEach("click", editSectionTitle);
     ux(".section_title").onEach("blur", disableEditSectionTitle);
     ux(".remove_icon").onEach("click", removeSectionBlock);
+    ux(".section_block").onEach("dblclick", function(){
+        location.href = "/web_frontend/views/admin_edit_section.html";
+    });
 });
 
 function switchText(event){

@@ -1,15 +1,8 @@
-import data from "../json/default_dataset.json" assert { type: "json" };
+// import data from "../json/large_dataset.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", () => {
     /* Print all documentation */
-    displayDocumentations(data.documentations);
-
-    /* Initialize Materialize Dropdown */
-    let elems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(elems, {
-        alignment: 'left',
-        coverTrigger: false
-    });
+    // displayDocumentations(data.documentations);
 });
 
 function displayDocumentations(documentations){
@@ -23,9 +16,7 @@ function displayDocumentations(documentations){
                     <h2>${document.title}</h2>
                     ${ document.is_private ? `<button class="invite_collaborators_btn"> ${document.collaborator_count}</button>` : ''}
                 </div>
-                <div class="document_controls">
-                    ${ document.is_private ? '<button class="access_btn"></button>' : '' }
-                </div>
+                ${ document.is_private ? '<div class="document_controls"><button class="access_btn"></button></div>' : '' }
             </div>`;
     });
 }
