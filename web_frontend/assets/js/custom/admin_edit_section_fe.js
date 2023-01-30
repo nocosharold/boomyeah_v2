@@ -176,5 +176,12 @@ function(){
                 minHeight: '360px'
             }
         });
+
+        document.querySelectorAll(".section_page_tabs").forEach((section_tabs_list) => {
+            Sortable.create(section_tabs_list, {
+                filter: ".add_page_tab"
+            });
+        })
+
     }
 })();

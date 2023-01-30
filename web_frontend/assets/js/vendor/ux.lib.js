@@ -48,3 +48,31 @@ function ux(selector){
         }
     }
 }
+
+/*!
+ * Automatically expand a textarea as the user types
+ * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param  {Node} field The textarea
+ */
+function autoExpand (field) {
+
+	// Reset field height
+	field.style.height = 'inherit';
+
+	// Get the computed styles for the element
+	let computed = window.getComputedStyle(field);
+
+	// Calculate the height
+	let height =
+		parseFloat(computed.paddingTop) +
+		field.scrollHeight +
+		parseFloat(computed.paddingBottom);
+
+	field.style.height = height + 'px';
+
+}
+
+document.addEventListener('input', function (event) {
+	if (event.target.tagName.toLowerCase() !== 'textarea') return;
+	autoExpand(event.target);
+}, false);
