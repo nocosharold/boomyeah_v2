@@ -163,6 +163,7 @@ function duplicateDocumentation(event){
     ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
     ux(cloned.find(".remove_icon").on("click", removeDocumentation));
     ux(cloned.find(".duplicate_icon").on("click", duplicateInnerElement));
+    ux(cloned.find(".document_title").on("click", disableEditTitleDocumentation));
     
     source.insertAdjacentElement("afterend", cloned.html());
     initializeMaterializeDropdown();
@@ -183,6 +184,11 @@ function duplicateInnerElement(event){
     replica_target.html().setAttribute("data-target", "document_copy");
     replica_list.html().setAttribute("id", "document_copy");
     replica_list.html().setAttribute("style", "");
+
+    ux(replica.find(".edit_title_icon").on("click", editTitleDocumentation));
+    ux(replica.find(".remove_icon").on("click", removeDocumentation));
+    ux(replica.find(".duplicate_icon").on("click", duplicateDocumentation));
+    ux(replica.find(".document_title").on("click", disableEditTitleDocumentation));
 
     origin.insertAdjacentElement("afterend", replica.html());
     initializeMaterializeDropdown();
