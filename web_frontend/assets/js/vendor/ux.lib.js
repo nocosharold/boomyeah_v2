@@ -2,6 +2,7 @@ function ux(selector){
     let self = (typeof selector === "string") ? document.querySelector(selector) : selector;
     
     return {
+        ...self,
         html: () =>{
             return self;
         },
@@ -12,6 +13,12 @@ function ux(selector){
             let elements = document.querySelectorAll(selector);
             elements.forEach((element, index, parent) => {
                 element.addEventListener(event, (raw_event) => {handler(raw_event, index + 1)});
+            });
+        },
+        offEach: (event, handler) =>{
+            let elements = document.querySelectorAll(selector);
+            elements.forEach((element, index, parent) => {
+                element.removeEventListener(event, handler);
             });
         },
         addClass: (class_name)=>{
@@ -70,7 +77,6 @@ function autoExpand (field) {
 		parseFloat(computed.paddingBottom);
 
 	field.style.height = height + 'px';
-    console.log("field", computed.paddingTop, field_scroll_height, computed.paddingBottom)
 
 }
 
