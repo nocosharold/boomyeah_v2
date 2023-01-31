@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let instance = M.Modal.init(confirm);
 
     const invite_form = document.querySelector("#invite_form");
-    invite_form.addEventListener("submit", submitInvite);    
+    invite_form.addEventListener("submit", submitInvite);
+
+    const email_address = document.querySelector("#email_address");    
+    email_address.addEventListener("change", searchEmail);
 
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
@@ -192,4 +195,52 @@ function duplicateInnerElement(event){
 
     origin.insertAdjacentElement("afterend", replica.html());
     initializeMaterializeDropdown();
+}
+
+function searchEmail(event){
+    const sample_users = [
+        {
+            "name": "Erick Caccam",
+            "email": "ecaccam@village88.com"
+        },
+        {
+            "name": "Jadee Ganggangan",
+            "email": "jganggangan@village88.com"
+        },
+        {
+            "name": "Jovic Abengona",
+            "email": "jabengona@village88.com"
+        },
+        {
+            "name": "Harold Nocos",
+            "email": "hnocos@village88.com"
+        },
+        {
+            "name": "Kei Kishimoto",
+            "email": "kkishimito@village88.com"
+        }
+    ]
+    let invite_results = [];
+    
+    let search_input = event.target.value;
+
+    if(search_input){
+        sample_users.find(user => {
+            if((user.name.toLocaleLowerCase().includes(search_input.toLocaleLowerCase())) ||
+            (user.email.toLocaleLowerCase().includes(search_input.toLocaleLowerCase()))){
+                invite_results.push(user);
+            }
+        });
+        
+        if(!invite_results.length){
+            ux("#with_access_div").html().setAttribute("hidden", true);
+    
+            ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
+            ux(".empty_search_wrapper").html().removeAttribute("hidden");
+        }
+    }
+    else{
+        ux("#with_access_div").html().removeAttribute("hidden");
+        ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+    }
 }
