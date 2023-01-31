@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let assets_path = (view_path === "/views" )? ".." : "../..";
 
     /* Render global view elements */
-    await include("#main_navigation" , `${global_path}/views/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+    await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
     await include("#invite_modal", `${global_path}/global/invite_modal.html`, `${assets_path}/assets/js/invite_modal.js`);
 
     let confirm_public = document.querySelectorAll('.modal');
@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let instance = M.Modal.init(confirm);
 
     const invite_form = document.querySelector("#invite_form");
-    invite_form.addEventListener("submit", submitInvite);    
+    invite_form.addEventListener("submit", submitInvite);
+
+    const email_address = document.querySelector("#email_address");    
+    email_address.addEventListener("keyup", searchEmail);
 
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
@@ -238,4 +241,56 @@ function appearArchivedDocumentations(event){
     docs_view_btn.html().innerText = archived_docs_btn.innerText;
     ux("#archived_documents").removeClass("hidden");
     ux("#documentations").addClass("hidden");
+}
+
+function searchEmail(event){
+    const sample_users = [
+        {
+            "name": "Erick Caccam",
+            "email": "ecaccam@village88.com"
+        },
+        {
+            "name": "Jadee Ganggangan",
+            "email": "jganggangan@village88.com"
+        },
+        {
+            "name": "Jovic Abengona",
+            "email": "jabengona@village88.com"
+        },
+        {
+            "name": "Harold Nocos",
+            "email": "hnocos@village88.com"
+        },
+        {
+            "name": "Kei Kishimoto",
+            "email": "kkishimito@village88.com"
+        }
+    ]
+    let invite_results = [];
+    
+    let search_input = event.target.value;
+
+    if(search_input){
+        sample_users.find(user => {
+            if((user.name.toLocaleLowerCase().includes(search_input.toLocaleLowerCase())) ||
+            (user.email.toLocaleLowerCase().includes(search_input.toLocaleLowerCase()))){
+                invite_results.push(user);
+            }
+        });
+        
+        if(!invite_results.length){
+            ux("#with_access_div").html().setAttribute("hidden", true);
+    
+            ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
+            ux(".empty_search_wrapper").html().removeAttribute("hidden");
+        }
+        else{
+            ux("#with_access_div").html().removeAttribute("hidden");
+            ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+        }
+    }
+    else{
+        ux("#with_access_div").html().removeAttribute("hidden");
+        ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+    }
 }

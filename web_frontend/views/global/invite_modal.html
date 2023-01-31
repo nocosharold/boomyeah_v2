@@ -77,54 +77,55 @@
                         </ul>
                     </div>
                 </div>
-                <h2 class="access">People with access</h2>
-                <ul class="collaborators_wrapper">
-                    <li>
-                        <div class="user_list">
-                            <img src="../assets/images/kb.png" alt="kb">
-                            <div class="user_information">
-                                <h4>KB Tonel</h4>
-                                <p>kbtonel@village88.com</p>
+                <div id="with_access_div">
+                    <h2 class="access">People with access</h2>
+                    <ul class="collaborators_wrapper">
+                        <li>
+                            <div class="user_list">
+                                <img src="../assets/images/kb.png" alt="kb">
+                                <div class="user_information">
+                                    <h4>KB Tonel</h4>
+                                    <p>kbtonel@village88.com</p>
+                                </div>
+                                <span>Owner</span>
                             </div>
-                            <span>Owner</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="user_list">
-                            <img src="../assets/images/mc.png" alt="mc">
-                            <div class="user_information">
-                                <h4>Michael Choi</h4>
-                                <p>mchoi@village88.com</p>
+                        </li>
+                        <li>
+                            <div class="user_list">
+                                <img src="../assets/images/mc.png" alt="mc">
+                                <div class="user_information">
+                                    <h4>Michael Choi</h4>
+                                    <p>mchoi@village88.com</p>
+                                </div>
+                                <a class='dropdown-trigger role' href='#' data-target='choose_role'>Editor</a>
+                                <ul class='dropdown-content' id="choose_role">
+                                    <li><a href="#!">Viewer</a></li>
+                                    <li><a href="#!">Editor</a></li>
+                                </ul>
                             </div>
-                            <a class='dropdown-trigger role' href='#' data-target='choose_role'>Editor</a>
-                            <ul class='dropdown-content' id="choose_role">
-                                <li><a href="#!">Viewer</a></li>
-                                <li><a href="#!">Editor</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="user_list">
-                            <img src="../assets/images/jhaver.png" alt="jhaver">
-                            <div class="user_information">
-                                <h4>Jhaver Gurtiza</h4>
-                                <p>jgurtiza@village88.com</p>
+                        </li>
+                        <li>
+                            <div class="user_list">
+                                <img src="../assets/images/jhaver.png" alt="jhaver">
+                                <div class="user_information">
+                                    <h4>Jhaver Gurtiza</h4>
+                                    <p>jgurtiza@village88.com</p>
+                                </div>
+                                <a class='dropdown-trigger role' href='#' data-target='choose_role'>Viewer</a>
+                                <ul id="choose_role" class='dropdown-content'>
+                                    <li><a href="#!">Viewer</a></li>
+                                    <li><a href="#!">Editor</a></li>
+                                </ul>
                             </div>
-                            <a class='dropdown-trigger role' href='#' data-target='choose_role'>Viewer</a>
-                            <ul id="choose_role" class='dropdown-content'>
-                                <li><a href="#!">Viewer</a></li>
-                                <li><a href="#!">Editor</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-                <!-- For empty field
-                    <div class="empty_search_wrapper">
-                        <div class="no_result">
-                            <p>Oops! Looks like there are no members that match “Enteng Kabisote”.</p>
-                            <img src="../../assets/images/empty.svg" alt="empty">
-                        </div>
-                    </div> -->
+                        </li>
+                    </ul>
+                </div>
+                <div class="empty_search_wrapper" hidden>
+                    <div class="no_result">
+                        <p id="invite_result_msg"></p>
+                        <img src="../../assets/images/empty.svg" alt="empty">
+                    </div>
+                </div>
             </form>
             <div class="modal-footer cta_done">
                 <a href="#!" class="modal-close waves-effect btn-flat">Done</a>

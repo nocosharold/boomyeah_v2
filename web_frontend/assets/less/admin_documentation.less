@@ -1,5 +1,32 @@
 @import url(./global.less);
 
+@media screen and (max-width: 1208px) {
+    #wrapper{
+        padding: 0 30px 0 100px;
+        .container{
+            min-width: unset !important;
+            max-width: 694px;
+            overflow: hidden;
+            width: 100% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 880px) {
+    #wrapper{
+        .container{
+            min-width: unset !important;
+            max-width: 694px;
+            width: 100% !important;
+            #documentations{
+                .document_block{
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 622px) {
     #wrapper{
         padding: 16px;
@@ -10,6 +37,7 @@
     border-radius: 12px;
     margin: 24px auto !important;
     min-width: 1024px !important;
+    overflow: inherit;
     padding: 64px 24px 32px;
     position: relative;
     width: 1024px !important;
@@ -25,6 +53,7 @@
             flex-direction: column;
             margin-bottom: 0;
             .group_add_documentation{
+                margin: 16px auto;
                 width: 100%;
             }
             #input_add_documentation{
@@ -51,6 +80,7 @@
             position: relative;
             width: 316px;
             @media screen and (max-width: 622px) {
+                margin: 16px auto;
                 min-width: 226px;
                 width: 100%;
             }
@@ -111,7 +141,7 @@
             margin-bottom: 0;
             width: 304px;
             @media screen and (max-width: 622px) {
-                width: calc(100% - 12px);
+                width: 97%;
             }
         }
         #save_status{

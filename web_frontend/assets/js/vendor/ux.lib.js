@@ -58,21 +58,23 @@ function autoExpand (field) {
 
 	// Reset field height
 	field.style.height = 'inherit';
+    let field_scroll_height = field.scrollHeight;
 
 	// Get the computed styles for the element
 	let computed = window.getComputedStyle(field);
-
+	
 	// Calculate the height
 	let height =
 		parseFloat(computed.paddingTop) +
-		field.scrollHeight +
+		field_scroll_height +
 		parseFloat(computed.paddingBottom);
 
 	field.style.height = height + 'px';
+    console.log("field", computed.paddingTop, field_scroll_height, computed.paddingBottom)
 
 }
 
 document.addEventListener('input', function (event) {
-	if (event.target.tagName.toLowerCase() !== 'textarea') return;
+	if (event.target.tagName.toLowerCase() !== 'textarea' || event.target.classList.contains("materialize-textarea")) return;
 	autoExpand(event.target);
 }, false);
