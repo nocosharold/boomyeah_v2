@@ -3,8 +3,13 @@ function(){
     let toast_timeout = null;
     let saving_timeout = null;
 
-    document.addEventListener("DOMContentLoaded", ()=>{
-        ux("#add_page_tabs_btn").on("click", addNewSectionContent);
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        if(ux("#add_page_tabs_btn").html()){
+            ux("#add_page_tabs_btn").on("click", addNewSectionContent);
+        }
+
+        await include("#main_navigation" , `../views/global/main_navigation.html`, `../assets/js/main_navigation.js`);
+
         initializeEditSectionEvents();
         initializeRedactor("#section_pages .tab_content");
     });
@@ -94,8 +99,11 @@ function(){
         
         setTimeout(() => {
             ux(page_tab_item).addClass("active");
-            ux(`#${ tab_id }`).addClass("show")
-                .find(".tab_title").html().select();
+            let active_tab = ux(`#${ tab_id }`).addClass("show");
+
+            if(active_tab && active_tab.find("input.tab_title").html()){
+                active_tab.find("input.tab_title").html().select();
+            }
         });
     }
     
