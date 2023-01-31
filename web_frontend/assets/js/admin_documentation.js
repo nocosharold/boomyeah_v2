@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     invite_form.addEventListener("submit", submitInvite);
 
     const email_address = document.querySelector("#email_address");    
-    email_address.addEventListener("change", searchEmail);
+    email_address.addEventListener("keyup", searchEmail);
 
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
@@ -237,6 +237,10 @@ function searchEmail(event){
     
             ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
             ux(".empty_search_wrapper").html().removeAttribute("hidden");
+        }
+        else{
+            ux("#with_access_div").html().removeAttribute("hidden");
+            ux(".empty_search_wrapper").html().setAttribute("hidden", true);
         }
     }
     else{
