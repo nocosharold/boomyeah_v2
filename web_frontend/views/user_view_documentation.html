@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,14 +17,13 @@
     <script src="../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../assets/js/vendor/ux.lib.js"></script>
 </head>
-
 <body>
     <!--- Add #main_navigation --->
     <div id="main_navigation"></div>
     <div id="wrapper">
         <div class="container">
             <ul id="breadcrumb_list">
-                <li class="breadcrumb_item">Documentation</li>
+                <li class="breadcrumb_item"><a href="user_documentation.html">Documentation</a></li>
                 <li class="breadcrumb_item active">Employee Handbook</li>
             </ul>
             <div class="divider"></div>
@@ -88,10 +86,6 @@
     </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="module" src="../assets/js/admin_edit_documentation.js"></script>
-    <script>
-        include("#main_navigation", "./global/main_navigation.html", "../assets/js/main_navigation.js");
-    </script>
+    <script type="module" src="../assets/js/user_view_documentation.js"></script>
 </body>
-
 </html> 

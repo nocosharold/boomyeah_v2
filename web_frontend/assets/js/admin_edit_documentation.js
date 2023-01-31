@@ -1,10 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    const current_location = window.location.pathname;
+    const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+
+    let global_path = (view_path === "/views")? "." : "..";
+    let assets_path = (view_path === "/views" )? ".." : "../..";
+
+    /* Render global view elements */
+    await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+    await include("#invite_modal", `${global_path}/global/invite_modal.html`, `${assets_path}/assets/js/invite_modal.js`);
+
     ux(".toggle_switch").on("click", switchText);
     ux(".edit_section_title_icon").onEach("click", editSectionTitle);
     ux(".section_title").onEach("blur", disableEditSectionTitle);
     ux(".remove_icon").onEach("click", removeSectionBlock);
     ux(".section_block").onEach("dblclick", function(){
-        location.href = "/web_frontend/views/admin_edit_section.html";
+        location.href = "admin_edit_section.html";
     });
 });
 
@@ -36,6 +46,5 @@ function removeSectionBlock(event){
 function disableEditSectionTitle(event){
     let section_title = event.target;
     
-    section_title.removeAttribute("contenteditable");
     section_title.setAttribute("readonly", "");
 }
