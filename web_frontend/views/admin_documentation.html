@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../assets/js/vendor/ux.lib.js"></script>
+    <script src="../assets/js/vendor/Sortable.min.js"></script>
 </head>
 
 <body>
@@ -36,9 +37,9 @@
             </form>
             <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
             <ul id='docs_view_list' class='dropdown-content'>
-                <li><a href="#!">Documentations</a></li>
+                <li><a href="#!" class="active_docs_btn">Documentations</a></li>
                 <li class="divider" tabindex="-1"></li>
-                <li><a href="#!">Archived</a></li>
+                <li><a href="#!" class="archived_docs_btn">Archived</a></li>
             </ul>
             <div id="documentations">
                 <div class="document_block hidden">
@@ -57,7 +58,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -81,7 +82,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -103,8 +104,8 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
+                            <li class="invite_btn hidden"><a href="#!" class="invite_icon">Invite</a></li>
+                            <li class="divider hidden" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
@@ -127,7 +128,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -151,7 +152,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -175,7 +176,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -199,7 +200,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -221,8 +222,8 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
+                            <li class="invite_btn hidden"><a href="#!" class="invite_icon">Invite</a></li>
+                            <li class="divider hidden" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
@@ -243,8 +244,8 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
+                            <li class="invite_btn hidden"><a href="#!" class="invite_icon">Invite</a></li>
+                            <li class="divider hidden" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
@@ -267,7 +268,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -290,8 +291,8 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
+                            <li class="invite_btn hidden"><a href="#!" class="invite_icon">Invite</a></li>
+                            <li class="divider hidden" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
@@ -303,6 +304,59 @@
                     <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
                         alt="Empty Content Illustration">
                     <p>You have no documentations yet</p>
+                </div>
+            </div>
+            <div id="archived_documents" class="hidden">
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Company Handout" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 1</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pr01">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="archived_document_pr01" class="dropdown-content more_action_list_private">
+                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Accounting" id="" class="document_title" readonly="">
+                    </div>
+                    <div class="document_controls">
+                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pu01">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="archived_document_pu01" class="dropdown-content more_action_list_public">
+                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Engineering" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 6</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pr02">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="archived_document_pr02" class="dropdown-content more_action_list_private">
+                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="no_archived_documents hidden">
+                    <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
+                        alt="Empty Content Illustration">
+                    <p>You have no archived documentations yet</p>
                 </div>
             </div>
         </div>

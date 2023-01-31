@@ -142,7 +142,7 @@
     }
     #docs_view_list{
         border-radius: 4px;
-        width: 209px;
+        min-width: 209px;
         .divider {
             background-color: @by_bg;
         }
@@ -154,11 +154,15 @@
             font: 16px/24px @readex_medium;
         }
     }
-    #documentations{
+    #documentations,
+    #archived_documents{
         display: flex;
         flex-wrap: wrap;
         gap: 14px;
         flex-wrap: wrap;
+        &.hidden{
+            display: none;
+        }
         .document_block{
             align-items: center;
             background-color: @by_bg;
@@ -170,6 +174,7 @@
             justify-content: space-between;
             min-width: 316px;
             padding: 20px 23px 20px 16px;
+            position: relative;
             transition: all 0.21s ease-in-out;
             width: 316px;
             &.hidden,
@@ -192,11 +197,6 @@
                     margin: 0;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                }
-                h2 {
-                    color: @by_black;
-                    font: 12px/16px @readex_regular;
-                    margin: 0;
                 }
                 .invite_collaborators_btn {
                     background-color: @by_bg;
@@ -249,6 +249,14 @@
                     width: 192px !important;
                     .divider{
                         background-color: @by_bg;
+                        &.hidden{
+                            display: none;
+                        }
+                    }
+                    .invite_btn{
+                        &.hidden{
+                            display: none;
+                        }
                     }
                     li:hover{
                         background-color: @by_hovered_btn;
@@ -302,12 +310,23 @@
             }
             &:hover{
                 border: 1px solid @by_primary;
+                &::before{
+                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/draggable_icon.svg') no-repeat 0 0;
+                    content: "";
+                    display: inline-block;
+                    height: 4px;
+                    left: 50%;
+                    position: absolute;
+                    top: 6px;
+                    width: 10.67px;
+                }
             }
             @media screen and (max-width: 622px) {
                 min-width: 100% !important;
             }
         }
-        .no_documents{
+        .no_documents,
+        .no_archived_documents{
             &.hidden{
                 display: none;
             }
