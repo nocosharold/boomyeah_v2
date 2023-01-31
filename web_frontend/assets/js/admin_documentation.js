@@ -37,8 +37,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".edit_title_icon").onEach("click", editTitleDocumentation);
 
     ux(".remove_icon").onEach("click", removeDocumentation);
+    ux(".archive_icon").onEach("click", removeDocumentation);
     ux(".duplicate_icon").onEach("click", duplicateDocumentation);
     ux(".document_title").onEach("blur", disableEditTitleDocumentation);
+
+    ux(".active_docs_btn").onEach("click", appearActiveDocumentation);
+    ux(".archived_docs_btn").onEach("click", appearArchivedDocumentations);
+
+    document.querySelectorAll("#documentations").forEach((section_tabs_list) => {
+        Sortable.create(section_tabs_list);
+    });
+
+    document.querySelectorAll("#archived_documents").forEach((section_tabs_list) => {
+        Sortable.create(section_tabs_list);
+    });
 });
 
 function submitInvite(event){
@@ -51,14 +63,18 @@ function submitDocForm(event){
     const input_add_documentation = ux("#input_add_documentation").html();
     const document_block = ux(".document_block.hidden").clone();
     const documentations = ux("#documentations").html();
-    const document_title =  ux(document_block.find(".document_details h2")).html();
+    const document_title =  ux(document_block.find(".document_details input")).html();
 
+    ux(document_block.find(".edit_title_icon").on("click", editTitleDocumentation));
+    ux(document_block.find(".remove_icon").on("click", removeDocumentation));
+    ux(document_block.find(".duplicate_icon").on("click", duplicateInnerElement));
+    ux(document_block.find(".document_title").on("click", disableEditTitleDocumentation));
 
     if(!input_add_documentation.value.trim().length){
         alert("text input empty");
     }else{
         document_block.html().setAttribute("class", "document_block");
-        document_title.html().innerText = input_add_documentation.value;
+        document_title.html().value = input_add_documentation.value;
         
         document_block.on("dblclick", function(){
             location.href = "/views/admin_edit_documentation.html";
@@ -110,7 +126,8 @@ function initializeMaterializeDropdown(){
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, {
         alignment: 'left',
-        coverTrigger: false
+        coverTrigger: false,
+        constrainWidth: false
     });
 }
 
@@ -120,6 +137,13 @@ function appearEmptyDocumentation(){
         ux(".no_documents").removeClass("hidden");
     }else{
         ux(".no_documents").addClass("hidden");
+    }
+    
+    let archived_documents_count = ux("#archived_documents").html().children.length;
+    if(archived_documents_count <= 1){
+        ux(".no_archived_documents").removeClass("hidden");
+    }else{
+        ux(".no_archived_documents").addClass("hidden");
     }
 }
 
@@ -142,6 +166,7 @@ function disableEditTitleDocumentation(event){
 
 function removeDocumentation(event){
     event.target.closest(".document_block").remove();
+    appearEmptyDocumentation();
 }
 
 function duplicateDocumentation(event){
@@ -192,4 +217,25 @@ function duplicateInnerElement(event){
 
     origin.insertAdjacentElement("afterend", replica.html());
     initializeMaterializeDropdown();
+}
+
+function appearActiveDocumentation(event){
+    let active_docs_btn = event.target;
+    let container = ux(active_docs_btn.closest(".container"));
+    let docs_view_btn = ux(container.find("#docs_view_btn")).html();
+
+    docs_view_btn.html().innerText = active_docs_btn.innerText;
+    ux("#documentations").removeClass("hidden");
+    ux("#archived_documents").addClass("hidden");
+    window.location.reload();
+}
+
+function appearArchivedDocumentations(event){
+    let archived_docs_btn = event.target;
+    let container = ux(archived_docs_btn.closest(".container"));
+    let docs_view_btn = ux(container.find("#docs_view_btn")).html();
+
+    docs_view_btn.html().innerText = archived_docs_btn.innerText;
+    ux("#archived_documents").removeClass("hidden");
+    ux("#documentations").addClass("hidden");
 }
