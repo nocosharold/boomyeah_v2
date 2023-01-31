@@ -1057,6 +1057,9 @@ body::-webkit-scrollbar-thumb {
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   color: #b5c4e4;
 }
+.container #archived_documents .document_block {
+  background-color: #F4F7FA;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {

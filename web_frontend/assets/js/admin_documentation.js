@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const email_address = document.querySelector("#email_address");    
     email_address.addEventListener("keyup", searchEmail);
 
-    const doc_form = document.querySelector("#doc_form");
-    doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
-
     /* Print all documentation */
     // displayDocumentations(data.documentations);
 
@@ -87,7 +84,7 @@ function submitDocForm(event){
         initializeMaterializeDropdown();
     }
 
-    doc_form.reset();
+    event.target.reset();
 }
 
 function displayDocumentations(documentations){
