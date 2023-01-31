@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".section_block").onEach("dblclick", function(){
         location.href = "admin_edit_section.html";
     });
+
+    document.querySelectorAll(".section_container").forEach((section_tabs_list) => {
+        Sortable.create(section_tabs_list);
+    });
+    ux(".copy_icon").onEach("click", duplicateSection);
 });
 
 function submitAddSectionForm(event){
