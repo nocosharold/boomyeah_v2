@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let assets_path = (view_path === "/views" )? ".." : "../..";
 
     /* Render global view elements */
-    await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+    await include("#main_navigation" , `${global_path}/views/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
     await include("#invite_modal", `${global_path}/global/invite_modal.html`, `${assets_path}/assets/js/invite_modal.js`);
 
     let confirm_public = document.querySelectorAll('.modal');
@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let instance = M.Modal.init(confirm);
 
     const invite_form = document.querySelector("#invite_form");
-    invite_form.addEventListener("submit", submitInvite);    
+    invite_form.addEventListener("submit", submitInvite);
+
+    const email_address = document.querySelector("#email_address");    
+    email_address.addEventListener("keyup", searchEmail);
 
     const doc_form = document.querySelector("#doc_form");
     doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
@@ -37,8 +40,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".edit_title_icon").onEach("click", editTitleDocumentation);
 
     ux(".remove_icon").onEach("click", removeDocumentation);
+    ux(".archive_icon").onEach("click", removeDocumentation);
     ux(".duplicate_icon").onEach("click", duplicateDocumentation);
     ux(".document_title").onEach("blur", disableEditTitleDocumentation);
+
+    ux(".active_docs_btn").onEach("click", appearActiveDocumentation);
+    ux(".archived_docs_btn").onEach("click", appearArchivedDocumentations);
+
+    document.querySelectorAll("#documentations").forEach((section_tabs_list) => {
+        Sortable.create(section_tabs_list);
+    });
+
+    document.querySelectorAll("#archived_documents").forEach((section_tabs_list) => {
+        Sortable.create(section_tabs_list);
+    });
 });
 
 function submitInvite(event){
@@ -51,14 +66,18 @@ function submitDocForm(event){
     const input_add_documentation = ux("#input_add_documentation").html();
     const document_block = ux(".document_block.hidden").clone();
     const documentations = ux("#documentations").html();
-    const document_title =  ux(document_block.find(".document_details h2")).html();
+    const document_title =  ux(document_block.find(".document_details input")).html();
 
+    ux(document_block.find(".edit_title_icon").on("click", editTitleDocumentation));
+    ux(document_block.find(".remove_icon").on("click", removeDocumentation));
+    ux(document_block.find(".duplicate_icon").on("click", duplicateInnerElement));
+    ux(document_block.find(".document_title").on("click", disableEditTitleDocumentation));
 
     if(!input_add_documentation.value.trim().length){
         alert("text input empty");
     }else{
         document_block.html().setAttribute("class", "document_block");
-        document_title.html().innerText = input_add_documentation.value;
+        document_title.html().value = input_add_documentation.value;
         
         document_block.on("dblclick", function(){
             location.href = "/views/admin_edit_documentation.html";
@@ -110,7 +129,8 @@ function initializeMaterializeDropdown(){
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, {
         alignment: 'left',
-        coverTrigger: false
+        coverTrigger: false,
+        constrainWidth: false
     });
 }
 
@@ -120,6 +140,13 @@ function appearEmptyDocumentation(){
         ux(".no_documents").removeClass("hidden");
     }else{
         ux(".no_documents").addClass("hidden");
+    }
+    
+    let archived_documents_count = ux("#archived_documents").html().children.length;
+    if(archived_documents_count <= 1){
+        ux(".no_archived_documents").removeClass("hidden");
+    }else{
+        ux(".no_archived_documents").addClass("hidden");
     }
 }
 
@@ -142,6 +169,7 @@ function disableEditTitleDocumentation(event){
 
 function removeDocumentation(event){
     event.target.closest(".document_block").remove();
+    appearEmptyDocumentation();
 }
 
 function duplicateDocumentation(event){
@@ -192,4 +220,77 @@ function duplicateInnerElement(event){
 
     origin.insertAdjacentElement("afterend", replica.html());
     initializeMaterializeDropdown();
+}
+
+function appearActiveDocumentation(event){
+    let active_docs_btn = event.target;
+    let container = ux(active_docs_btn.closest(".container"));
+    let docs_view_btn = ux(container.find("#docs_view_btn")).html();
+
+    docs_view_btn.html().innerText = active_docs_btn.innerText;
+    ux("#documentations").removeClass("hidden");
+    ux("#archived_documents").addClass("hidden");
+    window.location.reload();
+}
+
+function appearArchivedDocumentations(event){
+    let archived_docs_btn = event.target;
+    let container = ux(archived_docs_btn.closest(".container"));
+    let docs_view_btn = ux(container.find("#docs_view_btn")).html();
+
+    docs_view_btn.html().innerText = archived_docs_btn.innerText;
+    ux("#archived_documents").removeClass("hidden");
+    ux("#documentations").addClass("hidden");
+}
+
+function searchEmail(event){
+    const sample_users = [
+        {
+            "name": "Erick Caccam",
+            "email": "ecaccam@village88.com"
+        },
+        {
+            "name": "Jadee Ganggangan",
+            "email": "jganggangan@village88.com"
+        },
+        {
+            "name": "Jovic Abengona",
+            "email": "jabengona@village88.com"
+        },
+        {
+            "name": "Harold Nocos",
+            "email": "hnocos@village88.com"
+        },
+        {
+            "name": "Kei Kishimoto",
+            "email": "kkishimito@village88.com"
+        }
+    ]
+    let invite_results = [];
+    
+    let search_input = event.target.value;
+
+    if(search_input){
+        sample_users.find(user => {
+            if((user.name.toLocaleLowerCase().includes(search_input.toLocaleLowerCase())) ||
+            (user.email.toLocaleLowerCase().includes(search_input.toLocaleLowerCase()))){
+                invite_results.push(user);
+            }
+        });
+        
+        if(!invite_results.length){
+            ux("#with_access_div").html().setAttribute("hidden", true);
+    
+            ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
+            ux(".empty_search_wrapper").html().removeAttribute("hidden");
+        }
+        else{
+            ux("#with_access_div").html().removeAttribute("hidden");
+            ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+        }
+    }
+    else{
+        ux("#with_access_div").html().removeAttribute("hidden");
+        ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+    }
 }
