@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".document_block").onEach("dblclick", function(){
         location.href = "user_view_documentation.html";
     });
+
+    document.onkeydown = checkShortcut;
 });
 
 function displayDocumentations(documentations){
@@ -31,4 +33,35 @@ function displayDocumentations(documentations){
                 ${ document.is_private ? '<div class="document_controls"><button class="access_btn"></button></div>' : '' }
             </div>`;
     });
+}
+
+function checkShortcut(e){
+    const SHORTCUT_VALUES = {
+        "default_data": {
+            code: 49
+        },
+        "no_data": {
+            code: 50
+        },
+        "small_data": {
+            code: 51
+        },
+        "medium_data": {
+            code: 52
+        },
+        "large_data": {
+            code: 53
+        }
+    }
+
+    let shortcut_event = window.event? event : e;
+    let msg = null;
+
+    for(let [key, value] of Object.entries(SHORTCUT_VALUES)){
+        if(shortcut_event.keyCode === value.code && shortcut_event.ctrlKey){
+            msg = key;
+        }
+    }
+
+    console.log(msg);
 }
