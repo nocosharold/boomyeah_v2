@@ -820,6 +820,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #EFF6FF;
   border-bottom: 2px solid #DBEAFE;
   border-radius: 8px;
+  cursor: pointer;
   display: flex;
   height: 56px;
   justify-content: space-between;
@@ -827,7 +828,9 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
   padding: 0 24px;
   width: 522px;
-  cursor: pointer;
+}
+.container .section_container .section_block.hidden {
+  display: none;
 }
 .container .section_container .section_block.hidden {
   display: none;

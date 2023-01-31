@@ -126,66 +126,69 @@ textarea{
             }
         }
     }
-    #nav_documentation{
-        pointer-events: none;
-        z-index: 999;
-        .nav_holder{
-            background: @by_tooltip_bg;
-            min-height: calc(100vh);
-            pointer-events: all;
-            position: fixed;
-            width: 80px;
-            z-index: 1;
-            a{
-                background: url("../images/nav_sprite.svg") no-repeat;
-                background-position: 1px 0px;
+}
+#nav_documentation{
+    pointer-events: all;
+    z-index: 99999;
+    .nav_holder{
+        background: @by_tooltip_bg;
+        min-height: calc(100vh);
+        pointer-events: all;
+        position: fixed;
+        width: 80px;
+        z-index: 1;
+        a{
+            background: url("../images/nav_sprite.svg") no-repeat;
+            background-position: 1px 0px;
+            display: block;
+            height: 28px;
+            margin: auto;
+            transform: translateY(20px);
+            width: 28px;
+            z-index: 999;
+        }
+    }
+    #slide-out{
+        background: @by_tooltip_bg;
+        z-index: 99999;
+        .nav{
+            background: url("../images/nav_sprite.svg") no-repeat;
+            background-position: -50px 0px;
+            display: block;
+            height: 28px;
+            margin: 0 30px 68px 30px;
+            position: relative;
+            transform: translateY(20px);
+            width: 28px;
+            z-index: 999;
+            &::after{
+                background: url('../images/global_logo.svg') no-repeat;
+                content: '';
                 display: block;
-                height: 28px;
-                margin: auto;
-                transform: translateY(20px);
-                width: 28px;
-                z-index: 999;
+                height: 64px;
+                left: 40px;
+                position: absolute;
+                top: -15px;
+                width: 416px;
             }
         }
-        #slide-out{
-            background: @by_tooltip_bg;
-            .nav{
-                background: url("../images/nav_sprite.svg") no-repeat;
-                background-position: -50px 0px;
-                display: block;
-                height: 28px;
-                margin: 0 30px 68px 30px;
-                position: relative;
-                transform: translateY(20px);
-                width: 28px;
-                z-index: 999;
-                &::after{
-                    background: url('../images/global_logo.svg') no-repeat;
-                    content: '';
-                    display: block;
-                    height: 64px;
-                    left: 40px;
-                    position: absolute;
-                    top: -15px;
-                    width: 416px;
-                }
+        li{
+            font: 16px/20px @readex_regular;
+            z-index: 9999;
+            &:hover{
+                background: @by_hover;
+                border-radius: 0px 20px 20px 0px;
+                max-width: 260px;
             }
-            li{
-                font: 16px/20px @readex_regular;
+            a{
+                color: @by_nav_text;
+                transform: translateX(26px);
+                z-index: 9999;
                 &:hover{
-                    background: @by_hover;
-                    border-radius: 0px 20px 20px 0px;
-                    max-width: 260px;
-                }
-                a{
-                    color: @by_nav_text;
-                    transform: translateX(26px);
-                    &:hover{
-                        background: url('../images/nav_sprite.svg') no-repeat;
-                        background-position: -95px 11px;
-                        color: @by_primary;
-                        display: block;
-                    }
+                    background: url('../images/nav_sprite.svg') no-repeat;
+                    background-position: -95px 11px;
+                    color: @by_primary;
+                    display: block;
                 }
             }
         }
@@ -193,6 +196,7 @@ textarea{
     @media screen and (max-width: 632px){
         display: none;
     }
+    
 }
 
 #mobile_container{

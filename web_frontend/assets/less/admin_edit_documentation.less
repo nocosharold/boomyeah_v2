@@ -218,6 +218,7 @@
             background-color: @by_bg;
             border-bottom: 2px solid @by_lightgray;
             border-radius: 8px;
+            cursor: pointer;
             display: flex;
             height: 56px;
             justify-content: space-between;
@@ -225,7 +226,9 @@
             overflow: hidden;
             padding: 0 24px;
             width: 522px;
-            cursor: pointer;
+            &.hidden{
+                display: none;
+            }
             button {
                 background-color: transparent;
                 border: none;
