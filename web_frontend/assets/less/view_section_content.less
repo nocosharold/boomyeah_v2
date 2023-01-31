@@ -33,6 +33,9 @@
                 a, span{
                     vertical-align: middle;
                 }
+                a{
+                    color: @by_primary;
+                }
             }
         }
         #preview_section_btn{
@@ -136,7 +139,7 @@
         &.show{
             display: flex;
         }
-        .tab_title{
+        input.tab_title{
             background: transparent;
             border-radius: 8px;
             border: 1px solid @by_input_border !important;
@@ -147,9 +150,22 @@
             margin-bottom: 16px;
             padding: 0px 16px;
         }
-        .tab_content{
+        textarea.tab_content{
             min-height: 360px;
         }
+
+        h3.tab_title{
+            font: 20px/18px @readex_regular;
+            margin: 0px 0px 16px;
+            padding: 0px;
+        }
+        p.tab_content{
+            color: @by_text;
+            font: 16px/24px @readex_regular;
+            margin-bottom: 24px;
+
+        }
+
         .rx-container{
             border-radius: 8px;
             border: 1px solid @by_input_border !important;
@@ -190,6 +206,10 @@
             }
         }
     }
+}
+
+#clone_section_page{
+    display: none !important;
 }
 
 #toast-container{
