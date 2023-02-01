@@ -120,7 +120,8 @@ function(){
         section_page_content.find(".section_page_tab .tab_title").html().select();
         section_page_content.find(".section_page_tabs .page_tab_item").html()
             .setAttribute("data-tab_id", tab_id);
-    
+        section_page_tab.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
+        section_page_tab.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
         /** Rebind Event Listeners */
         initializeEditSectionEvents(section_page_content);
         initializeRedactor(`#${tab_id} .tab_content`);
@@ -138,6 +139,8 @@ function(){
         page_tab_clone.html().id = tab_id;
         section_page_content.html().append(page_tab_clone.html());
         
+        page_tab_clone.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
+        page_tab_clone.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
         /** Insert New tab */
         section_page_tabs_list.html().append(page_tab_item.html());
         section_page_tabs_list.html().append(add_page_tab);
