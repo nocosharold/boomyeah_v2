@@ -2,6 +2,7 @@ function ux(selector){
     let self = (typeof selector === "string") ? document.querySelector(selector) : selector;
     
     return {
+        ...self,
         html: () =>{
             return self;
         },
@@ -12,6 +13,12 @@ function ux(selector){
             let elements = document.querySelectorAll(selector);
             elements.forEach((element, index, parent) => {
                 element.addEventListener(event, (raw_event) => {handler(raw_event, index + 1)});
+            });
+        },
+        offEach: (event, handler) =>{
+            let elements = document.querySelectorAll(selector);
+            elements.forEach((element, index, parent) => {
+                element.removeEventListener(event, handler);
             });
         },
         addClass: (class_name)=>{
@@ -58,14 +65,15 @@ function autoExpand (field) {
 
 	// Reset field height
 	field.style.height = 'inherit';
+    let field_scroll_height = field.scrollHeight;
 
 	// Get the computed styles for the element
 	let computed = window.getComputedStyle(field);
-
+	
 	// Calculate the height
 	let height =
 		parseFloat(computed.paddingTop) +
-		field.scrollHeight +
+		field_scroll_height +
 		parseFloat(computed.paddingBottom);
 
 	field.style.height = height + 'px';
@@ -73,6 +81,6 @@ function autoExpand (field) {
 }
 
 document.addEventListener('input', function (event) {
-	if (event.target.tagName.toLowerCase() !== 'textarea') return;
+	if (event.target.tagName.toLowerCase() !== 'textarea' || event.target.classList.contains("materialize-textarea")) return;
 	autoExpand(event.target);
 }, false);

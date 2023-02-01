@@ -1,5 +1,36 @@
 @import url(./global.less);
 
+body{
+    @media screen and (max-width: 880px) {
+        overflow: hidden;
+    }
+}
+@media screen and (max-width: 1208px) {
+    #wrapper{
+        padding: 0 30px 0 100px;
+        .container{
+            min-width: unset !important;
+            max-width: 694px;
+            width: 100% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 880px) {
+    #wrapper{
+        .container{
+            min-width: unset !important;
+            max-width: 694px;
+            width: 100% !important;
+            #documentations{
+                .document_block{
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 622px) {
     #wrapper{
         padding: 16px;
@@ -25,6 +56,7 @@
             flex-direction: column;
             margin-bottom: 0;
             .group_add_documentation{
+                margin: 16px auto;
                 width: 100%;
             }
             #input_add_documentation{
@@ -51,6 +83,7 @@
             position: relative;
             width: 316px;
             @media screen and (max-width: 622px) {
+                margin: 16px auto;
                 min-width: 226px;
                 width: 100%;
             }
@@ -111,7 +144,7 @@
             margin-bottom: 0;
             width: 304px;
             @media screen and (max-width: 622px) {
-                width: calc(100% - 12px);
+                width: 97%;
             }
         }
         #save_status{
@@ -340,6 +373,11 @@
                 font: 16px/24px @readex_regular;
                 color: @by_off_gray;
             }
+        }
+    }
+    #archived_documents{
+        .document_block{
+            background-color: @by_archived_bg;
         }
     }
 }

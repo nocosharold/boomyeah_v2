@@ -22,3 +22,54 @@
 }
 
 @import url(./view_section_content.less);
+
+.tab_comments{
+    .add_comment_form{
+        .comment_field{
+            background:@by_bg;
+            border-radius: 8px;
+            font-size: 0px;
+            margin: 0px;
+            overflow: hidden;
+            padding: 0px 4px;
+            position: relative;
+            .comment_message_content{
+                margin: 0px;
+
+                label{
+                    left: 8px;
+                    transform: translateY(14px);
+
+                    &.active{
+                        transform: translateY(8px) scale(0.8);
+
+                        & + textarea{
+                            margin-top: 28px;
+                        }
+                    }
+                }
+                
+                textarea{
+                    border-bottom: 2px solid @by_primary;
+                    box-sizing: border-box;
+                    font: 16px/24px @readex_regular;
+                    height: 1rem;
+                    margin: 12px 0px 0px;
+                    min-height: 1rem !important;
+                    padding: 0px 8px 12px;
+                    transition: margin 0.2s;
+                    width: calc(100%);
+                }
+            }
+        }
+    }
+}
+.comments_list{
+    &.replies_list{
+        padding-left: 72px;
+    }
+
+    .add_reply_form{
+        padding-left: 72px;
+    }
+}

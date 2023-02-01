@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let assets_path = (view_path === "/views" )? ".." : "../..";
 
     /* Render global view elements */
-    await include("#main_navigation" , `${global_path}/views/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+    await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
     await include("#invite_modal", `${global_path}/global/invite_modal.html`, `${assets_path}/assets/js/invite_modal.js`);
 
     let confirm_public = document.querySelectorAll('.modal');
@@ -22,9 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const email_address = document.querySelector("#email_address");    
     email_address.addEventListener("keyup", searchEmail);
-
-    const doc_form = document.querySelector("#doc_form");
-    doc_form.addEventListener("submit", submitDocForm);      /* This will submit Sign Up Form */
 
     /* Print all documentation */
     // displayDocumentations(data.documentations);
@@ -87,7 +84,7 @@ function submitDocForm(event){
         initializeMaterializeDropdown();
     }
 
-    doc_form.reset();
+    event.target.reset();
 }
 
 function displayDocumentations(documentations){
@@ -247,27 +244,31 @@ function searchEmail(event){
     const sample_users = [
         {
             "name": "Erick Caccam",
-            "email": "ecaccam@village88.com"
+            "email": "ecaccam@village88.com",
+            "img_url": "../assets/images/mc.png"
         },
         {
             "name": "Jadee Ganggangan",
-            "email": "jganggangan@village88.com"
+            "email": "jganggangan@village88.com",
+            "img_url": "../assets/images/mc.png"
         },
         {
             "name": "Jovic Abengona",
-            "email": "jabengona@village88.com"
+            "email": "jabengona@village88.com",
+            "img_url": "../assets/images/jhaver.png"
         },
         {
             "name": "Harold Nocos",
-            "email": "hnocos@village88.com"
+            "email": "hnocos@village88.com",
+            "img_url": "../assets/images/jhaver.png"
         },
         {
             "name": "Kei Kishimoto",
-            "email": "kkishimito@village88.com"
+            "email": "kkishimito@village88.com",
+            "img_url": "../assets/images/kb.png"
         }
     ]
     let invite_results = [];
-    
     let search_input = event.target.value;
 
     if(search_input){
@@ -278,15 +279,42 @@ function searchEmail(event){
             }
         });
         
+        /* No matching member message */
         if(!invite_results.length){
             ux("#with_access_div").html().setAttribute("hidden", true);
     
             ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
             ux(".empty_search_wrapper").html().removeAttribute("hidden");
         }
+        /* Show matching members */
         else{
-            ux("#with_access_div").html().removeAttribute("hidden");
-            ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+            let invite_dropdown = document.getElementById("add_invite");
+            invite_dropdown.innerHTML = ""; /* remove existing element */
+
+            for(var user_index=0; user_index < invite_results.length; user_index++){
+                invite_dropdown.innerHTML += `
+                    <li>
+                        <input class="choose_users" id="user_${user_index}" type="checkbox" />
+                        <label for="user_${user_index}">
+                            <img src="${invite_results[user_index].img_url}" alt="user_profile">
+                            <div class="user_information">
+                                <h4>${invite_results[user_index].name}</h4>
+                                <p>${invite_results[user_index].email}</p>
+                            </div>
+                        </label>
+                    </li>`;
+            }
+
+            let members_dropdown_btn = document.getElementById("add_invite_btn");
+            M.Dropdown.init(members_dropdown_btn, {
+                alignment: 'left',
+                coverTrigger: false,
+                autoTrigger: true
+            });
+
+            if(!(M.Dropdown.getInstance(members_dropdown_btn).isOpen)){
+                M.Dropdown.getInstance(members_dropdown_btn).open();
+            }
         }
     }
     else{
