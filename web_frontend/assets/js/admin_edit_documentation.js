@@ -43,7 +43,6 @@ function submitAddSectionForm(event){
     ux(cloned_section_block.find(".section_title").on("blur", disableEditSectionTitle));
 
     if(!input_add_section.value.trim().length){
-        // alert("text input is empty");
         input_field.addClass("input_error");
     }
     else{
@@ -64,6 +63,7 @@ function submitAddSectionForm(event){
         sections.appendChild(cloned_section_block.html());
     }
 
+    appearEmptySection();
     document.querySelector("#section_form").reset();
     ux(ux(".group_add_section label").html()).addClass("active");
     initializeMaterializeTooltip();
