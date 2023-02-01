@@ -24,6 +24,7 @@
 @import url(./view_section_content.less);
 
 .tab_comments{
+    margin-top: 20px;
     .add_comment_form{
         .comment_field{
             background:@by_bg;
@@ -68,8 +69,59 @@
     &.replies_list{
         padding-left: 72px;
     }
+    .comment_item{
+        margin-top: 20px;
+        .user_image{
+            height: 36px;
+            margin-right: 18px;
+            width: 36px;
+        }
+        .comment_content{
+            align-items: center;
+            display: flex;
+            .comment_details{
+                flex-grow: 1;
+                .commenter_name{
+                    font: 16px/24px @readex_medium;
+                    margin: 0px;
+                    position: relative;
+
+                    *{
+                        vertical-align: middle;
+                    }
+                    .posted_at{
+                        color: @by_text;
+                        font: 12px/24px @readex_light;
+                        margin-left: 4px;
+                    }
+                    .comment_actions{
+                        position: absolute;
+                        display: inline-block;
+                    }
+                }
+                
+                p.comment_message{
+                    color: @by_text;
+                    font: 16px/24px @readex_light;
+
+                }
+            }
+        }
+    }
+
 
     .add_reply_form{
+        margin-top: 20px;
         padding-left: 72px;
+        .comment_details{
+            display: flex;
+
+            .comment_field{
+                flex-grow: 1;
+                textarea{
+                    height: 2.4rem;
+                }
+            }
+        }
     }
 }
