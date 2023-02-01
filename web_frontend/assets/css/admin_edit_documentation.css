@@ -82,11 +82,16 @@ textarea {
   height: 28px;
   width: 28px;
 }
-#header_container #nav_documentation {
-  pointer-events: none;
-  z-index: 999;
+@media screen and (max-width: 632px) {
+  #header_container {
+    display: none;
+  }
 }
-#header_container #nav_documentation .nav_holder {
+#nav_documentation {
+  pointer-events: all;
+  z-index: 99999;
+}
+#nav_documentation .nav_holder {
   background: #1E293B;
   min-height: calc(100vh);
   pointer-events: all;
@@ -94,7 +99,7 @@ textarea {
   width: 80px;
   z-index: 1;
 }
-#header_container #nav_documentation .nav_holder a {
+#nav_documentation .nav_holder a {
   background: url("../images/nav_sprite.svg") no-repeat;
   background-position: 1px 0px;
   display: block;
@@ -104,10 +109,11 @@ textarea {
   width: 28px;
   z-index: 999;
 }
-#header_container #nav_documentation #slide-out {
+#nav_documentation #slide-out {
   background: #1E293B;
+  z-index: 99999;
 }
-#header_container #nav_documentation #slide-out .nav {
+#nav_documentation #slide-out .nav {
   background: url("../images/nav_sprite.svg") no-repeat;
   background-position: -50px 0px;
   display: block;
@@ -118,7 +124,7 @@ textarea {
   width: 28px;
   z-index: 999;
 }
-#header_container #nav_documentation #slide-out .nav::after {
+#nav_documentation #slide-out .nav::after {
   background: url('../images/global_logo.svg') no-repeat;
   content: '';
   display: block;
@@ -128,26 +134,28 @@ textarea {
   top: -15px;
   width: 416px;
 }
-#header_container #nav_documentation #slide-out li {
+#nav_documentation #slide-out li {
   font: 16px/20px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  z-index: 9999;
 }
-#header_container #nav_documentation #slide-out li:hover {
+#nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
-  max-width: 260px;
+  min-width: 280px;
 }
-#header_container #nav_documentation #slide-out li a {
+#nav_documentation #slide-out li a {
   color: #B4C5FF;
   transform: translateX(26px);
+  z-index: 9999;
 }
-#header_container #nav_documentation #slide-out li a:hover {
+#nav_documentation #slide-out li a:hover {
   background: url('../images/nav_sprite.svg') no-repeat;
   background-position: -95px 11px;
   color: #2563EB;
   display: block;
 }
 @media screen and (max-width: 632px) {
-  #header_container {
+  #nav_documentation {
     display: none;
   }
 }
@@ -316,6 +324,7 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.valid,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.invalid {
+  height: 62px;
   border-bottom: none !important;
   box-shadow: none;
 }
@@ -331,16 +340,17 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.input-field {
   background: #EFF6FF;
   border-radius: 8px 8px 5px 5px;
-  height: 55px;
+  height: 65px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label {
   color: #78716C;
   font: 16px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
-  margin: -9px auto;
+  margin: 9px auto;
+  top: 21px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label.active {
   color: #78716C;
-  top: 10px;
+  top: 30px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .users {
   background: url("../../assets/images/modal_sprite.svg") no-repeat;
@@ -351,7 +361,8 @@ textarea {
   height: 20px;
   position: absolute;
   right: 15px;
-  top: 16px;
+  top: 33px;
+  transform: translateY(23px);
   width: 20px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite {
@@ -359,6 +370,7 @@ textarea {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   height: 400px;
   left: 0 !important;
+  margin: 30px auto;
   top: 47px !important;
   width: 417px !important;
 }
@@ -811,6 +823,7 @@ body::-webkit-scrollbar-thumb {
   margin: 0;
 }
 .container .section_container {
+  margin-top: 8px;
   max-height: 359px;
   overflow-x: hidden;
   width: 549px;
