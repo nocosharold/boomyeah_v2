@@ -47,16 +47,19 @@
 #section_summary .breadcrumbs #breadcrumbs_list li span {
   vertical-align: middle;
 }
+#section_summary .breadcrumbs #breadcrumbs_list li a {
+  color: #2563eb;
+}
 #section_summary .breadcrumbs #preview_section_btn {
   border-radius: 20px;
   border: 1px solid #2563eb;
   color: #2563eb;
   cursor: pointer;
   text-align: center;
-  border: none;
   background: #bddaff;
-  font: 14px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   border-radius: 40px;
+  border: none;
+  font: 14px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   height: 40px;
   line-height: 40px;
   padding: 0px 16px;
@@ -151,7 +154,7 @@
 .section_page_content .section_page_tab.show {
   display: flex;
 }
-.section_page_content .section_page_tab .tab_title {
+.section_page_content .section_page_tab input.tab_title {
   background: transparent;
   border-radius: 8px;
   border: 1px solid #d5e3ff !important;
@@ -162,8 +165,18 @@
   margin-bottom: 16px;
   padding: 0px 16px;
 }
-.section_page_content .section_page_tab .tab_content {
+.section_page_content .section_page_tab textarea.tab_content {
   min-height: 360px;
+}
+.section_page_content .section_page_tab h3.tab_title {
+  font: 20px/18px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  margin: 0px 0px 16px;
+  padding: 0px;
+}
+.section_page_content .section_page_tab p.tab_content {
+  color: #6c7177;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  margin-bottom: 24px;
 }
 .section_page_content .section_page_tab .rx-container {
   border-radius: 8px;
@@ -205,6 +218,9 @@
   vertical-align: middle;
   width: 16px;
   margin: -2px 9px 0px 0px;
+}
+#clone_section_page {
+  display: none !important;
 }
 #toast-container {
   bottom: 40px !important;

@@ -6,8 +6,28 @@
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `../views/global/user_view_section_comments.html`);
 
+        ux(document).on("click", onElementClick);
         bindViewEvents();
-    })
+    });
+
+    function onElementClick(event){
+        let event_target = event.target;
+        let avoid_classes = ["comment_actions_toggle", "edit_btn", "remove_btn"];
+
+        if( avoid_classes.some(avoid_class => event_target.classList.contains(avoid_class)) ){
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            toggleCommentActions(event);
+            onEditComment(event);
+            onDeleteComment(event);
+        } else {
+            closeCommentActions();
+        }
+    }
+
+    function closeCommentActions(){
+        ux(document).findAll(".comment_actions_toggle").forEach((element) => element.classList.remove("active"));
+    }
 
     function onSubmitComment(post_form, is_reply = false){
         if(post_form.hasOwnProperty("preventDefault")){
@@ -34,6 +54,36 @@
             post_form.reset();
             ux(post_form).find(".comment_message").html().blur();
             bindViewEvents();
+        }
+    }
+
+    function onEditComment(event){
+        let event_target = event.target;
+
+        if(event_target.classList.contains("edit_btn")){
+            closeCommentActions();
+            /** TODO: Show edit comment form */
+        }
+    }
+
+    function onDeleteComment(event){
+        let event_target = event.target;
+
+        if(event_target.classList.contains("remove_btn")){
+            closeCommentActions();
+            event_target.closest(".comment_item").remove();
+        }
+    }
+
+    function toggleCommentActions(event){
+        let event_target = event.target;
+
+        if(event_target.classList.contains("comment_actions_toggle")){
+            if(event_target.classList.contains("active")){
+                event_target.classList.remove("active");
+            } else {
+                event_target.classList.add("active");
+            }
         }
     }
 
