@@ -65,11 +65,6 @@ function submitDocForm(event){
     const documentations = ux("#documentations").html();
     const document_title =  ux(document_block.find(".document_details input")).html();
 
-    ux(document_block.find(".edit_title_icon").on("click", editTitleDocumentation));
-    ux(document_block.find(".remove_icon").on("click", removeDocumentation));
-    ux(document_block.find(".duplicate_icon").on("click", duplicateInnerElement));
-    ux(document_block.find(".document_title").on("click", disableEditTitleDocumentation));
-
     if(!input_add_documentation.value.trim().length){
         alert("text input empty");
     }else{
