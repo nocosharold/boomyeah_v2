@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await include("#invite_modal", `${global_path}/global/invite_modal.html`, `${assets_path}/assets/js/invite_modal.js`);
 
     const add_section_form = document.querySelector("#section_form");
-    add_section_form.addEventListener("submit", submitAddSectionForm);      /* This will submit Sign Up Form */
+    add_section_form.addEventListener("submit", submitAddSectionForm);
 
     ux(".toggle_switch").on("click", switchText);
     ux(".edit_section_title_icon").onEach("click", editSectionTitle);
@@ -45,13 +45,13 @@ function submitAddSectionForm(event){
         alert("text input is empty");
     }
     else{
-        cloned_section_block.html().setAttribute("class", "section_block");
-        section_title.html().setAttribute("value", input_add_section.value);
-        section_title.html().setAttribute("data-tooltip", input_add_section.value);
+        ux(cloned_section_block).attr("class", "section_block");
+        ux(section_title).attr("value", input_add_section.value);
+        ux(section_title).attr("data-tooltip", input_add_section.value);
         if(section_title.html().value.length < 8){
-            section_title.html().setAttribute("data-tooltip", "");
-            section_title.html().setAttribute("class", "section_title");
-            section_title.html().setAttribute("readonly", "");
+            ux(section_title).attr("data-tooltip", "");
+            ux(section_title).attr("class", "section_title");
+            ux(section_title).attr("readonly", "");
         }
         
         cloned_section_block.on("dblclick", function(){
@@ -92,18 +92,18 @@ function removeSectionBlock(event){
 
 function disableEditSectionTitle(event){
     let section_title = event.target;
-    
+
     if(section_title.value.trim().length > 8){
-        section_title.setAttribute("data-tooltip", section_title.value);
-        section_title.setAttribute("class", "section_title tooltipped");
-        section_title.setAttribute("readonly", "");
+        ux(section_title).attr("data-tooltip", section_title.value);
+        ux(section_title).attr("class", "section_title tooltipped");
+        ux(section_title).attr("readonly", "");
         initializeMaterializeTooltip();
     }else{
-        section_title.setAttribute("class", "section_title");
+        ux(section_title).attr("class", "section_title");
         section_title.removeAttribute("data-tooltip", "");
     }
 
-    section_title.setAttribute("readonly", "");
+    ux(section_title).attr("readonly", "");
 }
 
 function duplicateSection(event){
@@ -111,7 +111,7 @@ function duplicateSection(event){
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".section_title")).html();
 
-    cloned_title.html().setAttribute("value", "Copy of " + cloned_title.html().value);
+    ux(cloned_title).attr("value", "Copy of " + cloned_title.html().value);
     ux(cloned.find(".edit_section_title_icon").on("click", editSectionTitle));
     ux(cloned.find(".copy_icon").on("click", duplicateSection));
     ux(cloned.find(".remove_icon").on("click", removeSectionBlock));
