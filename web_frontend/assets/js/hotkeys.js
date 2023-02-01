@@ -3,14 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function checkShortcut(e){
-    const current_path = window.location.pathname;
-    const user_type = current_path.includes("admin") ? "admin" : "user";
+    const redirect_path = window.location.pathname.split("/").pop();
     const SHORTCUT_VALUES = {
-        "keyCode_49_url": `/views/${user_type}_documentation`,
-        "keyCode_50_url": `/views/no_data/${user_type}_documentation`,
-        "keyCode_51_url": `/views/small_data/${user_type}_documentation`,
-        "keyCode_52_url": `/views/medium_data/${user_type}_documentation`,
-        "keyCode_53_url": `/views/large_data/${user_type}_documentation`
+        "keyCode_49_url": `/views/${redirect_path}`,
+        "keyCode_50_url": `/views/no_data/${redirect_path}`,
+        "keyCode_51_url": `/views/small_data/${redirect_path}`,
+        "keyCode_52_url": `/views/medium_data/${redirect_path}`,
+        "keyCode_53_url": `/views/large_data/${redirect_path}`
     }
 
     let shortcut_event = window.event? event : e;
