@@ -1,12 +1,34 @@
 (function(){
+    let swipe_value = 0;
+
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
+        ux(".show_comments_btn").onEach("click", showTabComments);
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `../views/global/user_view_section_comments.html`);
 
         ux(document).on("click", onElementClick);
+
+        ux(document).on("touchstart", function (event){
+            swipe_value = event.touches.item(0).clientX;
+        });
+        
+        ux(document).on("touchmove", function (event){
+            let mobile_comments_slideout = ux("#mobile_comments_slideout");
+
+            if(swipe_value > (event.touches.item(0).clientX + 200)){
+                if(mobile_comments_slideout.html().classList.contains("active")){
+                    mobile_comments_slideout.removeClass("active");
+                }
+            } else {
+                if(!mobile_comments_slideout.html().classList.contains("active")){
+                    mobile_comments_slideout.addClass("active");
+                }
+            }
+        });
+
         bindViewEvents();
     });
 
@@ -55,6 +77,19 @@
             ux(post_form).find(".comment_message").html().blur();
             bindViewEvents();
         }
+    }
+
+    async function showTabComments(event){
+        event.preventDefault();
+        let mobile_comments_slideout = ux("#mobile_comments_slideout");
+        mobile_comments_slideout.find("#user_comments_list").html().innerHtml = "";
+
+        if(!mobile_comments_slideout.html().classList.contains("active")){
+            await include("#user_comments_list" , `../views/global/user_view_section_comments.html`);
+            mobile_comments_slideout.addClass("active");
+            bindViewEvents();
+        }
+
     }
 
     function onEditComment(event){

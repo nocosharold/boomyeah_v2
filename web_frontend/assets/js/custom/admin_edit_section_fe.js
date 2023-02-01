@@ -192,7 +192,6 @@ function(){
             Sortable.create(section_tabs_list, {
                 filter: ".add_page_tab"
             });
-        })
-
+        });
     }
 })();
