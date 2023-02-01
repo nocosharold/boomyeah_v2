@@ -265,7 +265,6 @@
                     min-width: 345px;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    pointer-events: none;
                 }
             }
             .section_controls{
@@ -302,6 +301,31 @@
         
     }
 }
+.material-tooltip {
+    background-color: @by_tooltip_bg !important;
+    border-radius: 28px !important;
+    color: @by_white !important;
+    min-height: 28px !important;
+    overflow: unset !important;
+    padding: 8px 7px !important;
+
+    .tooltip-content {
+        font-weight: 200 !important;
+        font: 12px/16px @readex_regular !important;
+
+        &::after {
+            background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/tooltip_arrow.svg') no-repeat;
+            bottom: -5px;
+            content: '';
+            display: inline-block;
+            height: 7px;
+            left: 41%;
+            position: absolute;
+            width: 17px;
+        }
+    }
+}
+
 div::-webkit-scrollbar {
     background-color: @by_bg;
     border-radius: 10px;
