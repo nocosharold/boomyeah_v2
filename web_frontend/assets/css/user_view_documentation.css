@@ -887,6 +887,7 @@ body::-webkit-scrollbar-thumb {
   max-height: 24px;
   max-width: 345px;
   min-height: 24px;
+  min-width: 345px;
   overflow: hidden;
 }
 .container .section_container .section_block .section_controls {
@@ -914,6 +915,18 @@ body::-webkit-scrollbar-thumb {
   height: 14px;
   width: 14px;
 }
+.container .no_sections {
+  width: 100%;
+  text-align: center;
+  margin: 41px 0 410px;
+}
+.container .no_sections img {
+  margin-bottom: 9px;
+}
+.container .no_sections p {
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  color: #B5C4E4;
+}
 @media screen and (max-width: 546px) {
   .container {
     padding: 24px 16px 24px;
@@ -931,7 +944,7 @@ body::-webkit-scrollbar-thumb {
     display: block !important;
   }
   .container #breadcrumb_list li:nth-of-type(2) a {
-    color: #94a3b8 !important;
+    color: #94A3B8 !important;
   }
   .container #breadcrumb_list li::after {
     background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat 0 0px !important;
@@ -960,18 +973,6 @@ body::-webkit-scrollbar-thumb {
   .container #section_container .section_block .section_controls {
     display: none;
   }
-}
-.container .no_sections {
-  width: 100%;
-  text-align: center;
-  margin: 41px 0 410px;
-}
-.container .no_sections img {
-  margin-bottom: 9px;
-}
-.container .no_sections p {
-  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
-  color: #B5C4E4;
 }
 div::-webkit-scrollbar {
   background-color: #EFF6FF;
