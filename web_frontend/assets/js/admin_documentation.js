@@ -309,7 +309,8 @@ function searchEmail(event){
             M.Dropdown.init(members_dropdown_btn, {
                 alignment: 'left',
                 coverTrigger: false,
-                autoTrigger: true
+                autoTrigger: true,
+                closeOnClick:false
             });
 
             if(!(M.Dropdown.getInstance(members_dropdown_btn).isOpen)){
