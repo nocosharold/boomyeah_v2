@@ -12,7 +12,6 @@ function checkShortcut(e){
     }
 
     let shortcut_event = window.event? event : e;
-    let msg = null;
 
     if(shortcut_event.ctrlKey){
         let get_redirect_url = SHORTCUT_VALUES[`keyCode_${shortcut_event.keyCode}_url`];
