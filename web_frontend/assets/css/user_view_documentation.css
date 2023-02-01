@@ -141,7 +141,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
-  max-width: 260px;
+  min-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #B4C5FF;
@@ -349,7 +349,7 @@ textarea {
   top: 21px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label.active {
-  color: #78716c;
+  color: #78716C;
   top: 30px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .users {
@@ -837,6 +837,7 @@ body::-webkit-scrollbar-thumb {
   margin: 0;
 }
 .container .section_container {
+  margin-top: 8px;
   max-height: 359px;
   max-width: 549px;
   overflow-x: hidden;
@@ -886,6 +887,7 @@ body::-webkit-scrollbar-thumb {
   max-height: 24px;
   max-width: 345px;
   min-height: 24px;
+  min-width: 345px;
   overflow: hidden;
 }
 .container .section_container .section_block .section_controls {
@@ -913,6 +915,18 @@ body::-webkit-scrollbar-thumb {
   height: 14px;
   width: 14px;
 }
+.container .no_sections {
+  width: 100%;
+  text-align: center;
+  margin: 41px 0 410px;
+}
+.container .no_sections img {
+  margin-bottom: 9px;
+}
+.container .no_sections p {
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  color: #B5C4E4;
+}
 @media screen and (max-width: 546px) {
   .container {
     padding: 24px 16px 24px;
@@ -930,7 +944,7 @@ body::-webkit-scrollbar-thumb {
     display: block !important;
   }
   .container #breadcrumb_list li:nth-of-type(2) a {
-    color: #94a3b8 !important;
+    color: #94A3B8 !important;
   }
   .container #breadcrumb_list li::after {
     background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat 0 0px !important;
@@ -959,17 +973,6 @@ body::-webkit-scrollbar-thumb {
   .container #section_container .section_block .section_controls {
     display: none;
   }
-.container .no_sections {
-  width: 100%;
-  text-align: center;
-  margin: 41px 0 410px;
-}
-.container .no_sections img {
-  margin-bottom: 9px;
-}
-.container .no_sections p {
-  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
-  color: #B5C4E4;
 }
 div::-webkit-scrollbar {
   background-color: #EFF6FF;
