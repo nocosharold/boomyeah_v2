@@ -126,6 +126,9 @@ textarea{
             }
         }
     }
+    @media screen and (max-width: 632px){
+        display: none;
+    }
 }
 #nav_documentation{
     pointer-events: all;
@@ -360,6 +363,7 @@ textarea{
                                 width: 100% !important;
                                 z-index: 999;
                                 &.input, &.valid, &.invalid{
+                                    height: 62px;
                                     border-bottom: none !important;
                                     box-shadow: none;
                                 }
@@ -376,16 +380,17 @@ textarea{
                             &.input-field{
                                 background: @by_bg;
                                 border-radius: 8px 8px 5px 5px;
-                                height: 55px;
+                                height: 65px !important;
                             }
                         }
                         label{
                             color: @by_gray;
                             font: 16px/16px @readex_medium !important;
-                            margin: -9px auto;
+                            margin: 9px auto;
+                            top: 21px !important;
                             &.active{
                                 color: @by_gray;
-                                top: 10px;
+                                top: 30px !important;
                             }
                         }
                         .users{
@@ -397,7 +402,8 @@ textarea{
                             height: 20px;
                             position: absolute;
                             right: 15px;
-                            top: 16px;
+                            top: 33px;
+                            transform: translateY(23px);
                             width: 20px;
                         }
                         #add_invite{
@@ -405,6 +411,7 @@ textarea{
                             box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
                             height: 400px;
                             left: 0 !important;
+                            margin: 30px auto;
                             top: 47px !important;
                             width: 417px !important;
                             li{
