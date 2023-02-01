@@ -615,6 +615,11 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
   width: 10px;
 }
+@media screen and (max-width: 880px) {
+  body {
+    overflow: hidden;
+  }
+}
 @media screen and (max-width: 1208px) {
   #wrapper {
     padding: 0 30px 0 100px;
@@ -622,7 +627,6 @@ body::-webkit-scrollbar-thumb {
   #wrapper .container {
     min-width: unset !important;
     max-width: 694px;
-    overflow: hidden;
     width: 100% !important;
   }
 }
@@ -646,7 +650,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 12px;
   margin: 24px auto !important;
   min-width: 1024px !important;
-  overflow: inherit;
   padding: 64px 24px 32px;
   position: relative;
   width: 1024px !important;
@@ -1053,6 +1056,9 @@ body::-webkit-scrollbar-thumb {
 .container #archived_documents .no_archived_documents p {
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   color: #b5c4e4;
+}
+.container #archived_documents .document_block {
+  background-color: #F4F7FA;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

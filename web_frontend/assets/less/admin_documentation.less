@@ -1,12 +1,16 @@
 @import url(./global.less);
 
+body{
+    @media screen and (max-width: 880px) {
+        overflow: hidden;
+    }
+}
 @media screen and (max-width: 1208px) {
     #wrapper{
         padding: 0 30px 0 100px;
         .container{
             min-width: unset !important;
             max-width: 694px;
-            overflow: hidden;
             width: 100% !important;
         }
     }
@@ -37,7 +41,6 @@
     border-radius: 12px;
     margin: 24px auto !important;
     min-width: 1024px !important;
-    overflow: inherit;
     padding: 64px 24px 32px;
     position: relative;
     width: 1024px !important;
@@ -370,6 +373,11 @@
                 font: 16px/24px @readex_regular;
                 color: @by_off_gray;
             }
+        }
+    }
+    #archived_documents{
+        .document_block{
+            background-color: @by_archived_bg;
         }
     }
 }
