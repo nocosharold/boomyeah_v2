@@ -1,3 +1,6 @@
 const KEYS = {
     ENTER: 13
 }
+
+const MOBILE_WIDTH = 632;
+const SWIPE_OFFSET = 200;
