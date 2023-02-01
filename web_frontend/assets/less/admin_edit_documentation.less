@@ -200,6 +200,20 @@ body{
                 line-height: 16px;
                 transform: translateY(6px) scale(0.8);
             }
+            &.input_error {
+                label {
+                    color: @by_gray !important;
+                }
+
+                input {
+                    border-bottom: 2px solid @by_error;
+                    box-shadow: 0 1px 0 0 @by_error;
+                }
+
+                &::before {
+                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/disabled_add.svg') no-repeat;
+                }
+            }
         }
 
         #input_add_section {
@@ -312,7 +326,25 @@ body{
                     }
                 }
             }
-        }      
+        }
+    }
+    .no_sections {
+        &.hidden {
+            display: none;
+        }
+
+        width: 100%;
+        text-align: center;
+        margin: 45px 0 142px;
+
+        img {
+            margin-bottom: 9px;
+        }
+
+        p {
+            font: 16px/24px @readex_regular;
+            color: @by_off_gray;
+        }
     }
 }
 .material-tooltip {
