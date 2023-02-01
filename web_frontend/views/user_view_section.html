@@ -41,12 +41,12 @@
                             <a href="#tab_2">Corporate Responsibility</a>
                         </li>
                         <li class="page_tab_item" data-tab_id="tab_3">
-                            <a href="#tab_3">Untitled Page</a>
+                            <a href="#tab_3">Corporate Opportunities</a>
                         </li>
                     </ul>
                     <div class="section_page_tab show" id="tab_1">
                         <h3 class="tab_title">Our Mission &amp; Vision</h3>
-                        <p id="tab_content_1" class="tab_content">This is a description</p>
+                        <p id="tab_content_1" class="tab_content">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
                         <div class="tab_comments comment_container">
                             <form action="/" method="POST" class="add_comment_form">
                                 <div class="comment_field">
@@ -56,16 +56,18 @@
                                     </div>
                                 </div>
                             </form>
-                            <ul class="comments_list"></ul>
+                            <ul class="comments_list">
+                                <li id="user_view_comments"></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="section_page_tab" id="tab_2">
                         <h3 class="tab_title">Corporate Responsibility</h3>
-                        <p class="tab_content">This is a description</p>
+                        <p class="tab_content">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
                     </div>
                     <div class="section_page_tab" id="tab_3">
                         <h3 class="tab_title">Corporate Opportunities</h3>
-                        <p class="tab_content">This is a description</p>
+                        <p class="tab_content">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
                     </div>
                 </div>
             </div>
@@ -73,26 +75,31 @@
                 <ul id="comments_list_clone">
                     <li class="comment_item comment_container">
                         <div class="comment_content">
-                            <img src="" alt="" class="user_image"/> 
+                            <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
                             <div class="comment_details">
                                 <h4 class="commenter_name">
-                                    <span class="user_name">Ben T. Lador</span><span class="posted_at">• Just an hour</span>
+                                    <span class="user_name">Ben T. Lador</span><span class="posted_at">• a few seconds ago</span>
+                                    <div class="comment_actions">
+                                        <button type="button" class="comment_actions_toggle">...</button>
+                                        <div class="comment_actions_menu">
+                                            <button type="button" class="comment_action_btn edit_btn">Edit</button>
+                                            <button type="button" class="comment_action_btn remove_btn">Remove</button>
+                                        </div>
+                                    </div>
                                 </h4>
                                 <p class="comment_message"></p>
-                            </div>
-                            <div class="comment_actions">
-                                <button type="button" class="comment_actions_toggle">...</button>
-                                <div class="comment_actions_menu">
-                                    <button type="button" class="comment_action_btn edit_btn">Edit</button>
-                                    <button type="button" class="comment_action_btn remove_btn">Remove</button>
-                                </div>
                             </div>
                         </div>
                         <ul class="replies_list comments_list"></ul>
                         <form action="/" method="POST" class="add_reply_form add_comment_form">
                             <div class="comment_details">
-                                <img src="" alt="" class="user_image"/>
-                                <textarea name="comment_message" class="comment_message"></textarea>
+                                <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </li>

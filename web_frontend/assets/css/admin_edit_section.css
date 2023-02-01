@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 @font-face {
   font-family: 'ReadexPro-Bold';
   src: url('../fonts/ReadexPro-Bold.ttf');
@@ -9,11 +14,6 @@
 @font-face {
   font-family: 'ReadexPro-Regular';
   src: url('../fonts/ReadexPro-Regular.ttf');
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 body {
   background-color: #EFF6FF;
@@ -82,11 +82,11 @@ textarea {
   height: 28px;
   width: 28px;
 }
-#header_container #nav_documentation {
-  pointer-events: none;
-  z-index: 999;
+#nav_documentation {
+  pointer-events: all;
+  z-index: 99999;
 }
-#header_container #nav_documentation .nav_holder {
+#nav_documentation .nav_holder {
   background: #1E293B;
   min-height: calc(100vh);
   pointer-events: all;
@@ -94,7 +94,7 @@ textarea {
   width: 80px;
   z-index: 1;
 }
-#header_container #nav_documentation .nav_holder a {
+#nav_documentation .nav_holder a {
   background: url("../images/nav_sprite.svg") no-repeat;
   background-position: 1px 0px;
   display: block;
@@ -104,10 +104,11 @@ textarea {
   width: 28px;
   z-index: 999;
 }
-#header_container #nav_documentation #slide-out {
+#nav_documentation #slide-out {
   background: #1E293B;
+  z-index: 99999;
 }
-#header_container #nav_documentation #slide-out .nav {
+#nav_documentation #slide-out .nav {
   background: url("../images/nav_sprite.svg") no-repeat;
   background-position: -50px 0px;
   display: block;
@@ -118,7 +119,7 @@ textarea {
   width: 28px;
   z-index: 999;
 }
-#header_container #nav_documentation #slide-out .nav::after {
+#nav_documentation #slide-out .nav::after {
   background: url('../images/global_logo.svg') no-repeat;
   content: '';
   display: block;
@@ -128,26 +129,28 @@ textarea {
   top: -15px;
   width: 416px;
 }
-#header_container #nav_documentation #slide-out li {
+#nav_documentation #slide-out li {
   font: 16px/20px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  z-index: 9999;
 }
-#header_container #nav_documentation #slide-out li:hover {
+#nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
   max-width: 260px;
 }
-#header_container #nav_documentation #slide-out li a {
+#nav_documentation #slide-out li a {
   color: #B4C5FF;
   transform: translateX(26px);
+  z-index: 9999;
 }
-#header_container #nav_documentation #slide-out li a:hover {
+#nav_documentation #slide-out li a:hover {
   background: url('../images/nav_sprite.svg') no-repeat;
   background-position: -95px 11px;
   color: #2563EB;
   display: block;
 }
 @media screen and (max-width: 632px) {
-  #header_container {
+  #nav_documentation {
     display: none;
   }
 }
@@ -650,6 +653,18 @@ body::-webkit-scrollbar-thumb {
 #edit_section_content #add_page_tabs_btn:hover {
   background: #BDDAFF;
 }
+@font-face {
+  font-family: 'ReadexPro-Bold';
+  src: url('../fonts/ReadexPro-Bold.ttf');
+}
+@font-face {
+  font-family: 'ReadexPro-Medium';
+  src: url('../fonts/ReadexPro-Medium.ttf');
+}
+@font-face {
+  font-family: 'ReadexPro-Regular';
+  src: url('../fonts/ReadexPro-Regular.ttf');
+}
 #section_summary {
   background: #FFFFFF;
   border-radius: 10px;
@@ -696,10 +711,10 @@ body::-webkit-scrollbar-thumb {
   color: #2563EB;
   cursor: pointer;
   text-align: center;
-  border: none;
   background: #BDDAFF;
-  font: 14px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   border-radius: 40px;
+  border: none;
+  font: 14px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   height: 40px;
   line-height: 40px;
   padding: 0px 16px;
@@ -816,7 +831,6 @@ body::-webkit-scrollbar-thumb {
 .section_page_content .section_page_tab p.tab_content {
   color: #6C7177;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
-  margin-bottom: 24px;
 }
 .section_page_content .section_page_tab .rx-container {
   border-radius: 8px;
