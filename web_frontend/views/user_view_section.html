@@ -52,49 +52,11 @@
                                 <div class="comment_field">
                                     <div class="comment_message_content input-field col s12">
                                         <label for="post_comment">Write a comment</label>
-                                        <textarea id="post_comment" class="materialize-textarea comment_message"></textarea>
+                                        <textarea name="post_comment" id="post_comment" class="materialize-textarea comment_message"></textarea>
                                     </div>
                                 </div>
                             </form>
-                            <ul class="comments_list">
-                                <li class="comment_item comment_container">
-                                    <div class="comment_content">
-                                        <img src="" alt="" class="user_image"/> 
-                                        <div class="comment_details">
-                                            <h4 class="commenter_name">
-                                                <span class="user_name">Ben T. Lador</span><span class="posted_at">• Just an hour</span>
-                                            </h4>
-                                            <p class="commenter_message">The supervisors are amazing! They helped me a lot in improving my skills without spoon-feeding everything.</p>
-                                        </div>
-                                        <div class="comment_actions">
-                                            <button type="button" class="comment_actions_toggle">...</button>
-                                            <div class="comment_actions_menu">
-                                                <button type="button" class="comment_action_btn edit_btn">Edit</button>
-                                                <button type="button" class="comment_action_btn remove_btn">Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul class="replies_list comments_list">
-                                        <li class="comment_item">
-                                            <div class="comment_content">
-                                                <img src="" alt="" class="user_image"/>
-                                                <div class="comment_details">
-                                                    <h4 class="commenter_name">
-                                                        <span class="user_name">Ben T. Lador</span><span class="posted_at">• Just an hour</span>
-                                                    </h4>
-                                                    <p class="commenter_message">The training was very helpful and taught me a lot about web development which I didn't know before</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <form action="/" method="POST" class="add_reply_form add_comment_form">
-                                        <h4 class="commenter_name">
-                                            <span class="user_name">Ben T. Lador</span><span class="posted_at">• Just an hour</span>
-                                        </h4>
-                                        <textarea name="" id="" cols="30" rows="10" class="comment_message"></textarea>
-                                    </form>
-                                </li>
-                            </ul>
+                            <ul class="comments_list"></ul>
                         </div>
                     </div>
                     <div class="section_page_tab" id="tab_2">
@@ -108,11 +70,40 @@
                 </div>
             </div>
             <div id="clone_section_page">
+                <ul id="comments_list_clone">
+                    <li class="comment_item comment_container">
+                        <div class="comment_content">
+                            <img src="" alt="" class="user_image"/> 
+                            <div class="comment_details">
+                                <h4 class="commenter_name">
+                                    <span class="user_name">Ben T. Lador</span><span class="posted_at">• Just an hour</span>
+                                </h4>
+                                <p class="comment_message"></p>
+                            </div>
+                            <div class="comment_actions">
+                                <button type="button" class="comment_actions_toggle">...</button>
+                                <div class="comment_actions_menu">
+                                    <button type="button" class="comment_action_btn edit_btn">Edit</button>
+                                    <button type="button" class="comment_action_btn remove_btn">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="replies_list comments_list"></ul>
+                        <form action="/" method="POST" class="add_reply_form add_comment_form">
+                            <div class="comment_details">
+                                <img src="" alt="" class="user_image"/>
+                                <textarea name="comment_message" class="comment_message"></textarea>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
                 
             </div>
         </div>
     </div>
     <script src="../assets/js/vendor/redactorx.min.js"></script>
+    <script src="../assets/js/constants.js"></script>
     <script src="../assets/js/custom/admin_edit_section_fe.js"></script>
+    <script src="../assets/js/custom/section_comments_fe.js"></script>
 </body>
 </html>
