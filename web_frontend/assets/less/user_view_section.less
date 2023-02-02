@@ -2,18 +2,19 @@
 
 @import url(./global.less);
 
+@media (max-width: 632px) {
+    #mobile_container{
+        position: fixed;
+        width: 100%;
+    }
+}
 #wrapper{
     padding-left: 80px;
     width: 100% !important;
 
     @media (max-width: 632px) {
         min-height: calc(100vh - 56px);
-        padding: 16px 0px;
-
-        #mobile_container{
-            position: fixed;
-            width: 100%;
-        }
+        padding: 72px 0px 16px;
     }
 
     #main_navigation{
@@ -40,11 +41,12 @@
     display: none !important;
 
     @media (max-width: 632px) {
-        background: @by_comments_bg;
-        display: block !important;
+        background: @by_white;
+        display: flex !important;
+        flex-direction: column;
+        height: calc(100% - 56px);
         margin-top: 56px;
-        max-height: calc(100vh - 56px);
-        padding: 20px 20px;
+        padding: 0px;
         width: calc(100%);
     
         &.active{
@@ -52,14 +54,52 @@
                 display: none !important;
             }
         }
-    
-        #user_comments_list{
-            border-radius: 12px;
+        #comments_list_container{
+            background: @by_comments_bg;
+            flex-grow: 1;
+            overflow: auto;
+            padding: 20px;
+
+            #user_comments_list{
+                border-radius: 12px;
+                background: @by_white;
+                padding: 16px 12px;
+
+                &:empty{
+                    display: none;
+                }
+        
+                > .comment_item:first-child{
+                    margin-top: 0px;
+                }
+            }
+        }
+
+        .mobile_tab_comments{
             background: @by_white;
-            padding: 16px 12px;
-    
-            > .comment_item:first-child{
-                margin-top: 0px;
+            margin: 0px;
+            padding: 16px;
+            width: 100%;
+            
+            .mobile_add_comment_form{
+                display: flex;
+                .comment_field{
+                    flex-grow: 1;
+
+                    .comment_message{
+                        max-height: calc(50vh);
+                        overflow: auto;
+                    }
+                }
+                .comment_btn{
+                    line-height: 48px;
+                    .mobile_comment_btn{
+                        .edit_section_icon(19px, 20px, -154.86px);
+                        border: none;
+                        display: inline-block;
+                        margin: 0px 0px 0px 12px;
+                    }
+                }
             }
         }
     }
@@ -71,21 +111,24 @@
         bottom: 0;
         display: block !important;
         left: 0;
-        position: absolute;
+        position: fixed;
         width: 100%;
     
         #page_btns{
             display: flex;
             padding: 0px 16px 26px;
+            pointer-events: none;
     
             .page_btn{
                 background-color: @by_white;
-                border: none;
                 border-radius: 15px;
+                border: none;
                 box-shadow: 0px 2px 3px rgba(0,0,0,.25);
-                margin-left: 9px;
                 height: 30px;
+                margin-left: 9px;
+                pointer-events: all;
                 width: 30px;
+
                 &#prev_page_btn::before{
                     .edit_section_icon(10.12px, 30px, -134.02px);
                 }
@@ -317,18 +360,17 @@
 
 #comment_actions_container{
     background: @by_translucent_bg;
+    bottom: 0;
     display: none;
-    height: calc(100vh - 56px);
+    height: calc(100%);
     opacity: 0;
-    transform: translateY(0%);
+    position: fixed;
     transition: opacity 0.2s;
     width: 100%;
 
     &.active{
         display: block;
         opacity: 1;
-        position: absolute;
-        transform: translateY(-100%);
         z-index: 10000;
         
         .comment_actions_menu{
