@@ -8,7 +8,7 @@
     var users = document.querySelectorAll('.users');
     var checkbox =  M.Dropdown.init(users, {closeOnClick:false});
 
-    var emails = document.querySelectorAll('.chips');
-    var add_chips = M.Chips.init(emails);
+    // var emails = document.querySelectorAll('.chips');
+    // var add_chips = M.Chips.init(emails);
 
     
