@@ -42,7 +42,7 @@
                     }
                 }
             } else {
-                if(swipe_value > Math.abs(event.touches.item(0).clientX + SWIPE_OFFSET)){
+                if(Math.abs(swipe_value - event.touches.item(0).clientX) > SWIPE_OFFSET){
                     swipe_timeout = setTimeout(() => {
                         onSwipe(swipe_direction);
                     }, 480);
