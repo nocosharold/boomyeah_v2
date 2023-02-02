@@ -346,15 +346,11 @@ function addSearchEmailResult(search_email_result){
         invited_emails.emails.push(user_email);
         invited_emails.chips.push({ tag: user_email });
 
-        console.log(invited_emails);
-        
         const chip_instance_init = M.Chips.init(email_chip_elem, { 
             data: invited_emails.chips,
             onChipDelete: (e, email) => {
                 invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
                 invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
-    
-                console.log(invited_emails);
             }
         });
     }
