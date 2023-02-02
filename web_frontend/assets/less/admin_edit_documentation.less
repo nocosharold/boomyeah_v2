@@ -60,6 +60,7 @@ body{
         display: flex;
         justify-content: flex-start;
         margin: 62px 0 34px;
+        height: 36px;
         #doc_title {
             font: 20px/24px @readex_medium;
             margin: 0;
@@ -90,6 +91,7 @@ body{
                     &::before{
                         top: 3px;
                         left: 4px;
+                        background-color: hsla(221, 83%, 53%, 0.15) !important;
                     }
                     &::after{
                         background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/access_icons.svg') no-repeat 6px 3px;
@@ -103,6 +105,9 @@ body{
             }
         }
         #invite_collaborator_btn{
+            &.hidden{
+                display: none;
+            }
             &.btn{
                 background-color: transparent;
                 border-radius: 20px;
@@ -127,12 +132,56 @@ body{
             }
         }
     }
+    @media screen and (max-width: 723px) {
+        #invite_collaborator_btn {
+            width: 80px;
+        }
+    }
+    @media screen and (max-width: 632px) {
+        padding-top: 13px;
+
+        #breadcrumb_list {
+            display: none;
+        }
+
+        .divider {
+            display: none;
+        }
+
+        #doc_title_access {
+            margin: 0 0 2px;
+            gap: 8px;
+            flex-wrap: wrap;
+            .switch {
+                margin-left: unset;
+                label{
+                    .lever{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 536px) {
+        #invite_collaborator_btn {
+            width: 54px;
+        }
+    }
+    @media screen and (max-width: 510px) {
+        min-width: 260px;
+        #doc_title_access {
+            margin-bottom: 57px;
+        }
+    }
     .doc_text_content{
         color: @by_text;
         font: 16px/24px @readex_regular;
         margin: 0 0 34px;
         max-width: 893px;
         width: 100%;
+        &:focus-visible{
+            outline: none;
+        }
     }
     #section_form {
         align-items: center;
@@ -376,6 +425,7 @@ div::-webkit-scrollbar {
     background-color: @by_bg;
     border-radius: 10px;
     width: 10px;
+    display: revert;
 }
 
 div::-webkit-scrollbar-thumb {

@@ -689,6 +689,7 @@ body {
   display: flex;
   justify-content: flex-start;
   margin: 62px 0 34px;
+  height: 36px;
 }
 .container #doc_title_access #doc_title {
   font: 20px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
@@ -723,6 +724,7 @@ body {
 .container #doc_title_access .switch label .lever::before {
   top: 3px;
   left: 4px;
+  background-color: hsla(221, 83%, 53%, 0.15) !important;
 }
 .container #doc_title_access .switch label .lever::after {
   background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/access_icons.svg') no-repeat 6px 3px;
@@ -731,6 +733,9 @@ body {
   height: 24px;
   top: 3px;
   left: 4px;
+}
+.container #doc_title_access #invite_collaborator_btn.hidden {
+  display: none;
 }
 .container #doc_title_access #invite_collaborator_btn.btn {
   background-color: transparent;
@@ -754,12 +759,55 @@ body {
   vertical-align: middle;
   width: 19px;
 }
+@media screen and (max-width: 723px) {
+  .container #invite_collaborator_btn {
+    width: 80px;
+  }
+}
+@media screen and (max-width: 632px) {
+  .container {
+    padding-top: 13px;
+  }
+  .container #breadcrumb_list {
+    display: none;
+  }
+  .container .divider {
+    display: none;
+  }
+  .container #doc_title_access {
+    margin: 0 0 2px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .container #doc_title_access .switch {
+    margin-left: unset;
+  }
+  .container #doc_title_access .switch label .lever {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 536px) {
+  .container #invite_collaborator_btn {
+    width: 54px;
+  }
+}
+@media screen and (max-width: 510px) {
+  .container {
+    min-width: 260px;
+  }
+  .container #doc_title_access {
+    margin-bottom: 57px;
+  }
+}
 .container .doc_text_content {
   color: #6C7177;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   margin: 0 0 34px;
   max-width: 893px;
   width: 100%;
+}
+.container .doc_text_content:focus-visible {
+  outline: none;
 }
 .container #section_form {
   align-items: center;
@@ -973,6 +1021,7 @@ div::-webkit-scrollbar {
   background-color: #EFF6FF;
   border-radius: 10px;
   width: 10px;
+  display: revert;
 }
 div::-webkit-scrollbar-thumb {
   background-color: #DBEAFE;

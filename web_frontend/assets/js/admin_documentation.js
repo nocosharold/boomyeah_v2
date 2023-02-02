@@ -48,10 +48,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         Sortable.create(section_tabs_list);
     });
 
-    document.querySelectorAll("#archived_documents").forEach((section_tabs_list) => {
-        Sortable.create(section_tabs_list);
+    document.addEventListener("click", (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+
+        let element = event.target.closest(".add_invite_result");
+        
+        if(element){
+            addSearchEmailResult(element);
+        }
     });
 });
+
+var valid_email = true;
+var invited_emails = { emails: [], chips: []};
 
 function submitInvite(event){
     event.preventDefault();
@@ -94,8 +104,8 @@ function displayDocumentations(documentations){
         document_block += `
             <div class="document_block">
                 <div class="document_details">
-                    <h2>${document.title}</h2>
-                    ${ document.is_private ? `<button class="invite_collaborators_btn"> ${document.collaborator_count}</button>` : ''}
+                    <input type="text" name="document_title" value="${document.title}" id="" class="document_title" readonly="">
+                    ${ document.is_private ? `<button class="invite_collaborators_btn modal-trigger"> ${document.collaborator_count}</button>` : ''}
                 </div>
                 <div class="document_controls">
                     ${ document.is_private ? '<button class="access_btn modal-trigger" href="#confirm_to_public"></button>' : '' }
@@ -108,7 +118,7 @@ function displayDocumentations(documentations){
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="archive_icon">Archive</a></li>
                         <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="invite_icon">Invite</a></li>
+                        <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                         <li class="divider" tabindex="-1"></li>
                         ${ document.is_private ? '<li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>' : 
                         '<li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>' }
@@ -118,6 +128,8 @@ function displayDocumentations(documentations){
                 </div>
             </div>`;
     });
+
+    console.log(document_block);
 }
 
 function initializeMaterializeDropdown(){
@@ -279,6 +291,7 @@ function searchEmail(event){
         
         /* No matching member message */
         if(!invite_results.length){
+            valid_email = false;
             ux("#with_access_div").html().setAttribute("hidden", true);
     
             ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
@@ -288,10 +301,11 @@ function searchEmail(event){
         else{
             let invite_dropdown = document.getElementById("add_invite");
             invite_dropdown.innerHTML = ""; /* remove existing element */
+            valid_email = true;
 
             for(var user_index=0; user_index < invite_results.length; user_index++){
                 invite_dropdown.innerHTML += `
-                    <li>
+                    <li class="add_invite_result">
                         <input class="choose_users" id="user_${user_index}" type="checkbox" />
                         <label for="user_${user_index}">
                             <img src="${invite_results[user_index].img_url}" alt="user_profile">
@@ -319,5 +333,23 @@ function searchEmail(event){
     else{
         ux("#with_access_div").html().removeAttribute("hidden");
         ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+    }
+}
+
+function addSearchEmailResult(search_email_result){
+    const user_email = search_email_result.children[1].children[1].children[1].innerText;
+    const email_chip_elem = document.querySelectorAll('.chips');
+
+    if(!invited_emails.emails.includes(user_email) && valid_email){
+        invited_emails.emails.push(user_email);
+        invited_emails.chips.push({ tag: user_email });
+
+        const chip_instance_init = M.Chips.init(email_chip_elem, { 
+            data: invited_emails.chips,
+            onChipDelete: (e, email) => {
+                invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
+                invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
+            }
+        });
     }
 }
