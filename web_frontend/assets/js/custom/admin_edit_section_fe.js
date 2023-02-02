@@ -2,21 +2,61 @@
 function(){
     let toast_timeout = null;
     let saving_timeout = null;
+    let target_index = 0;
 
     document.addEventListener("DOMContentLoaded", async ()=>{
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
         }
 
+        ux("#prev_page_btn").on("click", ()=> { openSectionTab(-1) })
+        ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
+
         await include("#main_navigation" , `../views/global/main_navigation.html`, `../assets/js/main_navigation.js`);
 
         initializeEditSectionEvents();
         initializeRedactor("#section_pages .tab_content");
+        updateSectionProgress();
 
         window.addEventListener("resize", () => {
             window.location.reload();
         })
     });
+
+    function updateSectionProgress(){
+        let sections = ux("#section_pages").findAll(".section_page_content");
+        let section_items = Array.from(sections);
+        let total_progress = `${ Math.round(((target_index + 1) / section_items.length) * 100)}%`;
+        ux("#section_page_progress .progress").html().style.width = total_progress;
+    }
+
+    function openSectionTab(move_index){
+        let sections = ux("#section_pages").findAll(".section_page_content");
+        let section_items = Array.from(sections);
+        ux("#prev_page_btn").removeClass("hidden");
+        ux("#next_page_btn").removeClass("hidden");
+
+        section_items.forEach(async (section, section_index) => {
+            if(section.classList.contains("active")){
+                target_index = section_index + move_index;
+                
+                if(section_items[target_index]){
+                    await ux(section).removeClass("active");
+                    section_items[target_index].classList.add("active");
+                }
+
+                if(target_index == FIRST_ITEM){
+                    ux("#prev_page_btn").addClass("hidden");
+                }
+                
+                if(target_index == section_items.length - 1){
+                    ux("#next_page_btn").addClass("hidden");
+                }
+
+                updateSectionProgress();
+            }
+        });
+    }
     
     function initializeEditSectionEvents(ux_target = null, callback = null){
         if(ux_target){
@@ -101,6 +141,9 @@ function(){
     }
     
     async function openTabLink(event, is_title = false){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
         let tab_item = event.target;
         let section_page_content = ux(tab_item.closest(".section_page_content"));
         let section_page_tabs_list = section_page_content.find(".section_page_tabs");
@@ -112,7 +155,7 @@ function(){
         ux(`.page_tab_item[data-tab_id="${tab_id}"]`).addClass("active");
         
         let active_tab = ux(`#${ tab_id }`).addClass("show");
-
+        
         if(active_tab && active_tab.find("input.tab_title").html()){
             active_tab.find("input.tab_title").html().select();
         }
