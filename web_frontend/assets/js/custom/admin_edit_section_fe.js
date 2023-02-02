@@ -4,7 +4,7 @@ function(){
     let saving_timeout = null;
     let target_index = 0;
 
-    document.addEventListener("DOMContentLoaded", async ()=>{
+    document.addEventListener("DOMContentLoaded", async ()=> {
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
         }
@@ -19,7 +19,9 @@ function(){
         updateSectionProgress();
 
         window.addEventListener("resize", () => {
-            window.location.reload();
+            if(MOBILE_WIDTH < document.documentElement.clientWidth){
+                window.location.reload();
+            }
         })
     });
 
