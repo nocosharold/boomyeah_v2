@@ -52,7 +52,18 @@
             </form>
             <h2>Sections</h2>
             <div class="section_container" id="section_container">
-            
+                <div class="section_block hidden">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <input type="text" name="section_title" value="Untitled Section" id="" class="section_title tooltipped"
+                            data-tooltip="Untitled Section">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon tooltipped" data-tooltip="Edit Title"></button>
+                        <button class="copy_icon tooltipped" data-tooltip="Duplicate"></button>
+                        <button class="remove_icon tooltipped" data-tooltip="Remove"></button>
+                    </div>
+                </div>
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
@@ -80,8 +91,7 @@
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
-                        <!-- <h3 class="section_title">Learn industry-relevant software development skills</h3> -->
-                        <input type="text" name="section_title" value="Learn industry-relevant software development skills" id="" class="section_title" readonly="">
+                        <input type="text" name="section_title" value="Village 88 Training is offered free to Filipinos residing in the Philippines" id="" class="section_title tooltipped" data-tooltip="Village 88 Training is offered free to Filipinos residing in the Philippines">
                     </div>
                     <div class="section_controls">
                         <button class="edit_section_title_icon"></button>
@@ -272,8 +282,7 @@
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
-                        <!-- <h3 class="section_title">Team Collaboration in Discord (with Instructor Input and Guidance)</h3> -->
-                        <input type="text" name="section_title" value="Team Collaboration in Discord (with Instructor Input and Guidance)" id="" class="section_title" readonly="">
+                        <input type="text" name="section_title" value="Team Collaboration in Discord (with Instructor Input and Guidance)" id="" class="section_title tooltipped" data-tooltip="Team Collaboration in Discord (with Instructor Input and Guidance)">
                     </div>
                     <div class="section_controls">
                         <button class="edit_section_title_icon"></button>
@@ -320,8 +329,7 @@
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
-                        <!-- <h3 class="section_title">Choose your career path: Frontend, Backend, or Quality Assurance.</h3> -->
-                        <input type="text" name="section_title" value="Choose your career path: Frontend, Backend, or Quality Assurance." id="" class="section_title" readonly="">
+                        <input type="text" name="section_title" value="Choose your career path: Frontend, Backend, or Quality Assurance" id="" class="section_title tooltipped" data-tooltip="Choose your career path: Frontend, Backend, or Quality Assurance">
                     </div>
                     <div class="section_controls">
                         <button class="edit_section_title_icon"></button>
@@ -400,6 +408,11 @@
                         <button class="copy_icon"></button>
                         <button class="remove_icon"></button>
                     </div>
+                </div>
+                <div class="no_sections hidden">
+                    <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
+                        alt="Empty Content Illustration">
+                    <p>You have no sections yet</p>
                 </div>
             </div>
         </div>
