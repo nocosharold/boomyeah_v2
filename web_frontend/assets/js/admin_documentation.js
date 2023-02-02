@@ -104,8 +104,8 @@ function displayDocumentations(documentations){
         document_block += `
             <div class="document_block">
                 <div class="document_details">
-                    <h2>${document.title}</h2>
-                    ${ document.is_private ? `<button class="invite_collaborators_btn"> ${document.collaborator_count}</button>` : ''}
+                    <input type="text" name="document_title" value="${document.title}" id="" class="document_title" readonly="">
+                    ${ document.is_private ? `<button class="invite_collaborators_btn modal-trigger"> ${document.collaborator_count}</button>` : ''}
                 </div>
                 <div class="document_controls">
                     ${ document.is_private ? '<button class="access_btn modal-trigger" href="#confirm_to_public"></button>' : '' }
@@ -118,7 +118,7 @@ function displayDocumentations(documentations){
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="archive_icon">Archive</a></li>
                         <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!" class="invite_icon">Invite</a></li>
+                        <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                         <li class="divider" tabindex="-1"></li>
                         ${ document.is_private ? '<li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>' : 
                         '<li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>' }
@@ -128,6 +128,8 @@ function displayDocumentations(documentations){
                 </div>
             </div>`;
     });
+
+    console.log(document_block);
 }
 
 function initializeMaterializeDropdown(){
