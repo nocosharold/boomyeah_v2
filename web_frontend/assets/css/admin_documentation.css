@@ -141,7 +141,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
-  max-width: 260px;
+  max-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #B4C5FF;
@@ -1099,6 +1099,7 @@ body::-webkit-scrollbar-thumb {
 }
 .container #archived_documents .document_block {
   background-color: #F4F7FA;
+  pointer-events: none;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

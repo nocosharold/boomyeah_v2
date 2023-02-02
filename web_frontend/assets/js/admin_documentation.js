@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.addEventListener("click", (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+
         let element = event.target.closest(".add_invite_result");
         
         if(element){
@@ -60,6 +63,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
+
+var valid_email = true;
+var invited_emails = { emails: [], chips: []};
 
 function submitInvite(event){
     event.preventDefault();
@@ -287,6 +293,7 @@ function searchEmail(event){
         
         /* No matching member message */
         if(!invite_results.length){
+            valid_email = false;
             ux("#with_access_div").html().setAttribute("hidden", true);
     
             ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
@@ -296,6 +303,7 @@ function searchEmail(event){
         else{
             let invite_dropdown = document.getElementById("add_invite");
             invite_dropdown.innerHTML = ""; /* remove existing element */
+            valid_email = true;
 
             for(var user_index=0; user_index < invite_results.length; user_index++){
                 invite_dropdown.innerHTML += `
@@ -331,14 +339,23 @@ function searchEmail(event){
 }
 
 function addSearchEmailResult(search_email_result){
+    const user_email = search_email_result.children[1].children[1].children[1].innerText;
     const email_chip_elem = document.querySelectorAll('.chips');
-    const email_chip_instance = M.Chips.getInstance(email_chip_elem);
 
-    console.log(search_email_result.children);
+    if(!invited_emails.emails.includes(user_email) && valid_email){
+        invited_emails.emails.push(user_email);
+        invited_emails.chips.push({ tag: user_email });
 
-    // let user_information = search_email_result.children[1].children[1];
-    // let user_email = ux(`.${user_information.classList[0]} p`).text();
-
-    // console.log(email_chip_instance);
-    // email_chip_instance.addChip({ tag: user_email });
+        console.log(invited_emails);
+        
+        const chip_instance_init = M.Chips.init(email_chip_elem, { 
+            data: invited_emails.chips,
+            onChipDelete: (e, email) => {
+                invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
+                invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
+    
+                console.log(invited_emails);
+            }
+        });
+    }
 }
