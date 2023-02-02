@@ -12,7 +12,12 @@
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
-        await include("#user_view_comments" , `../views/global/user_view_section_comments.html`);
+        const current_location = window.location.pathname;
+        const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+
+        let global_path = (view_path === "/views")? "." : "..";
+
+        await include("#user_view_comments" , `${global_path}/global/user_view_section_comments.html`);
 
         ux(document).on("click", onElementClick);
 
