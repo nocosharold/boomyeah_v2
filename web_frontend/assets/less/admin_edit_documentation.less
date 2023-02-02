@@ -1,13 +1,25 @@
 @import url(./global.less);
 
+body{
+    overflow: auto;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#wrapper{
+    padding: 0 30px 0 100px;
+    @media screen and (max-width: 632px){
+        padding: 0 30px;
+    }
+}
 .container {
     background-color: @by_white;
     border-radius: 12px;
     margin: 24px auto !important;
-    min-width: 1024px !important;
+    max-width: 1024px !important;
     padding: 39px 24px 32px;
     position: relative;
-    width: 1024px !important;
+    width: 100% !important;
     #breadcrumb_list{
         display: flex;
         position: relative;
@@ -119,7 +131,8 @@
         color: @by_text;
         font: 16px/24px @readex_regular;
         margin: 0 0 34px;
-        width: 893px;
+        max-width: 893px;
+        width: 100%;
     }
     #section_form {
         align-items: center;
@@ -178,7 +191,6 @@
 
             input.valid,
             input.validate {
-                background-color: @by_bg;
                 border-bottom: 2px solid @by_primary;
                 box-shadow: 0 1px 0 0 @by_primary;
             }
@@ -188,11 +200,26 @@
                 line-height: 16px;
                 transform: translateY(6px) scale(0.8);
             }
+            &.input_error {
+                label {
+                    color: @by_gray !important;
+                }
+
+                input {
+                    border-bottom: 2px solid @by_error;
+                    box-shadow: 0 1px 0 0 @by_error;
+                }
+
+                &::before {
+                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/disabled_add.svg') no-repeat;
+                }
+            }
         }
 
         #input_add_section {
             margin-bottom: 0;
-            width: 511px;
+            max-width: 511px;
+            width: 98%;
         }
 
         #save_status {
@@ -207,9 +234,11 @@
         margin: 0;
     }
     .section_container{
+        margin-top: 8px;
         max-height: 359px;
+        max-width: 549px;
         overflow-x: hidden;
-        width: 549px;
+        width: 100%;
         .section_block{
             &.hidden{
                 display: none;
@@ -223,9 +252,10 @@
             height: 56px;
             justify-content: space-between;
             margin: 3px 0;
+            max-width: 522px;
             overflow: hidden;
             padding: 0 24px;
-            width: 522px;
+            width: 100%;
             &.hidden{
                 display: none;
             }
@@ -264,7 +294,6 @@
                     min-width: 345px;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    pointer-events: none;
                 }
             }
             .section_controls{
@@ -298,9 +327,51 @@
                 }
             }
         }
-        
+    }
+    .no_sections {
+        &.hidden {
+            display: none;
+        }
+
+        width: 100%;
+        text-align: center;
+        margin: 45px 0 142px;
+
+        img {
+            margin-bottom: 9px;
+        }
+
+        p {
+            font: 16px/24px @readex_regular;
+            color: @by_off_gray;
+        }
     }
 }
+.material-tooltip {
+    background-color: @by_tooltip_bg !important;
+    border-radius: 28px !important;
+    color: @by_white !important;
+    min-height: 28px !important;
+    overflow: unset !important;
+    padding: 8px 7px !important;
+
+    .tooltip-content {
+        font-weight: 200 !important;
+        font: 12px/16px @readex_regular !important;
+
+        &::after {
+            background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/tooltip_arrow.svg') no-repeat;
+            bottom: -5px;
+            content: '';
+            display: inline-block;
+            height: 7px;
+            left: 41%;
+            position: absolute;
+            width: 17px;
+        }
+    }
+}
+
 div::-webkit-scrollbar {
     background-color: @by_bg;
     border-radius: 10px;
