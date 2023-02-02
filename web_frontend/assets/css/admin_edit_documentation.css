@@ -759,6 +759,46 @@ body {
   vertical-align: middle;
   width: 19px;
 }
+@media screen and (max-width: 723px) {
+  .container #invite_collaborator_btn {
+    width: 80px;
+  }
+}
+@media screen and (max-width: 632px) {
+  .container {
+    padding-top: 13px;
+  }
+  .container #breadcrumb_list {
+    display: none;
+  }
+  .container .divider {
+    display: none;
+  }
+  .container #doc_title_access {
+    margin: 0 0 2px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .container #doc_title_access .switch {
+    margin-left: unset;
+  }
+  .container #doc_title_access .switch label .lever {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 536px) {
+  .container #invite_collaborator_btn {
+    width: 54px;
+  }
+}
+@media screen and (max-width: 510px) {
+  .container {
+    min-width: 260px;
+  }
+  .container #doc_title_access {
+    margin-bottom: 57px;
+  }
+}
 .container .doc_text_content {
   color: #6C7177;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
