@@ -696,6 +696,20 @@ body {
   margin: 0;
   max-width: 630px;
 }
+@media screen and (max-width: 632px) {
+  .container {
+    padding-top: 13px;
+  }
+  .container #breadcrumb_list {
+    display: none;
+  }
+  .container .divider {
+    display: none;
+  }
+  .container #doc_title_access {
+    margin: 0 0 2px;
+  }
+}
 .container .doc_text_content {
   color: #6C7177;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
