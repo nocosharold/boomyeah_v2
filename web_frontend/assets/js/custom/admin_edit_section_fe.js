@@ -12,6 +12,10 @@ function(){
 
         initializeEditSectionEvents();
         initializeRedactor("#section_pages .tab_content");
+
+        window.addEventListener("resize", () => {
+            window.location.reload();
+        })
     });
     
     function initializeEditSectionEvents(ux_target = null, callback = null){
@@ -78,33 +82,40 @@ function(){
                 ux(page_tab_link).on("click", (link_event) => {
                     openTabLink(link_event);
                 });
+            });
+
+            ux_target.findAll((".section_page_tab .tab_title")).forEach((page_tab_link) => {
+                ux(page_tab_link).on("click", (link_event) => {
+                    openTabLink(link_event, true);
+                });
             })
         } else {
-            
             ux(".section_page_tabs .page_tab_item").onEach("click", (event) =>{
                 openTabLink(event);
+            });
+            
+            ux(".section_page_tab .tab_title").onEach("click", (event) =>{
+                openTabLink(event, true);
             });
         }
     }
     
-    function openTabLink(event){
+    async function openTabLink(event, is_title = false){
         let tab_item = event.target;
         let section_page_content = ux(tab_item.closest(".section_page_content"));
-        let section_page_tabs_list = ux(tab_item.closest(".section_page_tabs"));
+        let section_page_tabs_list = section_page_content.find(".section_page_tabs");
         let page_tab_item = tab_item.closest(".page_tab_item");
-        let tab_id = ux(page_tab_item).attr("data-tab_id");
+        let tab_id = (!is_title) ? ux(page_tab_item).attr("data-tab_id") : ux(tab_item.closest(".section_page_tab")).attr("id");
     
-        section_page_tabs_list.findAll(".page_tab_item").forEach(element => element.classList.remove("active"))
-        section_page_content.findAll(".section_page_tab").forEach(element => element.classList.remove("show"))
+        await section_page_tabs_list.findAll(".page_tab_item").forEach(element => element.classList.remove("active"));
+        await section_page_content.findAll(".section_page_tab").forEach(element => element.classList.remove("show"));
+        ux(`.page_tab_item[data-tab_id="${tab_id}"]`).addClass("active");
         
-        setTimeout(() => {
-            ux(page_tab_item).addClass("active");
-            let active_tab = ux(`#${ tab_id }`).addClass("show");
+        let active_tab = ux(`#${ tab_id }`).addClass("show");
 
-            if(active_tab && active_tab.find("input.tab_title").html()){
-                active_tab.find("input.tab_title").html().select();
-            }
-        });
+        if(active_tab && active_tab.find("input.tab_title").html()){
+            active_tab.find("input.tab_title").html().select();
+        }
     }
     
     function addNewSectionContent(event){
@@ -192,7 +203,6 @@ function(){
             Sortable.create(section_tabs_list, {
                 filter: ".add_page_tab"
             });
-        })
-
+        });
     }
 })();

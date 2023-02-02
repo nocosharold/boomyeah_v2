@@ -64,10 +64,12 @@ function submitDocForm(event){
     const document_block = ux(".document_block.hidden").clone();
     const documentations = ux("#documentations").html();
     const document_title =  ux(document_block.find(".document_details input")).html();
+    const input_field = ux(input_add_documentation.closest(".input-field"));
 
     if(!input_add_documentation.value.trim().length){
-        alert("text input empty");
+        input_field.addClass("input_error");
     }else{
+        input_field.removeClass("input_error");
         document_block.html().setAttribute("class", "document_block");
         document_title.html().value = input_add_documentation.value;
         
@@ -80,6 +82,7 @@ function submitDocForm(event){
     }
 
     event.target.reset();
+    ux(ux(".group_add_documentation label").html()).addClass("active");
 }
 
 function displayDocumentations(documentations){
