@@ -6,6 +6,9 @@
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
         ux(".show_comments_btn").onEach("click", showTabComments);
+        ux(".mobile_comment_btn").onEach("click", (event) => {
+            onSubmitComment(event.target.closest(".mobile_add_comment_form"))
+        });
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
@@ -39,9 +42,11 @@
                     }
                 }
             } else {
-                swipe_timeout = setTimeout(() => {
-                    onSwipe(swipe_direction);
-                }, 480);
+                if(swipe_value > Math.abs(event.touches.item(0).clientX + SWIPE_OFFSET)){
+                    swipe_timeout = setTimeout(() => {
+                        onSwipe(swipe_direction);
+                    }, 480);
+                }
             }
 
         });
@@ -84,17 +89,18 @@
     }
 
     function onSubmitComment(post_form, is_reply = false){
-        if(post_form.hasOwnProperty("preventDefault")){
+        if(post_form.hasOwnProperty("type")){
             post_form.preventDefault();
-            post_form.stopPropagation();
+            post_form.stopImmediatePropagation();
             post_form = post_form.target;
         }
-
+        let is_mobile_comment = post_form.classList.contains("mobile_add_comment_form");
         let comment_message = ux(post_form).find(".comment_message").html().value;
         let comment_container = post_form.closest(".comment_container");
 
         if(comment_message){
             let comment_item = ux("#comments_list_clone .comment_item").clone();
+            let comments_list = ux(comment_container).find(".comments_list");
             comment_item.find(".comment_message").text(comment_message);
             
             if(is_reply){
@@ -102,13 +108,17 @@
                 comment_item.find(".add_comment_form").html().remove();
             }
 
-            let comments_list = ux(comment_container).find(".comments_list");
+            if(is_mobile_comment){
+                comments_list = ux("#comments_list_container .comments_list");
+                ux("#comments_list_container").html().scrollTop = 0;
+            }
+            
             comments_list.html().prepend(comment_item.html());
-
             post_form.reset();
             ux(post_form).find(".comment_message").html().blur();
             bindViewEvents();
         }
+        return false;
     }
 
     async function showTabComments(event){

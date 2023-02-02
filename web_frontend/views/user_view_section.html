@@ -14,8 +14,24 @@
     <script src="../assets/js/vendor/Sortable.min.js"></script>
 </head>
 <body>
+    <div id="client_width"></div>
     <div id="mobile_comments_slideout" class="sidenav">
-        <ul id="user_comments_list" class="comments_list"></ul>
+        <div id="comments_list_container">
+            <ul id="user_comments_list" class="comments_list"></ul>
+        </div>
+        <div class="mobile_tab_comments tab_comments comment_container">
+            <form action="/" method="POST" class="mobile_add_comment_form add_comment_form">
+                <div class="comment_field">
+                    <div class="comment_message_content input-field col s12">
+                        <label for="post_comment_4">Write a comment</label>
+                        <textarea name="post_comment" id="post_comment_4" class="materialize-textarea comment_message"></textarea>
+                    </div>
+                </div>
+                <div class="comment_btn">
+                    <button type="button" class="mobile_comment_btn"></button>
+                </div>
+            </form>
+        </div>
     </div>
     <div id="main_navigation"></div>
     <div id="wrapper" class="container">
@@ -49,25 +65,23 @@
                     </ul>
                     <div class="section_page_tab" id="tab_1">
                         <h3 class="tab_title">Our Mission &amp; Vision</h3>
-                        <p id="tab_content_1" class="tab_content">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
+                        <p id="tab_content_1" class="tab_content">There are many paths where one could start his career. Finding your focus is essential to the outcome of your career. Starting too many fronts could easily drain you or waterdown your energy levels when not done properly. Spreading yourself too thin at the start of your career leads to poor quality foundation. We all want to be that well-compensated employee in the long run. But being one with an untrusted foundation ends this hope.</p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (0)</a>
                         <div class="tab_comments comment_container">
                             <form action="/" method="POST" class="add_comment_form">
                                 <div class="comment_field">
                                     <div class="comment_message_content input-field col s12">
-                                        <label for="post_comment">Write a comment</label>
-                                        <textarea name="post_comment" id="post_comment" class="materialize-textarea comment_message"></textarea>
+                                        <label for="post_comment_1">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_1" class="materialize-textarea comment_message"></textarea>
                                     </div>
                                 </div>
                             </form>
-                            <ul class="comments_list">
-                                <li id="user_view_comments"></li>
-                            </ul>
+                            <ul id="user_view_comments" class="comments_list"></ul>
                         </div>
                     </div>
                     <div class="section_page_tab show" id="tab_2">
                         <h3 class="tab_title">Corporate Responsibility</h3>
-                        <p class="tab_content">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                        <p class="tab_content">After choosing a foundation to start on, proceed to putting in the hours or time to learn as much as you can and gain a jumpstart on your career. Being equipped with the right knowhow about your career is a great way to assure that you are on the path to your career’s success. Feel free to ask help from your seniors and/or peers. This not only reinforces your knowledge, but also helps build relationship with your team. Spend time with them; determine and solve problems together. But remember to spend time with yourself and reflect on the things you have learned. Learn to gather information and solutions alone; then compare them with your team (leader/members).</p>
                         <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
                     </div>
                     <div class="section_page_tab" id="tab_3">
@@ -91,33 +105,8 @@
                             <form action="/" method="POST" class="add_comment_form">
                                 <div class="comment_field">
                                     <div class="comment_message_content input-field col s12">
-                                        <label for="post_comment">Write a comment</label>
-                                        <textarea name="post_comment" id="post_comment" class="materialize-textarea comment_message"></textarea>
-                                    </div>
-                                </div>
-                            </form>
-                            <ul class="comments_list">
-                                <li id="user_view_comments"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="section_page_content">
-                    <ul class="section_page_tabs">
-                        <li class="page_tab_item active" data-tab_id="tab_5">
-                            <a href="#tab_5">Village88 2.0</a>
-                        </li>
-                    </ul>
-                    <div class="section_page_tab show" id="tab_5">
-                        <h3 class="tab_title">Village88 2.0</h3>
-                        <p id="tab_content_1" class="tab_content">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
-                        <div class="tab_comments comment_container">
-                            <form action="/" method="POST" class="add_comment_form">
-                                <div class="comment_field">
-                                    <div class="comment_message_content input-field col s12">
-                                        <label for="post_comment">Write a comment</label>
-                                        <textarea name="post_comment" id="post_comment" class="materialize-textarea comment_message"></textarea>
+                                        <label for="post_comment_4">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_4" class="materialize-textarea comment_message"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -138,7 +127,7 @@
                 <div id="section_page_progress">
                     <div class="progress"></div>
                 </div>
-            </button>
+            </div>
             <div id="clone_section_page">
                 <ul id="comments_list_clone">
                     <li class="comment_item comment_container">
