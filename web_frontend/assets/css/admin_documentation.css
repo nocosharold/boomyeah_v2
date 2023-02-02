@@ -318,13 +318,11 @@ textarea {
   width: 28px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input {
-  width: 100% !important;
   z-index: 999;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.valid,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.invalid {
-  height: 62px;
   border-bottom: none !important;
   box-shadow: none;
 }
@@ -340,7 +338,6 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.input-field {
   background: #EFF6FF;
   border-radius: 8px 8px 5px 5px;
-  height: 65px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label {
   color: #78716C;
@@ -361,8 +358,7 @@ textarea {
   height: 20px;
   position: absolute;
   right: 15px;
-  top: 33px;
-  transform: translateY(23px);
+  bottom: 25px;
   width: 20px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite {
