@@ -52,7 +52,18 @@
             </form>
             <h2>Sections</h2>
             <div class="section_container" id="section_container">
-            
+                <div class="section_block hidden">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <input type="text" name="section_title" value="Untitled Section" id="" class="section_title tooltipped"
+                            data-tooltip="Untitled Section">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon tooltipped" data-tooltip="Edit Title"></button>
+                        <button class="copy_icon tooltipped" data-tooltip="Duplicate"></button>
+                        <button class="remove_icon tooltipped" data-tooltip="Remove"></button>
+                    </div>
+                </div>
                 <div class="section_block">
                     <div class="section_details">
                         <button class="draggable_icon"></button>
@@ -221,6 +232,11 @@
                         <button class="remove_icon"></button>
                     </div>
                 </div>
+            </div>
+            <div class="no_sections hidden">
+                <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
+                    alt="Empty Content Illustration">
+                <p>You have no sections yet</p>
             </div>
         </div>
     </div>

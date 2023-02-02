@@ -122,6 +122,13 @@ function duplicateSection(event){
     ux(cloned.find(".remove_icon").on("click", removeSectionBlock));
     
     source.insertAdjacentElement("afterend", cloned.html());
+
+    if(cloned_title.html().value.trim().length > 8){
+        ux(cloned_title.html()).attr("data-tooltip", cloned_title.html().value);
+        ux(cloned_title.html()).attr("class", "section_title tooltipped");
+        ux(cloned_title.html()).attr("readonly", "");
+        initializeMaterializeTooltip();
+    }
 }
 
 function initializeMaterializeTooltip(){
