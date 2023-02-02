@@ -132,6 +132,47 @@ body{
             }
         }
     }
+    @media screen and (max-width: 723px) {
+        #invite_collaborator_btn {
+            width: 80px;
+        }
+    }
+    @media screen and (max-width: 632px) {
+        padding-top: 13px;
+
+        #breadcrumb_list {
+            display: none;
+        }
+
+        .divider {
+            display: none;
+        }
+
+        #doc_title_access {
+            margin: 0 0 2px;
+            gap: 8px;
+            flex-wrap: wrap;
+            .switch {
+                margin-left: unset;
+                label{
+                    .lever{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 536px) {
+        #invite_collaborator_btn {
+            width: 54px;
+        }
+    }
+    @media screen and (max-width: 510px) {
+        min-width: 260px;
+        #doc_title_access {
+            margin-bottom: 57px;
+        }
+    }
     .doc_text_content{
         color: @by_text;
         font: 16px/24px @readex_regular;
