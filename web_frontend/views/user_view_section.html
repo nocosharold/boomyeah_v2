@@ -35,12 +35,12 @@
                 </div>
             </div>
             <div id="section_pages">
-                <div class="section_page_content">
+                <div class="section_page_content active">
                     <ul class="section_page_tabs">
-                        <li class="page_tab_item active" data-tab_id="tab_1">
+                        <li class="page_tab_item" data-tab_id="tab_1">
                             <a href="#tab_1">Our Mission &amp; Vision</a>
                         </li>
-                        <li class="page_tab_item" data-tab_id="tab_2">
+                        <li class="page_tab_item active" data-tab_id="tab_2">
                             <a href="#tab_2">Corporate Responsibility</a>
                         </li>
                         <li class="page_tab_item" data-tab_id="tab_3">
@@ -76,15 +76,15 @@
                         <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
                     </div>
                 </div>
-
+                <!-- Mobile View: Show one section_page_content at a time -->
                 <div class="section_page_content">
                     <ul class="section_page_tabs">
                         <li class="page_tab_item active" data-tab_id="tab_4">
-                            <a href="#tab_4">Our Mission &amp; Vision</a>
+                            <a href="#tab_4">Village88 2012</a>
                         </li>
                     </ul>
                     <div class="section_page_tab show" id="tab_4">
-                        <h3 class="tab_title">Our Mission &amp; Vision</h3>
+                        <h3 class="tab_title">Village88 2012</h3>
                         <p id="tab_content_1" class="tab_content">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
                         <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
                         <div class="tab_comments comment_container">
@@ -102,7 +102,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="section_page_content">
+                    <ul class="section_page_tabs">
+                        <li class="page_tab_item active" data-tab_id="tab_5">
+                            <a href="#tab_5">Village88 2.0</a>
+                        </li>
+                    </ul>
+                    <div class="section_page_tab show" id="tab_5">
+                        <h3 class="tab_title">Village88 2.0</h3>
+                        <p id="tab_content_1" class="tab_content">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
+                        <div class="tab_comments comment_container">
+                            <form action="/" method="POST" class="add_comment_form">
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul class="comments_list">
+                                <li id="user_view_comments"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile View: Progress bar corresponds to the section_page_content not the section_page_tab  -->
             </div>
+            <div id="mobile_section_pages_controls">
+                <div id="page_btns">
+                    <div class="row_placeholder"></div>
+                    <button id="prev_page_btn" type="button" class="page_btn hidden"></button>
+                    <button id="next_page_btn" type="button" class="page_btn"></button>
+                </div>
+                <div id="section_page_progress">
+                    <div class="progress"></div>
+                </div>
+            </button>
             <div id="clone_section_page">
                 <ul id="comments_list_clone">
                     <li class="comment_item comment_container">

@@ -1,5 +1,7 @@
 (function(){
     let swipe_value = 0;
+    let is_comments_displayed = false;
+    let swipe_timeout = null;
 
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
@@ -11,27 +13,55 @@
 
         ux(document).on("click", onElementClick);
 
+        /** Mobile Device events */
         ux(document).on("touchstart", function (event){
             swipe_value = event.touches.item(0).clientX;
         });
         
         ux(document).on("touchmove", function (event){
+            clearTimeout(swipe_timeout);
             let mobile_comments_slideout = ux("#mobile_comments_slideout");
+            let swipe_direction = (swipe_value > (event.touches.item(0).clientX)) ? "left" : "right";
 
-            if(swipe_value > (event.touches.item(0).clientX + SWIPE_OFFSET)){
-                if(mobile_comments_slideout.html().classList.contains("active")){
-                    mobile_comments_slideout.removeClass("active");
+            if(is_comments_displayed){
+                if(swipe_value > (event.touches.item(0).clientX + SWIPE_OFFSET)){
+                    if(mobile_comments_slideout.html().classList.contains("active")){
+                        mobile_comments_slideout.removeClass("active");
+                        
+                        /** Wait for comments sidenav to completely hide */
+                        setTimeout(() => {
+                            is_comments_displayed = false;
+                        }, 480);
+                    }
+                } else {
+                    if(!mobile_comments_slideout.html().classList.contains("active")){
+                        mobile_comments_slideout.addClass("active");
+                    }
                 }
             } else {
-                if(!mobile_comments_slideout.html().classList.contains("active")){
-                    mobile_comments_slideout.addClass("active");
-                }
+                swipe_timeout = setTimeout(() => {
+                    onSwipe(swipe_direction);
+                }, 480);
             }
+
         });
 
         bindViewEvents();
     });
 
+    function onSwipe(swipe_direction){
+        if(!is_comments_displayed){
+            /** Move to prev/next section tab */
+            if(swipe_direction == "right" && !ux("#prev_page_btn").html().classList.contains("hidden")){
+                ux("#prev_page_btn").html().click();
+            }
+
+            if(swipe_direction == "left" && !ux("#next_page_btn").html().classList.contains("hidden")){
+                ux("#next_page_btn").html().click();
+            }
+        }
+    }
+    
     function onElementClick(event){
         let event_target = event.target;
         let avoid_classes = ["comment_actions_toggle", "edit_btn", "remove_btn"];
@@ -89,6 +119,7 @@
         if(!mobile_comments_slideout.html().classList.contains("active")){
             await include("#user_comments_list" , `../views/global/user_view_section_comments.html`);
             mobile_comments_slideout.addClass("active");
+            is_comments_displayed = true;
             bindViewEvents();
         }
     }
