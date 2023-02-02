@@ -92,12 +92,6 @@ textarea {
   z-index: 99999;
 }
 #nav_documentation .nav_holder {
-  background: #1e293b;
-#nav_documentation {
-  pointer-events: all;
-  z-index: 99999;
-}
-#nav_documentation .nav_holder {
   background: #1E293B;
   min-height: calc(100vh);
   pointer-events: all;
@@ -147,7 +141,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
-  max-width: 260px;
+  max-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #B4C5FF;
@@ -355,7 +349,7 @@ textarea {
   top: 21px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label.active {
-  color: #78716c;
+  color: #78716C;
   top: 30px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .users {
