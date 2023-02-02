@@ -141,7 +141,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
-  min-width: 280px;
+  max-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #B4C5FF;
@@ -690,6 +690,12 @@ body::-webkit-scrollbar-thumb {
   #section_summary {
     margin-bottom: 16px;
   }
+  #section_summary .breadcrumbs {
+    display: none !important;
+  }
+  #section_summary .breadcrumbs + .section_details {
+    padding: 16px;
+  }
 }
 #section_summary .breadcrumbs {
   border-bottom: 1px solid #D5E3FF;
@@ -774,7 +780,11 @@ body::-webkit-scrollbar-thumb {
 }
 @media (max-width: 632px) {
   .section_page_content {
+    display: none;
     margin-bottom: 16px;
+  }
+  .section_page_content.active {
+    display: block;
   }
   .section_page_content .section_page_tabs {
     display: none !important;
@@ -846,6 +856,9 @@ body::-webkit-scrollbar-thumb {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+  .section_page_content .section_page_tab:last-child .tab_title::after {
+    display: none;
+  }
 }
 .section_page_content .section_page_tab {
   background: #FFFFFF;
@@ -863,7 +876,7 @@ body::-webkit-scrollbar-thumb {
     box-shadow: none;
     display: flex !important;
     margin-bottom: 0px;
-    padding: 12px 24px;
+    padding: 12px 18px;
   }
   .section_page_content .section_page_tab:first-child {
     border-radius: 10px !important;
@@ -881,13 +894,47 @@ body::-webkit-scrollbar-thumb {
   .section_page_content .section_page_tab.show .tab_title ~ *.tab_comments {
     display: none !important;
   }
+  .section_page_content .section_page_tab.show .tab_title::before {
+    background: url("../images/admin_edit_section.svg") no-repeat;
+    background-position: -121.51px;
+    content: "";
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 12.51px;
+  }
+  .section_page_content .section_page_tab.show .tab_title::after {
+    display: none;
+  }
   .section_page_content .section_page_tab .tab_title {
     color: #A8C8FF;
-    font: 14px/18px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
+    cursor: pointer;
+    font: 14px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
     margin: 0px 0px 0px !important;
+    vertical-align: top;
+    position: relative;
   }
   .section_page_content .section_page_tab .tab_title ~ * {
     display: none !important;
+  }
+  .section_page_content .section_page_tab .tab_title::before {
+    background: url("../images/admin_edit_section.svg") no-repeat;
+    background-position: -109px;
+    content: "";
+    display: inline-block;
+    height: 16px;
+    vertical-align: middle;
+    width: 12.51px;
+    margin-right: 5.75px;
+    vertical-align: top !important;
+  }
+  .section_page_content .section_page_tab .tab_title::after {
+    border-bottom: 1px solid #E2E2EC;
+    content: "";
+    display: block;
+    margin-top: 12px;
+    position: absolute;
+    width: calc(100%);
   }
 }
 .section_page_content .section_page_tab.show {
