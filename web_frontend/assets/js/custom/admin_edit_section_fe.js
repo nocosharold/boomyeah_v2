@@ -7,16 +7,16 @@ function(){
     document.addEventListener("DOMContentLoaded", async ()=> {
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
+            initializeEditSectionEvents();
+            initializeRedactor("#section_pages .tab_content");
+        }
+        else{
+            ux("#prev_page_btn").on("click", ()=> { openSectionTab(-1) })
+            ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
+            updateSectionProgress();
         }
 
-        ux("#prev_page_btn").on("click", ()=> { openSectionTab(-1) })
-        ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
-
         await include("#main_navigation" , `../views/global/main_navigation.html`, `../assets/js/main_navigation.js`);
-
-        initializeEditSectionEvents();
-        initializeRedactor("#section_pages .tab_content");
-        updateSectionProgress();
 
         window.addEventListener("resize", () => {
             if(MOBILE_WIDTH < document.documentElement.clientWidth){
@@ -244,10 +244,12 @@ function(){
             }
         });
 
-        document.querySelectorAll(".section_page_tabs").forEach((section_tabs_list) => {
-            Sortable.create(section_tabs_list, {
-                filter: ".add_page_tab"
+        if(typeof Sortable !== "undefined"){
+            document.querySelectorAll(".section_page_tabs").forEach((section_tabs_list) => {
+                Sortable.create(section_tabs_list, {
+                    filter: ".add_page_tab"
+                });
             });
-        });
+        }
     }
 })();
