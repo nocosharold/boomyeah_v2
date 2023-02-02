@@ -26,14 +26,11 @@ function(){
     function updateSectionProgress(){
         let sections = ux("#section_pages").findAll(".section_page_content");
         let section_items = Array.from(sections);
-        console.log(target_index, section_items.length)
         let total_progress = `${ Math.round(((target_index + 1) / section_items.length) * 100)}%`;
-        console.log(total_progress);
         ux("#section_page_progress .progress").html().style.width = total_progress;
     }
 
     function openSectionTab(move_index){
-        console.log("move_index", (move_index > 0) ? "next" : "prev");
         let sections = ux("#section_pages").findAll(".section_page_content");
         let section_items = Array.from(sections);
         ux("#prev_page_btn").removeClass("hidden");
@@ -42,7 +39,6 @@ function(){
         section_items.forEach(async (section, section_index) => {
             if(section.classList.contains("active")){
                 target_index = section_index + move_index;
-                console.log("section_index", section_index, target_index);
                 
                 if(section_items[target_index]){
                     await ux(section).removeClass("active");
