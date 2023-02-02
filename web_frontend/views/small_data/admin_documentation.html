@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
+    <script src="../../assets/js/vendor/Sortable.min.js"></script>
 </head>
 
 <body>
@@ -36,15 +37,15 @@
             </form>
             <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
             <ul id='docs_view_list' class='dropdown-content'>
-                <li><a href="#!">Documentations</a></li>
+                <li><a href="#!" class="active_docs_btn">Documentations</a></li>
                 <li class="divider" tabindex="-1"></li>
-                <li><a href="#!">Archived</a></li>
+                <li><a href="#!" class="archived_docs_btn">Archived</a></li>
             </ul>
             <div id="documentations">
-                <div class="document_block hidden">
+                <div class="document_block">
                     <div class="document_details">
-                        <h2>Employee Handbook</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 15</button>
+                        <input type="text" name="document_title" value="Employee Handbook" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 15</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -57,7 +58,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -65,10 +66,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="document_block hidden_private">
+                <div class="document_block">
                     <div class="document_details">
-                        <h2>Company Handout</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 1</button>
+                        <input type="text" name="document_title" value="Company Handout" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 1</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -81,7 +82,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -91,7 +92,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Accounting</h2>
+                        <input type="text" name="document_title" value="Accounting" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -105,7 +106,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -115,7 +116,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Marketing</h2>
+                        <input type="text" name="document_title" value="Marketing" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -129,7 +130,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -139,8 +140,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Engineering</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 6</button>
+                        <input type="text" name="document_title" value="Engineering" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 6</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -153,7 +154,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -163,8 +164,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Product Team</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 9</button>
+                        <input type="text" name="document_title" value="Product Team" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 9</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -177,7 +178,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -187,8 +188,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>UI/UX</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 9</button>
+                        <input type="text" name="document_title" value="UI/UX" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 9</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -201,7 +202,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -211,8 +212,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Admissions</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 9</button>
+                        <input type="text" name="document_title" value="Admissions" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 9</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -225,7 +226,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -235,7 +236,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Trainee</h2>
+                        <input type="text" name="document_title" value="Trainee" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -249,7 +250,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -259,7 +260,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Instructors</h2>
+                        <input type="text" name="document_title" value="Instructors" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -273,7 +274,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -283,8 +284,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Business Leads</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 10</button>
+                        <input type="text" name="document_title" value="Business Leads" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 10</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -297,7 +298,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -307,7 +308,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Team Building 2020</h2>
+                        <input type="text" name="document_title" value="Team Building 2020" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -321,7 +322,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -331,8 +332,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>V88 Core Team</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 14</button>
+                        <input type="text" name="document_title" value="V88 Core Team" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 14</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -345,7 +346,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -355,7 +356,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Meals</h2>
+                        <input type="text" name="document_title" value="Meals" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -369,7 +370,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -379,7 +380,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Datacompass Mini Team Building</h2>
+                        <input type="text" name="document_title" value="Datacompass Mini Team Building" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -393,7 +394,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -403,7 +404,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Thunders</h2>
+                        <input type="text" name="document_title" value="Thunders" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -417,7 +418,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -427,7 +428,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Juniors</h2>
+                        <input type="text" name="document_title" value="Juniors" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -441,7 +442,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -451,8 +452,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>V88 Ladies</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 30</button>
+                        <input type="text" name="document_title" value="V88 Ladies" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 30</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -465,7 +466,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -475,7 +476,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Policies and Rules</h2>
+                        <input type="text" name="document_title" value="Policies and Rules" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -489,7 +490,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -499,7 +500,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Money Management</h2>
+                        <input type="text" name="document_title" value="Money Management" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -513,7 +514,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -523,8 +524,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>HR 101</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 3</button>
+                        <input type="text" name="document_title" value="HR 101" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 3</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -537,7 +538,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -547,8 +548,8 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Government</h2>
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 20</button>
+                        <input type="text" name="document_title" value="Government" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 20</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
@@ -561,7 +562,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -571,7 +572,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Real Estate And Investments</h2>
+                        <input type="text" name="document_title" value="Real Estate And Investments" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -585,7 +586,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -595,7 +596,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>Being a Good Employee and As a Person</h2>
+                        <input type="text" name="document_title" value="Being a Good Employee and As a Person" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -609,7 +610,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -619,7 +620,7 @@
                 </div>
                 <div class="document_block">
                     <div class="document_details">
-                        <h2>UX 201</h2>
+                        <input type="text" name="document_title" value="UX 201" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
@@ -633,7 +634,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="archive_icon">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="invite_icon">Invite</a></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -641,39 +642,286 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div id="confirmation_modal">
-        <div id="confirm_to_public" class="modal">
-            <div class="modal-content">
-                <h4>Confirmation</h4>
-                <p>Are you sure you want to change this documentation to Public?</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
-                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
-            </div>
-        </div>
-    </div>
-    <div id="confirmation_modal_private">
-        <div id="confirm_to_private" class="modal">
-            <div class="modal-content">
-                <h4>Confirmation</h4>
-                <p>Are you sure you want to change this documentation to Private?</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
-                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
                 <div class="no_documents hidden">
-                    <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png" alt="Empty Content Illustration">
+                    <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
+                        alt="Empty Content Illustration">
                     <p>You have no documentations yet</p>
+                </div>
+            </div>
+            <div id="archived_documents" class="hidden">
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Company Handout" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger archived_disabled" href="#modal1"> 1</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger archived_disabled" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pr01">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="archived_document_pr01" class="dropdown-content more_action_list_private">
+                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Accounting" id="" class="document_title" readonly="">
+                    </div>
+                    <div class="document_controls">
+                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pu01">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="archived_document_pu01" class="dropdown-content more_action_list_public">
+                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Engineering" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger archived_disabled" href="#modal1"> 6</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger archived_disabled" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pr02">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="archived_document_pr02" class="dropdown-content more_action_list_private">
+                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Datacompass Mini Team Building" id="" class="document_title" readonly="">
+                        
+                    </div>
+                    <div class="document_controls">
+                        
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_public" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Thunders" id="" class="document_title" readonly="">
+                        
+                    </div>
+                    <div class="document_controls">
+                        
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_public" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Juniors" id="" class="document_title" readonly="">
+                        
+                    </div>
+                    <div class="document_controls">
+                        
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_public" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="V88 Ladies" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 30</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_private">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_private" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Policies and Rules" id="" class="document_title" readonly="">
+                        
+                    </div>
+                    <div class="document_controls">
+                        
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_public" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Money Management" id="" class="document_title" readonly="">
+                        
+                    </div>
+                    <div class="document_controls">
+                        
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_public" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="HR 101" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 3</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_private">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_private" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Government" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger"> 20</button>
+                    </div>
+                    <div class="document_controls">
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_private">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_private" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="document_block">
+                    <div class="document_details">
+                        <input type="text" name="document_title" value="Real Estate And Investments" id="" class="document_title" readonly="">
+                        
+                    </div>
+                    <div class="document_controls">
+                        
+                        <button class="more_action_btn dropdown-trigger" data-target="more_action_list_public">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="more_action_list_public" class="dropdown-content">
+                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="no_archived_documents hidden">
+                    <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
+                        alt="Empty Content Illustration">
+                    <p>You have no archived documentations yet</p>
                 </div>
             </div>
         </div>
     </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/hotkeys.js"></script>
     <script type="module" src="../../assets/js/admin_documentation.js"></script>
 </body>
 
