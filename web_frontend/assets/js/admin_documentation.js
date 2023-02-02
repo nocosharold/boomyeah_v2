@@ -48,10 +48,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         Sortable.create(section_tabs_list);
     });
 
-    document.querySelectorAll("#archived_documents").forEach((section_tabs_list) => {
-        Sortable.create(section_tabs_list);
-    });
-
     document.addEventListener("click", (event) => {
         event.stopPropagation();
         event.preventDefault();
