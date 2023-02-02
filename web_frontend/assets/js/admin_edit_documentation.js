@@ -50,16 +50,17 @@ function submitAddSectionForm(event){
         ux(cloned_section_block.html()).attr("class", "section_block");
         ux(section_title.html()).attr("value", input_add_section.value);
         ux(section_title.html()).attr("data-tooltip", input_add_section.value);
-        if(section_title.html().value.length < 8){
+        if(section_title.html().value.length < 43){
             ux(section_title.html()).attr("data-tooltip", "");
             ux(section_title.html()).attr("class", "section_title");
-            ux(section_title.html()).attr("readonly", "");
         }
+        
         
         cloned_section_block.on("dblclick", function(){
             location.href = "/views/admin_edit_section.html";
         })
 
+        section_title.html().setAttribute("readonly", "");
         sections.appendChild(cloned_section_block.html());
     }
 
@@ -67,13 +68,25 @@ function submitAddSectionForm(event){
     document.querySelector("#section_form").reset();
     ux(ux(".group_add_section label").html()).addClass("active");
     initializeMaterializeTooltip();
+    sections.scrollTop = sections.scrollHeight;
 }
 
 function switchText(event){
     let toggle_switch = event.target;
     let switch_btn = ux(".switch_btn .toggle_text").html();
-
-    toggle_switch.checked ? switch_btn.innerText = "Private" : switch_btn.innerText = "Public";
+    let invite_collaborator_btn = ux("#invite_collaborator_btn");
+    console.log(toggle_switch)
+    
+    if(toggle_switch.checked){
+        switch_btn.innerText = "Private"
+        invite_collaborator_btn.removeClass("hidden");
+        ux(toggle_switch).attr("checked", "");
+    } 
+    else {
+        toggle_switch.removeAttribute("checked", "");
+        invite_collaborator_btn.addClass("hidden");
+        switch_btn.innerText = "Public";
+    } 
 }
 
 function editSectionTitle(event){
@@ -98,17 +111,18 @@ function removeSectionBlock(event){
 function disableEditSectionTitle(event){
     let section_title = event.target;
 
-    if(section_title.value.trim().length > 8){
+    if(section_title.value.trim().length > 42){
         ux(section_title).attr("data-tooltip", section_title.value);
         ux(section_title).attr("class", "section_title tooltipped");
-        ux(section_title).attr("readonly", "");
+        // ux(section_title).attr("readonly", "");
         initializeMaterializeTooltip();
     }else{
         ux(section_title).attr("class", "section_title");
-        section_title.html().removeAttribute("data-tooltip", "");
+        section_title.removeAttribute("data-tooltip", "");
     }
+    console.log(section_title.value)
 
-    ux(section_title).attr("readonly", "");
+    section_title.setAttribute("readonly", "");
 }
 
 function duplicateSection(event){
