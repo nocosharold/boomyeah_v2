@@ -51,6 +51,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelectorAll("#archived_documents").forEach((section_tabs_list) => {
         Sortable.create(section_tabs_list);
     });
+
+    document.addEventListener("click", (event) => {
+        let element = event.target.closest(".add_invite_result");
+        
+        if(element){
+            addSearchEmailResult(element);
+        }
+    });
 });
 
 function submitInvite(event){
@@ -288,7 +296,7 @@ function searchEmail(event){
 
             for(var user_index=0; user_index < invite_results.length; user_index++){
                 invite_dropdown.innerHTML += `
-                    <li>
+                    <li class="add_invite_result">
                         <input class="choose_users" id="user_${user_index}" type="checkbox" />
                         <label for="user_${user_index}">
                             <img src="${invite_results[user_index].img_url}" alt="user_profile">
@@ -317,4 +325,17 @@ function searchEmail(event){
         ux("#with_access_div").html().removeAttribute("hidden");
         ux(".empty_search_wrapper").html().setAttribute("hidden", true);
     }
+}
+
+function addSearchEmailResult(search_email_result){
+    const email_chip_elem = document.querySelectorAll('.chips');
+    const email_chip_instance = M.Chips.getInstance(email_chip_elem);
+
+    console.log(search_email_result.children);
+
+    // let user_information = search_email_result.children[1].children[1];
+    // let user_email = ux(`.${user_information.classList[0]} p`).text();
+
+    // console.log(email_chip_instance);
+    // email_chip_instance.addChip({ tag: user_email });
 }
