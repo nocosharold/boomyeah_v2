@@ -82,6 +82,11 @@ textarea {
   height: 28px;
   width: 28px;
 }
+@media screen and (max-width: 632px) {
+  #header_container {
+    display: none;
+  }
+}
 #nav_documentation {
   pointer-events: all;
   z-index: 99999;
@@ -136,7 +141,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #e8f2ff;
   border-radius: 0px 20px 20px 0px;
-  max-width: 260px;
+  min-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #b4c5ff;
@@ -319,6 +324,7 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.valid,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.invalid {
+  height: 62px;
   border-bottom: none !important;
   box-shadow: none;
 }
@@ -334,16 +340,17 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.input-field {
   background: #eff6ff;
   border-radius: 8px 8px 5px 5px;
-  height: 55px;
+  height: 65px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label {
   color: #78716c;
   font: 16px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
-  margin: -9px auto;
+  margin: 9px auto;
+  top: 21px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label.active {
   color: #78716c;
-  top: 10px;
+  top: 30px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .users {
   background: url("../../assets/images/modal_sprite.svg") no-repeat;
@@ -354,7 +361,8 @@ textarea {
   height: 20px;
   position: absolute;
   right: 15px;
-  top: 16px;
+  top: 33px;
+  transform: translateY(23px);
   width: 20px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite {
@@ -362,6 +370,7 @@ textarea {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   height: 400px;
   left: 0 !important;
+  margin: 30px auto;
   top: 47px !important;
   width: 417px !important;
 }
@@ -757,6 +766,16 @@ body::-webkit-scrollbar-thumb {
   line-height: 16px;
   transform: translateY(6px) scale(0.8);
 }
+.container #doc_form .group_add_documentation.input_error label {
+  color: #78716c !important;
+}
+.container #doc_form .group_add_documentation.input_error input {
+  border-bottom: 2px solid #da4d4d;
+  box-shadow: 0 1px 0 0 #da4d4d;
+}
+.container #doc_form .group_add_documentation.input_error::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/disabled_add.svg') no-repeat;
+}
 .container #doc_form #input_add_documentation {
   margin-bottom: 0;
   width: 304px;
@@ -832,6 +851,17 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   transition: all 0.21s ease-in-out;
   width: 316px;
+}
+.container #documentations .document_block::after,
+.container #archived_documents .document_block::after {
+  border-bottom: 2px solid #dbeafe;
+  bottom: 0;
+  content: "";
+  display: inline-block;
+  height: 10px;
+  left: 0;
+  position: absolute;
+  width: 100%;
 }
 .container #documentations .document_block.hidden,
 .container #archived_documents .document_block.hidden,
@@ -1020,12 +1050,18 @@ body::-webkit-scrollbar-thumb {
 .container #archived_documents .document_block:hover::before {
   background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/draggable_icon.svg') no-repeat 0 0;
   content: "";
+  cursor: grab;
   display: inline-block;
   height: 4px;
   left: 50%;
+  padding: 8px 0;
   position: absolute;
   top: 6px;
   width: 10.67px;
+}
+.container #documentations .document_block:hover::after,
+.container #archived_documents .document_block:hover::after {
+  display: none;
 }
 @media screen and (max-width: 622px) {
   .container #documentations .document_block,
