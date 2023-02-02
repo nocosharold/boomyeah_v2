@@ -37,25 +37,73 @@
 @import url(./view_section_content.less);
 
 #mobile_comments_slideout{
-    background: @by_comments_bg;
-    padding: 20px 20px;
-    width: calc(100%);
-    margin-top: 56px;
-    max-height: calc(100vh - 56px);
+    display: none !important;
 
-    &.active{
-        & ~ .sidenav-overlay{
-            display: none !important;
+    @media (max-width: 632px) {
+        background: @by_comments_bg;
+        display: block !important;
+        margin-top: 56px;
+        max-height: calc(100vh - 56px);
+        padding: 20px 20px;
+        width: calc(100%);
+    
+        &.active{
+            & ~ .sidenav-overlay{
+                display: none !important;
+            }
+        }
+    
+        #user_comments_list{
+            border-radius: 12px;
+            background: @by_white;
+            padding: 16px 12px;
+    
+            > .comment_item:first-child{
+                margin-top: 0px;
+            }
         }
     }
+}
+#mobile_section_pages_controls{
+    display: none !important;
 
-    #user_comments_list{
-        border-radius: 12px;
-        background: @by_white;
-        padding: 16px 12px;
+    @media (max-width: 632px) {
+        bottom: 0;
+        display: block !important;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    
+        #page_btns{
+            display: flex;
+            padding: 0px 16px 26px;
+    
+            .page_btn{
+                background-color: @by_white;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0px 2px 3px rgba(0,0,0,.25);
+                margin-left: 9px;
+                height: 30px;
+                width: 30px;
+                &#prev_page_btn::before{
+                    .edit_section_icon(10.12px, 30px, -134.02px);
+                }
+                &#next_page_btn::before{
+                    .edit_section_icon(10.12px, 30px, -144.42px);
+                }
 
-        > .comment_item:first-child{
-            margin-top: 0px;
+                &.hidden{
+                    display: none;
+                }
+            }
+        }
+        #section_page_progress{
+            background: #F1F5F9;
+            .progress{
+                background: #3B82F6;
+                margin: 0px;   
+            }
         }
     }
 }
@@ -125,6 +173,12 @@
     .comment_item{
         margin-top: 20px;
         line-height: initial;
+
+        &.active_comment_item{
+            & > .comment_content{
+                background: #D6E8FF;
+            }
+        }
         .user_image{
             height: 36px;
             margin-right: 18px;
@@ -263,6 +317,7 @@
 
 #comment_actions_container{
     background: @by_translucent_bg;
+    display: none;
     height: calc(100vh - 56px);
     opacity: 0;
     transform: translateY(0%);
@@ -270,6 +325,7 @@
     width: 100%;
 
     &.active{
+        display: block;
         opacity: 1;
         position: absolute;
         transform: translateY(-100%);
