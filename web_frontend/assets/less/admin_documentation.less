@@ -387,28 +387,6 @@ body{
                     }
                 }
             }
-
-            &:hover {
-                border: 1px solid @by_primary;
-
-                &::before {
-                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/draggable_icon.svg') no-repeat 0 0;
-                    content: "";
-                    cursor: grab;
-                    display: inline-block;
-                    height: 4px;
-                    left: 50%;
-                    padding: 8px 0;
-                    position: absolute;
-                    top: 6px;
-                    width: 10.67px;
-                }
-
-                &::after {
-                    display: none;
-                }
-            }
-
             @media screen and (max-width: 622px) {
                 min-width: 100% !important;
             }
@@ -430,9 +408,55 @@ body{
             }
         }
     }
+    #documentations{
+        .document_block{
+            &:hover {
+                border: 1px solid @by_primary;
+    
+                &::before {
+                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/draggable_icon.svg') no-repeat 0 0;
+                    content: "";
+                    cursor: grab;
+                    display: inline-block;
+                    height: 4px;
+                    left: 50%;
+                    padding: 8px 0;
+                    position: absolute;
+                    top: 6px;
+                    width: 10.67px;
+                }
+    
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
     #archived_documents{
         .document_block{
             background-color: @by_archived_bg;
+            &:hover {
+                border: 1px solid @by_primary;
+    
+                &::before {
+                    content: "";
+                    cursor: grab;
+                    display: inline-block;
+                    height: 4px;
+                    left: 50%;
+                    padding: 8px 0;
+                    position: absolute;
+                    top: 6px;
+                    width: 10.67px;
+                }
+    
+                &::after {
+                    display: none;
+                }
+            }
+        }
+        .archived_disabled{
+            pointer-events: none;
         }
     }
 }

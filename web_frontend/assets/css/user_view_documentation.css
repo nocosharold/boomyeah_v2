@@ -141,7 +141,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #e8f2ff;
   border-radius: 0px 20px 20px 0px;
-  min-width: 280px;
+  max-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #b4c5ff;
