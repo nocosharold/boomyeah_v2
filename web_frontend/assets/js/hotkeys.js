@@ -14,7 +14,7 @@ function checkShortcut(e){
 
     let shortcut_event = window.event? event : e;
 
-    if(shortcut_event.keyCode = 18){
+    if(shortcut_event.keyCode === 18){
         let get_redirect_url = SHORTCUT_VALUES[`keyCode_${shortcut_event.keyCode}_url`];
 
         if(get_redirect_url){
