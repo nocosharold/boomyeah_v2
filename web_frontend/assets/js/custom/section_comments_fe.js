@@ -1,12 +1,34 @@
 (function(){
+    let swipe_value = 0;
+
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
+        ux(".show_comments_btn").onEach("click", showTabComments);
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `../views/global/user_view_section_comments.html`);
 
         ux(document).on("click", onElementClick);
+
+        ux(document).on("touchstart", function (event){
+            swipe_value = event.touches.item(0).clientX;
+        });
+        
+        ux(document).on("touchmove", function (event){
+            let mobile_comments_slideout = ux("#mobile_comments_slideout");
+
+            if(swipe_value > (event.touches.item(0).clientX + SWIPE_OFFSET)){
+                if(mobile_comments_slideout.html().classList.contains("active")){
+                    mobile_comments_slideout.removeClass("active");
+                }
+            } else {
+                if(!mobile_comments_slideout.html().classList.contains("active")){
+                    mobile_comments_slideout.addClass("active");
+                }
+            }
+        });
+
         bindViewEvents();
     });
 
@@ -26,7 +48,9 @@
     }
 
     function closeCommentActions(){
-        ux(document).findAll(".comment_actions_toggle").forEach((element) => element.classList.remove("active"));
+        ux(document).findAll(".comment_actions_toggle").forEach((element) => ux(element).removeClass("active"));
+        ux("#comment_actions_container").removeClass("active");
+        (ux(".active_comment_item").html()) && ux(".active_comment_item").removeClass("active_comment_item");
     }
 
     function onSubmitComment(post_form, is_reply = false){
@@ -57,6 +81,18 @@
         }
     }
 
+    async function showTabComments(event){
+        event.preventDefault();
+        let mobile_comments_slideout = ux("#mobile_comments_slideout");
+        mobile_comments_slideout.find("#user_comments_list").html().innerHtml = "";
+
+        if(!mobile_comments_slideout.html().classList.contains("active")){
+            await include("#user_comments_list" , `../views/global/user_view_section_comments.html`);
+            mobile_comments_slideout.addClass("active");
+            bindViewEvents();
+        }
+    }
+
     function onEditComment(event){
         let event_target = event.target;
 
@@ -66,12 +102,19 @@
         }
     }
 
-    function onDeleteComment(event){
+    async function onDeleteComment(event){
         let event_target = event.target;
 
         if(event_target.classList.contains("remove_btn")){
-            closeCommentActions();
-            event_target.closest(".comment_item").remove();
+            let viewport_width = document.documentElement.clientWidth;
+            
+            if(viewport_width > MOBILE_WIDTH){
+                event_target.closest(".comment_item").remove();
+            } else {
+                ux(".active_comment_item").html().remove();
+            }
+
+            await closeCommentActions();
         }
     }
 
@@ -79,10 +122,18 @@
         let event_target = event.target;
 
         if(event_target.classList.contains("comment_actions_toggle")){
-            if(event_target.classList.contains("active")){
-                event_target.classList.remove("active");
+            let viewport_width = document.documentElement.clientWidth;
+
+            if(viewport_width > MOBILE_WIDTH){
+                if(event_target.classList.contains("active")){
+                    event_target.classList.remove("active");
+                } else {
+                    event_target.classList.add("active");
+                }
             } else {
-                event_target.classList.add("active");
+                event.stopImmediatePropagation();
+                ux("#comment_actions_container").addClass("active");
+                ux(event_target.closest(".comment_item")).addClass("active_comment_item");
             }
         }
     }

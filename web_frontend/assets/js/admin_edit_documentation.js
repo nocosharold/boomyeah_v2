@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelectorAll(".section_container").forEach((section_tabs_list) => {
         Sortable.create(section_tabs_list);
     });
-    ux(".copy_icon").onEach("click", duplicateSection);
     initializeMaterializeTooltip();
+    appearEmptySection();
 });
 
 function submitAddSectionForm(event){
@@ -35,6 +35,7 @@ function submitAddSectionForm(event){
     const cloned_section_block = ux(".section_block.hidden").clone();
     const sections = ux(".section_container").html();
     const section_title = ux(cloned_section_block.find(".section_details input")).html();
+    const input_field = ux(input_add_section.closest(".input-field"));
 
     ux(cloned_section_block.find(".edit_section_title_icon").on("click", editSectionTitle));
     ux(cloned_section_block.find(".remove_icon").on("click", removeSectionBlock));
@@ -42,16 +43,17 @@ function submitAddSectionForm(event){
     ux(cloned_section_block.find(".section_title").on("blur", disableEditSectionTitle));
 
     if(!input_add_section.value.trim().length){
-        alert("text input is empty");
+        input_field.addClass("input_error");
     }
     else{
-        ux(cloned_section_block).attr("class", "section_block");
-        ux(section_title).attr("value", input_add_section.value);
-        ux(section_title).attr("data-tooltip", input_add_section.value);
+        input_field.removeClass("input_error");
+        ux(cloned_section_block.html()).attr("class", "section_block");
+        ux(section_title.html()).attr("value", input_add_section.value);
+        ux(section_title.html()).attr("data-tooltip", input_add_section.value);
         if(section_title.html().value.length < 8){
-            ux(section_title).attr("data-tooltip", "");
-            ux(section_title).attr("class", "section_title");
-            ux(section_title).attr("readonly", "");
+            ux(section_title.html()).attr("data-tooltip", "");
+            ux(section_title.html()).attr("class", "section_title");
+            ux(section_title.html()).attr("readonly", "");
         }
         
         cloned_section_block.on("dblclick", function(){
@@ -61,7 +63,9 @@ function submitAddSectionForm(event){
         sections.appendChild(cloned_section_block.html());
     }
 
+    appearEmptySection();
     document.querySelector("#section_form").reset();
+    ux(ux(".group_add_section label").html()).addClass("active");
     initializeMaterializeTooltip();
 }
 
@@ -88,6 +92,7 @@ function removeSectionBlock(event){
     let section_blk = ux(remove_icon.closest(".section_block")).html();
     
     section_blk.remove();
+    appearEmptySection();
 }
 
 function disableEditSectionTitle(event){
@@ -100,7 +105,7 @@ function disableEditSectionTitle(event){
         initializeMaterializeTooltip();
     }else{
         ux(section_title).attr("class", "section_title");
-        section_title.removeAttribute("data-tooltip", "");
+        section_title.html().removeAttribute("data-tooltip", "");
     }
 
     ux(section_title).attr("readonly", "");
@@ -111,7 +116,7 @@ function duplicateSection(event){
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".section_title")).html();
 
-    ux(cloned_title).attr("value", "Copy of " + cloned_title.html().value);
+    ux(cloned_title.html()).attr("value", "Copy of " + cloned_title.html().value);
     ux(cloned.find(".edit_section_title_icon").on("click", editSectionTitle));
     ux(cloned.find(".copy_icon").on("click", duplicateSection));
     ux(cloned.find(".remove_icon").on("click", removeSectionBlock));
@@ -124,4 +129,14 @@ function initializeMaterializeTooltip(){
     M.Tooltip.init(elems, {
         position: "top"
     });
+}
+
+function appearEmptySection(){
+    let section_count = ux(".section_container").html().children.length;
+
+    if(section_count <= 1){
+        ux(".no_sections").removeClass("hidden");
+    }else{
+        ux(".no_sections").addClass("hidden");
+    }
 }
