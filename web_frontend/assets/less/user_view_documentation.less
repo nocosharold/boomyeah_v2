@@ -29,7 +29,9 @@ body {
         position: relative;
         margin-bottom: 33px;
         font: 16px/24px @readex_regular;
-
+        .mobile_breadcrumb{
+            display: none;
+        }
         .breadcrumb_item {
             color: @by_primary;
 
@@ -79,9 +81,6 @@ body {
     }
     @media screen and (max-width: 632px) {
         padding-top: 13px;
-        #breadcrumb_list {
-            display: none;
-        }
 
         .divider {
             display: none;
@@ -218,6 +217,70 @@ body {
         p {
             font: 16px/24px @readex_regular;
             color: @by_off_gray;
+        }
+    }
+    @media screen and (max-width: 546px){
+
+        div::-webkit-scrollbar {
+            display: none;
+        }
+        
+        padding: 24px 16px 24px;
+        #breadcrumb_list{
+            margin-bottom: 11px;
+            li{
+                font: 14px/24px @readex_medium;
+                &:first-of-type{
+                    display: none;
+                }
+                &:nth-of-type(2){
+                    display: block !important;
+                    a{
+                        color: @by_icon !important;
+                        transform: translate(-1px, -2px);
+                    }
+                }
+                &::after{
+                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat 0 0px !important;
+                }
+            }
+        }
+        .divider{
+            display: none;
+        }
+        #doc_title_access{
+            display: none;
+        }
+        .doc_text_content{
+            font: 12px/18px @readex_regular;
+        }
+        h2{
+            font: 14px/24px @readex_medium;
+        }
+        .section_container{
+            .section_block{
+                height: 52px;
+                margin: 8px 0;
+                .section_details{
+                    .section_title{
+                        font: 14px/24px @readex_medium;
+                    }
+                }
+                .section_controls{
+                    span{
+                        font: 14px/24px @readex_medium;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 375px){
+        #section_container{
+            .section_block{
+                .section_controls{
+                    display: none;
+                }
+            }
         }
     }
 }

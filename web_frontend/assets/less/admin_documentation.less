@@ -2,7 +2,7 @@
 
 body{
     @media screen and (max-width: 880px) {
-        overflow: hidden;
+        overflow: auto;
     }
 }
 @media screen and (max-width: 1208px) {
@@ -129,9 +129,10 @@ body{
 
             input.valid,
             input.validate {
-                background-color: @by_bg;
+                background-color: transparent;
                 border-bottom: 2px solid @by_primary;
                 box-shadow: 0 1px 0 0 @by_primary;
+                z-index: 999;
             }
             label.active{
                 color: @by_primary;

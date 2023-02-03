@@ -94,9 +94,16 @@
     @media (max-width: 632px) {
         display: none;
         margin-bottom: 16px;
+        transition: transform 0.2s;
 
         &.active{
             display: block;
+        }
+        &.left{
+            transform: translateX(-10%);
+        }
+        &.right{
+            transform: translateX(10%);
         }
         .section_page_tabs{
             display: none !important;
