@@ -6,9 +6,10 @@ function(){
     let target_index = 0;
 
     document.addEventListener("DOMContentLoaded", async ()=> {
+        await include("#main_navigation" , `../views/global/main_navigation.html`, `../assets/js/main_navigation.js`);
+        
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
-            initializeEditSectionEvents();
             initializeRedactor("#section_pages .tab_content");
         }
         else{
@@ -27,6 +28,8 @@ function(){
         let assets_path = (view_path === "/views" )? ".." : "../..";
 
         await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+
+        initializeSectionPageEvents();
 
         window.addEventListener("resize", () => {
             if(MOBILE_WIDTH < document.documentElement.clientWidth){
@@ -97,6 +100,32 @@ function(){
         ux("#section_page_progress .progress").html().style.width = total_progress;
     }
 
+    function initializeSectionPageEvents(ux_target = null, callback = null){
+        if(ux_target){
+            ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
+            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", removeSectionTab);
+            bindOpenTabLink(ux_target);
+    
+            ux_target.findAll((".tab_title")).forEach((tab_title) => {
+                ux(tab_title).on("keyup", (event) => {
+                    onUpdateTabTitle(event);
+                });
+            });
+        }
+        else{
+            ux(".section_page_tabs .add_page_btn").onEach("click", addNewTab);
+            ux(".section_page_tabs .remove_tab_btn").onEach("click", removeSectionTab);
+            ux(".section_page_content .tab_title").onEach("keyup", (event) => {
+                onUpdateTabTitle(event);
+            });
+            bindOpenTabLink();
+        }
+    
+        if(callback){
+            callback();
+        }
+    }
+
     function openSectionTab(move_index){
         let sections = ux("#section_pages").findAll(".section_page_content");
         let section_items = Array.from(sections);
@@ -124,50 +153,12 @@ function(){
             }
         });
     }
-    
-    function initializeEditSectionEvents(ux_target = null, callback = null){
-        if(ux_target){
-            ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
-            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", removeSectionTab);
-            bindOpenTabLink(ux_target);
-    
-            ux_target.findAll((".tab_title")).forEach((tab_title) => {
-                ux(tab_title).on("keyup", (event) => {
-                    onUpdateTabTitle(event);
-                });
-            });
-        }
-        else{
-            ux(".section_page_tabs .add_page_btn").onEach("click", addNewTab);
-            ux(".section_page_tabs .remove_tab_btn").onEach("click", removeSectionTab);
-            ux(".section_page_content .tab_title").onEach("keyup", (event) => {
-                onUpdateTabTitle(event);
-            });
-            bindOpenTabLink();
-        }
-    
-        if(callback){
-            callback();
-        }
-    }
-    
-    function saveTabChanges(section_page_tab){
-        clearTimeout(saving_timeout);
-        M.Toast.dismissAll();
-        
-        saving_timeout = setTimeout(() => {        
-            clearTimeout(toast_timeout);
-            section_page_tab.find(".saving_indicator").addClass("show");
-        
-            toast_timeout = setTimeout(() => {
-                section_page_tab.find(".saving_indicator").removeClass("show");
-                M.toast({
-                    html: "Changes Saved",
-                    displayLength: 2800,
-                });
-                
-            }, 800);
-        }, 480);
+
+    function updateSectionProgress(){
+        let sections = ux("#section_pages").findAll(".section_page_content");
+        let section_items = Array.from(sections);
+        let total_progress = `${ Math.round(((target_index + 1) / section_items.length) * 100)}%`;
+        ux("#section_page_progress .progress").html().style.width = total_progress;
     }
     
     function onUpdateTabTitle(event){
@@ -228,6 +219,25 @@ function(){
         }
     }
     
+    function saveTabChanges(section_page_tab){
+        clearTimeout(saving_timeout);
+        M.Toast.dismissAll();
+        
+        saving_timeout = setTimeout(() => {        
+            clearTimeout(toast_timeout);
+            section_page_tab.find(".saving_indicator").addClass("show");
+        
+            toast_timeout = setTimeout(() => {
+                section_page_tab.find(".saving_indicator").removeClass("show");
+                M.toast({
+                    html: "Changes Saved",
+                    displayLength: 2800,
+                });
+                
+            }, 800);
+        }, 480);
+    }
+    
     function addNewSectionContent(event){
         event.preventDefault();
         let tab_id = `tab_${ new Date().getTime()}`;
@@ -244,7 +254,7 @@ function(){
         section_page_tab.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
         section_page_tab.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
         /** Rebind Event Listeners */
-        initializeEditSectionEvents(section_page_content);
+        initializeSectionPageEvents(section_page_content);
         initializeRedactor(`#${tab_id} .tab_content`);
     }
     
