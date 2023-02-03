@@ -44,7 +44,6 @@ function(){
     function printPageTabs(section_pages){
         let user_view_section_html = '';
 
-        let tab_counter = 1;
         let temp_counter = 0;
         let counter = 0;
         for(let page_key in section_pages){
