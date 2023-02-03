@@ -1,4 +1,4 @@
-// import data from "../../json/medium_dataset.json" assert { type: "json" };
+import data from "../../json/large_dataset.json" assert { type: "json" };
 (
 function(){
     let toast_timeout = null;
@@ -35,12 +35,13 @@ function(){
         })
 
         /* Print JSON data */
-        // printPageTabs(data.section_pages.pages);
+        printPageTabs(data.section_pages.pages);
     });
 
     function printPageTabs(section_pages){
         let user_view_section_html = '';
 
+        let tab_counter = 1;
         let temp_counter = 0;
         let counter = 0;
         for(let page_key in section_pages){
@@ -83,7 +84,7 @@ function(){
             });
 
             user_view_section_html += `</div>`;
-            counter += temp_counter;
+            counter++;
         }
 
         console.log(user_view_section_html);
