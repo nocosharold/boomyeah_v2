@@ -290,9 +290,13 @@ textarea {
   width: 100%;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips {
+  align-items: center;
+  background-color: #EFF6FF;
   border-bottom: 1px solid #2563EB;
   border-radius: 0px 0px 5px 5px;
   border-width: revert;
+  display: flex;
+  flex-wrap: wrap;
   padding-left: 10px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.invalid {
@@ -318,13 +322,14 @@ textarea {
   width: 28px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input {
-  width: 100% !important;
+  border: none;
+  box-shadow: none;
+  height: auto;
   z-index: 999;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.valid,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.invalid {
-  height: 62px;
   border-bottom: none !important;
   box-shadow: none;
 }
@@ -340,7 +345,7 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.input-field {
   background: #EFF6FF;
   border-radius: 8px 8px 5px 5px;
-  height: 65px !important;
+  padding: 8px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label {
   color: #78716C;
@@ -356,13 +361,12 @@ textarea {
   background: url("../../assets/images/modal_sprite.svg") no-repeat;
   background-position: 1px 0px;
   border: none;
+  bottom: 25px;
   cursor: pointer;
   display: block;
   height: 20px;
   position: absolute;
   right: 15px;
-  top: 33px;
-  transform: translateY(23px);
   width: 20px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite {
@@ -370,8 +374,9 @@ textarea {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   height: 400px;
   left: 0 !important;
-  margin: 30px auto;
-  top: 47px !important;
+  margin: -9px auto !important;
+  position: absolute;
+  top: auto !important;
   width: 417px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite li {
@@ -468,7 +473,7 @@ textarea {
   top: 4px;
   width: 28px;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .choose_role li a {
+#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list #choose_role li a {
   color: #7D949D;
   font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
