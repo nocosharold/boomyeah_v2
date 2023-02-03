@@ -661,6 +661,9 @@ body {
   margin-bottom: 33px;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
+.container #breadcrumb_list .mobile_breadcrumb {
+  display: none;
+}
 .container #breadcrumb_list .breadcrumb_item {
   color: #2563eb;
 }
@@ -704,9 +707,6 @@ body {
 @media screen and (max-width: 632px) {
   .container {
     padding-top: 13px;
-  }
-  .container #breadcrumb_list {
-    display: none;
   }
   .container .divider {
     display: none;
@@ -825,7 +825,61 @@ body {
 }
 .container .no_sections p {
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
-  color: #B5C4E4;
+  color: #b5c4e4;
+}
+@media screen and (max-width: 546px) {
+  .container {
+    padding: 24px 16px 24px;
+  }
+  .container div::-webkit-scrollbar {
+    display: none;
+  }
+  .container #breadcrumb_list {
+    margin-bottom: 11px;
+  }
+  .container #breadcrumb_list li {
+    font: 14px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  }
+  .container #breadcrumb_list li:first-of-type {
+    display: none;
+  }
+  .container #breadcrumb_list li:nth-of-type(2) {
+    display: block !important;
+  }
+  .container #breadcrumb_list li:nth-of-type(2) a {
+    color: #94a3b8 !important;
+    transform: translate(-1px, -2px);
+  }
+  .container #breadcrumb_list li::after {
+    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat 0 0px !important;
+  }
+  .container .divider {
+    display: none;
+  }
+  .container #doc_title_access {
+    display: none;
+  }
+  .container .doc_text_content {
+    font: 12px/18px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  }
+  .container h2 {
+    font: 14px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  }
+  .container .section_container .section_block {
+    height: 52px;
+    margin: 8px 0;
+  }
+  .container .section_container .section_block .section_details .section_title {
+    font: 14px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  }
+  .container .section_container .section_block .section_controls span {
+    font: 14px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  }
+}
+@media screen and (max-width: 375px) {
+  .container #section_container .section_block .section_controls {
+    display: none;
+  }
 }
 .material-tooltip {
   background-color: #1e293b !important;
