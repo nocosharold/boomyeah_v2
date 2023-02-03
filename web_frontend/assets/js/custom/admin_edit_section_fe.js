@@ -38,7 +38,7 @@ function(){
         })
 
         /* Print JSON data */
-        printPageTabs(data.section_pages.pages);
+        // printPageTabs(data.section_pages.pages);
     });
 
     function printPageTabs(section_pages){
@@ -57,8 +57,6 @@ function(){
                         <a href="#tab_${counter + (index + 1)}">${ section_page.tab_title }</a>
                     </li>
                 `;
-
-                temp_counter += index + 1;
             });
 
             user_view_section_html += `</ul>`;
@@ -87,7 +85,7 @@ function(){
             });
 
             user_view_section_html += `</div>`;
-            counter++;
+            counter = temp_counter;
         }
 
         console.log(user_view_section_html);
