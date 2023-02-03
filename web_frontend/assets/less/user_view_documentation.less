@@ -101,7 +101,18 @@ body {
             outline: none;
         }
     }
-
+    .no_sections{
+        width: 100%;
+        text-align: center;
+        margin: 41px 0 35px;
+        img{
+            margin-bottom: 9px;
+        }
+        p{
+            font: 16px/24px @readex_regular;
+            color: @by_off_gray;
+        }
+    }
     h2 {
         font: 16px/24px @readex_medium;
         margin: 0;
@@ -189,6 +200,24 @@ body {
                     width: 57px;
                 }
             }
+        }
+    }
+    .no_sections {
+        &.hidden {
+            display: none;
+        }
+
+        width: 100%;
+        text-align: center;
+        margin: 45px 0 142px;
+
+        img {
+            margin-bottom: 9px;
+        }
+
+        p {
+            font: 16px/24px @readex_regular;
+            color: @by_off_gray;
         }
     }
 }

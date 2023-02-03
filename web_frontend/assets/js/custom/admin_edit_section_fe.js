@@ -1,3 +1,4 @@
+import data from "../../json/large_dataset.json" assert { type: "json" };
 (
 function(){
     let toast_timeout = null;
@@ -16,7 +17,18 @@ function(){
             ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
             updateSectionProgress();
         }
-        
+
+        ux("#prev_page_btn").on("click", ()=> { openSectionTab(-1) })
+        ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
+
+        const current_location = window.location.pathname;
+        const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+
+        let global_path = (view_path === "/views")? "." : "..";
+        let assets_path = (view_path === "/views" )? ".." : "../..";
+
+        await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+
         initializeSectionPageEvents();
 
         window.addEventListener("resize", () => {
@@ -24,8 +36,67 @@ function(){
                 window.location.reload();
             }
         })
+
+        /* Print JSON data */
+        // printPageTabs(data.section_pages.pages);
     });
-    
+
+    function printPageTabs(section_pages){
+        let user_view_section_html = '';
+
+        let temp_counter = 0;
+        let counter = 0;
+        for(let page_key in section_pages){
+            user_view_section_html += `
+            <div class="section_page_content${ counter === 0 ? ' active' : '' }">
+                <ul class="section_page_tabs">`
+            section_pages[page_key].forEach((section_page, index) => {
+                user_view_section_html += `
+                    <li class="page_tab_item${ index === 0 ? ' active' : '' }" data-tab_id="tab_${counter + (index + 1)}">
+                        <a href="#tab_${counter + (index + 1)}">${ section_page.tab_title }</a>
+                    </li>
+                `;
+            });
+
+            user_view_section_html += `</ul>`;
+
+            section_pages[page_key].forEach((section_page, index) => {
+                user_view_section_html += `
+                <div class="section_page_tab${ index === 0 ? ' show' : '' }" id="tab_${counter + (index + 1)}">
+                    <h3 class="tab_title">${section_page.tab_title}</h3>
+                    <p id="tab_content_${counter + (index + 1)}" class="tab_content">${section_page.tab_description}</p>
+                    <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (${section_page.comments.length})</a>
+                    <div class="tab_comments comment_container">
+                        <form action="/" method="POST" class="add_comment_form">
+                            <div class="comment_field">
+                                <div class="comment_message_content input-field col s12">
+                                    <label for="post_comment_${counter + (index + 1)}">Write a comment</label>
+                                    <textarea name="post_comment" id="post_comment_${counter + (index + 1)}" class="materialize-textarea comment_message"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                        <ul id="user_view_comments" class="comments_list"></ul>
+                    </div>
+                </div>
+                `;
+
+                temp_counter += index + 1;
+            });
+
+            user_view_section_html += `</div>`;
+            counter = temp_counter;
+        }
+
+        console.log(user_view_section_html);
+    }
+
+    function updateSectionProgress(){
+        let sections = ux("#section_pages").findAll(".section_page_content");
+        let section_items = Array.from(sections);
+        let total_progress = `${ Math.round(((target_index + 1) / section_items.length) * 100)}%`;
+        ux("#section_page_progress .progress").html().style.width = total_progress;
+    }
+
     function initializeSectionPageEvents(ux_target = null, callback = null){
         if(ux_target){
             ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
