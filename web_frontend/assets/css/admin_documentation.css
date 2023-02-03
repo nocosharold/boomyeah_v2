@@ -473,7 +473,7 @@ textarea {
   top: 4px;
   width: 28px;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .choose_role li a {
+#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list #choose_role li a {
   color: #7d949d;
   font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
@@ -634,7 +634,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media screen and (max-width: 880px) {
   body {
-    overflow: hidden;
+    overflow: auto;
   }
 }
 @media screen and (max-width: 1208px) {
@@ -762,9 +762,10 @@ body::-webkit-scrollbar-thumb {
 }
 .container #doc_form .group_add_documentation input.valid,
 .container #doc_form .group_add_documentation input.validate {
-  background-color: #eff6ff;
+  background-color: transparent;
   border-bottom: 2px solid #2563eb;
   box-shadow: 0 1px 0 0 #2563eb;
+  z-index: 999;
 }
 .container #doc_form .group_add_documentation label.active {
   color: #2563eb;
