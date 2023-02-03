@@ -26,6 +26,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     initializeMaterializeTooltip();
     appearEmptySection();
+
+    const email_address = document.querySelector("#email_address");    
+    email_address.addEventListener("keyup", searchEmail);
+
+    document.addEventListener("click", (event) => {
+        let element = event.target.closest(".add_invite_result");
+        
+        if(element){
+            addSearchEmailResult(element);
+        }
+    });
 });
 
 function submitAddSectionForm(event){

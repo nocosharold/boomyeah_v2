@@ -1,5 +1,4 @@
 // import data from "../json/large_dataset.json" assert { type: "json" };
-
 document.addEventListener("DOMContentLoaded", async () => {
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
@@ -19,9 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const invite_form = document.querySelector("#invite_form");
     invite_form.addEventListener("submit", submitInvite);
-
-    const email_address = document.querySelector("#email_address");    
-    email_address.addEventListener("keyup", searchEmail);
 
     /* Print all documentation */
     // displayDocumentations(data.documentations);
@@ -48,6 +44,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         Sortable.create(section_tabs_list);
     });
 
+    const email_address = document.querySelector("#email_address");    
+    email_address.addEventListener("keyup", searchEmail);
+
     document.addEventListener("click", (event) => {
         event.stopPropagation();
         event.preventDefault();
@@ -59,9 +58,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
-
-var valid_email = true;
-var invited_emails = { emails: [], chips: []};
 
 function submitInvite(event){
     event.preventDefault();
@@ -105,23 +101,24 @@ function displayDocumentations(documentations){
             <div class="document_block">
                 <div class="document_details">
                     <input type="text" name="document_title" value="${document.title}" id="" class="document_title" readonly="">
-                    ${ document.is_private ? `<button class="invite_collaborators_btn modal-trigger"> ${document.collaborator_count}</button>` : ''}
+                    ${ document.is_private ? `<button class="invite_collaborators_btn modal-trigger" href="#modal1"> ${document.collaborator_count}</button>` : ''}
                 </div>
                 <div class="document_controls">
                     ${ document.is_private ? '<button class="access_btn modal-trigger" href="#confirm_to_public"></button>' : '' }
-                    <button class="more_action_btn dropdown-trigger" data-target="more_action_list_${ document.is_private ? 'private' : 'public' }">⁝</button>
+                    <button class="more_action_btn dropdown-trigger" data-target="document_${ document.is_private ? `pr0${index}` : `pu0${index}` }">⁝</button>
                     <!-- Dropdown Structure -->
-                    <ul id="more_action_list_${ document.is_private ? 'private' : 'public' }" class="dropdown-content">
-                        <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                    <ul id="document_${ document.is_private ? `pr0${index}` : `pu0${index}` }" class="dropdown-content more_action_list_${ document.is_private ? 'private' : 'public' }">
+                        <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="archive_icon">Archive</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        ${ document.is_private ? '<li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>' : 
-                        '<li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>' }
+                        ${ document.is_private ? `<li class="divider" tabindex="-1"></li>
+                        <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>` : 
+                        `<li class="divider" tabindex="-1"></li>
+                        <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>` }
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="remove_icon">Remove</a></li>
                     </ul>
@@ -250,106 +247,106 @@ function appearArchivedDocumentations(event){
     ux("#documentations").addClass("hidden");
 }
 
-function searchEmail(event){
-    const sample_users = [
-        {
-            "name": "Erick Caccam",
-            "email": "ecaccam@village88.com",
-            "img_url": "../assets/images/mc.png"
-        },
-        {
-            "name": "Jadee Ganggangan",
-            "email": "jganggangan@village88.com",
-            "img_url": "../assets/images/mc.png"
-        },
-        {
-            "name": "Jovic Abengona",
-            "email": "jabengona@village88.com",
-            "img_url": "../assets/images/jhaver.png"
-        },
-        {
-            "name": "Harold Nocos",
-            "email": "hnocos@village88.com",
-            "img_url": "../assets/images/jhaver.png"
-        },
-        {
-            "name": "Kei Kishimoto",
-            "email": "kkishimito@village88.com",
-            "img_url": "../assets/images/kb.png"
-        }
-    ]
-    let invite_results = [];
-    let search_input = event.target.value;
+// function searchEmail(event){
+//     const sample_users = [
+//         {
+//             "name": "Erick Caccam",
+//             "email": "ecaccam@village88.com",
+//             "img_url": "../assets/images/mc.png"
+//         },
+//         {
+//             "name": "Jadee Ganggangan",
+//             "email": "jganggangan@village88.com",
+//             "img_url": "../assets/images/mc.png"
+//         },
+//         {
+//             "name": "Jovic Abengona",
+//             "email": "jabengona@village88.com",
+//             "img_url": "../assets/images/jhaver.png"
+//         },
+//         {
+//             "name": "Harold Nocos",
+//             "email": "hnocos@village88.com",
+//             "img_url": "../assets/images/jhaver.png"
+//         },
+//         {
+//             "name": "Kei Kishimoto",
+//             "email": "kkishimito@village88.com",
+//             "img_url": "../assets/images/kb.png"
+//         }
+//     ]
+//     let invite_results = [];
+//     let search_input = event.target.value;
 
-    if(search_input){
-        sample_users.find(user => {
-            if((user.name.toLocaleLowerCase().includes(search_input.toLocaleLowerCase())) ||
-            (user.email.toLocaleLowerCase().includes(search_input.toLocaleLowerCase()))){
-                invite_results.push(user);
-            }
-        });
+//     if(search_input){
+//         sample_users.find(user => {
+//             if((user.name.toLocaleLowerCase().includes(search_input.toLocaleLowerCase())) ||
+//             (user.email.toLocaleLowerCase().includes(search_input.toLocaleLowerCase()))){
+//                 invite_results.push(user);
+//             }
+//         });
         
-        /* No matching member message */
-        if(!invite_results.length){
-            valid_email = false;
-            ux("#with_access_div").html().setAttribute("hidden", true);
+//         /* No matching member message */
+//         if(!invite_results.length){
+//             valid_email = false;
+//             ux("#with_access_div").html().setAttribute("hidden", true);
     
-            ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
-            ux(".empty_search_wrapper").html().removeAttribute("hidden");
-        }
-        /* Show matching members */
-        else{
-            let invite_dropdown = document.getElementById("add_invite");
-            invite_dropdown.innerHTML = ""; /* remove existing element */
-            valid_email = true;
+//             ux(".empty_search_wrapper #invite_result_msg").text(`Oops! Looks like there are no members that match “${search_input}”.`);
+//             ux(".empty_search_wrapper").html().removeAttribute("hidden");
+//         }
+//         /* Show matching members */
+//         else{
+//             let invite_dropdown = document.getElementById("add_invite");
+//             invite_dropdown.innerHTML = ""; /* remove existing element */
+//             valid_email = true;
 
-            for(var user_index=0; user_index < invite_results.length; user_index++){
-                invite_dropdown.innerHTML += `
-                    <li class="add_invite_result">
-                        <input class="choose_users" id="user_${user_index}" type="checkbox" />
-                        <label for="user_${user_index}">
-                            <img src="${invite_results[user_index].img_url}" alt="user_profile">
-                            <div class="user_information">
-                                <h4>${invite_results[user_index].name}</h4>
-                                <p>${invite_results[user_index].email}</p>
-                            </div>
-                        </label>
-                    </li>`;
-            }
+//             for(var user_index=0; user_index < invite_results.length; user_index++){
+//                 invite_dropdown.innerHTML += `
+//                     <li class="add_invite_result">
+//                         <input class="choose_users" id="user_${user_index}" type="checkbox" />
+//                         <label for="user_${user_index}">
+//                             <img src="${invite_results[user_index].img_url}" alt="user_profile">
+//                             <div class="user_information">
+//                                 <h4>${invite_results[user_index].name}</h4>
+//                                 <p>${invite_results[user_index].email}</p>
+//                             </div>
+//                         </label>
+//                     </li>`;
+//             }
 
-            let members_dropdown_btn = document.getElementById("add_invite_btn");
-            M.Dropdown.init(members_dropdown_btn, {
-                alignment: 'left',
-                coverTrigger: false,
-                autoTrigger: true,
-                closeOnClick:false
-            });
+//             let members_dropdown_btn = document.getElementById("add_invite_btn");
+//             M.Dropdown.init(members_dropdown_btn, {
+//                 alignment: 'left',
+//                 coverTrigger: false,
+//                 autoTrigger: true,
+//                 closeOnClick:false
+//             });
 
-            if(!(M.Dropdown.getInstance(members_dropdown_btn).isOpen)){
-                M.Dropdown.getInstance(members_dropdown_btn).open();
-            }
-        }
-    }
-    else{
-        ux("#with_access_div").html().removeAttribute("hidden");
-        ux(".empty_search_wrapper").html().setAttribute("hidden", true);
-    }
-}
+//             if(!(M.Dropdown.getInstance(members_dropdown_btn).isOpen)){
+//                 M.Dropdown.getInstance(members_dropdown_btn).open();
+//             }
+//         }
+//     }
+//     else{
+//         ux("#with_access_div").html().removeAttribute("hidden");
+//         ux(".empty_search_wrapper").html().setAttribute("hidden", true);
+//     }
+// }
 
-function addSearchEmailResult(search_email_result){
-    const user_email = search_email_result.children[1].children[1].children[1].innerText;
-    const email_chip_elem = document.querySelectorAll('.chips');
+// function addSearchEmailResult(search_email_result){
+//     const user_email = search_email_result.children[1].children[1].children[1].innerText;
+//     const email_chip_elem = document.querySelectorAll('.chips');
 
-    if(!invited_emails.emails.includes(user_email) && valid_email){
-        invited_emails.emails.push(user_email);
-        invited_emails.chips.push({ tag: user_email });
+//     if(!invited_emails.emails.includes(user_email) && valid_email){
+//         invited_emails.emails.push(user_email);
+//         invited_emails.chips.push({ tag: user_email });
 
-        const chip_instance_init = M.Chips.init(email_chip_elem, { 
-            data: invited_emails.chips,
-            onChipDelete: (e, email) => {
-                invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
-                invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
-            }
-        });
-    }
-}
+//         const chip_instance_init = M.Chips.init(email_chip_elem, { 
+//             data: invited_emails.chips,
+//             onChipDelete: (e, email) => {
+//                 invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
+//                 invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
+//             }
+//         });
+//     }
+// }
