@@ -25,16 +25,24 @@
         ux(document).on("touchstart", function (event){
             swipe_value = event.touches.item(0).clientX;
         });
+        ux(document).on("touchend", function (event){
+            swipe_value = 0;
+            animateSwipe();
+        });
         
         ux(document).on("touchmove", function (event){
             clearTimeout(swipe_timeout);
+            let event_swipe_value = (event.touches.item(0).clientX);
             let mobile_comments_slideout = ux("#mobile_comments_slideout");
-            let swipe_direction = (swipe_value > (event.touches.item(0).clientX)) ? "left" : "right";
+            let swipe_direction = (swipe_value > (event_swipe_value)) ? "left" : "right";
 
             if(is_comments_displayed){
-                if(swipe_value > (event.touches.item(0).clientX + SWIPE_OFFSET)){
+                if(swipe_value > (event_swipe_value + SWIPE_OFFSET)){
                     if(mobile_comments_slideout.html().classList.contains("active")){
                         mobile_comments_slideout.removeClass("active");
+                        let mobile_comment_message = mobile_comments_slideout.find(".mobile_add_comment_form .comment_message");
+                        mobile_comment_message.html().value = "";
+                        mobile_comment_message.html().blur();
                         
                         /** Wait for comments sidenav to completely hide */
                         setTimeout(() => {
@@ -47,17 +55,37 @@
                     }
                 }
             } else {
-                if(Math.abs(swipe_value - event.touches.item(0).clientX) > SWIPE_OFFSET){
-                    swipe_timeout = setTimeout(() => {
-                        onSwipe(swipe_direction);
-                    }, 148);
+                let swipe_amount = swipe_value - event_swipe_value;
+                
+                /** Check swipe only on section pages */
+                if(event.target.closest("#section_pages")){
+                    if(Math.abs(swipe_amount) > (SWIPE_OFFSET / 2)){
+                        animateSwipe(swipe_direction);
+                    }
+                    
+                    if(Math.abs(swipe_amount) > SWIPE_OFFSET){
+                        swipe_timeout = setTimeout(() => {
+                            onSwipe(swipe_direction);
+                        }, 148);
+                    }
                 }
+
             }
 
         });
 
         bindViewEvents();
     });
+    
+    async function animateSwipe(swipe_direction = ""){
+        let active_section_page = ux("#section_pages .section_page_content.active");
+        await active_section_page.removeClass("right");
+        await active_section_page.removeClass("left");
+        
+        if(swipe_direction){
+            active_section_page.addClass(swipe_direction);
+        }
+    }
 
     function onSwipe(swipe_direction){
         if(!is_comments_displayed){
