@@ -812,6 +812,21 @@ body {
 .container .section_container .section_block .section_controls span {
   width: 57px;
 }
+.container .no_sections {
+  width: 100%;
+  text-align: center;
+  margin: 45px 0 142px;
+}
+.container .no_sections.hidden {
+  display: none;
+}
+.container .no_sections img {
+  margin-bottom: 9px;
+}
+.container .no_sections p {
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  color: #B5C4E4;
+}
 .material-tooltip {
   background-color: #1e293b !important;
   border-radius: 28px !important;
