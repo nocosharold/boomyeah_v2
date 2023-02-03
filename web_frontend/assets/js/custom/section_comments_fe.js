@@ -1,6 +1,5 @@
 (function(){
     let swipe_value = 0;
-    let swipe_move_value = 0;
     let is_comments_displayed = false;
     let swipe_timeout = null;
 
@@ -23,7 +22,7 @@
         });
         ux(document).on("touchend", function (event){
             swipe_value = 0;
-            swipe_move_value = 0;
+            animateSwipe();
         });
         
         ux(document).on("touchmove", function (event){
@@ -31,10 +30,6 @@
             let event_swipe_value = (event.touches.item(0).clientX);
             let mobile_comments_slideout = ux("#mobile_comments_slideout");
             let swipe_direction = (swipe_value > (event_swipe_value)) ? "left" : "right";
-            if(swipe_move_value === 0){
-                swipe_move_value = event_swipe_value + 1;
-            } 
-            swipe_move_value = Math.abs(swipe_move_value - event_swipe_value);
 
             if(is_comments_displayed){
                 if(swipe_value > (event_swipe_value + SWIPE_OFFSET)){
@@ -56,13 +51,20 @@
                 }
             } else {
                 let swipe_amount = swipe_value - event_swipe_value;
-                animateSwipe(swipe_direction, swipe_amount);
-
-                if(Math.abs(swipe_amount) > SWIPE_OFFSET){
-                    swipe_timeout = setTimeout(() => {
-                        onSwipe(swipe_direction);
-                    }, 148);
+                
+                /** Check swipe only on section pages */
+                if(event.target.closest("#section_pages")){
+                    if(Math.abs(swipe_amount) > (SWIPE_OFFSET / 2)){
+                        animateSwipe(swipe_direction);
+                    }
+                    
+                    if(Math.abs(swipe_amount) > SWIPE_OFFSET){
+                        swipe_timeout = setTimeout(() => {
+                            onSwipe(swipe_direction);
+                        }, 148);
+                    }
                 }
+
             }
 
         });
@@ -70,13 +72,14 @@
         bindViewEvents();
     });
     
-    function animateSwipe(swipe_direction, swipe_amount){
-        let section_pages = ux("#section_pages");
-        let corrected_swipe_amount = swipe_amount * -1;
-        let section_x_location = section_pages.html().getBoundingClientRect().x;
-        console.log("swipe_amount", swipe_move_value, corrected_swipe_amount, section_x_location);
-        // section_pages.html().styles.left = section_x_location + corrected_swipe_amount;
-
+    async function animateSwipe(swipe_direction = ""){
+        let active_section_page = ux("#section_pages .section_page_content.active");
+        await active_section_page.removeClass("right");
+        await active_section_page.removeClass("left");
+        
+        if(swipe_direction){
+            active_section_page.addClass(swipe_direction);
+        }
     }
 
     function onSwipe(swipe_direction){
