@@ -1,4 +1,4 @@
-import data from "../json/large_dataset.json" assert { type: "json" };
+// import data from "../json/large_dataset.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", async () => {
     const current_location = window.location.pathname;
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     /* Print JSON data */
-    printSectionOutline(data.section_outline.sections);
+    // printSectionOutline(data.section_outline.sections);
 }); 
 
 function printSectionOutline(section_data){
