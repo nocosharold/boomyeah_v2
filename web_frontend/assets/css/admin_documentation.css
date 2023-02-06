@@ -869,6 +869,7 @@ body::-webkit-scrollbar-thumb {
   left: 0;
   position: absolute;
   width: 100%;
+  border-radius: 8px;
 }
 .container #documentations .document_block.hidden,
 .container #archived_documents .document_block.hidden,
