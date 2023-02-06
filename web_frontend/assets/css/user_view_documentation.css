@@ -685,13 +685,13 @@ body {
   display: none;
 }
 .container .divider {
-  display: inline-block;
-  width: 100%;
-  height: 1px;
   background-color: #eff6ff;
-  position: absolute;
+  display: inline-block;
+  height: 1px;
   left: 0;
   margin-bottom: 33px;
+  position: absolute;
+  width: 100%;
 }
 .container #doc_title_access {
   align-items: center;
@@ -740,7 +740,7 @@ body {
 }
 .container h2 {
   font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
-  margin: 0;
+  margin: 0px;
 }
 .container .section_container {
   margin-top: 8px;
@@ -907,9 +907,9 @@ body {
 div::-webkit-scrollbar {
   background-color: #eff6ff;
   border-radius: 10px;
+  width: 10px;
   display: revert;
   margin-left: 20px;
-  width: 10px;
 }
 div::-webkit-scrollbar-thumb {
   background-color: #dbeafe;
