@@ -814,9 +814,9 @@ body {
   width: 57px;
 }
 .container .no_sections {
-  width: 100%;
-  text-align: center;
   margin: 45px 0 142px;
+  text-align: center;
+  width: 100%;
 }
 .container .no_sections.hidden {
   display: none;
