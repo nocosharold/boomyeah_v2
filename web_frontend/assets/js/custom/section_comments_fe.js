@@ -10,6 +10,8 @@
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
         ux(".show_comments_btn").onEach("click", showTabComments);
+        ux(".toggle_reply_form_btn").onEach("click", showReplyForm);
+        ux(".toggle_replies_btn").onEach("click", showRepliesList);
         ux(".mobile_comment_btn").onEach("click", (event) => {
             onSubmitComment(event.target.closest(".mobile_add_comment_form"))
         });
@@ -17,6 +19,14 @@
 
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `${view_path}/global/user_view_section_comments.html`);
+
+        ux("#section_pages").findAll("ul.comments_list").forEach((comments_list) => {
+            if(!comments_list.classList.contains("replies_list")){
+                ux(comments_list).findAll(".comment_container").forEach((comment_container) => {
+                    showRepliesCount(comment_container);
+                });
+            }
+        });
 
         ux(document).on("click", onElementClick);
 
@@ -114,6 +124,36 @@
         }
     }
 
+    function showRepliesList(event){
+        event.stopImmediatePropagation();
+        let show_replies_btn = event.target.closest(".toggle_replies_btn");
+        let comment_item = event.target.closest(".comment_item");
+        let replies_list  = ux(comment_item).find(".replies_list");
+        
+        if(!replies_list.html().classList.contains("show")){
+            ux(show_replies_btn).addClass("hidden");
+            replies_list.addClass("show");
+        }
+    }
+
+    function showReplyForm(event){
+        event.stopImmediatePropagation();
+        let comment_item = event.target.closest(".comment_item");
+        let reply_form = ux(comment_item).find(".add_reply_form");
+        
+        if(!reply_form.html()){
+            reply_form = ux(comment_item.closest(".replies_list").closest(".comment_item").querySelector(".add_reply_form"));
+            let label_text = "Replying to " + ux(comment_item).find(".user_name").text();
+            reply_form.find("label").text(label_text);
+        }
+        
+        if(!reply_form.html().classList.contains("show")){
+            reply_form.addClass("show");
+        }
+        
+        reply_form.find(".comment_message").html().focus();
+    }
+
     function closeCommentActions(){
         ux(document).findAll(".comment_actions_toggle").forEach((element) => ux(element).removeClass("active"));
         ux("#comment_actions_container").removeClass("active");
@@ -128,17 +168,12 @@
         }
         let is_mobile_comment = post_form.classList.contains("mobile_add_comment_form");
         let comment_message = ux(post_form).find(".comment_message").html().value;
-        let comment_container = post_form.closest(".comment_container");
-
+        
         if(comment_message){
+            let comment_container = post_form.closest(".comment_container");
             let comment_item = ux("#comments_list_clone .comment_item").clone();
             let comments_list = ux(comment_container).find(".comments_list");
             comment_item.find(".comment_message").text(comment_message);
-            
-            if(is_reply){
-                comment_item.find(".comments_list").html().remove();
-                comment_item.find(".add_comment_form").html().remove();
-            }
 
             if(is_mobile_comment){
                 comments_list = ux("#comments_list_container .comments_list");
@@ -146,11 +181,32 @@
             }
             
             comments_list.html().prepend(comment_item.html());
+
+            if(is_reply){
+                comment_item.find(".comments_list").html().remove();
+                comment_item.find(".add_comment_form").html().remove();
+                comment_item.find(".reply_actions .toggle_replies_btn").html().remove();
+                
+                showRepliesCount(comment_container);
+                ux(comment_container).find(".toggle_replies_btn").html().click();
+                ux(post_form).find("label").text("Write a reply");
+            }
+
             post_form.reset();
             ux(post_form).find(".comment_message").html().blur();
             bindViewEvents();
         }
         return false;
+    }
+
+    function showRepliesCount(comment_container){
+        let comments_list = ux(comment_container).find(".replies_list");
+
+        if(comments_list.html()){
+            let reply_count = comments_list.findAll(".comment_item").length;
+            let replies_text = reply_count + ` ${(reply_count == 1) ? "reply" : "replies"}`;
+            ux(comment_container).find(".reply_count").text(replies_text);
+        }
     }
 
     async function showTabComments(event){
@@ -180,11 +236,20 @@
 
         if(event_target.classList.contains("remove_btn")){
             let viewport_width = document.documentElement.clientWidth;
+            let comment_container = null;
             
+            if(event_target.closest(".replies_list")){
+                comment_container = event_target.closest(".replies_list").closest(".comment_container");
+            }
+
             if(viewport_width > MOBILE_WIDTH){
-                event_target.closest(".comment_item").remove();
+                await event_target.closest(".comment_item").remove();
             } else {
                 ux(".active_comment_item").html().remove();
+            }
+
+            if(comment_container){
+                showRepliesCount(comment_container);
             }
 
             await closeCommentActions();
