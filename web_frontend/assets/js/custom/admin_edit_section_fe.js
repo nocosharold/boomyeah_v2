@@ -6,8 +6,14 @@ function(){
     let target_index = 0;
 
     document.addEventListener("DOMContentLoaded", async ()=> {
-        await include("#main_navigation" , `../views/global/main_navigation.html`, `../assets/js/main_navigation.js`);
-        
+        const current_location = window.location.pathname;
+        const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+
+        let global_path = (view_path === "/views")? "." : "..";
+        let assets_path = (view_path === "/views" )? ".." : "../..";
+
+        await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
             initializeRedactor("#section_pages .tab_content");
@@ -17,17 +23,6 @@ function(){
             ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
             updateSectionProgress();
         }
-
-        ux("#prev_page_btn").on("click", ()=> { openSectionTab(-1) })
-        ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
-
-        const current_location = window.location.pathname;
-        const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
-
-        let global_path = (view_path === "/views")? "." : "..";
-        let assets_path = (view_path === "/views" )? ".." : "../..";
-
-        await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
 
         initializeSectionPageEvents();
 
