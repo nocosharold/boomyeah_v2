@@ -1,4 +1,8 @@
 (function(){
+    const current_location = window.location.pathname;
+    const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+
+    let global_path = (view_path === "/views")? "." : "..";
     let swipe_value = 0;
     let is_comments_displayed = false;
     let swipe_timeout = null;
@@ -12,12 +16,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
-        const current_location = window.location.pathname;
-        const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
-
-        let global_path = (view_path === "/views")? "." : "..";
-
-        await include("#user_view_comments" , `${global_path}/global/user_view_section_comments.html`);
+        await include("#user_view_comments" , `${view_path}/global/user_view_section_comments.html`);
 
         ux(document).on("click", onElementClick);
 
@@ -160,7 +159,7 @@
         mobile_comments_slideout.find("#user_comments_list").html().innerHtml = "";
 
         if(!mobile_comments_slideout.html().classList.contains("active")){
-            await include("#user_comments_list" , `../views/global/user_view_section_comments.html`);
+            await include("#user_comments_list" , `${view_path}/global/user_view_section_comments.html`);
             mobile_comments_slideout.addClass("active");
             is_comments_displayed = true;
             bindViewEvents();
