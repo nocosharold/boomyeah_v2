@@ -90,9 +90,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <ul class="comments_list">
-                                <li id="user_view_comments"></li>
-                            </ul>
+                            <ul class="comments_list"></ul>
                         </div>
                     </div>
                 </div>
@@ -127,13 +125,17 @@
                                 <p class="comment_message"></p>
                             </div>
                         </div>
+                        <div class="reply_actions">
+                            <button type="button" class="toggle_reply_form_btn" data-target_comment="">Reply</button>
+                            <button type="button" class="toggle_replies_btn hidden"><b>Show <span class="reply_count"> replies</span></b></button>
+                        </div>
                         <ul class="replies_list comments_list"></ul>
                         <form action="/" method="POST" class="add_reply_form add_comment_form">
                             <div class="comment_details">
                                 <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
                                 <div class="comment_field">
                                     <div class="comment_message_content input-field col s12">
-                                        <label for="post_comment_">Write a reply</label>
+                                        <label for="post_comment_" data-label_text="Write a reply">Write a reply</label>
                                         <textarea name="post_comment_" id="post_comment" class="materialize-textarea comment_message"></textarea>
                                     </div>
                                 </div>
