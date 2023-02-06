@@ -1,4 +1,3 @@
-// import data from "../json/large_dataset.json" assert { type: "json" };
 document.addEventListener("DOMContentLoaded", async () => {
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
