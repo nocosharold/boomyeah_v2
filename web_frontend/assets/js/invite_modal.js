@@ -15,27 +15,27 @@ function searchEmail(event){
         {
             "name": "Erick Caccam",
             "email": "ecaccam@village88.com",
-            "img_url": "../assets/images/mc.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/mc.png"
         },
         {
             "name": "Jadee Ganggangan",
             "email": "jganggangan@village88.com",
-            "img_url": "../assets/images/mc.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/mc.png"
         },
         {
             "name": "Jovic Abengona",
             "email": "jabengona@village88.com",
-            "img_url": "../assets/images/jhaver.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png"
         },
         {
             "name": "Harold Nocos",
             "email": "hnocos@village88.com",
-            "img_url": "../assets/images/jhaver.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png"
         },
         {
             "name": "Kei Kishimoto",
             "email": "kkishimito@village88.com",
-            "img_url": "../assets/images/kb.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/kb.png"
         }
     ]
     let invite_results = [];
