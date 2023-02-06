@@ -57,6 +57,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             addSearchEmailResult(element);
         }
     });
+
+    ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
+    
+    ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
 });
 
 function submitInvite(event){
@@ -98,16 +102,16 @@ function displayDocumentations(documentations){
     /* Print all documentation */
     documentations.forEach((document, index) => {
         document_block += `
-            <div class="document_block">
+            <div id="document_${index + 1}" class="document_block">
                 <div class="document_details">
                     <input type="text" name="document_title" value="${document.title}" id="" class="document_title" readonly="">
                     ${ document.is_private ? `<button class="invite_collaborators_btn modal-trigger" href="#modal1"> ${document.collaborator_count}</button>` : ''}
                 </div>
                 <div class="document_controls">
-                    ${ document.is_private ? '<button class="access_btn modal-trigger" href="#confirm_to_public"></button>' : '' }
-                    <button class="more_action_btn dropdown-trigger" data-target="document_${ document.is_private ? `pr0${index}` : `pu0${index}` }">⁝</button>
+                    ${ document.is_private ? `<button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="${index + 1}" data-document_privacy="private"></button>` : '' }
+                    <button class="more_action_btn dropdown-trigger" data-target="document_${ document.is_private ? `pr${index}` : `pu${index}` }">⁝</button>
                     <!-- Dropdown Structure -->
-                    <ul id="document_${ document.is_private ? `pr0${index}` : `pu0${index}` }" class="dropdown-content more_action_list_${ document.is_private ? 'private' : 'public' }">
+                    <ul id="document_${ document.is_private ? `pr${index}` : `pu${index}` }" class="dropdown-content more_action_list_private">
                         <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -115,10 +119,9 @@ function displayDocumentations(documentations){
                         <li><a href="#!" class="archive_icon">Archive</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
-                        ${ document.is_private ? `<li class="divider" tabindex="-1"></li>
-                        <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>` : 
-                        `<li class="divider" tabindex="-1"></li>
-                        <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>` }
+                        <li class="divider" tabindex="-1"></li>
+                        ${ document.is_private ? `<li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="${index + 1}" data-document_privacy="private">Set to Public</a></li>` : 
+                        `<li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="${index + 1}" data-document_privacy="public">Set to Private</a></li>` }
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="remove_icon">Remove</a></li>
                     </ul>
@@ -245,4 +248,70 @@ function appearArchivedDocumentations(event){
     docs_view_btn.html().innerText = archived_docs_btn.innerText;
     ux("#archived_documents").removeClass("hidden");
     ux("#documentations").addClass("hidden");
+}
+
+/* Will set values needed for changing a documentation's privacy. Values will be used after clicking 'Yes' on the modal */
+function setDocumentPrivacyValues(event){
+    const documentation         = event.target;
+    const documentation_id      = documentation.getAttribute("data-document_id");
+    const documentation_privacy = documentation.getAttribute("data-document_privacy");
+
+    /* Set form values */
+    document.getElementById("change_privacy_doc_id").value = documentation_id;
+    document.getElementById("change_privacy_doc_privacy").value = documentation_privacy;
+}
+
+function submitChangeDocumentPrivacy(event){
+    /* This is just for clickable prototype. Will replace all when form is submitted to the backend */
+    const documentation_id      = document.getElementById("change_privacy_doc_id").value;
+    const documentation_privacy = document.getElementById("change_privacy_doc_privacy").value;
+
+    const document_details         = ux(`#document_${documentation_id} .document_details`).html();
+    const dropdown_set_privacy_btn = ux(`#document_${documentation_id} .dropdown-content .set_privacy_btn`).html();
+
+    let href_value, document_privacy, class_name, inner_html = "";
+
+    /* When changing privacy to Public... */
+    if(documentation_privacy == "private"){
+        document_details.querySelector(".invite_collaborators_btn").remove();
+        ux(`#document_${documentation_id} .access_btn`).html().remove();
+
+        /* Set set_privacy_btn values */
+        href_value       = "#confirm_to_private";
+        document_privacy = "public";
+        class_name       = "set_to_private_icon modal-trigger set_privacy_btn";
+        inner_html       = "Set to Private"
+    }
+    /* When changing privacy to Private... */
+    else {
+        /* Create invite_collaborators_btn element */
+        const invite_collaborators_btn = document.createElement("button");
+        invite_collaborators_btn.innerHTML = 0;
+        invite_collaborators_btn.className = "invite_collaborators_btn modal-trigger";
+        invite_collaborators_btn.setAttribute("href", "#modal1");
+
+        document_details.append(invite_collaborators_btn);
+
+        /* Create access_btn */
+        const access_btn = document.createElement("button");
+        access_btn.className = "access_btn modal-trigger set_privacy_btn";
+        access_btn.setAttribute("href", "#confirm_to_public");
+        access_btn.setAttribute("data-document_id", documentation_id);
+        access_btn.setAttribute("data-document_privacy", "private");
+        access_btn.addEventListener("click", setDocumentPrivacyValues);
+
+        ux(`#document_${documentation_id} .document_controls`).html().prepend(access_btn);
+
+        /* Set set_privacy_btn values */
+        href_value       = "#confirm_to_public";
+        document_privacy = "private";
+        class_name       = "set_to_public_icon modal-trigger set_privacy_btn";
+        inner_html       = "Set to Public"
+    }
+
+    /* Update set_privacy_btn */
+    dropdown_set_privacy_btn.setAttribute("href", href_value);
+    dropdown_set_privacy_btn.setAttribute("data-document_privacy", document_privacy);
+    dropdown_set_privacy_btn.className = class_name;
+    dropdown_set_privacy_btn.innerHTML = inner_html;
 }
