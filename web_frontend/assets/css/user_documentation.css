@@ -775,6 +775,11 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.user .container #documentations .document_block .document_details h2 {
+  color: #0F172A;
+  font: 12px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  margin: 0;
+}
 .user .container #documentations .document_block .document_details .invite_collaborators_btn {
   background-color: #EFF6FF;
   border-radius: 20px;
