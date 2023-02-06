@@ -21,6 +21,7 @@ function(){
             ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
             updateSectionProgress();
         }
+        
         initializeSectionPageEvents();
 
         window.addEventListener("resize", () => {
@@ -193,6 +194,9 @@ function(){
         /** Rebind Event Listeners */
         initializeSectionPageEvents(section_page_content);
         initializeRedactor(`#${tab_id} .tab_content`);
+
+        /* Scroll to bottom */
+        window.scrollTo(0, document.body.scrollHeight);
     }
     
     function addNewTab(event){
