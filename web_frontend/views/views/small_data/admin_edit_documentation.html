@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="UX Team 2">
+    <meta name="description" content="A great way to describe your documentation tool">
+    <title>Boom Yeah | Admin Edit Documentation Page</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/admin_edit_documentation.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="../../assets/js/vendor/html_loader.lib.js"></script>
+    <script src="../../assets/js/vendor/ux.lib.js"></script>
+    <script src="../../assets/js/vendor/Sortable.min.js"></script>
+</head>
+<body>
+    <!--- Add #main_navigation --->
+    <div id="main_navigation"></div>
+    <!--- Add #invite_modal --->
+    <div id="invite_modal"></div>
+
+    <div id="wrapper">
+        <div class="container">
+            <ul id="breadcrumb_list">
+                <li class="breadcrumb_item"><a href="admin_documentation.html">Documentation</a></li>
+                <li class="breadcrumb_item active">Employee Handbook</li>
+            </ul>
+            <div class="divider"></div>
+            <div id="doc_title_access">
+                <h1 id="doc_title">Employee Handbook</h1>
+                <!-- Switch -->
+                <div class="switch switch_btn">
+                    <label>
+                        <span class="toggle_text">Public</span>
+                        <input class="toggle_switch" type="checkbox">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+                <a id="invite_collaborator_btn" class="waves-effect waves-light btn modal-trigger hidden" href="#modal1">13 Collaborators</a>
+            </div>
+            <p class="doc_text_content">This handbook replaces and supersedes all prior employee handbooks regarding employment or HR matters effective January 01, 2021. </p>
+            <form action="#" id="section_form" method="post">
+                <div class="group_add_section input-field">
+                    <input id="input_add_section" type="text" class="validate" autofocus>
+                    <label for="input_add_section">Add Section</label>
+                </div>
+            </form>
+            <h2>Sections</h2>
+            <div class="section_container" id="section_container">
+                <div class="section_block hidden">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <input type="text" name="section_title" value="Untitled Section" id="" class="section_title tooltipped"
+                            data-tooltip="Untitled Section">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon tooltipped" data-tooltip="Edit Title"></button>
+                        <button class="copy_icon tooltipped" data-tooltip="Duplicate"></button>
+                        <button class="remove_icon tooltipped" data-tooltip="Remove"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">About Company</h3> -->
+                        <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Terms of Employment</h3> -->
+                        <input type="text" name="section_title" value="Terms of Employment" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">General Policies & Procedures</h3> -->
+                        <input type="text" name="section_title" value="General Policies &amp; Procedures" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Compensation & Benefits</h3> -->
+                        <input type="text" name="section_title" value="Compensation &amp; Benefits" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Career & Personnel Development</h3> -->
+                        <input type="text" name="section_title" value="Career &amp; Personnel Development" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">2023 Unlimited PTO</h3> -->
+                        <input type="text" name="section_title" value="2023 Unlimited PTO" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">V88 Cultures</h3> -->
+                        <input type="text" name="section_title" value="V88 Cultures" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Importance of Going Extra Miles</h3> -->
+                        <input type="text" name="section_title" value="Importance of Going Extra Miles" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Team Buildings</h3> -->
+                        <input type="text" name="section_title" value="Team Buildings" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Incentive International Trips</h3> -->
+                        <input type="text" name="section_title" value="Incentive International Trips" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Loyalty Points</h3> -->
+                        <input type="text" name="section_title" value="Loyalty Points" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Slicing Pie</h3> -->
+                        <input type="text" name="section_title" value="Slicing Pie" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Coding Dojo Sale</h3> -->
+                        <input type="text" name="section_title" value="Coding Dojo Sale" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+                <div class="section_block">
+                    <div class="section_details">
+                        <button class="draggable_icon"></button>
+                        <!-- <h3 class="section_title">Village 88 2.0</h3> -->
+                        <input type="text" name="section_title" value="Village 88 2.0" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="edit_section_title_icon"></button>
+                        <button class="copy_icon"></button>
+                        <button class="remove_icon"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="no_sections hidden">
+                <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
+                    alt="Empty Content Illustration">
+                <p>You have no sections yet</p>
+            </div>
+        </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="module" src="../../assets/js/admin_edit_documentation.js"></script>
+    <script type="text/javascript" src="../../assets/js/invite_modal.js"></script>
+    <script type="text/javascript" src="../../assets/js/hotkeys.js"></script>
+</body>
+</html> 

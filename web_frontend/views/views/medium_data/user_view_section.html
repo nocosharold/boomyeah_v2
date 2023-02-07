@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Company - Employee Handbook | BoomYEAH</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/user_view_section.css">
+    <script src="../../assets/js/vendor/html_loader.lib.js"></script>
+    <script src="../../assets/js/vendor/ux.lib.js"></script>
+    <script src="../../assets/js/vendor/Sortable.min.js"></script>
+</head>
+<body>
+    <div id="client_width"></div>
+    <div id="mobile_comments_slideout" class="sidenav">
+        <div id="comments_list_container">
+            <ul id="user_comments_list" class="comments_list"></ul>
+        </div>
+        <div class="mobile_tab_comments tab_comments comment_container">
+            <form action="/" method="POST" class="mobile_add_comment_form add_comment_form">
+                <div class="comment_field">
+                    <div class="comment_message_content input-field col s12">
+                        <label for="post_comment_4">Write a comment</label>
+                        <textarea name="post_comment" id="post_comment_4" class="materialize-textarea comment_message"></textarea>
+                    </div>
+                </div>
+                <div class="comment_btn">
+                    <button type="button" class="mobile_comment_btn"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="main_navigation"></div>
+    <div id="wrapper" class="container">
+        <div id="view_section_content">
+            <div id="section_summary">
+                <div class="breadcrumbs">
+                    <ul id="breadcrumbs_list">
+                        <li class="breadcrumb_item"><a href="user_documentation">Documentations</a></li class="breadcrumb_item">
+                        <li class="breadcrumb_item"><a href="user_view_documentation">Employee Handbook</a></li class="breadcrumb_item">
+                        <li class="breadcrumb_item active"><span>About Company</span></li>
+                    </ul>
+                    <div class="row_placeholder"></div>
+                </div>
+                <div class="section_details">
+                    <h1 id="section_title">About Company</h1>
+                    <p id="section_short_description">Village 88 Inc. is a US-Delaware corporation which focuses on incubating\ncompanies and providing IT consultancy services to companies in the US. V88 also has a remote branch in San Fernando, La Union,\nPhilippines registered in Securities and Exchange Commission as\n457Avenue Inc.</p>
+                </div>
+            </div>
+            <div id="section_pages">
+                <div class="section_page_content active">
+                    <ul class="section_page_tabs">
+                        <li class="page_tab_item active" data-tab_id="tab_1">
+                            <a href="#tab_1">Our Mission & Vision</a>
+                        </li>
+                        <li class="page_tab_item" data-tab_id="tab_2">
+                            <a href="#tab_2">The Team</a>
+                        </li>
+                    </ul>
+                    <div class="section_page_tab show" id="tab_1">
+                        <h3 class="tab_title">Our Mission & Vision</h3>
+                        <p id="tab_content_1" class="tab_content"><p>Village 88's vision is to incubate and launch businesses that bring positive impact to the world.</p></p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (0)</a>
+                        <div class="tab_comments comment_container">
+                            <form action="/" method="POST" class="add_comment_form">
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment_1">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_1" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul id="user_view_comments" class="comments_list"></ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section_page_tab" id="tab_2">
+                        <h3 class="tab_title">The Team</h3>
+                        <p id="tab_content_2" class="tab_content"><h3>Engineering (Backend)</h3><img src='sample_url.jpg'><p>This is the Backend Team which is part of the Engineering Team. They are responsible for all the Backend processes of our projects like Coding Dojo, DataCompass, and Focus Tracker. They specialize in numerous technologies like JavaScript, jQuery, Express, React, Socket.io, Ruby, Ruby on Rails, PHP, CodeIgniter, MySQL, Git, and many more.</p><h3>Engineering (Frontend)</h3><img src='sample_url.jpg'><p>This is the Frontend Team which is part of the Engineering Team. They are responsible for all the Frontend processes of our projects like Coding Dojo, DataCompass, and Focus Tracker. They specialize in numerous technologies like HTML/CSS, LESS, SASS, JavaScript, React/React Native, and many more.</p></p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (0)</a>
+                        <div class="tab_comments comment_container">
+                            <form action="/" method="POST" class="add_comment_form">
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment_2">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_2" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul id="user_view_comments" class="comments_list"></ul>
+                        </div>
+                    </div>
+                    </div>
+                <div class="section_page_content">
+                    <ul class="section_page_tabs">
+                        <li class="page_tab_item active" data-tab_id="tab_3">
+                            <a href="#tab_3">Coding Dojo</a>
+                        </li>
+                        <li class="page_tab_item" data-tab_id="tab_4">
+                            <a href="#tab_4">DataCompass</a>
+                        </li>
+                        <li class="page_tab_item" data-tab_id="tab_5">
+                            <a href="#tab_5">Focus Tracker</a>
+                        </li>
+                    </ul>
+                    <div class="section_page_tab show" id="tab_3">
+                        <h3 class="tab_title">Coding Dojo</h3>
+                        <p id="tab_content_3" class="tab_content"><p>Coding Dojo was founded in 2012. Its first campus opened in Mountain View, CA, U.S.A. Then later campuses were opened in Bellevue Washington, Burbank California, Oakland California, Chicago Illinois, Washington DC, Tulsa Arizona, Dallas Texas, Boise Idaho, and Orange County California.</p></p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
+                        <div class="tab_comments comment_container">
+                            <form action="/" method="POST" class="add_comment_form">
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment_3">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_3" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul id="user_view_comments" class="comments_list"></ul>
+                        </div>
+                    </div>
+                    <div class="section_page_tab" id="tab_4">
+                        <h3 class="tab_title">DataCompass</h3>
+                        <p id="tab_content_4" class="tab_content"><p>Data Compass is an assessment platform where hiring managers can know the Programming IQ of their developer candidates.</p></p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (2)</a>
+                        <div class="tab_comments comment_container">
+                            <form action="/" method="POST" class="add_comment_form">
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment_4">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_4" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul id="user_view_comments" class="comments_list"></ul>
+                        </div>
+                    </div>
+                    <div class="section_page_tab" id="tab_5">
+                        <h3 class="tab_title">Focus Tracker</h3>
+                        <p id="tab_content_5" class="tab_content"><iframe width='560' height='315' src='https://www.youtube.com/embed/er5eVqMq9gU' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe><p>Focus Tracker is one of the pride of Village88. It's an effective tool to better track employee's worktime, velocity, and productivity.</p><iframe width='560' height='315' src='https://www.youtube.com/embed/er5eVqMq9gU' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe></p>
+                        <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (0)</a>
+                        <div class="tab_comments comment_container">
+                            <form action="/" method="POST" class="add_comment_form">
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment_5">Write a comment</label>
+                                        <textarea name="post_comment" id="post_comment_5" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul id="user_view_comments" class="comments_list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile_section_pages_controls">
+                <div id="page_btns">
+                    <div class="row_placeholder"></div>
+                    <button id="prev_page_btn" type="button" class="page_btn hidden"></button>
+                    <button id="next_page_btn" type="button" class="page_btn"></button>
+                </div>
+                <div id="section_page_progress">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div id="clone_section_page">
+                <ul id="comments_list_clone">
+                    <li class="comment_item comment_container">
+                        <div class="comment_content">
+                            <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png" alt="Jhaver" class="user_image"/>
+                            <div class="comment_details">
+                                <h4 class="commenter_name">
+                                    <span class="user_name">Ben T. Lador</span><span class="posted_at">• a few seconds ago</span><!--
+                                    --><div class="comment_actions">
+                                        <button type="button" class="comment_actions_toggle"></button>
+                                        <div class="comment_actions_menu">
+                                            <button type="button" class="comment_action_btn edit_btn">Edit</button>
+                                            <button type="button" class="comment_action_btn remove_btn">Remove</button>
+                                        </div>
+                                    </div>
+                                </h4>
+                                <p class="comment_message"></p>
+                            </div>
+                        </div>
+                        <ul class="replies_list comments_list"></ul>
+                        <form action="/" method="POST" class="add_reply_form add_comment_form">
+                            <div class="comment_details">
+                                <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png" alt="Jhaver" class="user_image"/>
+                                <div class="comment_field">
+                                    <div class="comment_message_content input-field col s12">
+                                        <label for="post_comment_">Write a reply</label>
+                                        <textarea name="post_comment_" id="post_comment" class="materialize-textarea comment_message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="comment_actions_container">
+        <div class="comment_actions_menu">
+            <button type="button" class="comment_action_btn edit_btn">Edit</button>
+            <button type="button" class="comment_action_btn remove_btn">Remove</button>
+        </div>
+    </div>
+    <script src="../../assets/js/vendor/redactorx.min.js"></script>
+    <script src="../../assets/js/constants.js"></script>
+    <script type="text/javascript" src="../../assets/js/hotkeys.js"></script>
+    <script type="module" src="../../assets/js/custom/admin_edit_section_fe.js"></script>
+    <script src="../../assets/js/custom/section_comments_fe.js"></script>
+</body>
+</html>
