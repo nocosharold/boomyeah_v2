@@ -10,7 +10,7 @@ function(){
     let target_index = 0;
 
     document.addEventListener("DOMContentLoaded", async ()=> {
-        await include("#main_navigation" , `${view_path}/global/main_navigation.html`, `../assets/js/main_navigation.js`);
+        await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `../assets/js/main_navigation.js`);
 
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);

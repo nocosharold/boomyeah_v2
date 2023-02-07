@@ -47,16 +47,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const email_address = document.querySelector("#email_address");    
     email_address.addEventListener("keyup", searchEmail);
 
-    document.addEventListener("click", (event) => {
-        event.stopPropagation();
-        event.preventDefault();
+    // document.addEventListener("click", (event) => {
+    //     event.stopPropagation();
+    //     event.preventDefault();
 
-        let element = event.target.closest(".add_invite_result");
+    //     let element = event.target.closest(".add_invite_result");
         
-        if(element){
-            addSearchEmailResult(element);
-        }
-    });
+    //     if(element){
+    //         addSearchEmailResult(element);
+    //     }
+    // });
+
+    ux(".add_invite_result").onEach("click", addSearchEmailResult);
 
     ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
     
