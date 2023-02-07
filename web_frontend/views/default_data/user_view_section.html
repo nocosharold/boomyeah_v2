@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Company - Employee Handbook | BoomYEAH</title>
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/user_view_section.css">
-    <script src="../assets/js/vendor/html_loader.lib.js"></script>
-    <script src="../assets/js/vendor/ux.lib.js"></script>
+    <link rel="stylesheet" href="../../assets/css/user_view_section.css">
+    <script src="../../assets/js/vendor/html_loader.lib.js"></script>
+    <script src="../../assets/js/vendor/ux.lib.js"></script>
 </head>
 <body>
     <div id="main_navigation"></div>
@@ -90,7 +90,9 @@
                                     </div>
                                 </div>
                             </form>
-                            <ul class="comments_list"></ul>
+                            <ul class="comments_list">
+                                <li id="user_view_comments"></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -106,50 +108,12 @@
                     <div class="progress"></div>
                 </div>
             </div>
-            <div id="clone_section_page">
-                <ul id="comments_list_clone">
-                    <li class="comment_item comment_container">
-                        <div class="comment_content">
-                            <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
-                            <div class="comment_details">
-                                <h4 class="commenter_name">
-                                    <span class="user_name">Ben T. Lador</span><span class="posted_at">• a few seconds ago</span><!--
-                                    --><div class="comment_actions">
-                                        <button type="button" class="comment_actions_toggle"></button>
-                                        <div class="comment_actions_menu">
-                                            <button type="button" class="comment_action_btn edit_btn">Edit</button>
-                                            <button type="button" class="comment_action_btn remove_btn">Remove</button>
-                                        </div>
-                                    </div>
-                                </h4>
-                                <p class="comment_message"></p>
-                            </div>
-                        </div>
-                        <div class="reply_actions">
-                            <button type="button" class="toggle_reply_form_btn" data-target_comment="">Reply</button>
-                            <button type="button" class="toggle_replies_btn hidden"><b>Show <span class="reply_count"> replies</span></b></button>
-                        </div>
-                        <ul class="replies_list comments_list"></ul>
-                        <form action="/" method="POST" class="add_reply_form add_comment_form">
-                            <div class="comment_details">
-                                <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
-                                <div class="comment_field">
-                                    <div class="comment_message_content input-field col s12">
-                                        <label for="post_comment_" data-label_text="Write a reply">Write a reply</label>
-                                        <textarea name="post_comment_" id="post_comment" class="materialize-textarea comment_message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-                
-            </div>
+            <div id="clone_section_page"></div>
         </div>
     </div>
     <div id="comment_actions_container">
         <div class="comment_actions_menu">
-            <button type="button" class="comment_action_btn edit_btn">Edit</button>
+            <!-- <button type="button" class="comment_action_btn edit_btn">Edit</button> -->
             <button type="button" class="comment_action_btn remove_btn">Remove</button>
         </div>
     </div>
@@ -171,10 +135,10 @@
             </form>
         </div>
     </div>
-    <script src="../assets/js/vendor/redactorx.min.js"></script>
-    <script src="../assets/js/constants.js"></script>
-    <script type="text/javascript" src="../assets/js/hotkeys.js"></script>
-    <script type="module" src="../assets/js/custom/admin_edit_section_fe.js"></script>
-    <script src="../assets/js/custom/section_comments_fe.js"></script>
+    <script src="../../assets/js/vendor/redactorx.min.js"></script>
+    <script src="../../assets/js/constants.js"></script>
+    <script type="text/javascript" src="../../assets/js/hotkeys.js"></script>
+    <script type="module" src="../../assets/js/custom/admin_edit_section_fe.js"></script>
+    <script src="../../assets/js/custom/section_comments_fe.js"></script>
 </body>
 </html>

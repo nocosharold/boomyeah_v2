@@ -42,17 +42,17 @@
                 <li><a href="#!" class="archived_docs_btn">Archived</a></li>
             </ul>
             <div id="documentations">
-                <div class="document_block hidden">
+                <div class="document_block">
                     <div class="document_details">
-                        <input type="text" name="document_title" value="Untitled Documentation" id="" class="document_title" readonly="">
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 0</button>
+                        <input type="text" name="document_title" value="Employee Handbook" id="" class="document_title" readonly="">
+                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 15</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu00">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr00">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu00" class="dropdown-content more_action_list_private">
-                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                        <ul id="document_pr00" class="dropdown-content more_action_list_private">
+                            <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
@@ -66,40 +66,16 @@
                         </ul>
                     </div>
                 </div>
-                <div id="document_1" class="document_block">
-                    <div class="document_details">
-                        <input type="text" name="document_title" value="Employee Handbook" id="" class="document_title" readonly="">
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 15</button>
-                    </div>
-                    <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="1" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr0">⁝</button>
-                        <!-- Dropdown Structure -->
-                        <ul id="document_pr0" class="dropdown-content more_action_list_private">
-                            <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="1" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="document_2" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Company Handout" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 1</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="2" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr1">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr01">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr1" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr01" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -108,22 +84,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="2" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_3" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Accounting" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu2">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu02">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu2" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu02" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -132,22 +108,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="3" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_4" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Marketing" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu3">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu03">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu3" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu03" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -156,22 +132,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="4" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_5" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Engineering" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 6</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="5" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr4">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr04">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr4" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr04" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -180,22 +156,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="5" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_6" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Product Team" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 9</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="6" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr5">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr05">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr5" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr05" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -204,22 +180,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="6" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_7" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="UI/UX" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 9</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="7" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr6">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr06">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr6" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr06" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -228,22 +204,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="7" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_8" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Admissions" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 9</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="8" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr7">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr07">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr7" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr07" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -252,22 +228,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="8" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_9" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Trainee" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu8">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu08">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu8" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu08" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -276,22 +252,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="9" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_10" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Instructors" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu9">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu09">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu9" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu09" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -300,22 +276,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="10" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_11" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Business Leads" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 10</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="11" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr10">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr010">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr10" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr010" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -324,22 +300,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="11" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_12" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Team Building 2020" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu11">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu011">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu11" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu011" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -348,22 +324,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="12" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_13" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="V88 Core Team" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 14</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="13" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr12">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr012">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr12" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr012" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -372,22 +348,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="13" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_14" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Meals" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu13">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu013">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu13" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu013" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -396,22 +372,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="14" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_15" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Datacompass Mini Team Building" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu14">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu014">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu14" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu014" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -420,22 +396,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="15" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_16" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Thunders" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu15">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu015">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu15" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu015" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -444,22 +420,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="16" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_17" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Juniors" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu16">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu016">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu16" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu016" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -468,22 +444,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="17" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_18" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="V88 Ladies" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 30</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="18" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr17">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr017">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr17" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr017" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -492,22 +468,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="18" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_19" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Policies and Rules" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu18">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu018">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu18" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu018" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -516,22 +492,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="19" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_20" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Money Management" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu19">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu019">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu19" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu019" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -540,22 +516,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="20" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_21" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="HR 101" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 3</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="21" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr20">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr020">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr20" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr020" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -564,22 +540,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="21" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_22" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Government" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 20</button>
                     </div>
                     <div class="document_controls">
-                        <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="22" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr21">⁝</button>
+                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pr021">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr21" class="dropdown-content more_action_list_private">
+                        <ul id="document_pr021" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -588,22 +564,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="22" data-document_privacy="private">Set to Public</a></li>
+                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_23" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Real Estate And Investments" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu22">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu022">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu22" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu022" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -612,22 +588,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="23" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_24" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Being a Good Employee and As a Person" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu23">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu023">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu23" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu023" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -636,22 +612,22 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="24" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div id="document_25" class="document_block">
+                <div class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="UX 201" id="" class="document_title" readonly="">
                         
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu24">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_pu024">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu24" class="dropdown-content more_action_list_private">
+                        <ul id="document_pu024" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
@@ -660,7 +636,7 @@
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="25" data-document_privacy="public">Set to Private</a></li>
+                            <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="remove_icon">Remove</a></li>
                         </ul>
@@ -811,7 +787,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
-                <a href="#!" class="modal-close waves-effect btn-flat yes_btn change_privacy_yes_btn">Yes</a>
+                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
             </div>
         </div>
     </div>
@@ -823,14 +799,10 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
-                <a href="#!" class="modal-close waves-effect btn-flat yes_btn change_privacy_yes_btn">Yes</a>
+                <a href="#!" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
             </div>
         </div>
     </div>
-    <form id="change_document_privacy_form" action="#" method="POST" hidden>
-        <input type="hidden" id="change_privacy_doc_id" name="document_id">
-        <input type="hidden" id="change_privacy_doc_privacy" name="document_privacy">
-    </form>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="module" src="../../assets/js/admin_documentation.js"></script>
