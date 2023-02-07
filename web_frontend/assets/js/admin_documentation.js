@@ -71,13 +71,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ux(".access_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
-        let invite_modal = document.querySelector("#confirm_to_public");
-        var instance = M.Modal.getInstance(invite_modal);
+        let confirm_modal = document.querySelector("#confirm_to_public");
+        var instance = M.Modal.getInstance(confirm_modal);
         instance.open();
     });
 
     ux(".more_action_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
+    });
+    
+    ux(".set_to_public_icon ").onEach("click", function(event){
+        event.stopImmediatePropagation();
+        let confirm_modal = document.querySelector("#confirm_to_public");
+        var instance = M.Modal.getInstance(confirm_modal);
+        instance.open();
+    });
+
+    ux(".set_to_private_icon").onEach("click", function(event){
+        event.stopImmediatePropagation();
+        let confirm_modal = document.querySelector("#confirm_to_private");
+        var instance = M.Modal.getInstance(confirm_modal);
+        instance.open();
     });
 });
 
@@ -176,6 +190,7 @@ function appearEmptyDocumentation(){
 }
 
 function editTitleDocumentation(event){
+    event.stopImmediatePropagation();
     let edit_title_btn = event.target;
     let document_block = ux(edit_title_btn.closest(".document_block"));
     let document_title = ux(document_block.find(".document_details .document_title")).html();
@@ -193,11 +208,13 @@ function disableEditTitleDocumentation(event){
 }
 
 function removeDocumentation(event){
+    event.stopImmediatePropagation();
     event.target.closest(".document_block").remove();
     appearEmptyDocumentation();
 }
 
 function duplicateDocumentation(event){
+    event.stopImmediatePropagation();
     let source = event.target.closest(".document_block");
     let document_title = ux(source).find(".document_title").html();
     let cloned = ux(source).clone();
