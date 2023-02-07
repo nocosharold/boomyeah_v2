@@ -71,13 +71,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ux(".access_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
-        let invite_modal = document.querySelector("#confirm_to_public");
-        var instance = M.Modal.getInstance(invite_modal);
+        let confirm_modal = document.querySelector("#confirm_to_public");
+        var instance = M.Modal.getInstance(confirm_modal);
         instance.open();
     });
 
     ux(".more_action_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
+    });
+    
+    ux(".set_to_public_icon ").onEach("click", function(event){
+        event.stopImmediatePropagation();
+        let confirm_modal = document.querySelector("#confirm_to_public");
+        var instance = M.Modal.getInstance(confirm_modal);
+        instance.open();
     });
 });
 
