@@ -2,7 +2,9 @@
 function(){
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
-
+    let relative_view_paths = view_path.split("views");
+    const relative_view_path = relative_view_paths[0] + "views";
+    const relative_assets_path = relative_view_paths[0];
     let global_path = (view_path === "/views")? "." : "..";
     let assets_path = (view_path === "/views" )? ".." : "../..";
     let toast_timeout = null;
@@ -10,7 +12,8 @@ function(){
     let target_index = 0;
 
     document.addEventListener("DOMContentLoaded", async ()=> {
-        await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `../assets/js/main_navigation.js`);
+        await include("#main_navigation" , `${relative_view_path}/global/main_navigation.html`, `${relative_assets_path}/assets/js/main_navigation.js`);
+        await include("#clone_section_page" , `${relative_view_path}/global/clone_section_page.html`);
 
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
@@ -21,7 +24,7 @@ function(){
             ux("#next_page_btn").on("click", ()=> { openSectionTab(1) })
             updateSectionProgress();
         }
-        
+
         initializeSectionPageEvents();
 
         window.addEventListener("resize", () => {
@@ -316,6 +319,4 @@ function printPageTabs(section_pages){
         user_view_section_html += `</div>`;
         counter = temp_counter;
     }
-
-    console.log(user_view_section_html);
 }

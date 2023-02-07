@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../assets/css/user_view_section.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
-    <script src="../../assets/js/vendor/Sortable.min.js"></script>
 </head>
 <body>
     <div id="main_navigation"></div>
@@ -109,46 +108,12 @@
                     <div class="progress"></div>
                 </div>
             </div>
-            <div id="clone_section_page">
-                <ul id="comments_list_clone">
-                    <li class="comment_item comment_container">
-                        <div class="comment_content">
-                            <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
-                            <div class="comment_details">
-                                <h4 class="commenter_name">
-                                    <span class="user_name">Ben T. Lador</span><span class="posted_at">• a few seconds ago</span><!--
-                                    --><div class="comment_actions">
-                                        <button type="button" class="comment_actions_toggle"></button>
-                                        <div class="comment_actions_menu">
-                                            <button type="button" class="comment_action_btn edit_btn">Edit</button>
-                                            <button type="button" class="comment_action_btn remove_btn">Remove</button>
-                                        </div>
-                                    </div>
-                                </h4>
-                                <p class="comment_message"></p>
-                            </div>
-                        </div>
-                        <ul class="replies_list comments_list"></ul>
-                        <form action="/" method="POST" class="add_reply_form add_comment_form">
-                            <div class="comment_details">
-                                <img src="../assets/images/jhaver.png" alt="Jhaver" class="user_image"/>
-                                <div class="comment_field">
-                                    <div class="comment_message_content input-field col s12">
-                                        <label for="post_comment_">Write a reply</label>
-                                        <textarea name="post_comment_" id="post_comment" class="materialize-textarea comment_message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-                
-            </div>
+            <div id="clone_section_page"></div>
         </div>
     </div>
     <div id="comment_actions_container">
         <div class="comment_actions_menu">
-            <button type="button" class="comment_action_btn edit_btn">Edit</button>
+            <!-- <button type="button" class="comment_action_btn edit_btn">Edit</button> -->
             <button type="button" class="comment_action_btn remove_btn">Remove</button>
         </div>
     </div>
