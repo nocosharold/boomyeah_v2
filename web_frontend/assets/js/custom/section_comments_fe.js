@@ -1,7 +1,8 @@
 (function(){
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
-
+    let relative_view_paths = view_path.split("views");
+    const relative_view_path = relative_view_paths[0] + "views";
     let global_path = (view_path === "/views")? "." : "..";
     let swipe_value = 0;
     let is_comments_displayed = false;
@@ -18,7 +19,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
-        await include("#user_view_comments" , `${view_path}/global/user_view_section_comments.html`);
+        await include("#user_view_comments" , `${relative_view_path}/global/user_view_section_comments.html`);
 
         ux("#section_pages").findAll("ul.comments_list").forEach((comments_list) => {
             if(!comments_list.classList.contains("replies_list")){
@@ -150,7 +151,7 @@
         if(!reply_form.html().classList.contains("show")){
             reply_form.addClass("show");
         }
-        
+
         reply_form.find(".comment_message").html().focus();
     }
 
@@ -215,7 +216,7 @@
         mobile_comments_slideout.find("#user_comments_list").html().innerHtml = "";
 
         if(!mobile_comments_slideout.html().classList.contains("active")){
-            await include("#user_comments_list" , `${view_path}/global/user_view_section_comments.html`);
+            await include("#user_comments_list" , `${relative_view_path}/global/user_view_section_comments.html`);
             mobile_comments_slideout.addClass("active");
             is_comments_displayed = true;
             bindViewEvents();
@@ -223,11 +224,30 @@
     }
 
     function onEditComment(event){
+        event.stopImmediatePropagation();
         let event_target = event.target;
 
         if(event_target.classList.contains("edit_btn")){
+            let comment_details = event_target.closest(".comment_details");
+            let comment_message_value = ux(comment_details).find(".comment_message").text();
+
+            /** Show edit comment form */
+            let edit_comment_form = ux("#clone_section_page .edit_comment_form").clone();
+            let edit_comment_id = "post_comment_" + new Date().getTime();
+            let comment_message_field = edit_comment_form.find(".comment_message");
+            let comment_message_label = edit_comment_form.find("label");
+            comment_message_field.html().value = comment_message_value;
+            comment_message_field.attr("id", edit_comment_id);
+            comment_message_label.attr("for", edit_comment_id);
+
+            comment_details.closest(".comment_content").before(edit_comment_form.html());
+            comment_message_field.on("keydown", onEditMessageKeypress);
+            comment_message_field.html().focus();
+
+            setTimeout(() => {
+                comment_message_field.html().dispatchEvent(new KeyboardEvent("keyup", {"key":"a"}));
+            }, 148);
             closeCommentActions();
-            /** TODO: Show edit comment form */
         }
     }
 
@@ -273,6 +293,26 @@
                 ux("#comment_actions_container").addClass("active");
                 ux(event_target.closest(".comment_item")).addClass("active_comment_item");
             }
+        }
+    }
+
+    function onEditMessageKeypress(event){
+        event.stopImmediatePropagation();
+        let comment_message = event.target;
+        let edit_comment_form = comment_message.closest(".edit_comment_form");
+        
+        if(event.which === KEYS.ENTER){
+            event.preventDefault();
+            
+            let comment_message = ux(edit_comment_form).find(".comment_message").html().value;
+            let comment_content = edit_comment_form.nextElementSibling;
+            ux(comment_content).find(".comment_message").text(comment_message);
+            ux(comment_content).find(".posted_at").addClass("edited");
+        }
+        
+        if(event.which === KEYS.ESCAPE || event.which === KEYS.ENTER){
+            /** Close edit form */
+            edit_comment_form.remove();
         }
     }
 
