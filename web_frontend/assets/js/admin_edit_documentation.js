@@ -17,9 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".section_title").onEach("blur", disableEditSectionTitle);
     ux(".copy_icon").onEach("click", duplicateSection);
     ux(".remove_icon").onEach("click", removeSectionBlock);
-    ux(".section_block").onEach("dblclick", function(){
-        location.href = "admin_edit_section.html";
-    });
 
     document.querySelectorAll(".section_container").forEach((section_tabs_list) => {
         Sortable.create(section_tabs_list);
@@ -36,6 +33,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         if(element){
             addSearchEmailResult(element);
         }
+    });
+
+    ux(".section_block").onEach("click", function(){
+        location.href = "admin_edit_section.html";
+    });
+    ux(".edit_section_title_icon").onEach("click", function(event){
+        event.stopImmediatePropagation();
+    });
+    ux(".copy_icon").onEach("click", function(event){
+        event.stopImmediatePropagation();
+    });
+    ux(".remove_icon").onEach("click", function(event){
+        event.stopImmediatePropagation();
     });
 });
 
