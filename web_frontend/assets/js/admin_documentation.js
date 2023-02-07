@@ -26,10 +26,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux("#doc_form").on("submit", submitDocForm);
     appearEmptyDocumentation();
 
-    ux(".document_block").onEach("dblclick", function(){
-        location.href = "admin_edit_documentation.html";
-    });
-    
     ux(".edit_title_icon").onEach("click", editTitleDocumentation);
 
     ux(".remove_icon").onEach("click", removeDocumentation);
@@ -63,6 +59,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
     
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
+    
+    ux(".document_block").onEach("click", function(){
+        location.href = "admin_edit_documentation.html";
+    });
+
+    ux(".invite_collaborators_btn").onEach("click", function(event){
+        event.stopImmediatePropagation();
+        let invite_modal = document.querySelector("#modal1");
+        var instance = M.Modal.getInstance(invite_modal);
+        instance.open();
+    });
+
+    ux(".access_btn").onEach("click", function(event){
+        event.stopImmediatePropagation();
+        let invite_modal = document.querySelector("#confirm_to_public");
+        var instance = M.Modal.getInstance(invite_modal);
+        instance.open();
+    });
+
+    ux(".more_action_btn").onEach("click", function(event){
+        event.stopImmediatePropagation();
+    });
 });
 
 function submitInvite(event){
