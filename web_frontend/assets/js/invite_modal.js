@@ -15,27 +15,27 @@ function searchEmail(event){
         {
             "name": "Erick Caccam",
             "email": "ecaccam@village88.com",
-            "img_url": "../assets/images/mc.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/mc.png"
         },
         {
             "name": "Jadee Ganggangan",
             "email": "jganggangan@village88.com",
-            "img_url": "../assets/images/mc.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/mc.png"
         },
         {
             "name": "Jovic Abengona",
             "email": "jabengona@village88.com",
-            "img_url": "../assets/images/jhaver.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png"
         },
         {
             "name": "Harold Nocos",
             "email": "hnocos@village88.com",
-            "img_url": "../assets/images/jhaver.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png"
         },
         {
             "name": "Kei Kishimoto",
             "email": "kkishimito@village88.com",
-            "img_url": "../assets/images/kb.png"
+            "img_url": "https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/kb.png"
         }
     ]
     let invite_results = [];
@@ -96,20 +96,24 @@ function searchEmail(event){
     }
 }
 
-function addSearchEmailResult(search_email_result){
-    const user_email = search_email_result.children[1].children[1].children[1].innerText;
-    const email_chip_elem = document.querySelectorAll('.chips');
-
-    if(!invited_emails.emails.includes(user_email) && valid_email){
-        invited_emails.emails.push(user_email);
-        invited_emails.chips.push({ tag: user_email });
-
-        const chip_instance_init = M.Chips.init(email_chip_elem, { 
-            data: invited_emails.chips,
-            onChipDelete: (e, email) => {
-                invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
-                invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
-            }
-        });
-    }
+function addSearchEmailResult(event){
+    console.log(event.target);
 }
+
+// function addSearchEmailResult(search_email_result){
+//     const user_email = search_email_result.children[1].children[1].children[1].innerText;
+//     const email_chip_elem = document.querySelectorAll('.chips');
+
+//     if(!invited_emails.emails.includes(user_email) && valid_email){
+//         invited_emails.emails.push(user_email);
+//         invited_emails.chips.push({ tag: user_email });
+
+//         const chip_instance_init = M.Chips.init(email_chip_elem, { 
+//             data: invited_emails.chips,
+//             onChipDelete: (e, email) => {
+//                 invited_emails.emails = invited_emails.emails.filter(invited_email => invited_email != email.innerText.split("close")[0]);
+//                 invited_emails.chips = invited_emails.chips.filter(invited_email => invited_email.tag != email.innerText.split("close")[0]);
+//             }
+//         });
+//     }
+// }
