@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     appearEmptyDocumentation();
 
     ux(".edit_title_icon").onEach("click", editTitleDocumentation);
-
     ux(".remove_icon").onEach("click", removeDocumentation);
     ux(".archive_icon").onEach("click", removeDocumentation);
     ux(".duplicate_icon").onEach("click", duplicateDocumentation);
@@ -59,7 +58,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
     ux(".document_block").onEach("click", (event) => {
-        event.stopImmediatePropagation();
+        if(event.target.classList.contains("set_privacy_btn") || event.target.closest("li"))
+            return;
 
         location.href = "admin_edit_documentation.html";
     });
@@ -470,5 +470,9 @@ function submitChangeDocumentPrivacy(event){
     dropdown_set_privacy_btn.innerHTML = inner_html;
 
     ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
-    ux(".document_block").onEach("click", redirectToDocumentView);
+    ux(".edit_title_icon").onEach("click", editTitleDocumentation);
+    ux(".remove_icon").onEach("click", removeDocumentation);
+    ux(".archive_icon").onEach("click", removeDocumentation);
+    ux(".duplicate_icon").onEach("click", duplicateDocumentation);
+    ux(".document_title").onEach("blur", disableEditTitleDocumentation);
 }
