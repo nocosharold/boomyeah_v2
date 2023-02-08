@@ -944,8 +944,11 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
   display: inline-block;
   height: 14px;
-  padding: 2px;
-  width: 4px;
+  padding: 12px 8px;
+  position: absolute;
+  right: 17px;
+  text-align: center;
+  width: 8px;
 }
 .container #documentations .document_block .document_controls .more_action_list_public,
 .container #archived_documents .document_block .document_controls .more_action_list_public,
