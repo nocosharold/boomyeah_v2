@@ -1,17 +1,19 @@
 (
 function(){
+    const current_location = window.location.pathname;
+    const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
+    let relative_view_paths = view_path.split("views");
+    const relative_view_path = relative_view_paths[0] + "views";
+    const relative_assets_path = relative_view_paths[0];
+    let global_path = (view_path === "/views")? "." : "..";
+    let assets_path = (view_path === "/views" )? ".." : "../..";
     let toast_timeout = null;
     let saving_timeout = null;
     let target_index = 0;
 
     document.addEventListener("DOMContentLoaded", async ()=> {
-        const current_location = window.location.pathname;
-        const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
-
-        let global_path = (view_path === "/views")? "." : "..";
-        let assets_path = (view_path === "/views" )? ".." : "../..";
-
-        await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+        await include("#main_navigation" , `${relative_view_path}/global/main_navigation.html`, `${relative_assets_path}/assets/js/main_navigation.js`);
+        await include("#clone_section_page" , `${relative_view_path}/global/clone_section_page.html`);
 
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
@@ -140,13 +142,13 @@ function(){
     async function openTabLink(event, is_title = false){
         event.preventDefault();
         event.stopImmediatePropagation();
-
+        
         let tab_item = event.target;
         let section_page_content = ux(tab_item.closest(".section_page_content"));
         let section_page_tabs_list = section_page_content.find(".section_page_tabs");
         let page_tab_item = tab_item.closest(".page_tab_item");
         let tab_id = (!is_title) ? ux(page_tab_item).attr("data-tab_id") : ux(tab_item.closest(".section_page_tab")).attr("id");
-    
+
         await section_page_tabs_list.findAll(".page_tab_item").forEach(element => element.classList.remove("active"));
         await section_page_content.findAll(".section_page_tab").forEach(element => element.classList.remove("show"));
         ux(`.page_tab_item[data-tab_id="${tab_id}"]`).addClass("active");
@@ -270,3 +272,51 @@ function(){
         }
     }
 })();
+
+
+function printPageTabs(section_pages){
+    let user_view_section_html = '';
+
+    let temp_counter = 0;
+    let counter = 0;
+    for(let page_key in section_pages){
+        user_view_section_html += `
+        <div class="section_page_content${ counter === 0 ? ' active' : '' }">
+            <ul class="section_page_tabs">`
+        section_pages[page_key].forEach((section_page, index) => {
+            user_view_section_html += `
+                <li class="page_tab_item${ index === 0 ? ' active' : '' }" data-tab_id="tab_${counter + (index + 1)}">
+                    <a href="#tab_${counter + (index + 1)}">${ section_page.tab_title }</a>
+                </li>
+            `;
+        });
+
+        user_view_section_html += `</ul>`;
+
+        section_pages[page_key].forEach((section_page, index) => {
+            user_view_section_html += `
+            <div class="section_page_tab${ index === 0 ? ' show' : '' }" id="tab_${counter + (index + 1)}">
+                <h3 class="tab_title">${section_page.tab_title}</h3>
+                <p id="tab_content_${counter + (index + 1)}" class="tab_content">${section_page.tab_description}</p>
+                <a href="#" data-target="mobile_comments_slideout" class="show_comments_btn sidenav-trigger">Comments (${section_page.comments.length})</a>
+                <div class="tab_comments comment_container">
+                    <form action="/" method="POST" class="add_comment_form">
+                        <div class="comment_field">
+                            <div class="comment_message_content input-field col s12">
+                                <label for="post_comment_${counter + (index + 1)}">Write a comment</label>
+                                <textarea name="post_comment" id="post_comment_${counter + (index + 1)}" class="materialize-textarea comment_message"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <ul id="user_view_comments" class="comments_list"></ul>
+                </div>
+            </div>
+            `;
+
+            temp_counter += index + 1;
+        });
+
+        user_view_section_html += `</div>`;
+        counter = temp_counter;
+    }
+}
