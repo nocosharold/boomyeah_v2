@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
+    <script src="../../assets/js/vendor/Sortable.min.js"></script>
 </head>
 
 <body>
@@ -41,30 +42,6 @@
                 <li><a href="#!" class="archived_docs_btn">Archived</a></li>
             </ul>
             <div id="documentations">
-                <div class="document_block hidden">
-                    <div class="document_details">
-                        <input type="text" name="document_title" value="Untitled Documentation" id="" class="document_title" readonly="">
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 0</button>
-                    </div>
-                    <div class="document_controls">
-                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu00">⁝</button>
-                        <!-- Dropdown Structure -->
-                        <ul id="document_pu00" class="dropdown-content more_action_list_private">
-                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="no_documents hidden">
                     <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/empty_illustration.png"
                         alt="Empty Content Illustration">
