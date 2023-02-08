@@ -937,15 +937,18 @@ body::-webkit-scrollbar-thumb {
 }
 .container #documentations .document_block .document_controls .more_action_btn,
 .container #archived_documents .document_block .document_controls .more_action_btn {
-  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat -65px -9px;
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/vertical_menu.svg') no-repeat center;
   border: 0;
   color: transparent;
   content: '';
   cursor: pointer;
   display: inline-block;
   height: 14px;
-  padding: 2px;
-  width: 4px;
+  padding: 12px 8px;
+  position: absolute;
+  right: 17px;
+  text-align: center;
+  width: 8px;
 }
 .container #documentations .document_block .document_controls .more_action_list_public,
 .container #archived_documents .document_block .document_controls .more_action_list_public,
