@@ -58,7 +58,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
-    ux(".document_block").onEach("click", redirectToDocumentView);
+    ux(".document_block").onEach("click", (event) => {
+        event.stopImmediatePropagation();
+
+        location.href = "admin_edit_documentation.html";
+    });
 
     ux(".invite_collaborators_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
@@ -467,10 +471,4 @@ function submitChangeDocumentPrivacy(event){
 
     ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
     ux(".document_block").onEach("click", redirectToDocumentView);
-}
-
-function redirectToDocumentView(event){
-    event.stopImmediatePropagation();
-
-    location.href = "admin_edit_documentation.html";
 }
