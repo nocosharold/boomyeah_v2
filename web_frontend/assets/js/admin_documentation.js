@@ -1,4 +1,4 @@
-// import data from "../json/large_dataset.json" assert { type: "json" };
+import data from "../json/default_dataset.json" assert { type: "json" };
 document.addEventListener("DOMContentLoaded", async () => {
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
@@ -58,9 +58,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
-    ux(".document_block").onEach("click", function(){
-        location.href = "admin_edit_documentation.html";
-    });
+    // ux(".document_block").onEach("click", function(event){
+    //     event.stopImmediatePropagation();
+
+    //     location.href = "admin_edit_documentation.html";
+    // });
 
     ux(".invite_collaborators_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
@@ -101,30 +103,118 @@ function submitInvite(event){
 
 function submitDocForm(event){
     event.preventDefault();
+
+    const total_documentations = ux("#documentations").html().children.length - 1;
+    const document_block = document.createElement("div");
+
+    /* Create document_block */
+    document_block.setAttribute("id", `document_${total_documentations + 1}`);
+    document_block.className = "document_block";
     
-    const input_add_documentation = ux("#input_add_documentation").html();
-    const document_block = ux(".document_block.hidden").clone();
-    const documentations = ux("#documentations").html();
-    const document_title =  ux(document_block.find(".document_details input")).html();
-    const input_field = ux(input_add_documentation.closest(".input-field"));
+    /* Create document_details */
+    const document_details = document.createElement("div");
+    document_details.className = "document_details";
 
-    if(!input_add_documentation.value.trim().length){
-        input_field.addClass("input_error");
-    }else{
-        input_field.removeClass("input_error");
-        document_block.html().setAttribute("class", "document_block");
-        document_title.html().value = input_add_documentation.value;
-        
-        document_block.on("dblclick", function(){
-            location.href = "/views/admin_edit_documentation.html";
-        })
+    /* Create document_details child element */
+    const document_title = document.createElement("input");
+    document_title.className = "document_title";
+    document_title.readOnly = true;
+    document_title.setAttribute("name", "document_title");
+    document_title.setAttribute("value", ux("#input_add_documentation").html().value);
+    document_details.appendChild(document_title);
 
-        documentations.appendChild(document_block.html());
-        initializeMaterializeDropdown();
-    }
+    /* Create document_controls */
+    const document_controls = document.createElement("div");
+    document_controls.className = "document_controls"
 
-    event.target.reset();
-    ux(ux(".group_add_documentation label").html()).addClass("active");
+    /* Create document_controls child more_action_btn */
+    const more_action_btn = document.createElement("button");
+    more_action_btn.innerHTML = "⁝";
+    more_action_btn.className = "more_action_btn dropdown-trigger";
+    more_action_btn.dataset.target = `document_pu${total_documentations + 1}`;
+    document_controls.appendChild(more_action_btn);
+
+    /* Create document_controls child dropdown-content */
+    const dropdown_content = document.createElement("ul");
+    dropdown_content.setAttribute("id", `document_pu${total_documentations + 1}`);
+    dropdown_content.setAttribute("tabindex", "0");
+    dropdown_content.className = "dropdown-content more_action_list_public";
+    
+    /* Create lists */
+    const list_actions = [
+        {
+            "action_name": "Edit Title",
+            "action_class": "edit_title_btn",
+            "anchor_href": "#!",
+            "icon_class": "edit_title_icon",
+            "has_dataset": false
+        },
+        {
+            "action_name": "Duplicate",
+            "action_class": null,
+            "anchor_href": "#!",
+            "icon_class": "duplicate_icon",
+            "has_dataset": false
+        },
+        {
+            "action_name": "Archive",
+            "action_class": null,
+            "anchor_href": "#!",
+            "icon_class": "archive_icon",
+            "has_dataset": false
+        },
+        {
+            "action_name": "Set to Private",
+            "action_class": null,
+            "anchor_href": "#confirm_to_private",
+            "icon_class": "set_to_private_icon modal-trigger set_privacy_btn",
+            "has_dataset": true
+        },
+        {
+            "action_name": "Remove",
+            "action_class": null,
+            "anchor_href": "#!",
+            "icon_class": "remove_icon",
+            "has_dataset": true
+        }
+    ]
+
+    list_actions.forEach((action, key) => {
+        let list_action = document.createElement("li");
+        let list_icon   = document.createElement("a");
+
+        list_action.setAttribute("tabindex", "0");
+        if(action.action_class)
+            list_action.className = action.action_class;
+
+        list_icon.className   = action.icon_class;
+        list_icon.setAttribute("href", action.anchor_href);
+        list_icon.innerHTML += action.action_name;
+
+        if(action.has_dataset){
+            list_icon.dataset.document_id      = total_documentations + 1;
+            list_icon.dataset.document_privacy = "public";
+        }
+
+        list_action.appendChild(list_icon);
+        dropdown_content.appendChild(list_action);
+
+        if(key < 4){
+            let li_divider  = document.createElement("li");
+            li_divider.setAttribute("tabindex", "-1");
+            li_divider.className = "divider";
+            dropdown_content.appendChild(li_divider);
+        }
+    });
+
+    document_controls.appendChild(dropdown_content);
+
+    document_block.appendChild(document_details);
+    document_block.appendChild(document_controls);
+    ux("#documentations").html().appendChild(document_block);
+
+    ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
+    initializeMaterializeDropdown();
 }
 
 function displayDocumentations(documentations){
@@ -141,18 +231,17 @@ function displayDocumentations(documentations){
                 </div>
                 <div class="document_controls">
                     ${ document.is_private ? `<button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="${index + 1}" data-document_privacy="private"></button>` : '' }
-                    <button class="more_action_btn dropdown-trigger" data-target="document_${ document.is_private ? `pr${index}` : `pu${index}` }">⁝</button>
+                    <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_${ index + 1}">⁝</button>
                     <!-- Dropdown Structure -->
-                    <ul id="document_${ document.is_private ? `pr${index}` : `pu${index}` }" class="dropdown-content more_action_list_private">
+                    <ul id="document_more_actions_${ index + 1}" class="dropdown-content more_action_list_${ document.is_private ? "private" : "public" }">
                         <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="archive_icon">Archive</a></li>
                         <li class="divider" tabindex="-1"></li>
-                        <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        ${ document.is_private ? `<li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="${index + 1}" data-document_privacy="private">Set to Public</a></li>` : 
+                        ${ document.is_private ? `<li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                        <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="${index + 1}" data-document_privacy="private">Set to Public</a></li>` : 
                         `<li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="${index + 1}" data-document_privacy="public">Set to Private</a></li>` }
                         <li class="divider" tabindex="-1"></li>
                         <li><a href="#!" class="remove_icon">Remove</a></li>
@@ -304,6 +393,8 @@ function submitChangeDocumentPrivacy(event){
     const document_details         = ux(`#document_${documentation_id} .document_details`).html();
     const dropdown_set_privacy_btn = ux(`#document_${documentation_id} .dropdown-content .set_privacy_btn`).html();
 
+    const dropdown_content = ux(`#document_more_actions_${documentation_id}`).html();
+    
     let href_value, document_privacy, class_name, inner_html = "";
 
     /* When changing privacy to Public... */
@@ -316,6 +407,18 @@ function submitChangeDocumentPrivacy(event){
         document_privacy = "public";
         class_name       = "set_to_private_icon modal-trigger set_privacy_btn";
         inner_html       = "Set to Private"
+
+        dropdown_content.innerHTML = `
+            <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#!" class="archive_icon">Archive</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#confirm_to_private" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="${documentation_id}" data-document_privacy="public">Set to Private</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#!" class="remove_icon">Remove</a></li>
+        `;
     }
     /* When changing privacy to Private... */
     else {
@@ -342,11 +445,28 @@ function submitChangeDocumentPrivacy(event){
         document_privacy = "private";
         class_name       = "set_to_public_icon modal-trigger set_privacy_btn";
         inner_html       = "Set to Public"
+
+        dropdown_content.innerHTML = `
+        <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" class="archive_icon">Archive</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="${documentation_id}" data-document_privacy="private">Set to Public</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" class="remove_icon">Remove</a></li>
+        `;
     }
 
-    /* Update set_privacy_btn */
+    /* Update dropdown */
+    dropdown_content.className = `dropdown-content more_action_list_${document_privacy}`;
     dropdown_set_privacy_btn.setAttribute("href", href_value);
     dropdown_set_privacy_btn.setAttribute("data-document_privacy", document_privacy);
     dropdown_set_privacy_btn.className = class_name;
     dropdown_set_privacy_btn.innerHTML = inner_html;
+
+    ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
 }
