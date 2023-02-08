@@ -1,4 +1,4 @@
-import data from "../json/default_dataset.json" assert { type: "json" };
+// import data from "../json/large_dataset.json" assert { type: "json" };
 document.addEventListener("DOMContentLoaded", async () => {
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
@@ -58,11 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
-    // ux(".document_block").onEach("click", function(event){
-    //     event.stopImmediatePropagation();
-
-    //     location.href = "admin_edit_documentation.html";
-    // });
+    ux(".document_block").onEach("click", redirectToDocumentView);
 
     ux(".invite_collaborators_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
@@ -131,12 +127,12 @@ function submitDocForm(event){
     const more_action_btn = document.createElement("button");
     more_action_btn.innerHTML = "⁝";
     more_action_btn.className = "more_action_btn dropdown-trigger";
-    more_action_btn.dataset.target = `document_pu${total_documentations + 1}`;
+    more_action_btn.dataset.target = `document_more_actions_${total_documentations + 1}`;
     document_controls.appendChild(more_action_btn);
 
     /* Create document_controls child dropdown-content */
     const dropdown_content = document.createElement("ul");
-    dropdown_content.setAttribute("id", `document_pu${total_documentations + 1}`);
+    dropdown_content.setAttribute("id", `document_more_actions_${total_documentations + 1}`);
     dropdown_content.setAttribute("tabindex", "0");
     dropdown_content.className = "dropdown-content more_action_list_public";
     
@@ -214,6 +210,7 @@ function submitDocForm(event){
     ux("#documentations").html().appendChild(document_block);
 
     ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
+    ux(".document_block").onEach("click", redirectToDocumentView);
     initializeMaterializeDropdown();
 }
 
@@ -469,4 +466,11 @@ function submitChangeDocumentPrivacy(event){
     dropdown_set_privacy_btn.innerHTML = inner_html;
 
     ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
+    ux(".document_block").onEach("click", redirectToDocumentView);
+}
+
+function redirectToDocumentView(event){
+    event.stopImmediatePropagation();
+
+    location.href = "admin_edit_documentation.html";
 }
