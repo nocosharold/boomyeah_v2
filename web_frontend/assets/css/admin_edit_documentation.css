@@ -821,13 +821,18 @@ body {
   padding: 10px;
   outline: #B5C4E4;
 }
+.container .doc_text_content:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+  display: block;
+  position: absolute;
+}
 .container .doc_text_content:hover::after {
   background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat;
   background-position: -59px -4px;
   content: '';
   display: inline-block;
   height: 18px;
-  margin-left: 20px;
+  margin-left: 130px;
   position: absolute;
   width: 18px;
 }
