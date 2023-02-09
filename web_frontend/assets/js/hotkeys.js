@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function checkShortcut(e){
     const redirect_path = window.location.pathname.split("/").pop();
     const SHORTCUT_VALUES = {
-        "keyCode_49_url": `/views/${redirect_path}`,
+        "keyCode_49_url": `/views/default_data/${redirect_path}`,
         "keyCode_50_url": `/views/no_data/${redirect_path}`,
         "keyCode_51_url": `/views/small_data/${redirect_path}`,
         "keyCode_52_url": `/views/medium_data/${redirect_path}`,
