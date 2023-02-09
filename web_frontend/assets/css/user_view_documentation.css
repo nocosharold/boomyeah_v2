@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  animation-duration: 0.3s !important;
 }
 @font-face {
   font-family: 'ReadexPro-Bold';
