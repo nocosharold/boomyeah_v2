@@ -194,6 +194,8 @@ function(){
             .setAttribute("data-tab_id", tab_id);
         section_page_tab.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
         section_page_tab.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
+        section_page_content.addClass("animate__animated").addClass("animate__zoomIn");
+
         /** Rebind Event Listeners */
         initializeSectionPageEvents(section_page_content);
         initializeRedactor(`#${tab_id} .tab_content`);
@@ -216,11 +218,16 @@ function(){
         
         page_tab_clone.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
         page_tab_clone.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
+        
         /** Insert New tab */
         section_page_tabs_list.html().append(page_tab_item.html());
+        page_tab_item.addClass("animate__animated").addClass("animate__zoomIn");
+
+        /** Insert Add page tab btn at the end */
         section_page_tabs_list.html().append(add_page_tab);
         page_tab_item.html().setAttribute("data-tab_id", tab_id);
         
+        /** Rebind tab-related events */
         page_tab_item.find(".remove_tab_btn").on("click", removeSectionTab);
         page_tab_clone.find(".tab_title").on("keyup", (event) => {
             onUpdateTabTitle(event, section_page_tabs_list.findAll(".page_tab_item").length);
@@ -234,9 +241,13 @@ function(){
             page_tab_item.html().click();
         });
     }
-    
+
+    function showConfirmaRemoveSection(event){
+
+    }
+ 
     function removeSectionTab(event){
-        event.stopPropagation();
+        event.stopImmediatePropagation();
     
         let remove_tab_btn = event.target;
         let tab_item = remove_tab_btn.closest(".page_tab_item");
@@ -244,16 +255,22 @@ function(){
         let section_page_tabs = remove_tab_btn.closest(".section_page_tabs");
         let tab_id = tab_item.getAttribute("data-tab_id");
         
-        ux(`#${tab_id}`).html().remove();
-        tab_item.remove();
-        
+        ux(tab_item).addClass("animate__animated").addClass("animate__fadeOut");
+        ux(`#${tab_id}`).addClass("animate__animated").addClass("animate__fadeOut");
+
         setTimeout(() => {
-            if(ux(section_page_tabs).findAll(".page_tab_item").length === 0){
-                section_page_content.remove();
-            }else{
-                ux(section_page_tabs).findAll(".page_tab_item")[0].click();
-            }
-        });
+            ux(`#${tab_id}`).html().remove();
+            tab_item.remove();
+            
+            setTimeout(() => {
+                if(ux(section_page_tabs).findAll(".page_tab_item").length === 0){
+                    section_page_content.remove();
+                }else{
+                    ux(section_page_tabs).findAll(".page_tab_item")[0].click();
+                }
+            });
+        }, 148);
+        
     }
     
     function initializeRedactor(selector){
