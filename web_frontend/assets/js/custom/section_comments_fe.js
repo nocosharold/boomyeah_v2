@@ -7,6 +7,7 @@
     let swipe_value = 0;
     let is_comments_displayed = false;
     let swipe_timeout = null;
+    let is_mobile_reply_open = false;
 
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
@@ -14,6 +15,7 @@
         ux(".toggle_reply_form_btn").onEach("click", showReplyForm);
         ux(".toggle_replies_btn").onEach("click", showRepliesList);
         ux(".mobile_comment_btn").onEach("click", (event) => {
+            event.stopImmediatePropagation();
             onSubmitComment(event.target.closest(".mobile_add_comment_form"))
         });
     }
@@ -142,6 +144,7 @@
     async function showReplyForm(event){
         event.stopImmediatePropagation();
         let comment_item = event.target.closest(".comment_item");
+        let label_text = "Replying to " + ux(comment_item).find(".user_name").text();
 
         if(ux(".active_comment_item").html()){
             await ux(".active_comment_item").removeClass("active_comment_item");
@@ -152,7 +155,6 @@
             
             if(!reply_form.html()){
                 reply_form = ux(comment_item.closest(".replies_list").closest(".comment_item").querySelector(".add_reply_form"));
-                let label_text = "Replying to " + ux(comment_item).find(".user_name").text();
                 reply_form.find("label").text(label_text);
             }
             
@@ -163,19 +165,22 @@
     
             reply_form.find(".comment_message").html().focus();
         } else {
-            alert("mobile")
-            
+            is_mobile_reply_open = true;
+
             ux(comment_item).addClass("active_comment_item");
+            let mobile_add_comment_form = ux(".mobile_add_comment_form");
+            mobile_add_comment_form.find("label").text(label_text);
+            mobile_add_comment_form.find("textarea").html().focus();
         }
     }
 
     function closeCommentActions(){
         ux(document).findAll(".comment_actions_toggle").forEach((element) => ux(element).removeClass("active"));
         ux("#comment_actions_container").removeClass("active");
-        (ux(".active_comment_item").html()) && ux(".active_comment_item").removeClass("active_comment_item");
+        (!is_mobile_reply_open && ux(".active_comment_item").html()) && ux(".active_comment_item").removeClass("active_comment_item");
     }
 
-    function onSubmitComment(post_form, is_reply = false){
+    async function onSubmitComment(post_form, is_reply = false){
         if(post_form.hasOwnProperty("type")){
             post_form.preventDefault();
             post_form.stopImmediatePropagation();
@@ -192,7 +197,12 @@
 
             if(is_mobile_comment){
                 comments_list = ux("#comments_list_container .comments_list");
-                ux("#comments_list_container").html().scrollTop = 0;
+
+                if(ux(".active_comment_item").html()){
+                    comment_container = ux(".active_comment_item").html();
+                    comments_list = (comment_container.closest(".replies_list")) ? ux(comment_container.closest(".replies_list")) : ux(comment_container).find(".comments_list");
+                    is_reply = true;
+                }
             }
             
             comments_list.html().prepend(comment_item.html());
@@ -203,10 +213,27 @@
                 comment_item.find(".add_comment_form").html().remove();
                 comment_item.find(".reply_actions .toggle_replies_btn").html().remove();
                 
+                if(ux(comment_container).find(".toggle_replies_btn").html()){
+                    ux(comment_container).find(".toggle_replies_btn").html().click();
+                }
+                
                 showRepliesCount(comment_container);
-                ux(comment_container).find(".toggle_replies_btn").html().click();
                 ux(post_form).find("label").text("Write a reply");
             }
+
+            /** Scroll the mobile comments tab */
+            setTimeout(() => {
+                ux("#comments_list_container").html().scrollTop = 0;
+
+                if(ux(".active_comment_item").html()){
+                    ux(".active_comment_item").removeClass("active_comment_item");
+                    ux(post_form).find("label").text("Write a comment");
+                    is_mobile_reply_open = false;
+
+                    let mobile_list_bounds = comments_list.find(".comment_item").html().getBoundingClientRect();
+                    ux("#comments_list_container").html().scrollTop = mobile_list_bounds.top - (mobile_list_bounds.height + MOBILE_TOP_OFFSET);
+                }
+            }, 100);
 
             post_form.reset();
             ux(post_form).find(".comment_message").html().blur();
@@ -269,6 +296,8 @@
             if((CLIENT_WIDTH > MOBILE_WIDTH)){
                 comment_details.closest(".comment_content").before(edit_comment_form.html());
                 comment_message_field.html().focus();
+            } else {
+                is_mobile_reply_open = true;
             }
 
             closeCommentActions();
