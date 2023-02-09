@@ -42,30 +42,6 @@
                 <li><a href="#!" class="archived_docs_btn">Archived</a></li>
             </ul>
             <div id="documentations">
-                <div class="document_block hidden">
-                    <div class="document_details">
-                        <input type="text" name="document_title" value="Untitled Documentation" id="" class="document_title" readonly="">
-                        <button class="invite_collaborators_btn modal-trigger" href="#modal1"> 0</button>
-                    </div>
-                    <div class="document_controls">
-                        <button class="access_btn modal-trigger" href="#confirm_to_public"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu00">⁝</button>
-                        <!-- Dropdown Structure -->
-                        <ul id="document_pu00" class="dropdown-content more_action_list_private">
-                            <li><a href="#!" class="edit_title_icon">Edit Title</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div id="document_1" class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Employee Handbook" id="" class="document_title" readonly="">
@@ -73,20 +49,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="1" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr0">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_1">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr0" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_1" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="1" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="1" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="1" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="1" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -97,20 +72,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="2" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr1">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_2">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr1" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_2" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="2" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="2" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="2" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="2" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -121,20 +95,18 @@
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu2">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_3">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu2" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_3" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="3" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="3" data-document_privacy="public">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="3" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -145,20 +117,18 @@
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu3">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_4">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu3" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_4" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="4" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="4" data-document_privacy="public">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="4" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -169,20 +139,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="5" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr4">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_5">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr4" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_5" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="5" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="5" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="5" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="5" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -193,20 +162,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="6" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr5">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_6">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr5" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_6" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="6" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="6" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="6" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="6" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -217,20 +185,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="7" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr6">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_7">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr6" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_7" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="7" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="7" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="7" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="7" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -241,20 +208,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="8" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr7">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_8">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr7" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_8" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="8" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="8" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="8" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="8" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -265,20 +231,18 @@
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu8">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_9">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu8" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_9" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="9" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="9" data-document_privacy="public">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="9" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -289,20 +253,18 @@
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu9">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_10">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu9" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_10" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="10" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="10" data-document_privacy="public">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="10" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -313,20 +275,19 @@
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger set_privacy_btn" href="#confirm_to_public" data-document_id="11" data-document_privacy="private"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pr10">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_11">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pr10" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_11" class="dropdown-content more_action_list_private">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="11" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li class="divider" tabindex="-1"></li><li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="11" data-document_privacy="private">Set to Public</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#confirm_to_public" class="set_to_public_icon modal-trigger set_privacy_btn" data-document_id="11" data-document_privacy="private">Set to Public</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="11" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -337,20 +298,18 @@
                     </div>
                     <div class="document_controls">
                         
-                        <button class="more_action_btn dropdown-trigger" data-target="document_pu11">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_12">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="document_pu11" class="dropdown-content more_action_list_private">
+                        <ul id="document_more_actions_12" class="dropdown-content more_action_list_public">
                             <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="archive_icon">Archive</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#modal1" class="invite_icon modal-trigger">Invite</a></li>
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="12" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
                             <li><a href="#confirm_to_private" class="set_to_private_icon modal-trigger set_privacy_btn" data-document_id="12" data-document_privacy="public">Set to Private</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="12" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -439,9 +398,37 @@
             </div>
         </div>
     </div>
+    <div id="confirmation_modal_archive">
+        <div id="confirm_to_archive" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to move this documentation to Archive?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" id="archive_confirm" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+            </div>
+        </div>
+    </div>
+    <div id="confirmation_modal_remove">
+        <div id="confirm_to_remove" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to remove this documentation?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" id="remove_confirm" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+            </div>
+        </div>
+    </div>
     <form id="change_document_privacy_form" action="#" method="POST" hidden>
         <input type="hidden" id="change_privacy_doc_id" name="document_id">
         <input type="hidden" id="change_privacy_doc_privacy" name="document_privacy">
+    </form>
+    <form id="remove_archive_form" action="#" method="POST" hidden>
+        <input type="hidden" id="documentation_action" name="documentation_action">
+        <input type="hidden" id="remove_archive_id" name="document_id">
     </form>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
