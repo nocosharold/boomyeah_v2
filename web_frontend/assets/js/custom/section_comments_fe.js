@@ -182,6 +182,7 @@
             }
             
             comments_list.html().prepend(comment_item.html());
+            comment_item.addClass("animate__animated").addClass("animate__zoomIn");
 
             if(is_reply){
                 comment_item.find(".comments_list").html().remove();
