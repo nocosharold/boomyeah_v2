@@ -7,6 +7,7 @@
     let swipe_value = 0;
     let is_comments_displayed = false;
     let swipe_timeout = null;
+    let is_mobile_reply_open = false;
 
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
@@ -14,6 +15,7 @@
         ux(".toggle_reply_form_btn").onEach("click", showReplyForm);
         ux(".toggle_replies_btn").onEach("click", showRepliesList);
         ux(".mobile_comment_btn").onEach("click", (event) => {
+            event.stopImmediatePropagation();
             onSubmitComment(event.target.closest(".mobile_add_comment_form"))
         });
     }
@@ -132,36 +134,53 @@
         let replies_list  = ux(comment_item).find(".replies_list");
         
         if(!replies_list.html().classList.contains("show")){
-            ux(show_replies_btn).addClass("hidden");
+            addAnimation(replies_list.html(), "animate__zoomIn");
+
             replies_list.addClass("show");
+            ux(show_replies_btn).addClass("hidden");
         }
     }
 
-    function showReplyForm(event){
+    async function showReplyForm(event){
         event.stopImmediatePropagation();
         let comment_item = event.target.closest(".comment_item");
-        let reply_form = ux(comment_item).find(".add_reply_form");
-        
-        if(!reply_form.html()){
-            reply_form = ux(comment_item.closest(".replies_list").closest(".comment_item").querySelector(".add_reply_form"));
-            let label_text = "Replying to " + ux(comment_item).find(".user_name").text();
-            reply_form.find("label").text(label_text);
-        }
-        
-        if(!reply_form.html().classList.contains("show")){
-            reply_form.addClass("show");
-        }
+        let label_text = "Replying to " + ux(comment_item).find(".user_name").text();
 
-        reply_form.find(".comment_message").html().focus();
+        if(ux(".active_comment_item").html()){
+            await ux(".active_comment_item").removeClass("active_comment_item");
+        }
+    
+        if((CLIENT_WIDTH > MOBILE_WIDTH)){
+            let reply_form = ux(comment_item).find(".add_reply_form");
+            
+            if(!reply_form.html()){
+                reply_form = ux(comment_item.closest(".replies_list").closest(".comment_item").querySelector(".add_reply_form"));
+                reply_form.find("label").text(label_text);
+            }
+            
+            if(!reply_form.html().classList.contains("show")){
+                reply_form.addClass("show");
+                addAnimation(reply_form.html(), "animate__zoomIn");
+            }
+    
+            reply_form.find(".comment_message").html().focus();
+        } else {
+            is_mobile_reply_open = true;
+
+            ux(comment_item).addClass("active_comment_item");
+            let mobile_add_comment_form = ux(".mobile_add_comment_form");
+            mobile_add_comment_form.find("label").text(label_text);
+            mobile_add_comment_form.find("textarea").html().focus();
+        }
     }
 
     function closeCommentActions(){
         ux(document).findAll(".comment_actions_toggle").forEach((element) => ux(element).removeClass("active"));
         ux("#comment_actions_container").removeClass("active");
-        (ux(".active_comment_item").html()) && ux(".active_comment_item").removeClass("active_comment_item");
+        (!is_mobile_reply_open && ux(".active_comment_item").html()) && ux(".active_comment_item").removeClass("active_comment_item");
     }
 
-    function onSubmitComment(post_form, is_reply = false){
+    async function onSubmitComment(post_form, is_reply = false){
         if(post_form.hasOwnProperty("type")){
             post_form.preventDefault();
             post_form.stopImmediatePropagation();
@@ -178,21 +197,43 @@
 
             if(is_mobile_comment){
                 comments_list = ux("#comments_list_container .comments_list");
-                ux("#comments_list_container").html().scrollTop = 0;
+
+                if(ux(".active_comment_item").html()){
+                    comment_container = ux(".active_comment_item").html();
+                    comments_list = (comment_container.closest(".replies_list")) ? ux(comment_container.closest(".replies_list")) : ux(comment_container).find(".comments_list");
+                    is_reply = true;
+                }
             }
             
             comments_list.html().prepend(comment_item.html());
-            comment_item.addClass("animate__animated").addClass("animate__zoomIn");
+            addAnimation(comment_item.html(), "animate__zoomIn");
 
             if(is_reply){
                 comment_item.find(".comments_list").html().remove();
                 comment_item.find(".add_comment_form").html().remove();
                 comment_item.find(".reply_actions .toggle_replies_btn").html().remove();
                 
+                if(ux(comment_container).find(".toggle_replies_btn").html()){
+                    ux(comment_container).find(".toggle_replies_btn").html().click();
+                }
+                
                 showRepliesCount(comment_container);
-                ux(comment_container).find(".toggle_replies_btn").html().click();
                 ux(post_form).find("label").text("Write a reply");
             }
+
+            /** Scroll the mobile comments tab */
+            setTimeout(() => {
+                ux("#comments_list_container").html().scrollTop = 0;
+
+                if(ux(".active_comment_item").html()){
+                    ux(".active_comment_item").removeClass("active_comment_item");
+                    ux(post_form).find("label").text("Write a comment");
+                    is_mobile_reply_open = false;
+
+                    let mobile_list_bounds = comments_list.find(".comment_item").html().getBoundingClientRect();
+                    ux("#comments_list_container").html().scrollTop = mobile_list_bounds.top - (mobile_list_bounds.height + MOBILE_TOP_OFFSET);
+                }
+            }, 100);
 
             post_form.reset();
             ux(post_form).find(".comment_message").html().blur();
@@ -220,6 +261,15 @@
             await include("#user_comments_list" , `${relative_view_path}/global/user_view_section_comments.html`);
             mobile_comments_slideout.addClass("active");
             is_comments_displayed = true;
+
+            ux("#mobile_comments_slideout").findAll("ul.comments_list").forEach((comments_list) => {
+                if(!comments_list.classList.contains("replies_list")){
+                    ux(comments_list).findAll(".comment_container").forEach((comment_container) => {
+                        showRepliesCount(comment_container);
+                    });
+                }
+            });
+
             bindViewEvents();
         }
     }
@@ -241,13 +291,15 @@
             comment_message_field.attr("id", edit_comment_id);
             comment_message_label.attr("for", edit_comment_id);
 
-            comment_details.closest(".comment_content").before(edit_comment_form.html());
             comment_message_field.on("keydown", onEditMessageKeypress);
-            comment_message_field.html().focus();
 
-            setTimeout(() => {
-                comment_message_field.html().dispatchEvent(new KeyboardEvent("keyup", {"key":"a"}));
-            }, 148);
+            if((CLIENT_WIDTH > MOBILE_WIDTH)){
+                comment_details.closest(".comment_content").before(edit_comment_form.html());
+                comment_message_field.html().focus();
+            } else {
+                is_mobile_reply_open = true;
+            }
+
             closeCommentActions();
         }
     }
@@ -256,24 +308,24 @@
         let event_target = event.target;
 
         if(event_target.classList.contains("remove_btn")){
-            let viewport_width = document.documentElement.clientWidth;
             let comment_container = null;
             
             if(event_target.closest(".replies_list")){
                 comment_container = event_target.closest(".replies_list").closest(".comment_container");
             }
 
-            if(viewport_width > MOBILE_WIDTH){
-                await event_target.closest(".comment_item").remove();
-            } else {
-                ux(".active_comment_item").html().remove();
-            }
-
-            if(comment_container){
-                showRepliesCount(comment_container);
-            }
+            let removed_comment = (CLIENT_WIDTH > MOBILE_WIDTH) ? event_target.closest(".comment_item") : ux(".active_comment_item").html();
+            addAnimation(removed_comment, "animate__fadeOut");
 
             await closeCommentActions();
+            setTimeout(() => {
+                removed_comment.remove();
+    
+                if(comment_container){
+                    showRepliesCount(comment_container);
+                }
+            }, 148);
+
         }
     }
 
@@ -309,6 +361,11 @@
             let comment_content = edit_comment_form.nextElementSibling;
             ux(comment_content).find(".comment_message").text(comment_message);
             ux(comment_content).find(".posted_at").addClass("edited");
+            ux(comment_content).addClass("animate__animated").addClass("animate__pulse");
+
+            setTimeout(() => {
+                ux(comment_content).removeClass("animate__animated").removeClass("animate__pulse");    
+            }, 480);
         }
         
         if(event.which === KEYS.ESCAPE || event.which === KEYS.ENTER){
