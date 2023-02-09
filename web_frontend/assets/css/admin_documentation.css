@@ -897,6 +897,10 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.container #documentations .document_block .document_details .document_title:hover,
+.container #archived_documents .document_block .document_details .document_title:hover {
+  cursor: pointer;
+}
 .container #documentations .document_block .document_details .invite_collaborators_btn,
 .container #archived_documents .document_block .document_details .invite_collaborators_btn {
   background-color: #EFF6FF;
