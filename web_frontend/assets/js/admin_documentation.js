@@ -1,4 +1,4 @@
-import data from "../json/large_dataset.json" assert { type: "json" };
+// import data from "../json/large_dataset.json" assert { type: "json" };
 document.addEventListener("DOMContentLoaded", async () => {
     const current_location = window.location.pathname;
     const view_path = current_location.substring(0, current_location.lastIndexOf('/'));
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
     ux(".document_block").onEach("click", (event) => {
-        if(event.target.classList.contains("set_privacy_btn") || event.target.closest("li"))
+        if(event.target.classList.contains("set_privacy_btn") || event.target.classList.contains("more_action_btn") || event.target.closest("li"))
             return;
 
         location.href = "admin_edit_documentation.html";
@@ -71,10 +71,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         let confirm_modal = document.querySelector("#confirm_to_public");
         var instance = M.Modal.getInstance(confirm_modal);
         instance.open();
-    });
-
-    ux(".more_action_btn").onEach("click", function(event){
-        event.stopImmediatePropagation();
     });
     
     ux(".set_to_public_icon ").onEach("click", function(event){
@@ -222,8 +218,8 @@ function submitDocForm(event){
         ux(".edit_title_icon").onEach("click", editTitleDocumentation);
         ux(".duplicate_icon").onEach("click", duplicateDocumentation);
         ux(".document_title").onEach("blur", disableEditTitleDocumentation);
-        ux(".archive_btn, .remove_btn").onEach("click", setRemoveArchiveValue);
-        ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
+        ux(".archive_btn").onEach("click", setRemoveArchiveValue);
+        ux(".remove_btn").onEach("click", setRemoveArchiveValue);
         initializeMaterializeDropdown();
     }
 }
@@ -265,7 +261,7 @@ function displayDocumentations(documentations){
 }
 
 function initializeMaterializeDropdown(){
-    let elems = document.querySelectorAll('.dropdown-trigger');
+    let elems = document.querySelectorAll('.more_action_btn');
     M.Dropdown.init(elems, {
         alignment: 'left',
         coverTrigger: false,
@@ -311,43 +307,51 @@ function disableEditTitleDocumentation(event){
 function duplicateDocumentation(event){
     event.stopImmediatePropagation();
     let source = event.target.closest(".document_block");
-    let document_title = ux(source).find(".document_title").html();
+    let new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
+
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".document_title")).html();
     let cloned_target = ux(cloned.find(".more_action_btn")).html();
     let cloned_list = ux(cloned.find(".dropdown-content")).html();
-    let copy_title = "copy_of_" + document_title.value.toLowerCase();
+    let more_action_title = `document_more_actions_${new_documentation_id}`;
 
+    /* Update document_id of clone */
+    cloned.html().setAttribute("id", `document_${new_documentation_id}`);
+    cloned.find(".set_privacy_btn").html().dataset.document_id = new_documentation_id;
+    cloned.find(".archive_btn").html().dataset.document_id     = new_documentation_id;
+    cloned.find(".remove_btn").html().dataset.document_id      = new_documentation_id;
 
     cloned_title.html().setAttribute("style", "");
     cloned_title.html().setAttribute("value", "Copy of " + cloned_title.html().value);
-    cloned_target.html().setAttribute("data-target", copy_title);
-    cloned_list.html().setAttribute("id", copy_title);
+    cloned_target.html().setAttribute("data-target", more_action_title);
+    cloned_list.html().setAttribute("id", more_action_title);
     cloned_list.html().setAttribute("style", "");
 
     ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
     ux(cloned.find(".duplicate_icon").on("click", duplicateInnerElement));
     ux(cloned.find(".document_title").on("click", disableEditTitleDocumentation));
-    ux(cloned.find(".set_privacy_btn")).on("click", setDocumentPrivacyValues);
-    ux(cloned.find(".archive_btn, .remove_btn")).on("click", setRemoveArchiveValue);
-    ux(cloned.find("#archive_confirm, #remove_confirm")).on("click", submitRemoveArchive);
+    ux(cloned.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
+    ux(cloned.find(".archive_btn").on("click", setRemoveArchiveValue));
+    ux(cloned.find(".remove_btn").on("click", setRemoveArchiveValue));
     
-    source.insertAdjacentElement("afterend", cloned.html());
+    // source.insertAdjacentElement("afterend", cloned.html());
+    ux("#documentations").html().appendChild(cloned.html());
     initializeMaterializeDropdown();
 }
 
 function duplicateInnerElement(event){
     let origin = event.target.closest(".document_block");
-    let document_title = ux(origin).find(".document_title").html();
+    let new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
+
     let replica = ux(origin).clone();
     let replica_title = ux(replica.find(".document_title")).html();
     let replica_target = ux(replica.find(".more_action_btn")).html();
     let replica_list = ux(replica.find(".dropdown-content")).html();
-    let copy_title = "copy_of_" + document_title.value.toLowerCase();
+    let more_action_title = `document_more_actions_${new_documentation_id}`;
     
     replica_title.html().setAttribute("style", "");
     replica_title.html().setAttribute("value", "Copy of " + replica_title.html().value);
-    replica_target.html().setAttribute("data-target", copy_title);
+    replica_target.html().setAttribute("data-target", more_action_title);
     replica_target.html().setAttribute("data-target", "document_copy");
     replica_list.html().setAttribute("id", "document_copy");
     replica_list.html().setAttribute("style", "");
@@ -355,11 +359,12 @@ function duplicateInnerElement(event){
     ux(replica.find(".edit_title_icon").on("click", editTitleDocumentation));
     ux(replica.find(".duplicate_icon").on("click", duplicateDocumentation));
     ux(replica.find(".document_title").on("click", disableEditTitleDocumentation));
-    ux(replica.find(".set_privacy_btn")).on("click", setDocumentPrivacyValues);
-    ux(replica.find(".archive_btn, .remove_btn")).on("click", setRemoveArchiveValue);
-    ux(replica.find("#archive_confirm, #remove_confirm")).on("click", submitRemoveArchive);
+    ux(replica.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
+    ux(replica.find(".archive_btn").on("click", setRemoveArchiveValue));
+    ux(replica.find(".remove_btn").on("click", setRemoveArchiveValue));
 
-    origin.insertAdjacentElement("afterend", replica.html());
+    // origin.insertAdjacentElement("afterend", replica.html());
+    ux("#documentations").html().appendChild(replica.html());
     initializeMaterializeDropdown();
 }
 
@@ -482,8 +487,8 @@ function submitChangeDocumentPrivacy(event){
     ux(".edit_title_icon").onEach("click", editTitleDocumentation);
     ux(".duplicate_icon").onEach("click", duplicateDocumentation);
     ux(".document_title").onEach("blur", disableEditTitleDocumentation);
-    ux(".archive_btn, .remove_btn").onEach("click", setRemoveArchiveValue);
-    ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
+    ux(".archive_btn").onEach("click", setRemoveArchiveValue);
+    ux(".remove_btn").onEach("click", setRemoveArchiveValue);
 }
 
 function setRemoveArchiveValue(event){
@@ -498,10 +503,12 @@ function setRemoveArchiveValue(event){
 
 function submitRemoveArchive(event){
     /* This is just for clickable prototype. Will replace all when form is submitted to the backend */
-    const documentation_id     = document.getElementById("remove_archive_id").value;
+    const documentation_id = document.getElementById("remove_archive_id").value;
     
     /* Will not need this for now but will be used when form is submitted to the backend */
     const documentation_action = document.getElementById("documentation_action").value;
-    
+
     ux(`#document_${documentation_id}`).html().remove();
+
+    appearEmptyDocumentation();
 }
