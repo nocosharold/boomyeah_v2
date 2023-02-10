@@ -936,11 +936,48 @@ body {
   vertical-align: super;
 }
 .container .section_header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 24px;
+  font: 16px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 .container .section_header h2 {
   font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
   margin: 0;
+}
+.container .section_header .sort_btn {
+  background-color: transparent;
+  border: none;
+  font: 16px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.container .section_header .sort_btn::before {
+  content: '';
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/sort_icon.svg') no-repeat;
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+}
+.container .section_header .sort_dropdown {
+  border-radius: 4px;
+  width: 114px !important;
+  background-color: #F8FAFC;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+.container .section_header .sort_dropdown .divider {
+  background-color: #F8FAFC;
+}
+.container .section_header .sort_dropdown .divider.hidden {
+  display: none;
+}
+.container .section_header .sort_dropdown li:hover {
+  background-color: #BDDAFF;
+}
+.container .section_header .sort_dropdown a {
+  color: #334155;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
 .container .section_container {
   display: flex;
@@ -963,6 +1000,7 @@ body {
   position: relative;
   transition: all 0.21s ease-in-out;
   width: 316px;
+  animation-duration: 0.3s !important;
 }
 .container .section_container .section_block::after {
   border-bottom: 2px solid #DBEAFE;

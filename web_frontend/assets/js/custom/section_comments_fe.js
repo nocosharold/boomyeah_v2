@@ -8,6 +8,7 @@
     let is_comments_displayed = false;
     let swipe_timeout = null;
     let is_mobile_reply_open = false;
+    let active_comment_item = null;
 
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
@@ -30,8 +31,11 @@
                 });
             }
         });
-
         ux(document).on("click", onElementClick);
+        
+        setTimeout(() => {
+            ux("#remove_comment_form").on("submit", onConfirmDeleteComment);
+        }, 148);
 
         /** Mobile Device events */
         ux(document).on("touchstart", function (event){
@@ -121,7 +125,9 @@
             event.stopImmediatePropagation();
             toggleCommentActions(event);
             onEditComment(event);
-            onDeleteComment(event);
+            // onDeleteComment(event);
+
+            showConfirmaDeleteComment(event);
         } else {
             closeCommentActions();
         }
@@ -304,29 +310,45 @@
         }
     }
 
-    async function onDeleteComment(event){
+    function showConfirmaDeleteComment(event){
+        event.stopImmediatePropagation();
         let event_target = event.target;
 
         if(event_target.classList.contains("remove_btn")){
-            let comment_container = null;
-            
-            if(event_target.closest(".replies_list")){
-                comment_container = event_target.closest(".replies_list").closest(".comment_container");
+            let remove_comment_modal = ux("#confirm_remove_comment_modal");
+            let modal_instance = M.Modal.getInstance(remove_comment_modal);
+            modal_instance.open();
+
+            /** Determine active_comment_item */
+            active_comment_item = (CLIENT_WIDTH > MOBILE_WIDTH) ? event_target.closest(".comment_item") : ux(".active_comment_item").html();
+        }
+    }
+
+    function onConfirmDeleteComment(event){
+        event.stopImmediatePropagation();
+        event.preventDefault();
+
+        /** Do these after form submission */
+        let comment_container = null;
+        
+        if(active_comment_item){
+            if(active_comment_item.closest(".replies_list")){
+                comment_container = active_comment_item.closest(".replies_list").closest(".comment_container");
             }
-
-            let removed_comment = (CLIENT_WIDTH > MOBILE_WIDTH) ? event_target.closest(".comment_item") : ux(".active_comment_item").html();
-            addAnimation(removed_comment, "animate__fadeOut");
-
-            await closeCommentActions();
+    
+            addAnimation(active_comment_item, "animate__fadeOut");
+    
+            closeCommentActions();
             setTimeout(() => {
-                removed_comment.remove();
+                active_comment_item.remove();
     
                 if(comment_container){
                     showRepliesCount(comment_container);
                 }
             }, 148);
-
         }
+
+        return false;
     }
 
     function toggleCommentActions(event){

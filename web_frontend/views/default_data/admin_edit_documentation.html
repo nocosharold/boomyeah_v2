@@ -14,6 +14,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../../assets/css/vendor/animate.min.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
     <script src="../../assets/js/vendor/Sortable.min.js"></script>
@@ -52,8 +53,33 @@
             </form>
             <div class="section_header">
                 <h2>Sections</h2>
+                <button class="sort_btn dropdown-trigger" data-target="sort_list">Sort by</button>
+                <!-- Dropdown Structure -->
+                <ul id="sort_list" class="dropdown-content sort_dropdown">
+                    <li><a href="#!">A-Z</a></li>
+                    <li><a href="#!">Z-A</a></li>
+                    <li><a href="#!">Latest</a></li>
+                    <li><a href="#!">Oldest</a></li>
+                </ul>
             </div>
             <div class="section_container">
+                <div id="section_0" class="section_block hidden">
+                    <div class="section_details">
+                        <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly="">
+                    </div>
+                    <div class="section_controls">
+                        <button class="more_action_btn dropdown-trigger" data-target="section_more_actions_0">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="section_more_actions_0" class="dropdown-content more_action_list">
+                            <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="1"
+                                    data-documentation_action="remove">Remove</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div id="section_1" class="section_block">
                     <div class="section_details">
                         <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly="">
