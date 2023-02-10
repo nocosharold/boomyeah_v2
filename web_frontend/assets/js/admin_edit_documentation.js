@@ -34,11 +34,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             addSearchEmailResult(element);
         }
     });
+    
+    const elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems);
 
     ux(".section_block").onEach("click", function(){
         location.href = "admin_edit_section.html";
     });
-    ux(".edit_section_title_icon").onEach("click", function(event){
+    ux(".more_action_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
     });
     ux(".copy_icon").onEach("click", function(event){
@@ -47,6 +50,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".remove_icon").onEach("click", function(event){
         event.stopImmediatePropagation();
     });
+
+    
 });
 
 function submitAddSectionForm(event){
