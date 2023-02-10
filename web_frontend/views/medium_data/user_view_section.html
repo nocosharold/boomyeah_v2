@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/vendor/animate.min.css">
     <link rel="stylesheet" href="../../assets/css/user_view_section.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
@@ -15,24 +16,6 @@
 </head>
 <body>
     <div id="client_width"></div>
-    <div id="mobile_comments_slideout" class="sidenav">
-        <div id="comments_list_container">
-            <ul id="user_comments_list" class="comments_list"></ul>
-        </div>
-        <div class="mobile_tab_comments tab_comments comment_container">
-            <form action="/" method="POST" class="mobile_add_comment_form add_comment_form">
-                <div class="comment_field">
-                    <div class="comment_message_content input-field col s12">
-                        <label for="post_comment_4">Write a comment</label>
-                        <textarea name="post_comment" id="post_comment_4" class="materialize-textarea comment_message"></textarea>
-                    </div>
-                </div>
-                <div class="comment_btn">
-                    <button type="button" class="mobile_comment_btn"></button>
-                </div>
-            </form>
-        </div>
-    </div>
     <div id="main_navigation"></div>
     <div id="wrapper" class="container">
         <div id="view_section_content">
@@ -175,6 +158,25 @@
             <button type="button" class="comment_action_btn remove_btn">Remove</button>
         </div>
     </div>
+    <div id="mobile_comments_slideout" class="sidenav">
+        <div id="comments_list_container">
+            <ul id="user_comments_list" class="comments_list"></ul>
+        </div>
+        <div class="mobile_tab_comments tab_comments comment_container">
+            <form action="/" method="POST" class="mobile_add_comment_form add_comment_form">
+                <div class="comment_field">
+                    <div class="comment_message_content input-field col s12">
+                        <label for="post_comment_4">Write a comment</label>
+                        <textarea name="post_comment" id="post_comment_4" class="materialize-textarea comment_message"></textarea>
+                    </div>
+                </div>
+                <div class="comment_btn">
+                    <button type="button" class="mobile_comment_btn"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="modals_container"></div>
     <script src="../../assets/js/vendor/redactorx.min.js"></script>
     <script src="../../assets/js/constants.js"></script>
     <script type="text/javascript" src="../../assets/js/hotkeys.js"></script>

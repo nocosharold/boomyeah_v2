@@ -84,3 +84,15 @@ document.addEventListener('input', function (event) {
 	if (event.target.tagName.toLowerCase() !== 'textarea' || event.target.classList.contains("materialize-textarea")) return;
 	autoExpand(event.target);
 }, false);
+
+function addAnimation(element, animation, timeout = 480){
+    ux(element).addClass("animate__animated").addClass(animation);
+
+    setTimeout(() => {
+        removeAnimation(element, animation);
+    }, timeout);
+}
+
+function removeAnimation(element, animation){
+    ux(element).removeClass("animate__animated").removeClass(animation);
+}
