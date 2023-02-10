@@ -1,8 +1,8 @@
 // var invite = document.querySelectorAll('.modal');
 // var show_modal = M.Modal.init(invite);
 
-var drop = document.querySelectorAll('.role');
-var show_dropdown = M.Dropdown.init(drop);
+// var drop = document.querySelectorAll('.role');
+// var show_dropdown = M.Dropdown.init(drop);
 
 // var users = document.querySelectorAll('.users');
 // var checkbox =  M.Dropdown.init(users, {closeOnClick:false});
@@ -21,6 +21,8 @@ function initSelect(){
 
 function initChipsInstance(){
     var invite_instance = M.Chips.init(document.querySelector(".chips"), {
+        placeholder: "Enter email address",
+        secondaryPlaceholder: "Enter email address",
         onChipAdd: (e, email) => {
             addEmail(email.innerText.split("close")[0]);
         }

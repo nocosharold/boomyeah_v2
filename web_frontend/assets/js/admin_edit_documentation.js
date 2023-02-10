@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     appearEmptySection();
 
     const email_address = document.querySelector("#email_address");    
-    email_address.addEventListener("keyup", searchEmail);
+    // email_address.addEventListener("keyup", searchEmail);
 
     document.addEventListener("click", (event) => {
         let element = event.target.closest(".add_invite_result");
@@ -51,7 +51,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         event.stopImmediatePropagation();
     });
 
+    let modal = document.querySelectorAll('.modal');
+    let instances = M.Modal.init(modal);
     
+    ux("#add_invite_btn").on("click", addPeopleWithAccess);
+
+    /* run functions from invite_modal.js */
+    initChipsInstance();
+    // initRoleDropdown();
+    initSelect();
 });
 
 function submitAddSectionForm(event){
