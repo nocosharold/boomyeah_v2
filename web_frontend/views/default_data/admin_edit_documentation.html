@@ -14,6 +14,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../../assets/css/vendor/animate.min.css">
     <script src="../../assets/js/vendor/html_loader.lib.js"></script>
     <script src="../../assets/js/vendor/ux.lib.js"></script>
     <script src="../../assets/js/vendor/Sortable.min.js"></script>
@@ -52,6 +53,14 @@
             </form>
             <div class="section_header">
                 <h2>Sections</h2>
+                <button class="sort_btn dropdown-trigger" data-target="sort_list">Sort by</button>
+                <!-- Dropdown Structure -->
+                <ul id="sort_list" class="dropdown-content sort_dropdown">
+                    <li><a href="#!">A-Z</a></li>
+                    <li><a href="#!">Z-A</a></li>
+                    <li><a href="#!">Latest</a></li>
+                    <li><a href="#!">Oldest</a></li>
+                </ul>
             </div>
             <div class="section_container">
                 <div id="section_1" class="section_block">
