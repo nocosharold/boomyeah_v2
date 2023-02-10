@@ -595,6 +595,12 @@ textarea {
   min-height: 194px;
   overflow: hidden;
   width: 100%;
+  z-index: 10003 !important;
+}
+#confirmation_modal .modal + .modal-overlay,
+#confirmation_modal_private .modal + .modal-overlay,
+.confirm_action_modal .modal + .modal-overlay {
+  z-index: 10002 !important;
 }
 #confirmation_modal .modal .modal-content,
 #confirmation_modal_private .modal .modal-content,

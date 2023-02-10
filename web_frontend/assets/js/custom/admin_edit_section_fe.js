@@ -51,7 +51,7 @@ function(){
     function initializeSectionPageEvents(ux_target = null, callback = null){
         if(ux_target){
             ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
-            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", showConfirmaRemoveSection);
+            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", showConfirmaRemoveTab);
             bindOpenTabLink(ux_target);
     
             ux_target.findAll((".tab_title")).forEach((tab_title) => {
@@ -62,7 +62,7 @@ function(){
         }
         else{
             ux(".section_page_tabs .add_page_btn").onEach("click", addNewTab);
-            ux(".section_page_tabs .remove_tab_btn").onEach("click", showConfirmaRemoveSection);
+            ux(".section_page_tabs .remove_tab_btn").onEach("click", showConfirmaRemoveTab);
             ux(".section_page_content .tab_title").onEach("keyup", (event) => {
                 onUpdateTabTitle(event);
             });
@@ -239,7 +239,7 @@ function(){
         page_tab_item.html().setAttribute("data-tab_id", tab_id);
         
         /** Rebind tab-related events */
-        page_tab_item.find(".remove_tab_btn").on("click", showConfirmaRemoveSection);
+        page_tab_item.find(".remove_tab_btn").on("click", showConfirmaRemoveTab);
         page_tab_clone.find(".tab_title").on("keyup", (event) => {
             onUpdateTabTitle(event, section_page_tabs_list.findAll(".page_tab_item").length);
         });
@@ -253,11 +253,8 @@ function(){
         });
     }
 
-    function showConfirmaRemoveSection(event){
+    function showConfirmaRemoveTab(event){
         event.stopImmediatePropagation();
-        let remove_tab_modal = ux("#confirm_remove_tab_modal");
-        let modal_instance = M.Modal.getInstance(remove_tab_modal);
-        modal_instance.open();
         let remove_tab_btn = event.target;
         let tab_item = remove_tab_btn.closest(".page_tab_item");
         let tab_title = tab_item.innerText.substring(0, tab_item.innerText.length - 1);
@@ -266,6 +263,10 @@ function(){
         remove_tab_modal.find(".tab_title").text(tab_title.trim());
         let remove_tab_form = ux("#remove_tab_form");
         remove_tab_form.find(".tab_id").html().value = tab_id.replace("tab_", "");
+   
+        let remove_tab_modal = ux("#confirm_remove_tab_modal");
+        let modal_instance = M.Modal.getInstance(remove_tab_modal);
+        modal_instance.open();
     }
 
     function onConfirmRemoveTab(event){

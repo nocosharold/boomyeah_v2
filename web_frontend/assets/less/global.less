@@ -656,6 +656,11 @@ textarea{
         min-height: 194px;
         overflow: hidden;
         width: 100%;
+        z-index: 10003 !important;
+
+        & + .modal-overlay{
+            z-index: 10002 !important;
+        }
         .modal-content{
             flex-grow: 1;
             padding: 14px 24px;
