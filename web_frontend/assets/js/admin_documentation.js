@@ -52,12 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
-    ux(".document_block").onEach("click", (event) => {
-        if(event.target.classList.contains("set_privacy_btn") || event.target.classList.contains("more_action_btn") || event.target.closest("li"))
-            return;
-
-        location.href = "admin_edit_documentation.html";
-    });
+    ux(".document_block").onEach("click", redirectToDocumentView);
 
     ux(".invite_collaborators_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
@@ -95,6 +90,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     initChipsInstance();
     // initRoleDropdown();
     initSelect();
+
+    M.Dropdown.init(ux("#docs_view_btn").html());
 });
 
 function submitInvite(event){
@@ -226,6 +223,7 @@ function submitDocForm(event){
         ux(".document_title").onEach("blur", disableEditTitleDocumentation);
         ux(".archive_btn").onEach("click", setRemoveArchiveValue);
         ux(".remove_btn").onEach("click", setRemoveArchiveValue);
+        document_block.addEventListener("click", redirectToDocumentView);
         initializeMaterializeDropdown();
     }
 }
@@ -517,4 +515,11 @@ function submitRemoveArchive(event){
     ux(`#document_${documentation_id}`).html().remove();
 
     appearEmptyDocumentation();
+}
+
+function redirectToDocumentView(event){
+    if(event.target.classList.contains("set_privacy_btn") || event.target.classList.contains("more_action_btn") || event.target.closest("li"))
+        return;
+
+    location.href = "admin_edit_documentation.html";
 }
