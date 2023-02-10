@@ -643,6 +643,23 @@ body {
 #wrapper {
   padding: 0 30px 0 100px;
 }
+@media screen and (max-width: 1090px) {
+  #wrapper .container .doc_text_content:hover::after {
+    display: none;
+  }
+}
+@media screen and (max-width: 823px) {
+  #wrapper .container #section_form .group_add_section {
+    width: 100%;
+  }
+  #wrapper .container #section_form #input_add_section {
+    max-width: 573px;
+    width: 98%;
+  }
+  #wrapper .container .section_container .section_block {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 632px) {
   #wrapper {
     padding: 0 30px;
@@ -782,7 +799,7 @@ body {
     display: none;
   }
   .container #doc_title_access {
-    margin: 0 0 2px;
+    margin: 0 0px 50px;
     gap: 8px;
     flex-wrap: wrap;
   }
@@ -832,8 +849,8 @@ body {
   content: '';
   display: inline-block;
   height: 18px;
-  margin-left: 130px;
   position: absolute;
+  right: -30px;
   width: 18px;
 }
 .container #section_form {
@@ -942,7 +959,6 @@ body {
   display: flex;
   height: 83px;
   justify-content: space-between;
-  min-width: 316px;
   padding: 20px 23px 20px 16px;
   position: relative;
   transition: all 0.21s ease-in-out;
