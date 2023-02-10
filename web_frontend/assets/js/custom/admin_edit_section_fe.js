@@ -260,11 +260,11 @@ function(){
         let tab_title = tab_item.innerText.substring(0, tab_item.innerText.length - 1);
         let tab_id = tab_item.getAttribute("data-tab_id");
 
-        remove_tab_modal.find(".tab_title").text(tab_title.trim());
         let remove_tab_form = ux("#remove_tab_form");
         remove_tab_form.find(".tab_id").html().value = tab_id.replace("tab_", "");
-   
+        
         let remove_tab_modal = ux("#confirm_remove_tab_modal");
+        remove_tab_modal.find(".tab_title").text(tab_title.trim());
         let modal_instance = M.Modal.getInstance(remove_tab_modal);
         modal_instance.open();
     }
