@@ -4,6 +4,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    animation-duration: 0.3s !important;
 }
 
 @font-face {
@@ -50,6 +51,9 @@
 @by_input_border: #D5E3FF;
 @by_toolbar: #ECF1FF;
 @by_archived_bg: #F4F7FA;
+@by_dropdown_text: #334155;
+@by_dropdown_bg: #F8FAFC;
+
 
 @readex_regular: 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 @readex_medium: 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
@@ -643,14 +647,25 @@ textarea{
         color: @by_tooltip_bg;
     }
 }
-#confirmation_modal, #confirmation_modal_private{
+.confirm_action_modal{
+    padding: 10px 0px;
+}
+#confirmation_modal, #confirmation_modal_private, .confirm_action_modal{
     .modal{
         border-radius: 8px;
-        height: 194px;
+        display: flex !important;
+        flex-direction: column;
         max-width: 343px;
+        min-height: 194px;
         overflow: hidden;
         width: 100%;
+        z-index: 10003 !important;
+
+        & + .modal-overlay{
+            z-index: 10002 !important;
+        }
         .modal-content{
+            flex-grow: 1;
             padding: 14px 24px;
             h4{
                 color: @by_black;
@@ -662,10 +677,14 @@ textarea{
             }
         }
         .modal-footer{
-            padding: 15px 30px;
+            height: auto;
+            padding: 0px 24px 24px;
+            a, button{
+                margin: 0;
+            }
             .no_btn{
                 color: @by_error;
-                font: 16px/24px @readex_regular;
+                font: 16px/36px @readex_regular;
                 text-transform: none !important;
             }
             .yes_btn{
@@ -675,7 +694,6 @@ textarea{
                 font: 16px/24px @readex_regular;
                 padding: 5px 16px;
                 text-transform: none !important;
-                transform: translateY(-6px);
             }
         }
     }

@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  animation-duration: 0.3s !important;
 }
 @font-face {
   font-family: 'ReadexPro-Bold';
@@ -141,7 +142,7 @@ textarea {
 #nav_documentation #slide-out li:hover {
   background: #E8F2FF;
   border-radius: 0px 20px 20px 0px;
-  min-width: 280px;
+  max-width: 280px;
 }
 #nav_documentation #slide-out li a {
   color: #B4C5FF;
@@ -290,9 +291,13 @@ textarea {
   width: 100%;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips {
+  align-items: center;
+  background-color: #EFF6FF;
   border-bottom: 1px solid #2563EB;
   border-radius: 0px 0px 5px 5px;
   border-width: revert;
+  display: flex;
+  flex-wrap: wrap;
   padding-left: 10px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.invalid {
@@ -318,13 +323,14 @@ textarea {
   width: 28px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input {
-  width: 100% !important;
+  border: none;
+  box-shadow: none;
+  height: auto;
   z-index: 999;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.input,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.valid,
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input.invalid {
-  height: 62px;
   border-bottom: none !important;
   box-shadow: none;
 }
@@ -340,7 +346,7 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips.input-field {
   background: #EFF6FF;
   border-radius: 8px 8px 5px 5px;
-  height: 65px !important;
+  padding: 8px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field label {
   color: #78716C;
@@ -356,21 +362,23 @@ textarea {
   background: url("../../assets/images/modal_sprite.svg") no-repeat;
   background-position: 1px 0px;
   border: none;
+  bottom: 25px;
   cursor: pointer;
   display: block;
   height: 20px;
   position: absolute;
   right: 15px;
-  bottom: 25px;
   width: 20px;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite {
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
-  height: 400px;
   left: 0 !important;
-  margin: 30px auto;
-  top: 47px !important;
+  margin: -9px auto !important;
+  max-height: 350px;
+  overflow: auto;
+  position: absolute;
+  top: auto !important;
   width: 417px !important;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite li {
@@ -467,7 +475,7 @@ textarea {
   top: 4px;
   width: 28px;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .choose_role li a {
+#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list #choose_role li a {
   color: #7D949D;
   font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
@@ -635,6 +643,23 @@ body {
 #wrapper {
   padding: 0 30px 0 100px;
 }
+@media screen and (max-width: 1090px) {
+  #wrapper .container .doc_text_content:hover::after {
+    display: none;
+  }
+}
+@media screen and (max-width: 823px) {
+  #wrapper .container #section_form .group_add_section {
+    width: 100%;
+  }
+  #wrapper .container #section_form #input_add_section {
+    max-width: 573px;
+    width: 98%;
+  }
+  #wrapper .container .section_container .section_block {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 632px) {
   #wrapper {
     padding: 0 30px;
@@ -774,7 +799,7 @@ body {
     display: none;
   }
   .container #doc_title_access {
-    margin: 0 0 2px;
+    margin: 0 0px 50px;
     gap: 8px;
     flex-wrap: wrap;
   }
@@ -803,10 +828,30 @@ body {
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   margin: 0 0 34px;
   max-width: 893px;
+  position: relative;
   width: 100%;
 }
 .container .doc_text_content:focus-visible {
-  outline: none;
+  border: 1px solid #B5C4E4;
+  box-shadow: 0px 1px 4px 2px rgba(181, 196, 228, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  outline: #B5C4E4;
+}
+.container .doc_text_content:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+  display: block;
+  position: absolute;
+}
+.container .doc_text_content:hover::after {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat;
+  background-position: -59px -4px;
+  content: '';
+  display: inline-block;
+  height: 18px;
+  position: absolute;
+  right: -30px;
+  width: 18px;
 }
 .container #section_form {
   align-items: center;
@@ -890,94 +935,237 @@ body {
   margin-left: 21px;
   vertical-align: super;
 }
-.container h2 {
+.container .section_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font: 16px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+}
+.container .section_header h2 {
   font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
   margin: 0;
 }
+.container .section_header .sort_btn {
+  background-color: transparent;
+  border: none;
+  font: 16px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.container .section_header .sort_btn::before {
+  content: '';
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/sort_icon.svg') no-repeat;
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+}
+.container .section_header .sort_dropdown {
+  border-radius: 4px;
+  width: 114px !important;
+  background-color: #F8FAFC;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+.container .section_header .sort_dropdown .divider {
+  background-color: #F8FAFC;
+}
+.container .section_header .sort_dropdown .divider.hidden {
+  display: none;
+}
+.container .section_header .sort_dropdown li:hover {
+  background-color: #BDDAFF;
+}
+.container .section_header .sort_dropdown a {
+  color: #334155;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
 .container .section_container {
-  margin-top: 8px;
-  max-height: 359px;
-  max-width: 549px;
-  overflow-x: hidden;
-  width: 100%;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.container .section_container.hidden {
+  display: none;
 }
 .container .section_container .section_block {
   align-items: center;
   background-color: #EFF6FF;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  height: 83px;
+  justify-content: space-between;
+  padding: 20px 23px 20px 16px;
+  position: relative;
+  transition: all 0.21s ease-in-out;
+  width: 316px;
+  animation-duration: 0.3s !important;
+}
+.container .section_container .section_block::after {
   border-bottom: 2px solid #DBEAFE;
   border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  height: 56px;
-  justify-content: space-between;
-  margin: 3px 0;
-  max-width: 522px;
-  overflow: hidden;
-  padding: 0 24px;
+  bottom: 0;
+  content: "";
+  display: inline-block;
+  height: 10px;
+  left: 0;
+  position: absolute;
   width: 100%;
 }
-.container .section_container .section_block.hidden {
+.container .section_container .section_block.hidden,
+.container .section_container .section_block.hidden_private {
   display: none;
-}
-.container .section_container .section_block.hidden {
-  display: none;
-}
-.container .section_container .section_block button {
-  background-color: transparent;
-  border: none;
-}
-.container .section_container .section_block button::after {
-  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat;
-  content: '';
-  cursor: pointer;
-  display: inline-block;
-  height: 16px;
-  width: 10px;
 }
 .container .section_container .section_block .section_details {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-}
-.container .section_container .section_block .section_details .draggable_icon::after {
-  background-position: -47px -6px;
-  cursor: grab;
-  margin: 0 16px 0 0;
-  vertical-align: middle;
+  flex-direction: column;
+  height: 80px;
+  justify-content: center;
+  width: 225px;
 }
 .container .section_container .section_block .section_details .section_title {
   border-bottom: 1px solid transparent;
   box-shadow: none;
-  display: table-cell;
-  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  color: #0F172A;
+  font: 12px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  height: 21px;
   margin: 0;
-  max-height: 24px;
-  max-width: 345px;
-  min-height: 24px;
-  min-width: 345px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.container .section_container .section_block .section_details .section_title:hover {
+  cursor: pointer;
+}
+.container .section_container .section_block .section_details .invite_collaborators_btn {
+  background-color: #EFF6FF;
+  border-radius: 20px;
+  border: 1px solid #2563EB;
+  color: #2563EB;
+  cursor: pointer;
+  font: 12px/16px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  height: 24px;
+  position: relative;
+  user-select: none;
+  width: 49px;
+}
+.container .section_container .section_block .section_details .invite_collaborators_btn::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat -32px -13px;
+  content: '';
+  display: inline-block;
+  height: 8.67px;
+  width: 16px;
+}
 .container .section_container .section_block .section_controls {
+  align-items: center;
   display: flex;
-  gap: 16px;
+  font-size: 0;
 }
-.container .section_container .section_block .section_controls button::after {
-  vertical-align: middle;
-}
-.container .section_container .section_block .section_controls .edit_section_title_icon::after {
-  background-position: -59px -4px;
+.container .section_container .section_block .section_controls .access_btn {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat -50px -5px;
+  border: 0;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
   height: 18px;
+  margin-right: 18px;
+  width: 14px;
+}
+.container .section_container .section_block .section_controls .more_action_btn {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/vertical_menu.svg') no-repeat center;
+  border: 0;
+  color: transparent;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
+  height: 14px;
+  padding: 12px 8px;
+  position: absolute;
+  right: 17px;
+  text-align: center;
+  width: 8px;
+}
+.container .section_container .section_block .section_controls .more_action_list_public,
+.container .section_container .section_block .section_controls .more_action_list_private,
+.container .section_container .section_block .section_controls .more_action_list {
+  border-radius: 4px;
+  width: 192px !important;
+}
+.container .section_container .section_block .section_controls .more_action_list_public .divider,
+.container .section_container .section_block .section_controls .more_action_list_private .divider,
+.container .section_container .section_block .section_controls .more_action_list .divider {
+  background-color: #EFF6FF;
+}
+.container .section_container .section_block .section_controls .more_action_list_public .divider.hidden,
+.container .section_container .section_block .section_controls .more_action_list_private .divider.hidden,
+.container .section_container .section_block .section_controls .more_action_list .divider.hidden {
+  display: none;
+}
+.container .section_container .section_block .section_controls .more_action_list_public li:hover,
+.container .section_container .section_block .section_controls .more_action_list_private li:hover,
+.container .section_container .section_block .section_controls .more_action_list li:hover {
+  background-color: #BDDAFF;
+}
+.container .section_container .section_block .section_controls .more_action_list_public a,
+.container .section_container .section_block .section_controls .more_action_list_private a,
+.container .section_container .section_block .section_controls .more_action_list a {
+  color: #94A3B8;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+.container .section_container .section_block .section_controls .more_action_list_public a::before,
+.container .section_container .section_block .section_controls .more_action_list_private a::before,
+.container .section_container .section_block .section_controls .more_action_list a::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat;
+  content: "";
+  display: inline-block;
+  height: 18px;
+  margin-right: 16px;
+  position: relative;
+  vertical-align: text-bottom;
   width: 18px;
 }
-.container .section_container .section_block .section_controls .copy_icon::after {
-  background-position: -79px 0;
+.container .section_container .section_block .section_controls .more_action_list_public a.edit_title_icon::before,
+.container .section_container .section_block .section_controls .more_action_list_private a.edit_title_icon::before,
+.container .section_container .section_block .section_controls .more_action_list a.edit_title_icon::before {
+  background-position: -70px -4px;
+}
+.container .section_container .section_block .section_controls .more_action_list_public a.duplicate_icon::before,
+.container .section_container .section_block .section_controls .more_action_list_private a.duplicate_icon::before,
+.container .section_container .section_block .section_controls .more_action_list a.duplicate_icon::before {
+  background-position: -90px 0;
   height: 22px;
   width: 19px;
 }
-.container .section_container .section_block .section_controls .remove_icon::after {
-  background-position: -102px -9px;
-  height: 14px;
+.container .section_container .section_block .section_controls .more_action_list_public a.remove_icon::before,
+.container .section_container .section_block .section_controls .more_action_list_private a.remove_icon::before,
+.container .section_container .section_block .section_controls .more_action_list a.remove_icon::before {
+  background-position: -169px -4px;
+  height: 18px;
   width: 14px;
+}
+@media screen and (max-width: 622px) {
+  .container .section_container .section_block {
+    min-width: 100% !important;
+  }
+}
+.container .section_container .section_block:hover {
+  border: 1px solid #2563EB;
+}
+.container .section_container .section_block:hover::before {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/draggable_icon.svg') no-repeat 0 0;
+  content: "";
+  cursor: grab;
+  display: inline-block;
+  height: 4px;
+  left: 50%;
+  padding: 8px 0;
+  position: absolute;
+  top: 6px;
+  width: 10.67px;
+}
+.container .section_container .section_block:hover::after {
+  display: none;
 }
 .container .no_sections {
   width: 100%;
@@ -1026,4 +1214,58 @@ div::-webkit-scrollbar-thumb {
   background-color: #DBEAFE;
   border-radius: 10px;
   width: 10px;
+}
+.invited_users_wrapper {
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user {
+  align-items: center;
+  display: flex;
+  padding: 8px 8px;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user img {
+  position: relative;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info {
+  margin-left: 16px;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info h4 {
+  font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin: 0;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user p,
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user select {
+  color: #A1A1AA !important;
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin-left: auto;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user select {
+  color: #A1A1AA !important;
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin-left: auto;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-trigger {
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
+  color: #A1A1AA !important;
+  max-width: 70px !important;
+  border-bottom: none !important;
+  top: 4px !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-trigger:focus {
+  border-bottom: 1px solid #039BE5 !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-content {
+  left: -30px !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-content li span {
+  font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
+  color: #A1A1AA !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .select-wrapper {
+  margin-left: auto !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab #email_address:focus::placeholder {
+  color: transparent;
 }

@@ -14,6 +14,7 @@ function(){
     document.addEventListener("DOMContentLoaded", async ()=> {
         await include("#main_navigation" , `${relative_view_path}/global/main_navigation.html`, `${relative_assets_path}/assets/js/main_navigation.js`);
         await include("#clone_section_page" , `${relative_view_path}/global/clone_section_page.html`);
+        await include("#modals_container" , `${relative_view_path}/global/confirm_action_modals.html`);
 
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
@@ -25,8 +26,14 @@ function(){
             updateSectionProgress();
         }
 
-        initializeSectionPageEvents();
+        setTimeout(() => {
+            ux("#remove_tab_form").on("submit", onConfirmRemoveTab);
+        });
 
+        let modals = document.querySelectorAll('.modal');
+        M.Modal.init(modals);
+        initializeSectionPageEvents();
+        
         window.addEventListener("resize", () => {
             if(MOBILE_WIDTH < document.documentElement.clientWidth){
                 window.location.reload();
@@ -44,7 +51,7 @@ function(){
     function initializeSectionPageEvents(ux_target = null, callback = null){
         if(ux_target){
             ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
-            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", removeSectionTab);
+            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", showConfirmaRemoveTab);
             bindOpenTabLink(ux_target);
     
             ux_target.findAll((".tab_title")).forEach((tab_title) => {
@@ -55,7 +62,7 @@ function(){
         }
         else{
             ux(".section_page_tabs .add_page_btn").onEach("click", addNewTab);
-            ux(".section_page_tabs .remove_tab_btn").onEach("click", removeSectionTab);
+            ux(".section_page_tabs .remove_tab_btn").onEach("click", showConfirmaRemoveTab);
             ux(".section_page_content .tab_title").onEach("keyup", (event) => {
                 onUpdateTabTitle(event);
             });
@@ -80,6 +87,9 @@ function(){
                 if(section_items[target_index]){
                     await ux(section).removeClass("active");
                     section_items[target_index].classList.add("active");
+                    
+                    let animate_direction = (move_index > 0) ? "animate__slideInRight" : "animate__slideInLeft";
+                    addAnimation(section_items[target_index], animate_direction, 180);
                 }
 
                 if(target_index == FIRST_ITEM){
@@ -154,6 +164,7 @@ function(){
         ux(`.page_tab_item[data-tab_id="${tab_id}"]`).addClass("active");
         
         let active_tab = ux(`#${ tab_id }`).addClass("show");
+        addAnimation(active_tab.html(), "animate__fadeIn");
         
         if(active_tab && active_tab.find("input.tab_title").html()){
             active_tab.find("input.tab_title").html().select();
@@ -194,6 +205,8 @@ function(){
             .setAttribute("data-tab_id", tab_id);
         section_page_tab.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
         section_page_tab.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
+        addAnimation(section_page_content.html(), "animate__zoomIn");
+
         /** Rebind Event Listeners */
         initializeSectionPageEvents(section_page_content);
         initializeRedactor(`#${tab_id} .tab_content`);
@@ -216,12 +229,17 @@ function(){
         
         page_tab_clone.find(".checkbox_label").attr("for", "allow_comments_"+ tab_id);
         page_tab_clone.find("input[type=checkbox]").attr("id", "allow_comments_"+ tab_id);
+        
         /** Insert New tab */
         section_page_tabs_list.html().append(page_tab_item.html());
+        addAnimation(page_tab_item.html(), "animate__zoomIn");
+
+        /** Insert Add page tab btn at the end */
         section_page_tabs_list.html().append(add_page_tab);
         page_tab_item.html().setAttribute("data-tab_id", tab_id);
         
-        page_tab_item.find(".remove_tab_btn").on("click", removeSectionTab);
+        /** Rebind tab-related events */
+        page_tab_item.find(".remove_tab_btn").on("click", showConfirmaRemoveTab);
         page_tab_clone.find(".tab_title").on("keyup", (event) => {
             onUpdateTabTitle(event, section_page_tabs_list.findAll(".page_tab_item").length);
         });
@@ -234,26 +252,65 @@ function(){
             page_tab_item.html().click();
         });
     }
-    
-    function removeSectionTab(event){
-        event.stopPropagation();
-    
+
+    function showConfirmaRemoveTab(event){
+        event.stopImmediatePropagation();
         let remove_tab_btn = event.target;
         let tab_item = remove_tab_btn.closest(".page_tab_item");
-        let section_page_content = remove_tab_btn.closest(".section_page_content");
-        let section_page_tabs = remove_tab_btn.closest(".section_page_tabs");
+        let tab_title = tab_item.innerText.substring(0, tab_item.innerText.length - 1);
+        let tab_id = tab_item.getAttribute("data-tab_id");
+
+        let remove_tab_form = ux("#remove_tab_form");
+        remove_tab_form.find(".tab_id").html().value = tab_id.replace("tab_", "");
+        
+        let remove_tab_modal = ux("#confirm_remove_tab_modal");
+        remove_tab_modal.find(".tab_title").text(tab_title.trim());
+        let modal_instance = M.Modal.getInstance(remove_tab_modal);
+        modal_instance.open();
+    }
+
+    function onConfirmRemoveTab(event){
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        
+        let raw_form_data = new FormData(event.target);
+        let post_data = new Object();
+        
+        /** Simulate Form Submission */
+        setTimeout(() => {
+            for (const [key, value] of raw_form_data) {
+                console.log(`${key}: ${value}`);
+                post_data[key] = value;
+            }
+            
+            /** Do these after form submission */
+            let tab_item = ux(`.page_tab_item[data-tab_id="tab_${post_data.tab_id}"]`);
+            removeSectionTab(tab_item.html());
+        }, 148);
+
+        return false;
+    }
+    
+    function removeSectionTab(tab_item){
+        let section_page_content = tab_item.closest(".section_page_content");
+        let section_page_tabs = tab_item.closest(".section_page_tabs");
         let tab_id = tab_item.getAttribute("data-tab_id");
         
-        ux(`#${tab_id}`).html().remove();
-        tab_item.remove();
-        
+        addAnimation(tab_item, "animate__fadeOut");
+        addAnimation(ux(`#${tab_id}`).html(), "animate__fadeOut");
+
         setTimeout(() => {
-            if(ux(section_page_tabs).findAll(".page_tab_item").length === 0){
-                section_page_content.remove();
-            }else{
-                ux(section_page_tabs).findAll(".page_tab_item")[0].click();
-            }
-        });
+            ux(`#${tab_id}`).html().remove();
+            tab_item.remove();
+            
+            setTimeout(() => {
+                if(ux(section_page_tabs).findAll(".page_tab_item").length === 0){
+                    section_page_content.remove();
+                }else{
+                    ux(section_page_tabs).findAll(".page_tab_item")[0].click();
+                }
+            });
+        }, 148);
     }
     
     function initializeRedactor(selector){

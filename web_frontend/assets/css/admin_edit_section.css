@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  animation-duration: 0.3s !important;
 }
 @font-face {
   font-family: 'ReadexPro-Bold';
@@ -372,9 +373,10 @@ textarea {
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field #add_invite {
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
-  height: 400px;
   left: 0 !important;
   margin: -9px auto !important;
+  max-height: 350px;
+  overflow: auto;
   position: absolute;
   top: auto !important;
   width: 417px !important;
@@ -580,47 +582,74 @@ textarea {
   font: 16px/20px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   color: #1E293B;
 }
+.confirm_action_modal {
+  padding: 10px 0px;
+}
 #confirmation_modal .modal,
-#confirmation_modal_private .modal {
+#confirmation_modal_private .modal,
+.confirm_action_modal .modal {
   border-radius: 8px;
-  height: 194px;
+  display: flex !important;
+  flex-direction: column;
   max-width: 343px;
+  min-height: 194px;
   overflow: hidden;
   width: 100%;
+  z-index: 10003 !important;
+}
+#confirmation_modal .modal + .modal-overlay,
+#confirmation_modal_private .modal + .modal-overlay,
+.confirm_action_modal .modal + .modal-overlay {
+  z-index: 10002 !important;
 }
 #confirmation_modal .modal .modal-content,
-#confirmation_modal_private .modal .modal-content {
+#confirmation_modal_private .modal .modal-content,
+.confirm_action_modal .modal .modal-content {
+  flex-grow: 1;
   padding: 14px 24px;
 }
 #confirmation_modal .modal .modal-content h4,
-#confirmation_modal_private .modal .modal-content h4 {
+#confirmation_modal_private .modal .modal-content h4,
+.confirm_action_modal .modal .modal-content h4 {
   color: #0F172A;
   font: 20px/32px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
 #confirmation_modal .modal .modal-content p,
-#confirmation_modal_private .modal .modal-content p {
+#confirmation_modal_private .modal .modal-content p,
+.confirm_action_modal .modal .modal-content p {
   color: #6C7177;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
 #confirmation_modal .modal .modal-footer,
-#confirmation_modal_private .modal .modal-footer {
-  padding: 15px 30px;
+#confirmation_modal_private .modal .modal-footer,
+.confirm_action_modal .modal .modal-footer {
+  height: auto;
+  padding: 0px 24px 24px;
+}
+#confirmation_modal .modal .modal-footer a,
+#confirmation_modal_private .modal .modal-footer a,
+.confirm_action_modal .modal .modal-footer a,
+#confirmation_modal .modal .modal-footer button,
+#confirmation_modal_private .modal .modal-footer button,
+.confirm_action_modal .modal .modal-footer button {
+  margin: 0;
 }
 #confirmation_modal .modal .modal-footer .no_btn,
-#confirmation_modal_private .modal .modal-footer .no_btn {
+#confirmation_modal_private .modal .modal-footer .no_btn,
+.confirm_action_modal .modal .modal-footer .no_btn {
   color: #DA4D4D;
-  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  font: 16px/36px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   text-transform: none !important;
 }
 #confirmation_modal .modal .modal-footer .yes_btn,
-#confirmation_modal_private .modal .modal-footer .yes_btn {
+#confirmation_modal_private .modal .modal-footer .yes_btn,
+.confirm_action_modal .modal .modal-footer .yes_btn {
   border: 1px solid #2563EB;
   border-radius: 20px;
   color: #2563EB;
   font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   padding: 5px 16px;
   text-transform: none !important;
-  transform: translateY(-6px);
 }
 body::-webkit-scrollbar {
   background-color: #EFF6FF;
@@ -787,6 +816,7 @@ body::-webkit-scrollbar-thumb {
   .section_page_content {
     display: none;
     margin-bottom: 16px;
+    transition: transform 0.2s;
   }
   .section_page_content.active {
     display: block;
@@ -813,7 +843,7 @@ body::-webkit-scrollbar-thumb {
   display: inline-flex;
 }
 .section_page_content .section_page_tabs .page_tab_item a {
-  background: #ECF1FF;
+  background: #D5E3FF;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: #2563EB;
@@ -840,7 +870,7 @@ body::-webkit-scrollbar-thumb {
   font-family: 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 .section_page_content .section_page_tabs .add_page_tab .add_page_btn {
-  background: #ECF1FF;
+  background: #D5E3FF;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border: none;
@@ -940,6 +970,10 @@ body::-webkit-scrollbar-thumb {
     margin-top: 12px;
     position: absolute;
     width: calc(100%);
+  }
+  .section_page_content .section_page_tab iframe {
+    max-width: calc(100%) !important;
+    margin-bottom: 10px;
   }
 }
 .section_page_content .section_page_tab.show {
