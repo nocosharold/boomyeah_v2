@@ -103,7 +103,8 @@ function submitDocForm(event){
     const input_document_title = ux("#input_add_documentation").html().value;
 
     if(input_document_title){
-        const new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
+        const documentation_children = document.querySelectorAll("#documentations .document_block");
+        const new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
         const document_block = document.createElement("div");
 
         /* Create document_block */
@@ -311,7 +312,8 @@ function disableEditTitleDocumentation(event){
 function duplicateDocumentation(event){
     event.stopImmediatePropagation();
     let source = event.target.closest(".document_block");
-    let new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
+    let documentation_children = document.querySelectorAll("#documentations .document_block");
+    let new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
 
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".document_title")).html();
@@ -332,7 +334,7 @@ function duplicateDocumentation(event){
     cloned_list.html().setAttribute("style", "");
 
     ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
-    ux(cloned.find(".duplicate_icon").on("click", duplicateInnerElement));
+    ux(cloned.find(".duplicate_icon").on("click", duplicateDocumentation));
     ux(cloned.find(".document_title").on("click", disableEditTitleDocumentation));
     ux(cloned.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
     ux(cloned.find(".archive_btn").on("click", setRemoveArchiveValue));
@@ -343,34 +345,35 @@ function duplicateDocumentation(event){
     initializeMaterializeDropdown();
 }
 
-function duplicateInnerElement(event){
-    let origin = event.target.closest(".document_block");
-    let new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
+// function duplicateInnerElement(event){
+//     console.log(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]);
+//     let origin = event.target.closest(".document_block");
+//     let new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
 
-    let replica = ux(origin).clone();
-    let replica_title = ux(replica.find(".document_title")).html();
-    let replica_target = ux(replica.find(".more_action_btn")).html();
-    let replica_list = ux(replica.find(".dropdown-content")).html();
-    let more_action_title = `document_more_actions_${new_documentation_id}`;
+//     let replica = ux(origin).clone();
+//     let replica_title = ux(replica.find(".document_title")).html();
+//     let replica_target = ux(replica.find(".more_action_btn")).html();
+//     let replica_list = ux(replica.find(".dropdown-content")).html();
+//     let more_action_title = `document_more_actions_${new_documentation_id}`;
     
-    replica_title.html().setAttribute("style", "");
-    replica_title.html().setAttribute("value", "Copy of " + replica_title.html().value);
-    replica_target.html().setAttribute("data-target", more_action_title);
-    replica_target.html().setAttribute("data-target", "document_copy");
-    replica_list.html().setAttribute("id", "document_copy");
-    replica_list.html().setAttribute("style", "");
+//     replica_title.html().setAttribute("style", "");
+//     replica_title.html().setAttribute("value", "Copy of " + replica_title.html().value);
+//     replica_target.html().setAttribute("data-target", more_action_title);
+//     replica_target.html().setAttribute("data-target", "document_copy");
+//     replica_list.html().setAttribute("id", "document_copy");
+//     replica_list.html().setAttribute("style", "");
 
-    ux(replica.find(".edit_title_icon").on("click", editTitleDocumentation));
-    ux(replica.find(".duplicate_icon").on("click", duplicateDocumentation));
-    ux(replica.find(".document_title").on("click", disableEditTitleDocumentation));
-    ux(replica.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
-    ux(replica.find(".archive_btn").on("click", setRemoveArchiveValue));
-    ux(replica.find(".remove_btn").on("click", setRemoveArchiveValue));
+//     ux(replica.find(".edit_title_icon").on("click", editTitleDocumentation));
+//     ux(replica.find(".duplicate_icon").on("click", duplicateDocumentation));
+//     ux(replica.find(".document_title").on("click", disableEditTitleDocumentation));
+//     ux(replica.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
+//     ux(replica.find(".archive_btn").on("click", setRemoveArchiveValue));
+//     ux(replica.find(".remove_btn").on("click", setRemoveArchiveValue));
 
-    // origin.insertAdjacentElement("afterend", replica.html());
-    ux("#documentations").html().appendChild(replica.html());
-    initializeMaterializeDropdown();
-}
+//     // origin.insertAdjacentElement("afterend", replica.html());
+//     ux("#documentations").html().appendChild(replica.html());
+//     initializeMaterializeDropdown();
+// }
 
 function appearActiveDocumentation(event){
     let active_docs_btn = event.target;
