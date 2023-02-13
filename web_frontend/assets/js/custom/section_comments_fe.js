@@ -9,6 +9,7 @@
     let swipe_timeout = null;
     let is_mobile_reply_open = false;
     let active_comment_item = null;
+    let has_scrolled = false;
 
     const bindViewEvents = () => {
         ux(".comment_message").onEach("keydown", onCommentMessageKeypress);
@@ -23,7 +24,6 @@
 
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `${relative_view_path}/global/user_view_section_comments.html`);
-        ux("#prev_page_btn").addClass("onload");
 
         ux("#section_pages").findAll("ul.comments_list").forEach((comments_list) => {
             if(!comments_list.classList.contains("replies_list")){
@@ -33,6 +33,15 @@
             }
         });
         ux(document).on("click", onElementClick);
+
+        ux(document).on("scroll", (event) => {
+            if(!ux("#prev_page_btn").html().classList.contains("onload") && !has_scrolled){
+                if(window.scrollY >= document.body.scrollHeight - window.innerHeight){
+                    ux("#prev_page_btn").addClass("onload");
+                    has_scrolled = true;
+                }
+            }
+        })
         
         setTimeout(() => {
             ux("#remove_comment_form").on("submit", onConfirmDeleteComment);
