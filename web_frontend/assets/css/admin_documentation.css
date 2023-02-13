@@ -335,7 +335,7 @@ textarea {
   box-shadow: none;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips input::placeholder {
-  color: #2563eb;
+  color: #78716c;
   font: 12px/16px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab .row .input-field .chips .chip {
@@ -424,47 +424,69 @@ textarea {
   opacity: 1;
   width: 369px;
 }
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-trigger {
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
+  color: #A1A1AA !important;
+  max-width: 70px !important;
+  border-bottom: none !important;
+  top: 4px !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-content {
+  left: -30px !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-content li span span {
+  font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
+  color: #A1A1AA !important;
+}
 #invite_modal_container .invite_wrapper .modal .invite_collab h2 {
   color: #0f172a;
   font: 20px/18px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li {
-  margin: 15px auto;
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper {
+  display: contents;
+  min-height: 268px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+  padding: 0;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list input[type=checkbox] {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user input[type=checkbox] {
   display: none;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list img {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user select,
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user p {
+  color: #A1A1AA !important;
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin-left: auto;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user .invited_user_info {
+  margin-left: 16px;
   position: relative;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .user_information {
-  left: 80px;
-  position: absolute;
-}
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .user_information h4 {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user .invited_user_info h4 {
   color: #0f172a;
   font: 16px/11px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .user_information p {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user .invited_user_info p {
   color: #a1a1aa;
   font: 12px/10px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  padding: 10px 0;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list span {
-  color: #7d949d;
-  font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user .select-wrapper {
+  margin: -5px 0 0 0;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .role {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user .invited_user_role {
   color: #7d949d;
   font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   position: relative;
   transform: translateX(-18px);
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list .role::after {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user .invited_user_role::after {
   background: url("../../assets/images/modal_sprite.svg") no-repeat;
   background-position: -26px -1px;
   content: '';
@@ -475,7 +497,11 @@ textarea {
   top: 4px;
   width: 28px;
 }
-#invite_modal_container .invite_wrapper .modal .invite_collab .collaborators_wrapper li .user_list #choose_role li a {
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user span {
+  color: #7d949d;
+  font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper .invited_user #choose_role li a {
   color: #7d949d;
   font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
