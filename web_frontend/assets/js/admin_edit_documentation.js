@@ -57,6 +57,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
 
+    ux(".sort_by").onEach("click", sort_documentations);
+
     /* run functions from invite_modal.js */
     initChipsInstance();
     // initRoleDropdown();
@@ -239,4 +241,23 @@ function showMaterializeDropdown(event){
     const dropdown_content = event.target.closest(".section_controls").querySelector(".dropdown-trigger");
     const instance = M.Dropdown.getInstance(dropdown_content);
     instance.open();
+}
+
+function sort_documentations(event){
+    let sort_by = ux(event.target).attr("data-sort-by");
+    let section_lists = document.getElementById('section_container');
+    let section_list_nodes = section_lists.childNodes;
+    let section_lists_to_sort = [];
+
+    for (let i in section_list_nodes) {
+        (section_list_nodes[i].nodeType == 1) && section_lists_to_sort.push(section_list_nodes[i]);
+    }
+    
+    section_lists_to_sort.sort(function(a, b) {
+        return a.innerHTML == b.innerHTML ? 0 : ( sort_by === "az" ? (a.innerHTML > b.innerHTML ? 1 : -1) : (b.innerHTML > a.innerHTML ? 1 : -1) );
+    });
+
+    for (let i = 0; i < section_lists_to_sort.length; ++i) {
+        section_lists.appendChild(section_lists_to_sort[i]);
+    }
 }
