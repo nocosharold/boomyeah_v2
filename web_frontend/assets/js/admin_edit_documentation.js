@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux("#remove_invited_user_confirm").onEach("click", submitRemoveInvitedUser);
     ux(".invited_user_role").onEach("change", setRoleChangeAction);
 
-    ux(".sort_by").onEach("click", sort_documentations);
+    ux(".sort_by").onEach("click", sort_sections);
 
     /* run functions from invite_modal.js */
     initChipsInstance();
@@ -104,7 +104,6 @@ function submitAddSectionForm(event){
 
         section_title.html().setAttribute("readonly", "");
         sections.appendChild(cloned_section_block.html());
-        M.Dropdown.init(ux(cloned_section_block.html()).find(".dropdown-trigger").html());
     }
 
     appearEmptySection();
@@ -245,7 +244,7 @@ function showMaterializeDropdown(event){
     instance.open();
 }
 
-function sort_documentations(event){
+function sort_sections(event){
     let sort_by = ux(event.target).attr("data-sort-by");
     let section_lists = document.getElementById('section_container');
     let section_list_nodes = section_lists.childNodes;

@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
 
     ux(".invited_user_role").onEach("change", setRoleChangeAction);
+    ux(".sort_by").onEach("click", sort_documentations);
 
     /* run functions from invite_modal.js */
     initChipsInstance();
@@ -95,6 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     initSelect();
 
     M.Dropdown.init(ux("#docs_view_btn").html());
+    M.Dropdown.init(ux("#sort_by_btn").html());
 });
 
 function getNewDocumentationId(event){
@@ -249,6 +251,8 @@ function submitDocForm(event){
         ux(".remove_btn").onEach("click", setRemoveArchiveValue);
         document_block.addEventListener("click", redirectToDocumentView);
         initializeMaterializeDropdown();
+
+        window.location.href = "../no_data/admin_edit_documentation.html"
     }
 }
 
@@ -559,4 +563,24 @@ function redirectToDocumentView(event){
         return;
 
     location.href = "admin_edit_documentation.html";
+}
+
+function sort_documentations(event){
+    let sort_by = ux(event.target).attr("data-sort-by");
+    let documentation_lists = document.getElementById('documentations');
+    let documentation_list_nodes = documentation_lists.childNodes;
+
+    let documentation_lists_to_sort = [];
+
+    for (let i in documentation_list_nodes) {
+        (documentation_list_nodes[i].nodeType == 1) && documentation_lists_to_sort.push(documentation_list_nodes[i]);
+    }
+    
+    documentation_lists_to_sort.sort(function(a, b) {
+        return a.innerHTML == b.innerHTML ? 0 : ( sort_by === "az" ? (a.innerHTML > b.innerHTML ? 1 : -1) : (b.innerHTML > a.innerHTML ? 1 : -1) );
+    });
+
+    for (let i = 0; i < documentation_lists_to_sort.length; i++) {
+        documentation_lists.appendChild(documentation_lists_to_sort[i]);
+    }
 }

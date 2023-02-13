@@ -19,6 +19,27 @@
         width: 100% !important;
     }
     
+    .section_details{
+        .add_description{
+            position: relative;
+            &:hover{
+                &::after{
+                    background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat;
+                    background-position: -59px -4px;
+                    content: '';
+                    display: inline-block;
+                    height: 18px;
+                    position: absolute;
+                    right: -5px;
+                    width: 18px;
+                }
+            }
+            textarea{
+                max-width: 955px;
+            }
+        }
+    }
+
     #add_page_tabs_btn{
         .cta_btn();
         background: transparent;
