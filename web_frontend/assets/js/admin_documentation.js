@@ -34,13 +34,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         Sortable.create(section_tabs_list);
     });
 
-    const invite_instance = document.querySelector(".chips");
-    M.Chips.init(invite_instance, {
-        onChipAdd: (e, email) => {
-            addEmail(email.innerText.split("close")[0]);
-        }
-    });
-
     // const email_address = document.querySelector("#email_address");    
     // email_address.addEventListener("keyup", validateEmail);
 
@@ -59,12 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux(".change_privacy_yes_btn").onEach("click", submitChangeDocumentPrivacy);
     
-    ux(".document_block").onEach("click", (event) => {
-        if(event.target.classList.contains("set_privacy_btn") || event.target.classList.contains("more_action_btn") || event.target.closest("li"))
-            return;
-
-        location.href = "admin_edit_documentation.html";
-    });
+    ux(".document_block").onEach("click", redirectToDocumentView);
 
     ux(".invite_collaborators_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
@@ -97,6 +85,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".archive_btn, .remove_btn").onEach("click", setRemoveArchiveValue);
     ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
+
+    /* run functions from invite_modal.js */
+    initChipsInstance();
+    // initRoleDropdown();
+    initSelect();
+
+    M.Dropdown.init(ux("#docs_view_btn").html());
 });
 
 function submitInvite(event){
@@ -228,6 +223,7 @@ function submitDocForm(event){
         ux(".document_title").onEach("blur", disableEditTitleDocumentation);
         ux(".archive_btn").onEach("click", setRemoveArchiveValue);
         ux(".remove_btn").onEach("click", setRemoveArchiveValue);
+        document_block.addEventListener("click", redirectToDocumentView);
         initializeMaterializeDropdown();
     }
 }
@@ -519,4 +515,11 @@ function submitRemoveArchive(event){
     ux(`#document_${documentation_id}`).html().remove();
 
     appearEmptyDocumentation();
+}
+
+function redirectToDocumentView(event){
+    if(event.target.classList.contains("set_privacy_btn") || event.target.classList.contains("more_action_btn") || event.target.closest("li"))
+        return;
+
+    location.href = "admin_edit_documentation.html";
 }

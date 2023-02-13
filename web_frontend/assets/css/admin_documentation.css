@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  animation-duration: 0.3s !important;
 }
 @font-face {
   font-family: 'ReadexPro-Bold';
@@ -581,6 +582,48 @@ textarea {
   font: 16px/20px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
   color: #1E293B;
 }
+#confirmation_modal .modal,
+#confirmation_modal_private .modal {
+  border-radius: 8px;
+  height: 194px;
+  max-width: 343px;
+  overflow: hidden;
+  width: 100%;
+}
+#confirmation_modal .modal .modal-content,
+#confirmation_modal_private .modal .modal-content {
+  padding: 14px 24px;
+}
+#confirmation_modal .modal .modal-content h4,
+#confirmation_modal_private .modal .modal-content h4 {
+  color: #0F172A;
+  font: 20px/32px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+#confirmation_modal .modal .modal-content p,
+#confirmation_modal_private .modal .modal-content p {
+  color: #6C7177;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+#confirmation_modal .modal .modal-footer,
+#confirmation_modal_private .modal .modal-footer {
+  padding: 15px 30px;
+}
+#confirmation_modal .modal .modal-footer .no_btn,
+#confirmation_modal_private .modal .modal-footer .no_btn {
+  color: #DA4D4D;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  text-transform: none !important;
+}
+#confirmation_modal .modal .modal-footer .yes_btn,
+#confirmation_modal_private .modal .modal-footer .yes_btn {
+  border: 1px solid #2563EB;
+  border-radius: 20px;
+  color: #2563EB;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  padding: 5px 16px;
+  text-transform: none !important;
+  transform: translateY(-6px);
+}
 body::-webkit-scrollbar {
   background-color: #EFF6FF;
   border-radius: 10px;
@@ -1157,4 +1200,55 @@ input:-webkit-autofill:focus {
   padding: 5px 16px;
   text-transform: none !important;
   transform: translateY(-6px);
+}
+.invited_users_wrapper {
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user {
+  align-items: center;
+  display: flex;
+  padding: 8px 8px;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user img {
+  position: relative;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info {
+  margin-left: 16px;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info h4 {
+  font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin: 0;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user p,
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user select {
+  color: #A1A1AA !important;
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin-left: auto;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user select {
+  color: #A1A1AA !important;
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  margin-left: auto;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-trigger {
+  font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
+  color: #A1A1AA !important;
+  max-width: 70px !important;
+  border-bottom: none !important;
+  top: 4px !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-trigger:focus {
+  border-bottom: 1px solid #039BE5 !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-content {
+  left: -30px !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .dropdown-content li span {
+  font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
+  color: #A1A1AA !important;
+}
+#invite_modal_container .invite_wrapper .modal .invite_collab .select-wrapper {
+  margin-left: auto !important;
 }

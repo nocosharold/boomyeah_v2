@@ -14,6 +14,7 @@ function(){
     document.addEventListener("DOMContentLoaded", async ()=> {
         await include("#main_navigation" , `${relative_view_path}/global/main_navigation.html`, `${relative_assets_path}/assets/js/main_navigation.js`);
         await include("#clone_section_page" , `${relative_view_path}/global/clone_section_page.html`);
+        await include("#modals_container" , `${relative_view_path}/global/confirm_action_modals.html`);
 
         if(ux("#add_page_tabs_btn").html()){
             ux("#add_page_tabs_btn").on("click", addNewSectionContent);
@@ -25,8 +26,14 @@ function(){
             updateSectionProgress();
         }
 
-        initializeSectionPageEvents();
+        setTimeout(() => {
+            ux("#remove_tab_form").on("submit", onConfirmRemoveTab);
+        });
 
+        let modals = document.querySelectorAll('.modal');
+        M.Modal.init(modals);
+        initializeSectionPageEvents();
+        
         window.addEventListener("resize", () => {
             if(MOBILE_WIDTH < document.documentElement.clientWidth){
                 window.location.reload();
@@ -44,7 +51,7 @@ function(){
     function initializeSectionPageEvents(ux_target = null, callback = null){
         if(ux_target){
             ux_target.find(".section_page_tabs .add_page_btn").on("click", addNewTab);
-            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", removeSectionTab);
+            ux_target.find(".section_page_tabs .remove_tab_btn").on("click", showConfirmaRemoveTab);
             bindOpenTabLink(ux_target);
     
             ux_target.findAll((".tab_title")).forEach((tab_title) => {
@@ -55,7 +62,7 @@ function(){
         }
         else{
             ux(".section_page_tabs .add_page_btn").onEach("click", addNewTab);
-            ux(".section_page_tabs .remove_tab_btn").onEach("click", removeSectionTab);
+            ux(".section_page_tabs .remove_tab_btn").onEach("click", showConfirmaRemoveTab);
             ux(".section_page_content .tab_title").onEach("keyup", (event) => {
                 onUpdateTabTitle(event);
             });
@@ -232,7 +239,7 @@ function(){
         page_tab_item.html().setAttribute("data-tab_id", tab_id);
         
         /** Rebind tab-related events */
-        page_tab_item.find(".remove_tab_btn").on("click", removeSectionTab);
+        page_tab_item.find(".remove_tab_btn").on("click", showConfirmaRemoveTab);
         page_tab_clone.find(".tab_title").on("keyup", (event) => {
             onUpdateTabTitle(event, section_page_tabs_list.findAll(".page_tab_item").length);
         });
@@ -246,17 +253,47 @@ function(){
         });
     }
 
-    function showConfirmaRemoveSection(event){
-
-    }
- 
-    function removeSectionTab(event){
+    function showConfirmaRemoveTab(event){
         event.stopImmediatePropagation();
-    
         let remove_tab_btn = event.target;
         let tab_item = remove_tab_btn.closest(".page_tab_item");
-        let section_page_content = remove_tab_btn.closest(".section_page_content");
-        let section_page_tabs = remove_tab_btn.closest(".section_page_tabs");
+        let tab_title = tab_item.innerText.substring(0, tab_item.innerText.length - 1);
+        let tab_id = tab_item.getAttribute("data-tab_id");
+
+        let remove_tab_form = ux("#remove_tab_form");
+        remove_tab_form.find(".tab_id").html().value = tab_id.replace("tab_", "");
+        
+        let remove_tab_modal = ux("#confirm_remove_tab_modal");
+        remove_tab_modal.find(".tab_title").text(tab_title.trim());
+        let modal_instance = M.Modal.getInstance(remove_tab_modal);
+        modal_instance.open();
+    }
+
+    function onConfirmRemoveTab(event){
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        
+        let raw_form_data = new FormData(event.target);
+        let post_data = new Object();
+        
+        /** Simulate Form Submission */
+        setTimeout(() => {
+            for (const [key, value] of raw_form_data) {
+                console.log(`${key}: ${value}`);
+                post_data[key] = value;
+            }
+            
+            /** Do these after form submission */
+            let tab_item = ux(`.page_tab_item[data-tab_id="tab_${post_data.tab_id}"]`);
+            removeSectionTab(tab_item.html());
+        }, 148);
+
+        return false;
+    }
+    
+    function removeSectionTab(tab_item){
+        let section_page_content = tab_item.closest(".section_page_content");
+        let section_page_tabs = tab_item.closest(".section_page_tabs");
         let tab_id = tab_item.getAttribute("data-tab_id");
         
         addAnimation(tab_item, "animate__fadeOut");
@@ -274,7 +311,6 @@ function(){
                 }
             });
         }, 148);
-        
     }
     
     function initializeRedactor(selector){
