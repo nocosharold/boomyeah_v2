@@ -36,7 +36,7 @@
 
         ux(document).on("scroll", (event) => {
             if(!ux("#prev_page_btn").html().classList.contains("onload") && !has_scrolled){
-                if(window.scrollY >= document.body.scrollHeight - window.innerHeight){
+                if(window.scrollY >= document.body.scrollHeight - (window.innerHeight + (window.innerHeight/4))){
                     ux("#prev_page_btn").addClass("onload");
                     has_scrolled = true;
                 }
