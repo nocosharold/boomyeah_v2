@@ -377,7 +377,7 @@ textarea{
                                     box-shadow: none;
                                 }
                                 &::placeholder{
-                                    color: @by_primary;
+                                    color: @by_gray;
                                     font: 12px/16px @readex_medium;
                                 }
                             }
@@ -402,7 +402,7 @@ textarea{
                                 top: 30px !important;
                             }
                         }
-                        .users{
+                        .users {
                             background: url("../../assets/images/modal_sprite.svg") no-repeat;
                             background-position: 1px 0px;
                             border: none;
@@ -470,26 +470,51 @@ textarea{
                         }
                     }
                 }
+                .dropdown-trigger{
+                    font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif !important;
+                    color: #A1A1AA !important;
+                    max-width: 70px !important;
+                    border-bottom: none !important;
+                    top: 4px !important;
+                }
+                .dropdown-content{
+                    left: -30px !important;
+                    li{
+                        span{
+                            span{
+                                font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
+                                color: #A1A1AA !important;
+                            }
+                        }
+                    }
+                }
                 h2{
                     color: @by_black;
                     font: 20px/18px @readex_regular;
                 }
-                .collaborators_wrapper{
-                    li{
-                        margin: 15px auto;
-                        .user_list{
+                #with_access_div{
+                    .invited_users_wrapper{
+                        display: contents;
+                        min-height: 268px;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        .invited_user{
                             align-items: center;
                             display: flex;
                             justify-content: space-between;
+                            margin: 0 auto;
+                            padding: 0;
                             input[type=checkbox]{
                                 display: none;
                             }
-                            img{
-                                position: relative;
+                            select, p{
+                                color: #A1A1AA !important;
+                                font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+                                margin-left: auto;
                             }
-                            .user_information{
-                                left: 80px;
-                                position: absolute;
+                            .invited_user_info{
+                                margin-left: 16px;
+                                position: relative;
                                 h4{
                                     color: @by_black;
                                     font: 16px/11px @readex_medium;
@@ -497,13 +522,13 @@ textarea{
                                 p{
                                     color: @by_light;
                                     font: 12px/10px @readex_regular;
+                                    padding: 10px 0;
                                 }
                             }
-                            span{
-                                color: @by_invite;
-                                font: 12px/24px @readex_regular;
+                            .select-wrapper{
+                                margin: -5px 0 0 0;
                             }
-                            .role{
+                            .invited_user_role{
                                 color: @by_invite;
                                 font: 12px/24px @readex_regular;
                                 position: relative;
@@ -519,6 +544,10 @@ textarea{
                                     top: 4px;
                                     width: 28px;
                                 }
+                            }
+                            span{
+                                color: @by_invite;
+                                font: 12px/24px @readex_regular;
                             }
                             #choose_role{
                                 li{
@@ -653,13 +682,17 @@ textarea{
 #confirmation_modal, #confirmation_modal_private, .confirm_action_modal{
     .modal{
         border-radius: 8px;
-        // display: flex !important;
         flex-direction: column;
         max-width: 343px;
         min-height: 194px;
         overflow: hidden;
         width: 100%;
         z-index: 10003 !important;
+
+        &.show{
+            display: flex !important;
+
+        }
 
         & + .modal-overlay{
             z-index: 10002 !important;
