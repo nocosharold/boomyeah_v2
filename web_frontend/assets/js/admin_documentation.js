@@ -84,8 +84,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ux(".archive_btn, .remove_btn").onEach("click", setRemoveArchiveValue);
     ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
+    ux("#remove_invited_user_confirm").onEach("click", submitRemoveInvitedUser);
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
 
+    ux(".invited_user_role").onEach("change", setRoleChangeAction);
     ux(".sort_by").onEach("click", sort_documentations);
 
     /* run functions from invite_modal.js */
@@ -97,6 +99,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     M.Dropdown.init(ux("#sort_by_btn").html());
 });
 
+function getNewDocumentationId(event){
+    let documentation_children = document.querySelectorAll("#documentations .document_block");
+    let largest_id = 1;
+
+    documentation_children.forEach(documentation_child => {
+        let document_id = parseInt(documentation_child.id.split("_")[1]);
+
+        if(document_id > largest_id){
+            largest_id = document_id + 1;
+        }
+    });
+
+    return largest_id;
+}
+
 function submitInvite(event){
     event.preventDefault();
 }
@@ -106,6 +123,135 @@ function submitDocForm(event){
     const input_document_title = ux("#input_add_documentation").html().value;
 
     if(input_document_title){
+        const documentation_children = document.querySelectorAll("#documentations .document_block");
+        const new_documentation_id   = getNewDocumentationId();
+        const document_block = document.createElement("div");
+
+        /* Create document_block */
+        document_block.setAttribute("id", `document_${new_documentation_id}`);
+        document_block.className = "document_block";
+        
+        /* Create document_details */
+        const document_details = document.createElement("div");
+        document_details.className = "document_details";
+
+        /* Create document_details child element */
+        const document_title = document.createElement("input");
+        document_title.className = "document_title";
+        document_title.readOnly = true;
+        document_title.setAttribute("name", "document_title");
+        document_title.setAttribute("value", input_document_title);
+        document_details.appendChild(document_title);
+
+        /* Create document_controls */
+        const document_controls = document.createElement("div");
+        document_controls.className = "document_controls"
+
+        /* Create document_controls child more_action_btn */
+        const more_action_btn = document.createElement("button");
+        more_action_btn.innerHTML = "⁝";
+        more_action_btn.className = "more_action_btn dropdown-trigger";
+        more_action_btn.dataset.target = `document_more_actions_${new_documentation_id}`;
+        document_controls.appendChild(more_action_btn);
+
+        /* Create document_controls child dropdown-content */
+        const dropdown_content = document.createElement("ul");
+        dropdown_content.setAttribute("id", `document_more_actions_${new_documentation_id}`);
+        dropdown_content.setAttribute("tabindex", "0");
+        dropdown_content.className = "dropdown-content more_action_list_public";
+        
+        /* Create lists */
+        const list_actions = [
+            {
+                "action_name": "Edit Title",
+                "action_class": "edit_title_btn",
+                "anchor_href": "#!",
+                "icon_class": "edit_title_icon",
+                "dataset": null
+            },
+            {
+                "action_name": "Duplicate",
+                "action_class": null,
+                "anchor_href": "#!",
+                "icon_class": "duplicate_icon",
+                "dataset": null
+            },
+            {
+                "action_name": "Archive",
+                "action_class": null,
+                "anchor_href": "#confirm_to_archive",
+                "icon_class": "archive_icon modal-trigger archive_btn",
+                "dataset": { "documentation_action": "archive" }
+            },
+            {
+                "action_name": "Set to Private",
+                "action_class": null,
+                "anchor_href": "#confirm_to_private",
+                "icon_class": "set_to_private_icon modal-trigger set_privacy_btn",
+                "dataset": { "document_privacy": "public" }
+            },
+            {
+                "action_name": "Remove",
+                "action_class": null,
+                "anchor_href": "#confirm_to_remove",
+                "icon_class": "remove_icon modal-trigger remove_btn",
+                "dataset": { "documentation_action": "remove" }
+            }
+        ]
+
+        list_actions.forEach((action, key) => {
+            let list_action = document.createElement("li");
+            let list_icon   = document.createElement("a");
+
+            list_action.setAttribute("tabindex", "0");
+            if(action.action_class)
+                list_action.className = action.action_class;
+
+            list_icon.className   = action.icon_class;
+            list_icon.setAttribute("href", action.anchor_href);
+            list_icon.innerHTML += action.action_name;
+
+            if(action.dataset){
+                list_icon.dataset.document_id = new_documentation_id;
+                
+                for(let [key, value] of Object.entries(action.dataset)){
+                    list_icon.dataset[key] = value;
+                }
+            }
+
+            list_action.appendChild(list_icon);
+            dropdown_content.appendChild(list_action);
+
+            if(key < 4){
+                let li_divider  = document.createElement("li");
+                li_divider.setAttribute("tabindex", "-1");
+                li_divider.className = "divider";
+                dropdown_content.appendChild(li_divider);
+            }
+        });
+
+        document_controls.appendChild(dropdown_content);
+
+        document_block.appendChild(document_details);
+        document_block.appendChild(document_controls);
+        document_block.className += " animate__animated animate__fadeIn";
+        document_block.addEventListener("animationend", () => {
+            document_block.classList.remove("animate__animated", "animate__fadeIn");
+        }, false);
+
+        ux("#documentations").html().appendChild(document_block);
+        ux("#doc_form").html().reset();
+        appearEmptyDocumentation();
+
+        ux(".set_privacy_btn").onEach("click", setDocumentPrivacyValues);
+        ux(".edit_title_icon").onEach("click", editTitleDocumentation);
+        ux(".duplicate_icon").onEach("click", duplicateDocumentation);
+        ux(".document_title").onEach("blur", disableEditTitleDocumentation);
+        ux(".archive_btn").onEach("click", setRemoveArchiveValue);
+        ux(".remove_btn").onEach("click", setRemoveArchiveValue);
+        document_block.addEventListener("click", redirectToDocumentView);
+        initializeMaterializeDropdown();
+
         window.location.href = "../no_data/admin_edit_documentation.html"
     }
 }
@@ -186,6 +332,10 @@ function editTitleDocumentation(event){
 
 function disableEditTitleDocumentation(event){
     let document_title = event.target;
+    // Will confirm
+    // let parent_div = document_title.parentNode.parentNode;
+
+    // parent_div.className += " animate__animated animate__pulse";
     
     document_title.setAttribute("readonly", "");
 }
@@ -194,7 +344,7 @@ function duplicateDocumentation(event){
     event.stopImmediatePropagation();
     let source = event.target.closest(".document_block");
     let documentation_children = document.querySelectorAll("#documentations .document_block");
-    let new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
+    let new_documentation_id   = getNewDocumentationId();
 
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".document_title")).html();
@@ -221,8 +371,12 @@ function duplicateDocumentation(event){
     ux(cloned.find(".archive_btn").on("click", setRemoveArchiveValue));
     ux(cloned.find(".remove_btn").on("click", setRemoveArchiveValue));
     
-    // source.insertAdjacentElement("afterend", cloned.html());
-    ux("#documentations").html().appendChild(cloned.html());
+    cloned.html().className += " animate__animated animate__fadeIn";
+    cloned.html().addEventListener("animationend", () => {
+        cloned.html().classList.remove("animate__animated", "animate__fadeIn");
+    }, false);
+
+    source.insertAdjacentElement("afterend", cloned.html());
     initializeMaterializeDropdown();
 }
 
@@ -396,7 +550,10 @@ function submitRemoveArchive(event){
     /* Will not need this for now but will be used when form is submitted to the backend */
     const documentation_action = document.getElementById("documentation_action").value;
 
-    ux(`#document_${documentation_id}`).html().remove();
+    ux(`#document_${documentation_id}`).html().className += " animate__animated animate__fadeOut";
+    ux(`#document_${documentation_id}`).html().addEventListener("animationend", () => {
+        ux(`#document_${documentation_id}`).html().remove();
+    });
 
     appearEmptyDocumentation();
 }
