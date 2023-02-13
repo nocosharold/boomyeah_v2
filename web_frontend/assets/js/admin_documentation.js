@@ -101,9 +101,9 @@ function submitInvite(event){
 function submitDocForm(event){
     event.preventDefault();
     const input_document_title = ux("#input_add_documentation").html().value;
-    
+
     if(input_document_title){
-        window.location.href = "/views/no_data/admin_edit_documentation.html"
+        window.location.href = "admin_edit_documentation.html"
     }
 }
 
