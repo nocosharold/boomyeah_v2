@@ -589,13 +589,17 @@ textarea {
 #confirmation_modal_private .modal,
 .confirm_action_modal .modal {
   border-radius: 8px;
-  display: flex !important;
   flex-direction: column;
   max-width: 343px;
   min-height: 194px;
   overflow: hidden;
   width: 100%;
   z-index: 10003 !important;
+}
+#confirmation_modal .modal.show,
+#confirmation_modal_private .modal.show,
+.confirm_action_modal .modal.show {
+  display: flex !important;
 }
 #confirmation_modal .modal + .modal-overlay,
 #confirmation_modal_private .modal + .modal-overlay,
