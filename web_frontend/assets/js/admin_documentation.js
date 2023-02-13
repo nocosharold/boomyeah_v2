@@ -84,7 +84,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ux(".archive_btn, .remove_btn").onEach("click", setRemoveArchiveValue);
     ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
+    ux("#remove_invited_user_confirm").onEach("click", submitRemoveInvitedUser);
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
+
+    ux(".invited_user_role").onEach("change", setRoleChangeAction);
 
     /* run functions from invite_modal.js */
     initChipsInstance();
@@ -102,11 +105,11 @@ function getNewDocumentationId(event){
         let document_id = parseInt(documentation_child.id.split("_")[1]);
 
         if(document_id > largest_id){
-            largest_id = document_id;
+            largest_id = document_id + 1;
         }
     });
 
-    return largest_id + 1;
+    return largest_id;
 }
 
 function submitInvite(event){
@@ -229,6 +232,11 @@ function submitDocForm(event){
 
         document_block.appendChild(document_details);
         document_block.appendChild(document_controls);
+        document_block.className += " animate__animated animate__fadeIn";
+        document_block.addEventListener("animationend", () => {
+            document_block.classList.remove("animate__animated", "animate__fadeIn");
+        }, false);
+
         ux("#documentations").html().appendChild(document_block);
         ux("#doc_form").html().reset();
         appearEmptyDocumentation();
@@ -320,6 +328,10 @@ function editTitleDocumentation(event){
 
 function disableEditTitleDocumentation(event){
     let document_title = event.target;
+    // Will confirm
+    // let parent_div = document_title.parentNode.parentNode;
+
+    // parent_div.className += " animate__animated animate__pulse";
     
     document_title.setAttribute("readonly", "");
 }
@@ -355,6 +367,11 @@ function duplicateDocumentation(event){
     ux(cloned.find(".archive_btn").on("click", setRemoveArchiveValue));
     ux(cloned.find(".remove_btn").on("click", setRemoveArchiveValue));
     
+    cloned.html().className += " animate__animated animate__fadeIn";
+    cloned.html().addEventListener("animationend", () => {
+        cloned.html().classList.remove("animate__animated", "animate__fadeIn");
+    }, false);
+
     source.insertAdjacentElement("afterend", cloned.html());
     initializeMaterializeDropdown();
 }
@@ -529,7 +546,10 @@ function submitRemoveArchive(event){
     /* Will not need this for now but will be used when form is submitted to the backend */
     const documentation_action = document.getElementById("documentation_action").value;
 
-    ux(`#document_${documentation_id}`).html().remove();
+    ux(`#document_${documentation_id}`).html().className += " animate__animated animate__fadeOut";
+    ux(`#document_${documentation_id}`).html().addEventListener("animationend", () => {
+        ux(`#document_${documentation_id}`).html().remove();
+    });
 
     appearEmptyDocumentation();
 }

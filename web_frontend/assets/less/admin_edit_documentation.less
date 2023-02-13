@@ -642,19 +642,12 @@ div::-webkit-scrollbar-thumb {
 #invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user{
     align-items: center;
     display: flex;
-    padding: 8px 8px;
+    min-height: 69px;
 }
 
-#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user img {
-    position: relative;
-}
-
-#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info{
-    margin-left: 16px;
-}
-
-#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info h4{
-    font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+#invite_modal_container .invite_wrapper .modal .invite_collab .invited_users_wrapper .invited_user .invited_user_info p{
+    color: black !important;
+    font: 16px/24px 'ReadexPro-Light', tahoma, verdana, arial, sans-serif;
     margin: 0;
 }
 
@@ -689,6 +682,10 @@ div::-webkit-scrollbar-thumb {
         font: 12px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif !important;
         color: #A1A1AA !important;
     }
+
+    li:last-child span {
+        color: #DA4D4D !important;
+    }
 }
 
 #invite_modal_container .invite_wrapper .modal .invite_collab .select-wrapper {
@@ -697,4 +694,40 @@ div::-webkit-scrollbar-thumb {
 
 #invite_modal_container .invite_wrapper .modal .invite_collab #email_address:focus::placeholder {
     color: transparent;
+}
+
+#confirmation_modal_remove_invited_user .modal {
+  border-radius: 8px;
+  height: 194px;
+  max-width: 343px;
+  overflow: hidden;
+  width: 100%;
+}
+#confirmation_modal_remove_invited_user .modal .modal-content {
+  padding: 14px 24px;
+}
+#confirmation_modal_remove_invited_user .modal .modal-content h4 {
+  color: #0F172A;
+  font: 20px/32px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+#confirmation_modal_remove_invited_user .modal .modal-content p {
+  color: #6C7177;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+}
+#confirmation_modal_remove_invited_user .modal .modal-footer {
+  padding: 15px 30px;
+}
+#confirmation_modal_remove_invited_user .modal .modal-footer .no_btn {
+  color: #DA4D4D;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  text-transform: none !important;
+}
+#confirmation_modal_remove_invited_user .modal .modal-footer .yes_btn {
+  border: 1px solid #2563EB;
+  border-radius: 20px;
+  color: #2563EB;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  padding: 5px 16px;
+  text-transform: none !important;
+  transform: translateY(-6px);
 }

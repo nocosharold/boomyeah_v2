@@ -56,6 +56,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let instances = M.Modal.init(modal);
     
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
+    ux("#remove_invited_user_confirm").onEach("click", submitRemoveInvitedUser);
+    ux(".invited_user_role").onEach("change", setRoleChangeAction);
 
     ux(".sort_by").onEach("click", sort_documentations);
 
