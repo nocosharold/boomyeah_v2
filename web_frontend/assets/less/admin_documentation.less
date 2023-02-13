@@ -170,34 +170,67 @@ body{
             }
         }
     }
-    #docs_view_btn {
-        background-color: transparent;
-        border: none;
-        color: @by_black;
-        font: 20px/24px @readex_regular;
-        margin-bottom: 26px;
-        &::after{
-            background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat 0 -15px;
-            content: '';
-            display: inline-block;
-            height: 7px;
-            margin-left: 13px;
-            vertical-align: middle;
-            width: 10px;
+    .section_header{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        .sort_btn{
+            background-color: transparent;
+            border: none;
+            font: 16px/20px @readex_medium;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            &::before{
+                content: '';
+                background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/sort_icon.svg') no-repeat;
+                display: inline-block;
+                width: 18px;
+                height: 12px;
+            }
         }
-    }
-    #docs_view_list{
-        border-radius: 4px;
-        min-width: 209px;
-        .divider {
-            background-color: @by_bg;
+        .sort_dropdown {
+            border-radius: 4px;
+            width: 114px !important;
+            background-color: @by_dropdown_bg;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+            li{
+                color: @by_dropdown_text;
+                font: 16px/24px @readex_regular;
+                padding: 14px 16px;
+                &:hover{
+                    background: @by_hovered_btn;
+                }
+            }
         }
-        li:hover {
-            background-color: @by_hovered_btn;
-        }
-        a {
+        #docs_view_btn {
+            background-color: transparent;
+            border: none;
             color: @by_black;
-            font: 16px/24px @readex_medium;
+            font: 20px/24px @readex_regular;
+            &::after{
+                background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat 0 -15px;
+                content: '';
+                display: inline-block;
+                height: 7px;
+                margin-left: 13px;
+                vertical-align: middle;
+                width: 10px;
+            }
+        }
+        #docs_view_list{
+            border-radius: 4px;
+            min-width: 209px;
+            .divider {
+                background-color: @by_bg;
+            }
+            li:hover {
+                background-color: @by_hovered_btn;
+            }
+            a {
+                color: @by_black;
+                font: 16px/24px @readex_medium;
+            }
         }
     }
     #documentations,
