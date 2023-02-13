@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
 
-    ux(".sort_by").onEach("click", sort_documentations);
+    ux(".sort_by").onEach("click", sort_sections);
 
     /* run functions from invite_modal.js */
     initChipsInstance();
@@ -242,7 +242,7 @@ function showMaterializeDropdown(event){
     instance.open();
 }
 
-function sort_documentations(event){
+function sort_sections(event){
     let sort_by = ux(event.target).attr("data-sort-by");
     let section_lists = document.getElementById('section_container');
     let section_list_nodes = section_lists.childNodes;
