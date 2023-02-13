@@ -394,6 +394,7 @@
         ux(comment_content).find(".posted_at").addClass("edited");
         ux(comment_content).addClass("animate__animated").addClass("animate__pulse");
         closeEditCommentForm(edit_comment_form);
+        ux(".active_comment_item").removeClass("active_comment_item");
 
         setTimeout(() => {
             ux(comment_content).removeClass("animate__animated").removeClass("animate__pulse");    
