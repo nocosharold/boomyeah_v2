@@ -102,7 +102,7 @@
         if(swipe_direction){
             active_section_page.addClass(swipe_direction);
 
-            if(swipe_direction == "right"){
+            if(swipe_direction == "left"){
                 ux("#prev_page_btn").removeClass("onload");
             }
         }
