@@ -377,6 +377,10 @@
                 }
             } else {
                 event.stopImmediatePropagation();
+
+                if(ux(".active_comment_item").html()){
+                    ux(".active_comment_item").removeClass("active_comment_item");
+                }
                 ux("#comment_actions_container").addClass("active");
                 ux(event_target.closest(".comment_item")).addClass("active_comment_item");
             }
@@ -387,7 +391,6 @@
         event.stopImmediatePropagation();
         event.preventDefault();
         let edit_comment_form = event.target;
-        console.log("submi")
         let comment_message = ux(edit_comment_form).find(".comment_message").html().value;
         let comment_content = edit_comment_form.nextElementSibling;
         ux(comment_content).find(".comment_message").text(comment_message);
