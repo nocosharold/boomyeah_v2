@@ -102,7 +102,6 @@ function submitAddSectionForm(event){
 
         section_title.html().setAttribute("readonly", "");
         sections.appendChild(cloned_section_block.html());
-        M.Dropdown.init(ux(cloned_section_block.html()).find(".dropdown-trigger").html());
     }
 
     appearEmptySection();
