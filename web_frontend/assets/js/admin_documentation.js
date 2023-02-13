@@ -94,6 +94,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     M.Dropdown.init(ux("#docs_view_btn").html());
 });
 
+function getNewDocumentationId(event){
+    let documentation_children = document.querySelectorAll("#documentations .document_block");
+    let largest_id = 1;
+
+    documentation_children.forEach(documentation_child => {
+        let document_id = parseInt(documentation_child.id.split("_")[1]);
+
+        if(document_id > largest_id){
+            largest_id = document_id;
+        }
+    });
+
+    return largest_id + 1;
+}
+
 function submitInvite(event){
     event.preventDefault();
 }
@@ -104,7 +119,7 @@ function submitDocForm(event){
 
     if(input_document_title){
         const documentation_children = document.querySelectorAll("#documentations .document_block");
-        const new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
+        const new_documentation_id   = getNewDocumentationId();
         const document_block = document.createElement("div");
 
         /* Create document_block */
@@ -313,7 +328,7 @@ function duplicateDocumentation(event){
     event.stopImmediatePropagation();
     let source = event.target.closest(".document_block");
     let documentation_children = document.querySelectorAll("#documentations .document_block");
-    let new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
+    let new_documentation_id   = getNewDocumentationId();
 
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".document_title")).html();
@@ -340,8 +355,7 @@ function duplicateDocumentation(event){
     ux(cloned.find(".archive_btn").on("click", setRemoveArchiveValue));
     ux(cloned.find(".remove_btn").on("click", setRemoveArchiveValue));
     
-    // source.insertAdjacentElement("afterend", cloned.html());
-    ux("#documentations").html().appendChild(cloned.html());
+    source.insertAdjacentElement("afterend", cloned.html());
     initializeMaterializeDropdown();
 }
 
