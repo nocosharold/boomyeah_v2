@@ -86,12 +86,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
 
+    ux(".sort_by").onEach("click", sort_documentations);
+
     /* run functions from invite_modal.js */
     initChipsInstance();
     // initRoleDropdown();
     initSelect();
 
     M.Dropdown.init(ux("#docs_view_btn").html());
+    M.Dropdown.init(ux("#sort_by_btn").html());
 });
 
 function submitInvite(event){
@@ -101,9 +104,9 @@ function submitInvite(event){
 function submitDocForm(event){
     event.preventDefault();
     const input_document_title = ux("#input_add_documentation").html().value;
-    
+
     if(input_document_title){
-        window.location.href = "/views/no_data/admin_edit_documentation.html"
+        window.location.href = "../no_data/admin_edit_documentation.html"
     }
 }
 
@@ -403,4 +406,24 @@ function redirectToDocumentView(event){
         return;
 
     location.href = "admin_edit_documentation.html";
+}
+
+function sort_documentations(event){
+    let sort_by = ux(event.target).attr("data-sort-by");
+    let documentation_lists = document.getElementById('documentations');
+    let documentation_list_nodes = documentation_lists.childNodes;
+
+    let documentation_lists_to_sort = [];
+
+    for (let i in documentation_list_nodes) {
+        (documentation_list_nodes[i].nodeType == 1) && documentation_lists_to_sort.push(documentation_list_nodes[i]);
+    }
+    
+    documentation_lists_to_sort.sort(function(a, b) {
+        return a.innerHTML == b.innerHTML ? 0 : ( sort_by === "az" ? (a.innerHTML > b.innerHTML ? 1 : -1) : (b.innerHTML > a.innerHTML ? 1 : -1) );
+    });
+
+    for (let i = 0; i < documentation_lists_to_sort.length; i++) {
+        documentation_lists.appendChild(documentation_lists_to_sort[i]);
+    }
 }
