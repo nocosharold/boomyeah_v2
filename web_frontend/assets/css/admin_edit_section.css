@@ -710,6 +710,22 @@ body::-webkit-scrollbar-thumb {
     width: 100% !important;
   }
 }
+#edit_section_content .section_details .add_description {
+  position: relative;
+}
+#edit_section_content .section_details .add_description:hover::after {
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/admin_edit_docs_sprite.svg') no-repeat;
+  background-position: -59px -4px;
+  content: '';
+  display: inline-block;
+  height: 18px;
+  position: absolute;
+  right: -5px;
+  width: 18px;
+}
+#edit_section_content .section_details .add_description textarea {
+  max-width: 955px;
+}
 #edit_section_content #add_page_tabs_btn {
   border-radius: 20px;
   border: 1px solid #2563EB;
