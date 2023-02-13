@@ -39,9 +39,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".section_block").onEach("click", function(){
         location.href = "admin_edit_section.html";
     });
+
     ux(".more_action_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
     });
+
+    ux(".copy_icon").onEach("click", function(event){
+        event.stopImmediatePropagation();
+    });
+    
+    ux(".remove_icon").onEach("click", function(event){
+        event.stopImmediatePropagation();
+    });
+
+    let modal = document.querySelectorAll('.modal');
+    let instances = M.Modal.init(modal);
+    
+    ux("#add_invite_btn").on("click", addPeopleWithAccess);
+
+    /* run functions from invite_modal.js */
+    initChipsInstance();
+    // initRoleDropdown();
+    initSelect();
 });
 
 function submitAddSectionForm(event){
