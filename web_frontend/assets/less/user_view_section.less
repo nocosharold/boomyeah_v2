@@ -87,7 +87,10 @@
             margin: 0px;
             padding: 16px;
             width: 100%;
-            
+
+            &.hidden{
+                display: none !important;
+            }
             .mobile_add_comment_form{
                 display: flex;
                 .comment_field{
@@ -130,16 +133,30 @@
                 background-color: @by_white;
                 border-radius: 15px;
                 border: none;
-                box-shadow: 0px 2px 3px rgba(0,0,0,.25);
+                box-shadow: @by_box_shadow;
                 height: 30px;
                 margin-left: 9px;
                 pointer-events: all;
                 width: 30px;
-
+                &#prev_page_btn{
+                    &.onload + #next_page_btn{
+                        &::before{
+                            background: @by_white;
+                            border-radius: 15px;
+                            box-shadow: @by_box_shadow;
+                            color: @by_mobile_link;
+                            content: "Swipe left to the next page";
+                            line-height: 30px;
+                            position: absolute;
+                            transform: translateX(calc(-50vw - 24px));
+                            width: 50vw;
+                        }
+                    }
+                }
                 &#prev_page_btn::before{
                     .edit_section_icon(10.12px, 30px, -134.02px);
                 }
-                &#next_page_btn::before{
+                &#next_page_btn::after{
                     .edit_section_icon(10.12px, 30px, -144.42px);
                 }
 
@@ -273,12 +290,37 @@
             & ~ *{
                 display: none !important;
             }
+            .comment_contents{
+                flex-grow: 1;
+            }
 
             .comment_field{
-                flex-grow: 1;
                 .comment_message{
                     box-sizing: border-box;
                     min-height: 36px !important;
+                }
+            }
+            .edit_form_btns{
+                display: flex;
+                margin-top: 10px;
+
+                .edit_form_btn{
+                    background: @by_white;
+                    border-radius: 20px;
+                    border: 1px solid @by_primary;
+                    color: @by_primary;
+                    cursor: pointer;
+                    font: 16px/24px @readex_regular;
+                    padding: 5px 16px;
+                    text-transform: none !important;
+                    &:hover{
+                        opacity: 0.7;
+                    }
+                    &.cancel_btn{
+                        background: transparent;
+                        border: none;
+                        color: @by_text;
+                    }
                 }
             }
         }
@@ -401,15 +443,16 @@
             }
         }
     }
+    .add_reply_form{
+        @media (max-width: 632px) {
+            display: none !important;
+        }
 
+    }
     .add_reply_form, .edit_comment_form{
         display: none;
         margin-top: 20px;
         padding-left: 72px;
-
-        @media (max-width: 632px) {
-            display: none !important;
-        }
         &.show{
             display: block;
         }
@@ -418,6 +461,7 @@
 
             .comment_field{
                 flex-grow: 1;
+
                 textarea{
                     height: 2.4rem;
                 }

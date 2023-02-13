@@ -23,6 +23,7 @@
 
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `${relative_view_path}/global/user_view_section_comments.html`);
+        ux("#prev_page_btn").addClass("onload");
 
         ux("#section_pages").findAll("ul.comments_list").forEach((comments_list) => {
             if(!comments_list.classList.contains("replies_list")){
@@ -74,7 +75,7 @@
                 let swipe_amount = swipe_value - event_swipe_value;
                 
                 /** Check swipe only on section pages */
-                if(event.target.closest("#section_pages")){
+                if(event.target.closest("#section_pages") || event.target.closest("#mobile_section_pages_controls")){
                     if(Math.abs(swipe_amount) > (SWIPE_OFFSET / 2)){
                         animateSwipe(swipe_direction);
                     }
@@ -100,6 +101,10 @@
         
         if(swipe_direction){
             active_section_page.addClass(swipe_direction);
+
+            if(swipe_direction == "right"){
+                ux("#prev_page_btn").removeClass("onload");
+            }
         }
     }
 
@@ -125,7 +130,6 @@
             event.stopImmediatePropagation();
             toggleCommentActions(event);
             onEditComment(event);
-            // onDeleteComment(event);
 
             showConfirmaDeleteComment(event);
         } else {
@@ -193,7 +197,8 @@
             post_form = post_form.target;
         }
         let is_mobile_comment = post_form.classList.contains("mobile_add_comment_form");
-        let comment_message = ux(post_form).find(".comment_message").html().value;
+        let comment_message_field = ux(post_form).find(".comment_message");
+        let comment_message = comment_message_field.html().value;
         
         if(comment_message){
             let comment_container = post_form.closest(".comment_container");
@@ -242,7 +247,8 @@
             }, 100);
 
             post_form.reset();
-            ux(post_form).find(".comment_message").html().blur();
+            comment_message_field.html().blur();
+            comment_message_field.html().setAttribute("style","");
             bindViewEvents();
         }
         return false;
@@ -285,25 +291,31 @@
         let event_target = event.target;
 
         if(event_target.classList.contains("edit_btn")){
-            let comment_details = event_target.closest(".comment_details");
+            active_comment_item = (CLIENT_WIDTH > MOBILE_WIDTH) ? event_target.closest(".comment_item") : ux(".active_comment_item").html();
+            let comment_content = ux(active_comment_item).find(".comment_content");
+            let comment_details = comment_content.find(".comment_details").html();
             let comment_message_value = ux(comment_details).find(".comment_message").text();
 
             /** Show edit comment form */
             let edit_comment_form = ux("#clone_section_page .edit_comment_form").clone();
             let edit_comment_id = "post_comment_" + new Date().getTime();
             let comment_message_field = edit_comment_form.find(".comment_message");
-            let comment_message_label = edit_comment_form.find("label");
+            let comment_cancel_btn = edit_comment_form.find(".cancel_btn");
             comment_message_field.html().value = comment_message_value;
             comment_message_field.attr("id", edit_comment_id);
-            comment_message_label.attr("for", edit_comment_id);
 
+            ux(edit_comment_form.html()).on("submit", onSubmitEditForm);
             comment_message_field.on("keydown", onEditMessageKeypress);
+            comment_cancel_btn.on("click", closeEditCommentForm);
 
             if((CLIENT_WIDTH > MOBILE_WIDTH)){
-                comment_details.closest(".comment_content").before(edit_comment_form.html());
+                comment_content.html().before(edit_comment_form.html());
                 comment_message_field.html().focus();
             } else {
                 is_mobile_reply_open = true;
+                comment_content.html().before(edit_comment_form.html());
+                comment_message_field.html().focus();
+                ux(".mobile_tab_comments").addClass("hidden");
             }
 
             closeCommentActions();
@@ -371,29 +383,47 @@
         }
     }
 
+    function onSubmitEditForm(event){
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        let edit_comment_form = event.target;
+        console.log("submi")
+        let comment_message = ux(edit_comment_form).find(".comment_message").html().value;
+        let comment_content = edit_comment_form.nextElementSibling;
+        ux(comment_content).find(".comment_message").text(comment_message);
+        ux(comment_content).find(".posted_at").addClass("edited");
+        ux(comment_content).addClass("animate__animated").addClass("animate__pulse");
+        closeEditCommentForm(edit_comment_form);
+        ux(".active_comment_item").removeClass("active_comment_item");
+
+        setTimeout(() => {
+            ux(comment_content).removeClass("animate__animated").removeClass("animate__pulse");    
+        }, 480);
+        return false;
+    }
+
     function onEditMessageKeypress(event){
         event.stopImmediatePropagation();
-        let comment_message = event.target;
-        let edit_comment_form = comment_message.closest(".edit_comment_form");
+        let edit_comment_form = event.target.closest(".edit_comment_form");
         
         if(event.which === KEYS.ENTER){
             event.preventDefault();
-            
-            let comment_message = ux(edit_comment_form).find(".comment_message").html().value;
-            let comment_content = edit_comment_form.nextElementSibling;
-            ux(comment_content).find(".comment_message").text(comment_message);
-            ux(comment_content).find(".posted_at").addClass("edited");
-            ux(comment_content).addClass("animate__animated").addClass("animate__pulse");
-
-            setTimeout(() => {
-                ux(comment_content).removeClass("animate__animated").removeClass("animate__pulse");    
-            }, 480);
+            ux(edit_comment_form).find(".update_btn").html().click();
+            return;
         }
         
-        if(event.which === KEYS.ESCAPE || event.which === KEYS.ENTER){
+        if(event.which === KEYS.ESCAPE){
             /** Close edit form */
-            edit_comment_form.remove();
+            closeEditCommentForm(event);
         }
+    }
+
+    function closeEditCommentForm(event){
+        let edit_comment_form = ("type" in event) ? event.target.closest(".edit_comment_form") : event;
+
+        /** Close edit form */
+        edit_comment_form.remove();
+        ux(".mobile_tab_comments").removeClass("hidden");
     }
 
     function onCommentMessageKeypress(event){
