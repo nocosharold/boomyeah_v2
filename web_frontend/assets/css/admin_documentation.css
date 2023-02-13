@@ -856,14 +856,47 @@ body::-webkit-scrollbar-thumb {
     margin-top: 4px;
   }
 }
-.container #docs_view_btn {
+.container .section_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.container .section_header .sort_btn {
+  background-color: transparent;
+  border: none;
+  font: 16px/20px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.container .section_header .sort_btn::before {
+  content: '';
+  background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/sort_icon.svg') no-repeat;
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+}
+.container .section_header .sort_dropdown {
+  border-radius: 4px;
+  width: 114px !important;
+  background-color: #f8fafc;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+.container .section_header .sort_dropdown li {
+  color: #334155;
+  font: 16px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
+  padding: 14px 16px;
+}
+.container .section_header .sort_dropdown li:hover {
+  background: #bddaff;
+}
+.container .section_header #docs_view_btn {
   background-color: transparent;
   border: none;
   color: #0f172a;
   font: 20px/24px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
-  margin-bottom: 26px;
 }
-.container #docs_view_btn::after {
+.container .section_header #docs_view_btn::after {
   background: url('https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/docs_page_sprite.svg') no-repeat 0 -15px;
   content: '';
   display: inline-block;
@@ -872,17 +905,17 @@ body::-webkit-scrollbar-thumb {
   vertical-align: middle;
   width: 10px;
 }
-.container #docs_view_list {
+.container .section_header #docs_view_list {
   border-radius: 4px;
   min-width: 209px;
 }
-.container #docs_view_list .divider {
+.container .section_header #docs_view_list .divider {
   background-color: #eff6ff;
 }
-.container #docs_view_list li:hover {
+.container .section_header #docs_view_list li:hover {
   background-color: #bddaff;
 }
-.container #docs_view_list a {
+.container .section_header #docs_view_list a {
   color: #0f172a;
   font: 16px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
 }
