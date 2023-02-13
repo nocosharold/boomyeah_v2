@@ -133,14 +133,17 @@
                 background-color: @by_white;
                 border-radius: 15px;
                 border: none;
-                box-shadow: 0px 2px 3px rgba(0,0,0,.25);
+                box-shadow: @by_box_shadow;
                 height: 30px;
                 margin-left: 9px;
                 pointer-events: all;
                 width: 30px;
                 &#prev_page_btn{
-                    &.hidden + #next_page_btn{
+                    &.onload + #next_page_btn{
                         &::before{
+                            background: @by_white;
+                            border-radius: 15px;
+                            box-shadow: @by_box_shadow;
                             color: @by_mobile_link;
                             content: "Swipe left to the next page";
                             line-height: 30px;

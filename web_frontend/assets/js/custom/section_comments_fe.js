@@ -23,6 +23,7 @@
 
     document.addEventListener("DOMContentLoaded", async () => {
         await include("#user_view_comments" , `${relative_view_path}/global/user_view_section_comments.html`);
+        ux("#prev_page_btn").addClass("onload");
 
         ux("#section_pages").findAll("ul.comments_list").forEach((comments_list) => {
             if(!comments_list.classList.contains("replies_list")){
@@ -100,6 +101,10 @@
         
         if(swipe_direction){
             active_section_page.addClass(swipe_direction);
+
+            if(swipe_direction == "right"){
+                ux("#prev_page_btn").removeClass("onload");
+            }
         }
     }
 
