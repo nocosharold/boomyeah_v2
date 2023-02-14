@@ -26,7 +26,6 @@
     <div id="main_navigation"></div>
     <!--- Add #invite_modal --->
     <div id="invite_modal"></div>
-
     <div id="wrapper">
         <div class="container">
             <form action="./admin_documentation.html" id="doc_form" method="post">
@@ -36,19 +35,19 @@
                 </div>
                 <span id="save_status" hidden>Saving...</span>
             </form>
-            <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
-            <ul id='docs_view_list' class='dropdown-content'>
-                <li><a href="#!" class="active_docs_btn">Documentations</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="#!" class="archived_docs_btn">Archived</a></li>
-            </ul>
-            <button id="sort_by_btn" class="dropdown-trigger" data-target="sort_by_list">Sort by</button>
-            <ul id='sort_by_list' class='dropdown-content'>
-                <li class="sort_by" data-sort-by="az">A-Z</li>
-                <li class="divider" tabindex="-1"></li>
-                <li class="sort_by" data-sort-by="za">Z-A</li>
-                <li class="divider" tabindex="-1"></li>
-            </ul>
+            <div class="section_header">
+                <button id="docs_view_btn" class="dropdown-trigger" data-target="docs_view_list">Documentations</button>
+                <ul id='docs_view_list' class='dropdown-content'>
+                    <li><a href="#!" class="active_docs_btn">Documentations</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#!" class="archived_docs_btn">Archived</a></li>
+                </ul>
+                <button id="sort_by_btn" class="dropdown-trigger sort_btn" data-target="sort_by_list">Sort by</button>
+                <ul id='sort_by_list' class='dropdown-content sort_dropdown'>
+                    <li class="sort_by" data-sort-by="az">A-Z</li>
+                    <li class="sort_by" data-sort-by="za">Z-A</li>
+                </ul>
+            </div>
             <div id="documentations">
                 <div id="document_1" class="document_block">
                     <div class="document_details">
@@ -328,49 +327,49 @@
                 </div>
             </div>
             <div id="archived_documents" class="hidden">
-                <div class="document_block">
+                <div id="document_100" class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Company Handout" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger archived_disabled" href="#modal1"> 1</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger archived_disabled" href="#confirm_to_public"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pr01">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_100">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="archived_document_pr01" class="dropdown-content more_action_list_private">
-                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                        <ul id="document_more_actions_100" class="dropdown-content more_action_list_private">
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="100" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="100" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="document_block">
+                <div id="document_101" class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Accounting" id="" class="document_title" readonly="">
                     </div>
                     <div class="document_controls">
-                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pu01">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_101">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="archived_document_pu01" class="dropdown-content more_action_list_public">
-                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                        <ul id="document_more_actions_101" class="dropdown-content more_action_list_private">
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="101" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="101" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="document_block">
+                <div id="document_102" class="document_block">
                     <div class="document_details">
                         <input type="text" name="document_title" value="Engineering" id="" class="document_title" readonly="">
                         <button class="invite_collaborators_btn modal-trigger archived_disabled" href="#modal1"> 6</button>
                     </div>
                     <div class="document_controls">
                         <button class="access_btn modal-trigger archived_disabled" href="#confirm_to_public"></button>
-                        <button class="more_action_btn dropdown-trigger" data-target="archived_document_pr02">⁝</button>
+                        <button class="more_action_btn dropdown-trigger" data-target="document_more_actions_102">⁝</button>
                         <!-- Dropdown Structure -->
-                        <ul id="archived_document_pr02" class="dropdown-content more_action_list_private">
-                            <li><a href="#!" class="archive_icon">Unarchive</a></li>
+                        <ul id="document_more_actions_102" class="dropdown-content more_action_list_private">
+                            <li><a href="#confirm_to_archive" class="archive_icon modal-trigger archive_btn" data-document_id="102" data-documentation_action="archive">Archive</a></li>
                             <li class="divider" tabindex="-1"></li>
-                            <li><a href="#!" class="remove_icon">Remove</a></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="102" data-documentation_action="remove">Remove</a></li>
                         </ul>
                     </div>
                 </div>
@@ -430,6 +429,18 @@
             </div>
         </div>
     </div>
+    <div id="confirmation_modal_remove_invited_user">
+        <div id="confirm_to_remove_invited_user" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Are you sure you want to remove access for this user?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat no_btn">No</a>
+                <a href="#!" id="remove_invited_user_confirm" class="modal-close waves-effect btn-flat yes_btn">Yes</a>
+            </div>
+        </div>
+    </div>
     <form id="change_document_privacy_form" action="#" method="POST" hidden>
         <input type="hidden" id="change_privacy_doc_id" name="document_id">
         <input type="hidden" id="change_privacy_doc_privacy" name="document_privacy">
@@ -437,6 +448,9 @@
     <form id="remove_archive_form" action="#" method="POST" hidden>
         <input type="hidden" id="documentation_action" name="documentation_action">
         <input type="hidden" id="remove_archive_id" name="document_id">
+    </form>
+    <form action="remove_invited_user_form" action="#" method="POST" hidden>
+        <input type="hidden" id="invited_user_id" name="invited_user_id">
     </form>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
