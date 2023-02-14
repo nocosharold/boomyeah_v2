@@ -1,4 +1,7 @@
+// out: "../css/user_view_documentation.css", compress: false
+
 @import url(./global.less);
+@import url(./user_navigation.less);
 
 body {
     overflow: auto;
@@ -7,12 +10,20 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+#search_documentation_form{
+    display: none !important;
+}
 
 #wrapper {
     padding: 0 30px 0 100px;
 
     @media screen and (max-width: 632px) {
-        padding: 0 30px;
+        padding: 0 16px;
+
+        .container{
+            margin: 14px auto 24px !important;
+            
+        }
     }
 }
 
@@ -207,7 +218,7 @@ body {
 
             &.hidden,
             &.hidden_private {
-                display: none;
+                display: none !important;
             }
 
             .section_details {

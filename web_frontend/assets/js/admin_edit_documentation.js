@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".edit_title_icon").onEach("click", editSectionTitle);
     ux(".section_title").onEach("blur", disableEditSectionTitle);
     ux(".duplicate_icon").onEach("click", duplicateSection);
-    ux(".remove_icon").onEach("click", removeSectionBlock);
+    ux(".remove_icon").onEach("click", setRemoveSectionBlock);
+    ux("#remove_confirm").on("click", removeSectionBlock);
 
     document.querySelectorAll(".section_container").forEach((section_tabs_list) => {
         Sortable.create(section_tabs_list);
@@ -36,9 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     initializeMaterializeDropdown();
 
-    ux(".section_block").onEach("click", function(){
-        location.href = "admin_edit_section.html";
-    });
+    ux(".section_block").onEach("click", redirectToEditSection);
 
     ux(".more_action_btn").onEach("click", function(event){
         event.stopImmediatePropagation();
@@ -66,6 +65,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     // initRoleDropdown();
     initSelect();
 });
+
+function getNewSectionId(event){
+    let sections = document.querySelectorAll("#section_container .section_block");
+    let largest_id = 1;
+
+    sections.forEach(section => {
+        let section_id = parseInt(section.id.split("_")[1]);
+
+        if(section_id > largest_id){
+            largest_id = section_id;
+        }
+    });
+
+    return largest_id + 1;
+}
+
+function redirectToEditSection(event){
+    if(event.target.classList.contains("more_action_btn") ||
+        event.target.classList.contains("more_action_list") ||
+        event.target.classList.contains("remove_icon") ||
+        event.target.classList.contains("remove_btn") || 
+        event.target.closest("li")){
+        return;
+    }
+    
+    location.href = "admin_edit_section.html";
+}
 
 function submitAddSectionForm(event){
     event.preventDefault();
@@ -98,9 +124,7 @@ function submitAddSectionForm(event){
             ux(section_title.html()).attr("class", "section_title");
         }
         
-        cloned_section_block.on("click", function(){
-            location.href = "admin_edit_section.html";
-        })
+        cloned_section_block.on("click", redirectToEditSection);
 
         section_title.html().setAttribute("readonly", "");
         sections.appendChild(cloned_section_block.html());
@@ -146,16 +170,26 @@ function editSectionTitle(event){
     }, 0);
 }
 
+function setRemoveSectionBlock(event) {
+    let remove_modal = document.querySelector("#confirm_to_remove");
+    var instance = M.Modal.getInstance(remove_modal);
+    instance.open();
+    
+    const section    = event.target;
+    const section_id = section.getAttribute("data-document_id");
+
+    document.getElementById("remove_section_id").value = section_id;
+}
+
 function removeSectionBlock(event){
-    event.stopImmediatePropagation();
+    /* This is just for clickable prototype. Will replace all when form is submitted to the backend */
+    const section_id = document.getElementById("remove_section_id").value;
 
-    let remove_icon = event.target;
-    let section_blk = ux(remove_icon.closest(".section_block")).html();
-    ux(section_blk).addClass("animate__animated").addClass("animate__fadeOut");
+    ux(`#section_${section_id}`).html().className += " animate__animated animate__fadeOut";
+    ux(`#section_${section_id}`).html().addEventListener("animationend", () => {
+        ux(`#section_${section_id}`).html().remove();
+    });
 
-    setTimeout(() => {
-        section_blk.remove();
-    }, 300);
     appearEmptySection();
 }
 
@@ -177,33 +211,41 @@ function disableEditSectionTitle(event){
 
 function duplicateSection(event){
     event.stopImmediatePropagation();
+
+    let new_section_id = getNewSectionId();
     let source = event.target.closest(".section_block");
     let cloned = ux(source).clone();
+    
+    cloned.html().setAttribute("id", `section_${new_section_id}`);
+    cloned.find(".remove_btn").html().dataset.document_id = new_section_id;
+
     let cloned_title = ux(cloned.find(".section_title")).html();
     let cloned_list = ux(cloned.find(".dropdown-content")).html();
     let cloned_target = ux(cloned.find(".more_action_btn")).html();
     let source_id = source.getAttribute("id");
 
-    
-    ux(cloned_title.html()).attr("value", "Copy of " + cloned_title.html().value);
+    console.log(cloned_title.html().value);
+    cloned_title.html().value = `Copy of ${cloned_title.html().value}`;
     ux(cloned.find(".edit_title_icon").on("click", editSectionTitle));
-    cloned_target.html().setAttribute("data-target", "copy"+source_id);
-    cloned_list.html().setAttribute("id", "copy"+source_id);
+    cloned_target.html().setAttribute("data-target", `section_more_actions_${new_section_id}`);
+    cloned_list.html().setAttribute("id", `section_more_actions_${new_section_id}`);
     cloned_list.html().setAttribute("style", "");
 
     ux(cloned.find(".duplicate_icon").on("click", duplicateSection));
-    ux(cloned.find(".remove_icon").on("click", removeSectionBlock));
+    ux(cloned.find(".remove_icon").on("click", setRemoveSectionBlock));
     ux(cloned.find(".more_action_btn").on("click", showMaterializeDropdown));
 
 
-    ux(cloned.html()).addClass("animate__zoomIn");
+    cloned.html().className += " animate__animated animate__zoomIn";
+    cloned.html().addEventListener("animationend", () => {
+        cloned.html().classList.remove("animate__animated", "animate__zoomIn");
+    });
+
     source.insertAdjacentElement("afterend", cloned.html());
     /* Initializing the dropdown menu. */
     M.Dropdown.init(ux(cloned.html()).find(".dropdown-trigger").html());
 
-    cloned.on("click", function(){
-        location.href = "admin_edit_section.html";
-    })
+    cloned.on("click", redirectToEditSection);
 
     if(cloned_title.html().value.trim().length > 38){
         ux(cloned_title.html()).attr("data-tooltip", cloned_title.html().value);

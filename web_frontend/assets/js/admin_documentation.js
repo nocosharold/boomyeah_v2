@@ -361,6 +361,7 @@ function duplicateDocumentation(event){
     cloned_list.html().setAttribute("id", more_action_title);
     cloned_list.html().setAttribute("style", "");
 
+    ux(cloned.on("click", redirectToDocumentView));
     ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
     ux(cloned.find(".duplicate_icon").on("click", duplicateDocumentation));
     ux(cloned.find(".document_title").on("click", disableEditTitleDocumentation));
