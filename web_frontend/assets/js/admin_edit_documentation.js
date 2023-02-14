@@ -224,11 +224,11 @@ function duplicateSection(event){
     let cloned_target = ux(cloned.find(".more_action_btn")).html();
     let source_id = source.getAttribute("id");
 
-    
-    ux(cloned_title.html()).attr("value", "Copy of " + cloned_title.html().value);
+    console.log(cloned_title.html().value);
+    cloned_title.html().value = `Copy of ${cloned_title.html().value}`;
     ux(cloned.find(".edit_title_icon").on("click", editSectionTitle));
-    cloned_target.html().setAttribute("data-target", "copy"+source_id);
-    cloned_list.html().setAttribute("id", "copy"+source_id);
+    cloned_target.html().setAttribute("data-target", `section_more_actions_${new_section_id}`);
+    cloned_list.html().setAttribute("id", `section_more_actions_${new_section_id}`);
     cloned_list.html().setAttribute("style", "");
 
     ux(cloned.find(".duplicate_icon").on("click", duplicateSection));
