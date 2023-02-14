@@ -743,3 +743,16 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
     width: 10px;
 }
+
+@keyframes slideSwipeLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        opacity: 1;
+    }
+}

@@ -443,8 +443,7 @@ textarea {
   font: 20px/18px 'ReadexPro-Regular', tahoma, verdana, arial, sans-serif;
 }
 #invite_modal_container .invite_wrapper .modal .invite_collab #with_access_div .invited_users_wrapper {
-  display: contents;
-  min-height: 268px;
+  max-height: 270px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
