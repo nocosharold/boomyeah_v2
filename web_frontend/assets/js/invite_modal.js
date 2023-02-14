@@ -115,11 +115,12 @@ function setRoleChangeAction(event){
 }
 
 function submitRemoveInvitedUser(event){
-    const invited_user_id = ux("#invited_user_id").html().value;
+    const invited_user_id      = ux("#invited_user_id").html().value;
+    const invited_user_element = ux(`#invited_user_${invited_user_id}`).html();
 
-    ux(`#invited_user_${invited_user_id}`).html().className += " animate__animated animate__fadeOut";
+    invited_user_element.className += " animate__animated animate__fadeOut";
         
-    ux(`#invited_user_${invited_user_id}`).html().addEventListener("animationend", () => {
-        ux(`#invited_user_${invited_user_id}`).html().remove();
+    invited_user_element.addEventListener("animationend", () => {
+        invited_user_element.remove();
     }, false);
 }

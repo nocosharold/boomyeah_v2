@@ -107,11 +107,11 @@ function getNewDocumentationId(event){
         let document_id = parseInt(documentation_child.id.split("_")[1]);
 
         if(document_id > largest_id){
-            largest_id = document_id + 1;
+            largest_id = document_id;
         }
     });
 
-    return largest_id;
+    return largest_id + 1;
 }
 
 function submitInvite(event){
