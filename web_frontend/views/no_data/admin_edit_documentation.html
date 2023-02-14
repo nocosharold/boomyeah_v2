@@ -45,13 +45,7 @@
                 </div>
                 <a id="invite_collaborator_btn" class="waves-effect waves-light btn modal-trigger hidden" href="#modal1">13 Collaborators</a>
             </div>
-            <p class="doc_text_content" contenteditable="true" data-placeholder="Add Description">This handbook replaces and supersedes all prior employee handbooks regarding
-                employment or HR matters effective January 01, 2021. The policies and practices included in this
-                handbook may be modified at any time. Your department has additional specific procedures for many of the
-                general policies stated in the handbook. You are expected to learn your department's procedures and
-                comply with them. You are also expected to conform to the professional standards of your occupation.
-                Please direct any questions to your supervisor, department head, or to the Human Resources Management
-                and Development Office.</p>
+            <p class="doc_text_content" contenteditable="true" data-placeholder="Add Description"></p>
             <form action="#" id="section_form" method="post">
                 <div class="group_add_section input-field">
                     <input id="input_add_section" type="text" class="validate" autofocus>
@@ -62,16 +56,21 @@
                 <h2>Sections</h2>
             </div>
             <div class="section_container">
-                <div class="section_block hidden">
+                <div id="section_0" class="section_block hidden">
                     <div class="section_details">
-                        <button class="draggable_icon"></button>
-                        <input type="text" name="section_title" value="Untitled Section" id=""
-                            class="section_title tooltipped" data-tooltip="Untitled Section">
+                        <input type="text" name="section_title" value="About Company" id="" class="section_title" readonly="">
                     </div>
                     <div class="section_controls">
-                        <button class="edit_section_title_icon tooltipped" data-tooltip="Edit Title"></button>
-                        <button class="copy_icon tooltipped" data-tooltip="Duplicate"></button>
-                        <button class="remove_icon tooltipped" data-tooltip="Remove"></button>
+                        <button class="more_action_btn dropdown-trigger" data-target="section_more_actions_0">⁝</button>
+                        <!-- Dropdown Structure -->
+                        <ul id="section_more_actions_0" class="dropdown-content more_action_list">
+                            <li class="edit_title_btn"><a href="#!" class="edit_title_icon">Edit Title</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" class="duplicate_icon">Duplicate</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#confirm_to_remove" class="remove_icon modal-trigger remove_btn" data-document_id="1"
+                                    data-documentation_action="remove">Remove</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

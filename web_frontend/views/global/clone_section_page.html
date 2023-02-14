@@ -36,10 +36,16 @@
 </ul>
 <form action="/" method="POST" class="edit_comment_form">
     <img src="https://village88.s3.us-east-1.amazonaws.com/boomyeah_v2/jhaver.png" alt="Jhaver" class="user_image"/>
-    <div class="comment_field">
-        <div class="comment_message_content input-field col s12">
-            <label for="post_comment_" data-label_text="Write a reply">Edit message</label>
-            <textarea name="post_comment_" id="post_comment" class="materialize-textarea comment_message"></textarea>
+    <div class="comment_contents">
+        <div class="comment_field">
+            <div class="comment_message_content input-field col s12">
+                <textarea name="post_comment_" id="post_comment" class="materialize-textarea comment_message"></textarea>
+            </div>
+        </div>
+        <div class="edit_form_btns">
+            <div class="row_placeholder"></div>
+            <button type="button" class="cancel_btn edit_form_btn">Cancel</button>
+            <button type="submit" class="update_btn edit_form_btn">Update</button>
         </div>
     </div>
 </form>

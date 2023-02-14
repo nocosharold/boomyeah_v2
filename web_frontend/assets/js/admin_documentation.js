@@ -84,7 +84,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ux(".archive_btn, .remove_btn").onEach("click", setRemoveArchiveValue);
     ux("#archive_confirm, #remove_confirm").onEach("click", submitRemoveArchive);
+    ux("#remove_invited_user_confirm").onEach("click", submitRemoveInvitedUser);
     ux("#add_invite_btn").on("click", addPeopleWithAccess);
+
+    ux(".invited_user_role").onEach("change", setRoleChangeAction);
+    ux(".sort_by").onEach("click", sort_documentations);
 
     /* run functions from invite_modal.js */
     initChipsInstance();
@@ -92,7 +96,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     initSelect();
 
     M.Dropdown.init(ux("#docs_view_btn").html());
+    M.Dropdown.init(ux("#sort_by_btn").html());
 });
+
+function getNewDocumentationId(event){
+    let documentation_children = document.querySelectorAll("#documentations .document_block");
+    let largest_id = 1;
+
+    documentation_children.forEach(documentation_child => {
+        let document_id = parseInt(documentation_child.id.split("_")[1]);
+
+        if(document_id > largest_id){
+            largest_id = document_id + 1;
+        }
+    });
+
+    return largest_id;
+}
 
 function submitInvite(event){
     event.preventDefault();
@@ -103,8 +123,7 @@ function submitDocForm(event){
     const input_document_title = ux("#input_add_documentation").html().value;
 
     if(input_document_title){
-        const documentation_children = document.querySelectorAll("#documentations .document_block");
-        const new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
+        const new_documentation_id   = getNewDocumentationId();
         const document_block = document.createElement("div");
 
         /* Create document_block */
@@ -214,6 +233,11 @@ function submitDocForm(event){
 
         document_block.appendChild(document_details);
         document_block.appendChild(document_controls);
+        document_block.className += " animate__animated animate__fadeIn";
+        document_block.addEventListener("animationend", () => {
+            document_block.classList.remove("animate__animated", "animate__fadeIn");
+        }, false);
+
         ux("#documentations").html().appendChild(document_block);
         ux("#doc_form").html().reset();
         appearEmptyDocumentation();
@@ -226,6 +250,8 @@ function submitDocForm(event){
         ux(".remove_btn").onEach("click", setRemoveArchiveValue);
         document_block.addEventListener("click", redirectToDocumentView);
         initializeMaterializeDropdown();
+
+        window.location.href = "../no_data/admin_edit_documentation.html"
     }
 }
 
@@ -305,6 +331,10 @@ function editTitleDocumentation(event){
 
 function disableEditTitleDocumentation(event){
     let document_title = event.target;
+    // Will confirm
+    // let parent_div = document_title.parentNode.parentNode;
+
+    // parent_div.className += " animate__animated animate__pulse";
     
     document_title.setAttribute("readonly", "");
 }
@@ -312,8 +342,7 @@ function disableEditTitleDocumentation(event){
 function duplicateDocumentation(event){
     event.stopImmediatePropagation();
     let source = event.target.closest(".document_block");
-    let documentation_children = document.querySelectorAll("#documentations .document_block");
-    let new_documentation_id   = parseInt(documentation_children[documentation_children.length - 1].id.split("_")[1]) + 1;
+    let new_documentation_id = getNewDocumentationId();
 
     let cloned = ux(source).clone();
     let cloned_title = ux(cloned.find(".document_title")).html();
@@ -323,12 +352,11 @@ function duplicateDocumentation(event){
 
     /* Update document_id of clone */
     cloned.html().setAttribute("id", `document_${new_documentation_id}`);
-    cloned.find(".set_privacy_btn").html().dataset.document_id = new_documentation_id;
     cloned.find(".archive_btn").html().dataset.document_id     = new_documentation_id;
     cloned.find(".remove_btn").html().dataset.document_id      = new_documentation_id;
 
     cloned_title.html().setAttribute("style", "");
-    cloned_title.html().setAttribute("value", "Copy of " + cloned_title.html().value);
+    cloned_title.html().value = `Copy of ${cloned_title.html().value}`;
     cloned_target.html().setAttribute("data-target", more_action_title);
     cloned_list.html().setAttribute("id", more_action_title);
     cloned_list.html().setAttribute("style", "");
@@ -336,44 +364,21 @@ function duplicateDocumentation(event){
     ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
     ux(cloned.find(".duplicate_icon").on("click", duplicateDocumentation));
     ux(cloned.find(".document_title").on("click", disableEditTitleDocumentation));
-    ux(cloned.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
     ux(cloned.find(".archive_btn").on("click", setRemoveArchiveValue));
     ux(cloned.find(".remove_btn").on("click", setRemoveArchiveValue));
+    cloned.findAll((".set_privacy_btn")).forEach( element => {
+        element.dataset.document_id = new_documentation_id;
+        element.addEventListener("click", setDocumentPrivacyValues);
+    });
     
-    // source.insertAdjacentElement("afterend", cloned.html());
-    ux("#documentations").html().appendChild(cloned.html());
+    cloned.html().className += " animate__animated animate__fadeIn";
+    cloned.html().addEventListener("animationend", () => {
+        cloned.html().classList.remove("animate__animated", "animate__fadeIn");
+    }, false);
+
+    source.insertAdjacentElement("afterend", cloned.html());
     initializeMaterializeDropdown();
 }
-
-// function duplicateInnerElement(event){
-//     console.log(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]);
-//     let origin = event.target.closest(".document_block");
-//     let new_documentation_id = parseInt(ux("#documentations").html().children[ux("#documentations").html().children.length - 2].id.split("_")[1]) + 1;
-
-//     let replica = ux(origin).clone();
-//     let replica_title = ux(replica.find(".document_title")).html();
-//     let replica_target = ux(replica.find(".more_action_btn")).html();
-//     let replica_list = ux(replica.find(".dropdown-content")).html();
-//     let more_action_title = `document_more_actions_${new_documentation_id}`;
-    
-//     replica_title.html().setAttribute("style", "");
-//     replica_title.html().setAttribute("value", "Copy of " + replica_title.html().value);
-//     replica_target.html().setAttribute("data-target", more_action_title);
-//     replica_target.html().setAttribute("data-target", "document_copy");
-//     replica_list.html().setAttribute("id", "document_copy");
-//     replica_list.html().setAttribute("style", "");
-
-//     ux(replica.find(".edit_title_icon").on("click", editTitleDocumentation));
-//     ux(replica.find(".duplicate_icon").on("click", duplicateDocumentation));
-//     ux(replica.find(".document_title").on("click", disableEditTitleDocumentation));
-//     ux(replica.find(".set_privacy_btn").on("click", setDocumentPrivacyValues));
-//     ux(replica.find(".archive_btn").on("click", setRemoveArchiveValue));
-//     ux(replica.find(".remove_btn").on("click", setRemoveArchiveValue));
-
-//     // origin.insertAdjacentElement("afterend", replica.html());
-//     ux("#documentations").html().appendChild(replica.html());
-//     initializeMaterializeDropdown();
-// }
 
 function appearActiveDocumentation(event){
     let active_docs_btn = event.target;
@@ -515,14 +520,41 @@ function submitRemoveArchive(event){
     /* Will not need this for now but will be used when form is submitted to the backend */
     const documentation_action = document.getElementById("documentation_action").value;
 
-    ux(`#document_${documentation_id}`).html().remove();
+    ux(`#document_${documentation_id}`).html().className += " animate__animated animate__fadeOut";
+    ux(`#document_${documentation_id}`).html().addEventListener("animationend", () => {
+        ux(`#document_${documentation_id}`).html().remove();
+    });
 
     appearEmptyDocumentation();
 }
 
 function redirectToDocumentView(event){
-    if(event.target.classList.contains("set_privacy_btn") || event.target.classList.contains("more_action_btn") || event.target.closest("li"))
-        return;
+    if(event.target.classList.contains("set_privacy_btn") || 
+        event.target.classList.contains("more_action_btn") || 
+        event.target.classList.contains("invite_collaborators_btn") || 
+        event.target.closest("li")){
+            return;
+    }
 
     location.href = "admin_edit_documentation.html";
+}
+
+function sort_documentations(event){
+    let sort_by = ux(event.target).attr("data-sort-by");
+    let documentation_lists = document.getElementById('documentations');
+    let documentation_list_nodes = documentation_lists.childNodes;
+
+    let documentation_lists_to_sort = [];
+
+    for (let i in documentation_list_nodes) {
+        (documentation_list_nodes[i].nodeType == 1) && documentation_lists_to_sort.push(documentation_list_nodes[i]);
+    }
+    
+    documentation_lists_to_sort.sort(function(a, b) {
+        return a.innerHTML == b.innerHTML ? 0 : ( sort_by === "az" ? (a.innerHTML > b.innerHTML ? 1 : -1) : (b.innerHTML > a.innerHTML ? 1 : -1) );
+    });
+
+    for (let i = 0; i < documentation_lists_to_sort.length; i++) {
+        documentation_lists.appendChild(documentation_lists_to_sort[i]);
+    }
 }
