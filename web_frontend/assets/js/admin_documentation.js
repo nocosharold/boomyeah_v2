@@ -345,7 +345,6 @@ function duplicateDocumentation(event){
     let new_documentation_id = getNewDocumentationId();
 
     let cloned = ux(source).clone();
-    console.log(cloned.html());
     let cloned_title = ux(cloned.find(".document_title")).html();
     let cloned_target = ux(cloned.find(".more_action_btn")).html();
     let cloned_list = ux(cloned.find(".dropdown-content")).html();
