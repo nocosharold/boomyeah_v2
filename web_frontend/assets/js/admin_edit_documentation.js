@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     ux(".edit_title_icon").onEach("click", editSectionTitle);
     ux(".section_title").onEach("blur", disableEditSectionTitle);
     ux(".duplicate_icon").onEach("click", duplicateSection);
-    ux(".remove_icon").onEach("click", removeSectionBlock);
+    ux(".remove_icon").onEach("click", setRemoveSectionBlock);
+    ux("#remove_confirm").on("click", removeSectionBlock);
 
     document.querySelectorAll(".section_container").forEach((section_tabs_list) => {
         Sortable.create(section_tabs_list);
@@ -146,16 +147,26 @@ function editSectionTitle(event){
     }, 0);
 }
 
+function setRemoveSectionBlock(event) {
+    let remove_modal = document.querySelector("#confirm_to_remove");
+    var instance = M.Modal.getInstance(remove_modal);
+    instance.open();
+    
+    const section    = event.target;
+    const section_id = section.getAttribute("data-document_id");
+
+    document.getElementById("remove_section_id").value = section_id;
+}
+
 function removeSectionBlock(event){
-    event.stopImmediatePropagation();
+    /* This is just for clickable prototype. Will replace all when form is submitted to the backend */
+    const section_id = document.getElementById("remove_section_id").value;
 
-    let remove_icon = event.target;
-    let section_blk = ux(remove_icon.closest(".section_block")).html();
-    ux(section_blk).addClass("animate__animated").addClass("animate__fadeOut");
+    ux(`#section_${section_id}`).html().className += " animate__animated animate__fadeOut";
+    ux(`#section_${section_id}`).html().addEventListener("animationend", () => {
+        ux(`#section_${section_id}`).html().remove();
+    });
 
-    setTimeout(() => {
-        section_blk.remove();
-    }, 300);
     appearEmptySection();
 }
 

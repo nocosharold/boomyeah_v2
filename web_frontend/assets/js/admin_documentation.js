@@ -345,6 +345,7 @@ function duplicateDocumentation(event){
     let new_documentation_id = getNewDocumentationId();
 
     let cloned = ux(source).clone();
+    console.log(cloned.html());
     let cloned_title = ux(cloned.find(".document_title")).html();
     let cloned_target = ux(cloned.find(".more_action_btn")).html();
     let cloned_list = ux(cloned.find(".dropdown-content")).html();
@@ -361,6 +362,7 @@ function duplicateDocumentation(event){
     cloned_list.html().setAttribute("id", more_action_title);
     cloned_list.html().setAttribute("style", "");
 
+    ux(cloned.on("click", redirectToDocumentView));
     ux(cloned.find(".edit_title_icon").on("click", editTitleDocumentation));
     ux(cloned.find(".duplicate_icon").on("click", duplicateDocumentation));
     ux(cloned.find(".document_title").on("click", disableEditTitleDocumentation));
