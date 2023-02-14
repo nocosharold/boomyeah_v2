@@ -1,8 +1,12 @@
+// out: "../css/user_documentation.css", compress: false
 @import url(./global.less);
-
+@import url(./user_navigation.less);
 
 ::-webkit-scrollbar {
     display: none;
+}
+#search_section_form{
+    display: none !important;
 }
 .user{
     .container{
@@ -137,6 +141,9 @@
                 padding: 20px 23px 20px 16px;
                 transition: all 0.21s ease-in-out;
                 width: 316px;
+                &.hidden{
+                    display: none !important;
+                }
                 .document_details{
                     h2 {
                         color: @by_black;

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let assets_path = (view_path === "/views" )? ".." : "../..";
 
     /* Render global view elements */
-    await include("#main_navigation" , `${global_path}/global/user_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
+    await include("#main_navigation" , `${global_path}/global/main_navigation.html`, `${assets_path}/assets/js/main_navigation.js`);
 
     ux(".document_block").onEach("click", function(){
         location.href = "user_view_documentation.html";
