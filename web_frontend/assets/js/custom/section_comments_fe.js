@@ -45,7 +45,7 @@
         
         setTimeout(() => {
             ux("#remove_comment_form").on("submit", onConfirmDeleteComment);
-        }, 148);
+        }, 480);
 
         /** Mobile Device events */
         ux(document).on("touchstart", function (event){
@@ -339,6 +339,7 @@
             let remove_comment_modal = ux("#confirm_remove_comment_modal");
             let modal_instance = M.Modal.getInstance(remove_comment_modal);
             modal_instance.open();
+            ux("#remove_comment_form").on("submit", onConfirmDeleteComment);
 
             /** Determine active_comment_item */
             active_comment_item = (CLIENT_WIDTH > MOBILE_WIDTH) ? event_target.closest(".comment_item") : ux(".active_comment_item").html();
