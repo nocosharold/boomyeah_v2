@@ -10,9 +10,10 @@ function(){
     let toast_timeout = null;
     let saving_timeout = null;
     let target_index = 0;
+    let load_asset_path = (window.navigator.platform.indexOf("Win") > -1 ) ? assets_path : relative_assets_path;
 
     document.addEventListener("DOMContentLoaded", async ()=> {
-        await include("#main_navigation" , `${relative_view_path}/global/main_navigation.html`, `${relative_assets_path}/assets/js/main_navigation.js`);
+        await include("#main_navigation" , `${relative_view_path}/global/main_navigation.html`, `${load_asset_path}/assets/js/main_navigation.js`);
         await include("#clone_section_page" , `${relative_view_path}/global/clone_section_page.html`);
         await include("#modals_container" , `${relative_view_path}/global/confirm_action_modals.html`);
 
