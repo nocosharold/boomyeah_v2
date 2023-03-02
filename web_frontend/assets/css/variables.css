@@ -10,3 +10,7 @@
   font-family: 'ReadexPro-Regular';
   src: url('../fonts/ReadexPro-Regular.ttf');
 }
+@font-face {
+  font-family: 'ReadexPro-Light';
+  src: url('../fonts/ReadexPro-Light.ttf');
+}

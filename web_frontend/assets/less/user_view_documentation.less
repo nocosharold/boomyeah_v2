@@ -1,7 +1,6 @@
 // out: "../css/user_view_documentation.css", compress: false
 
 @import url(./global.less);
-@import url(./user_navigation.less);
 
 body {
     overflow: auto;
@@ -22,11 +21,15 @@ body {
 
         .container{
             margin: 14px auto 24px !important;
-            
+            .section_container{
+                gap: 8px;
+                .section_block{
+                    height: 52px;
+                }
+            }
         }
     }
 }
-
 .container {
     background-color: @by_white;
     border-radius: 12px;
