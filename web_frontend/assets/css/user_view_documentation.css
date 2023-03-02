@@ -1103,11 +1103,15 @@ body {
     margin: 0;
   }
   .container .section_container .section_block .section_details {
+    height: auto;
     max-width: 100%;
     width: auto;
   }
   .container .section_container .section_block .section_details .section_title {
     font: 14px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
+  }
+  .container .section_container .section_block .section_controls {
+    display: none;
   }
   .container .section_container .section_block .section_controls span {
     font: 12px/24px 'ReadexPro-Medium', tahoma, verdana, arial, sans-serif;
